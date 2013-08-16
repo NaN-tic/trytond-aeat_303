@@ -1,0 +1,10 @@
+<tree string="AEAT 303 Report">
+    <field name="company"/>
+    <field name="fiscalyear"/>
+    <field name="period"/>
+    <field name="accrued_total_tax"/>
+    <field name="deductible_total"/>
+    <field name="difference"/>
+    <field name="result"/>
+    <field name="state"/>
+</tree>

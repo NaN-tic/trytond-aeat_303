@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_aeat_303_admin">
+            <field name="name">Aeat_303 Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_aeat_303_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_aeat_303_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_aeat_303_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_aeat_303_admin"/>
+        </record>
+        <record model="res.group" id="group_aeat_303">
+            <field name="name">Aeat_303</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_aeat_303">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_aeat_303"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_aeat_303">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_aeat_303"/>
+        </record>
+        <record model="ir.ui.view" id="aeat_303_report_form_view">
+            <field name="model">aeat.303.report</field>
+            <field name="type">form</field>
+            <field name="name">aeat_303_report_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_303_report_tree_view">
+            <field name="model">aeat.303.report</field>
+            <field name="type">tree</field>
+            <field name="name">aeat_303_report_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_303_report">
+            <field name="name">AEAT 303 Report</field>
+            <field name="res_model">aeat.303.report</field>
+            <field name="search_value"></field>
+            <!-- <field name="domain">[]</field> -->
+            <!-- <field name="context">{}</field> -->
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_303_report_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_303_report_tree_view"/>
+            <field name="act_window" ref="act_aeat_303_report"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_303_report_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_303_report_form_view"/>
+            <field name="act_window" ref="act_aeat_303_report"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_303_report">
+            <field name="model" search="[('model', '=', 'aeat.303.report')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_303_report_admin">
+            <field name="model" search="[('model', '=', 'aeat.303.report')]"/>
+            <field name="group" ref="group_aeat_303_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <!-- Menus -->
+        <menuitem action="act_aeat_303_report" id="menu_aeat_303_report"
+            parent="account.menu_reporting" sequence="303"
+            name="AEAT 303 Report"/>
+    </data>
+</tryton>
