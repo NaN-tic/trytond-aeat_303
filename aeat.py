@@ -1,17 +1,68 @@
 import retrofix
 from retrofix import aeat303
+from decimal import Decimal
 import datetime
+import calendar
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
-__all__ = ['Report']
+__all__ = ['Report', 'TaxCodeMapping', 'TaxCodeRelation']
 
-_STATES={
+_STATES = {
     'readonly': Eval('state') == 'done',
     }
 
-_DEPENDS=['state']
+_DEPENDS = ['state']
+
+__metaclass__ = PoolMeta
+
+
+class TaxCodeRelation(ModelSQL):
+    '''
+    AEAT 303 TaxCode Mapping Codes Relation
+    '''
+    __name__ = 'aeat.303.mapping-account.tax.code'
+
+    mapping = fields.Many2One('aeat.303.mapping', 'Mapping')
+    code = fields.Many2One('account.tax.code', 'Tax Code')
+
+
+class TaxCodeMapping(ModelSQL, ModelView):
+    '''
+    AEAT 303 TaxCode Mapping
+    '''
+    __name__ = 'aeat.303.mapping'
+
+    aeat303_field = fields.Many2One('ir.model.field', 'Field',
+        domain=[('module', '=', 'aeat_303')], required=True)
+    type_ = fields.Selection([('code', 'Code'), ('numeric', 'Numeric')],
+        'Type', required=True)
+    code = fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
+        'code', 'Tax Code', states={
+            'required': Eval('type_') == 'code',
+            'invisible': Eval('type_') != 'code',
+        }, depends=['type_'])
+    number = fields.Numeric('Number', states={
+            'required': Eval('type_') == 'numeric',
+            'invisible': Eval('type_') != 'numeric',
+        }, depends=['type_'])
+
+    @classmethod
+    def __setup__(cls):
+        super(TaxCodeMapping, cls).__setup__()
+        cls._sql_constraints += [
+            ('aeat303_field_uniq', 'unique (aeat303_field)', 'unique_field')
+            ]
+        cls._error_messages.update({
+                'unique_field': 'Field must be unique.',
+                })
+
+    @staticmethod
+    def default_type_():
+        return 'code'
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -39,22 +90,22 @@ class Report(Workflow, ModelSQL, ModelView):
     first_name = fields.Char('First Name')
     monthly_return_subscription = fields.Boolean('Montly Return Subscription')
     period = fields.Selection([
-            ('1T','First quarter'),
-            ('2T','Second quarter'),
-            ('3T','Third quarter'),
-            ('4T','Fourth quarter'),
-            ('01','January'),
-            ('02','February'),
-            ('03','March'),
-            ('04','April'),
-            ('05','May'),
-            ('06','June'),
-            ('07','July'),
-            ('08','August'),
-            ('09','September'),
-            ('10','October'),
-            ('11','November'),
-            ('12','December'),
+            ('1T', 'First quarter'),
+            ('2T', 'Second quarter'),
+            ('3T', 'Third quarter'),
+            ('4T', 'Fourth quarter'),
+            ('01', 'January'),
+            ('02', 'February'),
+            ('03', 'March'),
+            ('04', 'April'),
+            ('05', 'May'),
+            ('06', 'June'),
+            ('07', 'July'),
+            ('08', 'August'),
+            ('09', 'September'),
+            ('10', 'October'),
+            ('11', 'November'),
+            ('12', 'December'),
             ], 'Period', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
     accrued_vat_base_1 = fields.Numeric('Accrued Vat Base 1', digits=(16, 2))
@@ -116,12 +167,15 @@ class Report(Workflow, ModelSQL, ModelView):
         'Deductible Investment Regularization', digits=(16, 2))
     deductible_pro_rata_regularization = fields.Numeric(
         'Deductible Pro Rata Regularization', digits=(16, 2))
-    deductible_total = fields.Numeric('Deductible Total', digits=(16, 2))
-    difference = fields.Numeric('Difference', digits=(16, 2))
+    deductible_total = fields.Function(fields.Numeric('Deductible Total',
+            digits=(16, 2)), 'get_deductible_total')
+    difference = fields.Function(fields.Numeric('Difference', digits=(16, 2)),
+        'get_difference')
     state_administration_percent = fields.Numeric(
         'State Administration Percent', digits=(16, 2))
-    state_administration_amount = fields.Numeric('State Administration Amount',
-        digits=(16, 2))
+    state_administration_amount = fields.Function(
+        fields.Numeric('State Administration Amount', digits=(16, 2)),
+        'get_state_administration_amount')
     previous_period_amount_to_compensate = fields.Numeric(
         'Previous Period Amount To Compensate', digits=(16, 2))
     intracommunity_deliveries = fields.Numeric(
@@ -131,9 +185,11 @@ class Report(Workflow, ModelSQL, ModelView):
         'Not Subject Or Reverse Charge', digits=(16, 2))
     joint_taxation_state_provincial_councils = fields.Numeric(
         'Joint Taxation State Provincial Councils', digits=(16, 2))
-    result = fields.Numeric('Result', digits=(16, 2))
+    result = fields.Function(fields.Numeric('Result', digits=(16, 2)),
+        'get_result')
     to_deduce = fields.Numeric('To Deduce', digits=(16, 2))
-    liquidation_result = fields.Numeric('Liquidation Result', digits=(16, 2))
+    liquidation_result = fields.Function(fields.Numeric('Liquidation Result',
+        digits=(16, 2)), 'get_liquidation_result')
     amount_to_compensate = fields.Numeric('Amount To Compensate',
         digits=(16, 2))
     without_activity = fields.Boolean('Without Activity')
@@ -181,8 +237,8 @@ class Report(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(cls, Report).__setup__()
         cls._error_messages.update({
-                'invalid_currency': ('Currency in AEAT 303 report "%s" must be '
-                    'Euro.')
+                'invalid_currency': ('Currency in AEAT 303 report "%s" must be'
+                    ' Euro.')
                 })
         cls._buttons.update({
                 'draft': {
@@ -222,8 +278,18 @@ class Report(Workflow, ModelSQL, ModelView):
         return '0'
 
     @staticmethod
-    def default_state_percent():
+    def default_state_administration_percent():
         return 100
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
 
     @staticmethod
     def default_compensation_fee():
@@ -237,11 +303,66 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_auto_bankruptcy_declaration():
         return ' '
 
+    @staticmethod
+    def default_deductible_compensations():
+        return 0
+
+    @staticmethod
+    def default_deductible_investment_regularization():
+        return 0
+
+    @staticmethod
+    def default_deductible_pro_rata_regularization():
+        return 0
+
+    @staticmethod
+    def default_amount_to_compensate():
+        return 0
+
+    @staticmethod
+    def default_joint_taxation_state_provincial_councils():
+        return 0
+
+    @staticmethod
+    def default_previous_period_amount_to_compensate():
+        return 0
+
+    @staticmethod
+    def default_to_deduce():
+        return 0
+
     def on_change_with_fiscalyear_code(self):
         return self.fiscalyear.code if self.fiscalyear else None
 
     def get_currency(self, name):
         return self.company.currency.id
+
+    def get_difference(self, name):
+        return self.accrued_total_tax - self.deductible_total
+
+    def get_deductible_total(self, name):
+        return (self.deductible_current_domestic_operations_tax +
+            self.deductible_investment_domestic_operations_tax +
+            self.deductible_current_import_operations_tax +
+            self.deductible_investment_import_operations_tax +
+            self.deductible_current_intracommunity_operations_tax +
+            self.deductible_investment_intracommunity_operations_tax +
+            self.deductible_compensations +
+            self.deductible_investment_regularization +
+            self.deductible_pro_rata_regularization
+                )
+
+    def get_state_administration_amount(self, name):
+        return (self.difference * self.state_administration_percent /
+            Decimal('100.0'))
+
+    def get_result(self, name):
+        return (self.state_administration_amount -
+            self.previous_period_amount_to_compensate +
+            self.joint_taxation_state_provincial_councils)
+
+    def get_liquidation_result(self, name):
+        return self.result - self.to_deduce
 
     @classmethod
     def validate(cls, reports):
@@ -256,6 +377,48 @@ class Report(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('calculated')
     def calculate(cls, reports):
+        pool = Pool()
+        Mapping = pool.get('aeat.303.mapping')
+        Period = pool.get('account.period')
+        TaxCode = pool.get('account.tax.code')
+
+        mapping = {}
+        fixed = {}
+        for mapp in Mapping.search([('type_', '=', 'code')]):
+            for code in mapp.code:
+                mapping[code.id] = mapp.aeat303_field.name
+        for mapp in Mapping.search([('type_', '=', 'numeric')]):
+            fixed[mapp.aeat303_field.name] = mapp.number
+
+        for report in reports:
+            fiscalyear = report.fiscalyear
+            multiplier = 1
+            period = report.period
+            if 'T' in period:
+                period = period[0]
+                multiplier = 3
+
+            start_month = int(period) * multiplier
+            end_month = start_month + multiplier
+
+            year = fiscalyear.start_date.year
+            lday = calendar.monthrange(year, end_month)[1]
+            periods = [p.id for p in Period.search([
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ('start_date', '>=', datetime.date(year, start_month, 1)),
+                    ('end_date', '<=', datetime.date(year, end_month, lday))
+                    ])]
+
+            for field, value in fixed.iteritems():
+                setattr(report, field, value)
+            for field in mapping.values():
+                setattr(report, field, Decimal('0.0'))
+            with Transaction().set_context(periods=periods):
+                for tax in TaxCode.browse(mapping.keys()):
+                    value = getattr(report, mapping[tax.id])
+                    setattr(report, mapping[tax.id], value + tax.sum)
+            report.save()
+
         cls.write(reports, {
                 'calculation_date': datetime.datetime.now(),
                 })
@@ -280,7 +443,7 @@ class Report(Workflow, ModelSQL, ModelView):
         pass
 
     def create_file(self):
-        record = retrofix.Record(retrofix.aeat303.RECORD)
+        record = retrofix.Record(aeat303.RECORD)
         columns = [getattr(self, x) for x in dir(self)
             if isinstance(getattr(self, x), fields.Field)]
         columns = [x for x in columns if x.name not in ('report',)]

@@ -60,38 +60,38 @@ contains the full copyright notices and license terms. -->
     <field name="accrued_total_tax"/>
 
     <separator id="deductible_vat" string="Deductible VAT" colspan="6"/>
-    <label string="Current Domestic Operations" id="current_domestic_operations" colspan="2"/>
-    <label string="Base:" id="deductible_current_domestic_operations_base"/>
+    <label string="Current Domestic Operations" id="current_domestic_operations"/>
+    <label string="Base:" id="deductible_current_domestic_operations_base" colspan="2"/>
     <field name="deductible_current_domestic_operations_base"/>
     <label string="Tax:" id="deductible_current_domestic_operations_tax"/>
     <field name="deductible_current_domestic_operations_tax"/>
 
-    <label string="Investment Domestic Operations" id="investment_domestic_operations" colspan="2"/>
-    <label string="Base:" id="deductible_investment_domestic_operations_base"/>
+    <label string="Investment Domestic Operations" id="investment_domestic_operations"/>
+    <label string="Base:" id="deductible_investment_domestic_operations_base" colspan="2"/>
     <field name="deductible_investment_domestic_operations_base"/>
     <label string="Tax:" id="deductible_investment_domestic_operations_tax"/>
     <field name="deductible_investment_domestic_operations_tax"/>
 
-    <label string="Current Import Operations" id="current_import_operations" colspan="2"/>
-    <label string="Base:" id="deductible_current_import_operations_base"/>
+    <label string="Current Import Operations" id="current_import_operations"/>
+    <label string="Base:" id="deductible_current_import_operations_base" colspan="2"/>
     <field name="deductible_current_import_operations_base"/>
     <label string="Tax:" id="deductible_current_import_operations_tax"/>
     <field name="deductible_current_import_operations_tax"/>
 
-    <label string="Investment Import Operations" id="investment_import_operations" colspan="2"/>
-    <label string="Base:" id="deductible_investment_import_operations_base"/>
+    <label string="Investment Import Operations" id="investment_import_operations"/>
+    <label string="Base:" id="deductible_investment_import_operations_base" colspan="2"/>
     <field name="deductible_investment_import_operations_base"/>
     <label string="Tax:" id="deductible_investment_import_operations_tax"/>
     <field name="deductible_investment_import_operations_tax"/>
 
-    <label string="Current Intracommunity Operations" id="current_intracommunity_operations" colspan="2"/>
-    <label string="Base:" id="deductible_current_intracommunity_operations_base"/>
+    <label string="Current Intracommunity Operations" id="current_intracommunity_operations"/>
+    <label string="Base:" id="deductible_current_intracommunity_operations_base" colspan="2"/>
     <field name="deductible_current_intracommunity_operations_base"/>
     <label string="Tax:" id="deductible_current_intracommunity_operations_tax"/>
     <field name="deductible_current_intracommunity_operations_tax"/>
 
-    <label string="Investment Intracommunity Operations" id="investment_intracommunity_operations" colspan="2"/>
-    <label string="Base:" id="deductible_investment_intracommunity_operations_base"/>
+    <label string="Investment Intracommunity Operations" id="investment_intracommunity_operations"/>
+    <label string="Base:" id="deductible_investment_intracommunity_operations_base" colspan="2"/>
     <field name="deductible_investment_intracommunity_operations_base"/>
     <label string="Tax:" id="deductible_investment_intracommunity_operations_tax"/>
     <field name="deductible_investment_intracommunity_operations_tax"/>
@@ -109,13 +109,13 @@ contains the full copyright notices and license terms. -->
     <label name="difference" colspan="5"/>
     <field name="difference"/>
 
-    <label name="state_administration_percent" colspan="2"/>
+    <label name="state_administration_percent"/>
     <field name="state_administration_percent"/>
-    <label name="state_administration_amount" colspan="2"/>
+    <label name="state_administration_amount" colspan="3"/>
     <field name="state_administration_amount"/>
 
-    <label name="amount_to_compensate" colspan="5"/>
-    <field name="amount_to_compensate"/>
+    <label name="previous_period_amount_to_compensate" colspan="5"/>
+    <field name="previous_period_amount_to_compensate"/>
 
     <label name="intracommunity_deliveries" colspan="5"/>
     <field name="intracommunity_deliveries"/>

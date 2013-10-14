@@ -66,9 +66,312 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.ui.view" id="aeat_303_mapping_form_view">
+            <field name="model">aeat.303.mapping</field>
+            <field name="type">form</field>
+            <field name="name">aeat_303_mapping_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_303_mapping_tree_view">
+            <field name="model">aeat.303.mapping</field>
+            <field name="type">tree</field>
+            <field name="name">aeat_303_mapping_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_303_mapping">
+            <field name="name">AEAT 303 mapping</field>
+            <field name="res_model">aeat.303.mapping</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_303_mapping_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_303_mapping_tree_view"/>
+            <field name="act_window" ref="act_aeat_303_mapping"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_303_mapping_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_303_mapping_form_view"/>
+            <field name="act_window" ref="act_aeat_303_mapping"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_303_mapping">
+            <field name="model" search="[('model', '=', 'aeat.303.mapping')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_303_mapping_admin">
+            <field name="model" search="[('model', '=', 'aeat.303.mapping')]"/>
+            <field name="group" ref="group_aeat_303_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
         <!-- Menus -->
         <menuitem action="act_aeat_303_report" id="menu_aeat_303_report"
             parent="account.menu_reporting" sequence="303"
             name="AEAT 303 Report"/>
+
+        <menuitem action="act_aeat_303_mapping" id="menu_aeat_303_mapping"
+            parent="account.menu_taxes" sequence="303"
+            name="AEAT 303 Mapping"/>
+
+
+        <!-- Mapping of taxes and codes -->
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_01">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('4.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_percent_1')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_02">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('10.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_percent_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_03">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('21.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_percent_3')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_04">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('0.5')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_percent_1')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_05">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('1.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_percent_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_number_06">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('5.2')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_percent_3')]"/>
+        </record>
+
+ <!--
+    </data>
+    <data skiptest="1">
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_01">
+            <field name="code" search="[('code', '=', '[01]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_1')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_03">
+            <field name="code" search="[('code', '=', '[03]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_1')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_04">
+            <field name="code" search="[('code', '=', '[04]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_06">
+            <field name="code" search="[('code', '=', '[06]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_07">
+            <field name="code" search="[('code', '=', '[07]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_3')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_09">
+            <field name="code" search="[('code', '=', '[09]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_3')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_10">
+            <field name="code" search="[('code', '=', '[10]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_base_1')]"/>
+        </record>
+
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_12">
+            <field name="code" search="[('code', '=', '[12]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_tax_1')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_13">
+            <field name="code" search="[('code', '=', '[13]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_base_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_15">
+            <field name="code" search="[('code', '=', '[15]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_tax_2')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_16">
+            <field name="code" search="[('code', '=', '[16]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_base_3')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_18">
+            <field name="code" search="[('code', '=', '[18]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_tax_3')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_19">
+            <field name="code" search="[('code', '=', '[19]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','intracommunity_adquisitions_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_20">
+            <field name="code" search="[('code', '=', '[20]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','intracommunity_adquisitions_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_21">
+            <field name="code" search="[('code', '=', '[21]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_total_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_22">
+            <field name="code" search="[('code', '=', '[22]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_current_domestic_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_23">
+            <field name="code" search="[('code', '=', '[23]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_current_domestic_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_24">
+            <field name="code" search="[('code', '=', '[24]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_investment_domestic_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_25">
+            <field name="code" search="[('code', '=', '[25]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_investment_domestic_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_26">
+            <field name="code" search="[('code', '=', '[26]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_current_import_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_27">
+            <field name="code" search="[('code', '=', '[27]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_current_import_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_28">
+            <field name="code" search="[('code', '=', '[28]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_investment_import_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_29">
+            <field name="code" search="[('code', '=', '[29]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+        search="[('name', '=','deductible_investment_import_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_30">
+            <field name="code" search="[('code', '=', '[30]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','deductible_current_intracommunity_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_31">
+            <field name="code" search="[('code', '=', '[31]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','deductible_current_intracommunity_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_32">
+            <field name="code" search="[('code', '=', '[32]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','deductible_investment_intracommunity_operations_base')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_33">
+            <field name="code" search="[('code', '=', '[33]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','deductible_investment_intracommunity_operations_tax')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_42">
+            <field name="code" search="[('code', '=', '[42]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','intracommunity_deliveries')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_43">
+            <field name="code" search="[('code', '=', '[43]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','exports')]"/>
+        </record>
+
+        <record model="aeat.303.mapping" id="aeat_303_mapping_code_44">
+            <field name="code" search="[('code', '=', '[44]')]" />
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+    search="[('name', '=','not_subject_or_reverse_charge')]"/>
+        </record>
+        -->
     </data>
 </tryton>

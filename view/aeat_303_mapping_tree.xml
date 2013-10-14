@@ -1,0 +1,6 @@
+<tree string="AEAT 303 Mapping">
+    <field name="aeat303_field" />
+    <field name="type_" />
+    <field name="code" />
+    <field name="number" />
+</tree>

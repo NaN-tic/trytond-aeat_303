@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<form string="AEAT 303 Mapping">
+    <label name="aeat303_field" />
+    <field name="aeat303_field" />
+    <label name="type_" />
+    <field name="type_" />
+    <field name="code" colspan="4" view_ids="account.tax_code_view_list" />
+    <label name="number" />
+    <field name="number" />
+</form>
