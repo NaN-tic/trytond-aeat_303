@@ -8,6 +8,12 @@ from .aeat import *
 def register():
     Pool.register(
         Report,
+        TemplateTaxCodeMapping,
+        TemplateTaxCodeRelation,
         TaxCodeMapping,
         TaxCodeRelation,
         module='aeat_303', type_='model')
+    Pool.register(
+        CreateChart,
+        UpdateChart,
+        module='aeat_303', type_='wizard')

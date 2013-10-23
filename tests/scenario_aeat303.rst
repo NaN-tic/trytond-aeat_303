@@ -18,11 +18,14 @@ Create database::
 Install aeat_303::
 
     >>> Module = Model.get('ir.module.module')
+    >>> account_es_module, = Module.find(
+    ...     [('name', '=', 'account_es')])
     >>> aeat_303_module, = Module.find(
     ...     [('name', '=', 'aeat_303')])
     >>> account_invoice, = Module.find(
     ...     [('name', '=', 'account_invoice')])
-    >>> Module.install([aeat_303_module.id, account_invoice.id], config.context)
+    >>> Module.install([account_es_module.id, aeat_303_module.id,
+    ...     account_invoice.id], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -83,7 +86,8 @@ Create chart of accounts::
 
     >>> AccountTemplate = Model.get('account.account.template')
     >>> Account = Model.get('account.account')
-    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
+    >>> account_template, = AccountTemplate.find([('parent', '=', None),
+    ...     ('name', 'ilike', 'Plan General Contable%')])
     >>> create_chart = Wizard('account.create_chart')
     >>> create_chart.execute('account')
     >>> create_chart.form.account_template = account_template
@@ -91,63 +95,27 @@ Create chart of accounts::
     >>> create_chart.execute('create_account')
     >>> receivable, = Account.find([
     ...         ('kind', '=', 'receivable'),
+    ...         ('code', '=', '4300'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> payable, = Account.find([
     ...         ('kind', '=', 'payable'),
+    ...         ('code', '=', '4100'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> revenue, = Account.find([
     ...         ('kind', '=', 'revenue'),
+    ...         ('code', '=', '7000'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> expense, = Account.find([
     ...         ('kind', '=', 'expense'),
+    ...         ('code', '=', '600'),
     ...         ('company', '=', company.id),
-    ...         ])
-    >>> account_tax, = Account.find([
-    ...         ('kind', '=', 'other'),
-    ...         ('company', '=', company.id),
-    ...         ('name', '=', 'Main Tax'),
     ...         ])
     >>> create_chart.form.account_receivable = receivable
     >>> create_chart.form.account_payable = payable
     >>> create_chart.execute('create_properties')
-
-Create tax::
-
-    >>> Field = Model.get('ir.model.field')
-    >>> TaxCode = Model.get('account.tax.code')
-    >>> Mapping = Model.get('aeat.303.mapping')
-    >>> Tax = Model.get('account.tax')
-    >>> tax = Tax()
-    >>> tax.name = 'Tax'
-    >>> tax.description = 'Tax'
-    >>> tax.type = 'percentage'
-    >>> tax.rate = Decimal('.10')
-    >>> tax.invoice_account = account_tax
-    >>> tax.credit_note_account = account_tax
-    >>> invoice_base_code = TaxCode(name='invoice base', code='[07]')
-    >>> invoice_base_code.save()
-    >>> tax.invoice_base_code = invoice_base_code
-    >>> invoice_tax_code = TaxCode(name='invoice tax', code='[09]')
-    >>> invoice_tax_code.save()
-    >>> tax.invoice_tax_code = invoice_tax_code
-    >>> tax.credit_note_base_code = invoice_base_code
-    >>> tax.credit_note_tax_code = invoice_tax_code
-    >>> tax.save()
-    >>> mapping = Mapping()
-    >>> mapping.type_ = 'code'
-    >>> field, = Field.find([('name', '=', 'accrued_vat_base_3')])
-    >>> mapping.aeat303_field = field
-    >>> mapping.code.append(invoice_base_code)
-    >>> mapping.save()
-    >>> mapping = Mapping()
-    >>> mapping.type_ = 'code'
-    >>> field, = Field.find([('name', '=', 'accrued_vat_tax_3')])
-    >>> mapping.aeat303_field = field
-    >>> mapping.code.append(invoice_tax_code)
-    >>> mapping.save()
 
 Create party::
 
@@ -158,6 +126,7 @@ Create party::
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
+    >>> Tax = Model.get('account.tax')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
@@ -170,8 +139,15 @@ Create product::
     >>> template.cost_price = Decimal('25')
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
+    >>> tax, = Tax.find([
+    ...     ('group.kind', '=', 'sale'),
+    ...     ('name', '=', 'IVA 21%'),
+    ...     ], limit = 1)
     >>> template.customer_taxes.append(tax)
-    >>> tax = Tax(1)
+    >>> tax, = Tax.find([
+    ...     ('group.kind', '=', 'purchase'),
+    ...     ('name', '=', '21% IVA Soportado (operaciones corrientes)'),
+    ...     ], limit = 1)
     >>> template.supplier_taxes.append(tax)
     >>> template.save()
     >>> product.template = template
@@ -220,7 +196,10 @@ Create out invoice::
     >>> line.description = 'Test 2'
     >>> line.quantity = 1
     >>> line.unit_price = Decimal(40)
-    >>> tax = Tax(1)
+    >>> tax, = Tax.find([
+    ...     ('group.kind', '=', 'sale'),
+    ...     ('name', '=', 'IVA 21%'),
+    ...     ], limit = 1)
     >>> line.taxes.append(tax)
     >>> line.amount == Decimal(40)
     True
@@ -242,5 +221,5 @@ Generate 303 Report::
     >>> report.reload()
     >>> report.accrued_vat_base_3 == Decimal(240)
     True
-    >>> report.accrued_vat_tax_3 == Decimal(24)
+    >>> report.accrued_vat_tax_3 == Decimal('50.40')
     True

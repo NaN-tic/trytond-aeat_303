@@ -14,6 +14,21 @@ msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
 msgstr "La moneda del informe AEAT 303 \"%s\" debe ser euro."
 
+msgctxt "error:aeat.303.report:"
+msgid ""
+"No configuration found for AEAT303. Please, update your chart of accounts."
+msgstr ""
+"No se ha encontrado configuración para el modelo AEAT 303. Por favor, "
+"actualiza el plan contable."
+
+msgctxt "error:aeat.303.template.mapping:"
+msgid "Field must be unique."
+msgstr "El campo debe ser único"
+
+msgctxt "error:aeat.303.template.mapping:"
+msgid "unique_field"
+msgstr "unique_field"
+
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Campo"
@@ -21,6 +36,10 @@ msgstr "Campo"
 msgctxt "field:aeat.303.mapping,code:"
 msgid "Tax Code"
 msgstr "Código de impuesto"
+
+msgctxt "field:aeat.303.mapping,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:aeat.303.mapping,create_date:"
 msgid "Create Date"
@@ -41,6 +60,10 @@ msgstr "Número"
 msgctxt "field:aeat.303.mapping,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:aeat.303.mapping,template:"
+msgid "Template"
+msgstr "Plantilla"
 
 msgctxt "field:aeat.303.mapping,type_:"
 msgid "Type"
@@ -71,10 +94,9 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
-msgid "Tax Code"
+msgid "Mapping"
 msgstr "Código de impuesto"
 
-#, fuzzy
 msgctxt "field:aeat.303.mapping-account.tax.code,rec_name:"
 msgid "Name"
 msgstr "Nombre"
@@ -84,6 +106,38 @@ msgid "Write Date"
 msgstr "Fecha modificación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "Plantilla de código de impuesto"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "Código de impuesto"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
@@ -424,6 +478,46 @@ msgctxt "field:aeat.303.report,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:aeat.303.template.mapping,aeat303_field:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "field:aeat.303.template.mapping,code:"
+msgid "Tax Code Template"
+msgstr "Plantilla de código de impuesto"
+
+msgctxt "field:aeat.303.template.mapping,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:aeat.303.template.mapping,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:aeat.303.template.mapping,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.303.template.mapping,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:aeat.303.template.mapping,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.303.template.mapping,type_:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:aeat.303.template.mapping,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.303.template.mapping,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
 msgctxt "model:aeat.303.mapping,name:"
 msgid "AEAT 303 TaxCode Mapping"
 msgstr "Mapeo Codigos Impuestos AEAT 303"
@@ -432,9 +526,17 @@ msgctxt "model:aeat.303.mapping-account.tax.code,name:"
 msgid "AEAT 303 TaxCode Mapping Codes Relation"
 msgstr "Relación Mapping AEAT303 Codigos d'impuesto"
 
+msgctxt "model:aeat.303.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "Relación Mapping AEAT303 Codigos d'impuesto"
+
 msgctxt "model:aeat.303.report,name:"
 msgid "AEAT 303 Report"
 msgstr "Informe AEAT 303"
+
+msgctxt "model:aeat.303.template.mapping,name:"
+msgid "AEAT 303 TemplateTaxCode Mapping"
+msgstr "Relación Mapping AEAT303 Plantila codigos d'impuesto"
 
 msgctxt "model:ir.action,name:act_aeat_303_mapping"
 msgid "AEAT 303 mapping"
@@ -599,6 +701,14 @@ msgstr "Realizado"
 msgctxt "selection:aeat.303.report,state:"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Numeric"
+msgstr "Numerico"
 
 msgctxt "view:aeat.303.mapping:"
 msgid "AEAT 303 Mapping"

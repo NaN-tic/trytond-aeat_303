@@ -9,7 +9,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
-__all__ = ['Report', 'TaxCodeMapping', 'TaxCodeRelation']
+__all__ = ['Report', 'TemplateTaxCodeMapping', 'TemplateTaxCodeRelation',
+    'TaxCodeMapping', 'TaxCodeRelation', 'CreateChart',
+    'UpdateChart']
 
 _STATES = {
     'readonly': Eval('state') == 'done',
@@ -18,6 +20,128 @@ _STATES = {
 _DEPENDS = ['state']
 
 __metaclass__ = PoolMeta
+
+_Z = Decimal("0.0")
+
+
+class TemplateTaxCodeRelation(ModelSQL):
+    '''
+    AEAT 303 TaxCode Mapping Codes Relation
+    '''
+    __name__ = 'aeat.303.mapping-account.tax.code.template'
+
+    mapping = fields.Many2One('aeat.303.template.mapping', 'Mapping')
+    code = fields.Many2One('account.tax.code.template', 'Tax Code Template')
+
+
+class TemplateTaxCodeMapping(ModelSQL):
+    '''
+    AEAT 303 TemplateTaxCode Mapping
+    '''
+    __name__ = 'aeat.303.template.mapping'
+
+    aeat303_field = fields.Many2One('ir.model.field', 'Field',
+        domain=[('module', '=', 'aeat_303')], required=True)
+    type_ = fields.Selection([('code', 'Code'), ('numeric', 'Numeric')],
+        'Type', required=True)
+    code = fields.Many2Many('aeat.303.mapping-account.tax.code.template',
+        'mapping', 'code', 'Tax Code Template', states={
+            'invisible': Eval('type_') != 'code',
+        }, depends=['type_'])
+    number = fields.Numeric('Number', states={
+            'required': Eval('type_') == 'numeric',
+            'invisible': Eval('type_') != 'numeric',
+        }, depends=['type_'])
+
+    @classmethod
+    def __setup__(cls):
+        super(TemplateTaxCodeMapping, cls).__setup__()
+        cls._sql_constraints += [
+            ('aeat303_field_uniq', 'unique (aeat303_field)',
+                'unique_field')
+            ]
+        cls._error_messages.update({
+                'unique_field': 'Field must be unique.',
+                })
+
+    @staticmethod
+    def default_type_():
+        return 'code'
+
+    def _get_mapping_value(self, mapping=None):
+        pool = Pool()
+        TaxCode = pool.get('account.tax.code')
+
+        res = {}
+        if not mapping or mapping.type_ != self.type_:
+            res['type_'] = self.type_
+        if not mapping or mapping.aeat303_field != self.aeat303_field:
+            res['aeat303_field'] = self.aeat303_field.id
+        if not mapping or mapping.number != self.number:
+            res['number'] = self.number
+        res['code'] = []
+        if mapping and len(mapping.code) > 0:
+            res['code'].append(['unlink_all'])
+        if len(self.code) > 0:
+            ids = [c.id for c in TaxCode.search([
+                        ('template', 'in', [c.id for c in self.code])
+                        ])]
+            res['code'].append(['set', ids])
+        if not mapping or mapping.template != self:
+            res['template'] = self.id
+        if len(res['code']) == 0:
+            del res['code']
+        return res
+
+
+class UpdateChart:
+    __name__ = 'account.update_chart'
+
+    def transition_update(self):
+        pool = Pool()
+        MappingTemplate = pool.get('aeat.303.template.mapping')
+        Mapping = pool.get('aeat.303.mapping')
+        ret = super(UpdateChart, self).transition_update()
+        #Update current values
+        ids = []
+        for mapping in Mapping.search([]):
+            vals = mapping.template._get_mapping_value(mapping=mapping)
+            if vals:
+                Mapping.write([mapping], vals)
+            if mapping.template:
+                ids.append(mapping.template.id)
+
+        company = self.start.account.company.id
+        #Create new one's
+        to_create = []
+        for template in MappingTemplate.search([('id', 'not in', ids)]):
+            vals = template._get_mapping_value()
+            vals['company'] = company
+            to_create.append(vals)
+        if to_create:
+            Mapping.create(to_create)
+        return ret
+
+
+class CreateChart:
+    __name__ = 'account.create_chart'
+
+    def transition_create_account(self):
+        pool = Pool()
+        MappingTemplate = pool.get('aeat.303.template.mapping')
+        Mapping = pool.get('aeat.303.mapping')
+
+        company = self.account.company.id
+
+        ret = super(CreateChart, self).transition_create_account()
+        to_create = []
+        for template in MappingTemplate.search([]):
+            vals = template._get_mapping_value()
+            vals['company'] = company
+            to_create.append(vals)
+
+        Mapping.create(to_create)
+        return ret
 
 
 class TaxCodeRelation(ModelSQL):
@@ -36,6 +160,8 @@ class TaxCodeMapping(ModelSQL, ModelView):
     '''
     __name__ = 'aeat.303.mapping'
 
+    company = fields.Many2One('company.company', 'Company',
+        ondelete="RESTRICT")
     aeat303_field = fields.Many2One('ir.model.field', 'Field',
         domain=[('module', '=', 'aeat_303')], required=True)
     type_ = fields.Selection([('code', 'Code'), ('numeric', 'Numeric')],
@@ -49,12 +175,14 @@ class TaxCodeMapping(ModelSQL, ModelView):
             'required': Eval('type_') == 'numeric',
             'invisible': Eval('type_') != 'numeric',
         }, depends=['type_'])
+    template = fields.Many2One('aeat.303.template.mapping', 'Template')
 
     @classmethod
     def __setup__(cls):
         super(TaxCodeMapping, cls).__setup__()
         cls._sql_constraints += [
-            ('aeat303_field_uniq', 'unique (aeat303_field)', 'unique_field')
+            ('aeat303_field_uniq', 'unique (company, aeat303_field)',
+                'unique_field')
             ]
         cls._error_messages.update({
                 'unique_field': 'Field must be unique.',
@@ -63,6 +191,10 @@ class TaxCodeMapping(ModelSQL, ModelView):
     @staticmethod
     def default_type_():
         return 'code'
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company') or None
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -238,7 +370,9 @@ class Report(Workflow, ModelSQL, ModelView):
         super(cls, Report).__setup__()
         cls._error_messages.update({
                 'invalid_currency': ('Currency in AEAT 303 report "%s" must be'
-                    ' Euro.')
+                    ' Euro.'),
+                'no_config': 'No configuration found for AEAT303. Please, '
+                    'update your chart of accounts.'
                 })
         cls._buttons.update({
                 'draft': {
@@ -338,18 +472,18 @@ class Report(Workflow, ModelSQL, ModelView):
         return self.company.currency.id
 
     def get_difference(self, name):
-        return self.accrued_total_tax - self.deductible_total
+        return (self.accrued_total_tax or _Z) - (self.deductible_total or _Z)
 
     def get_deductible_total(self, name):
-        return (self.deductible_current_domestic_operations_tax +
-            self.deductible_investment_domestic_operations_tax +
-            self.deductible_current_import_operations_tax +
-            self.deductible_investment_import_operations_tax +
-            self.deductible_current_intracommunity_operations_tax +
-            self.deductible_investment_intracommunity_operations_tax +
-            self.deductible_compensations +
-            self.deductible_investment_regularization +
-            self.deductible_pro_rata_regularization
+        return ((self.deductible_current_domestic_operations_tax or _Z) +
+            (self.deductible_investment_domestic_operations_tax or _Z) +
+            (self.deductible_current_import_operations_tax or _Z) +
+            (self.deductible_investment_import_operations_tax or _Z) +
+            (self.deductible_current_intracommunity_operations_tax or _Z) +
+            (self.deductible_investment_intracommunity_operations_tax or _Z) +
+            (self.deductible_compensations or _Z) +
+            (self.deductible_investment_regularization or _Z) +
+            (self.deductible_pro_rata_regularization or _Z)
                 )
 
     def get_state_administration_amount(self, name):
@@ -389,6 +523,9 @@ class Report(Workflow, ModelSQL, ModelView):
                 mapping[code.id] = mapp.aeat303_field.name
         for mapp in Mapping.search([('type_', '=', 'numeric')]):
             fixed[mapp.aeat303_field.name] = mapp.number
+
+        if len(fixed) == 0:
+            cls.raise_user_error('no_config')
 
         for report in reports:
             fiscalyear = report.fiscalyear
