@@ -119,7 +119,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_303_1">
-            <field name="domain">[('company', '=', user.company.id if user.company else none)]</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_aeat303"/>
         </record>
 
@@ -128,7 +128,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_303_mapping_1">
-            <field name="domain">[('company', '=', user.company.id if user.company else none)]</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_aeat303_mapping"/>
         </record>
 
