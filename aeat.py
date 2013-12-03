@@ -529,14 +529,14 @@ class Report(Workflow, ModelSQL, ModelView):
 
         for report in reports:
             fiscalyear = report.fiscalyear
-            multiplier = 1
             period = report.period
             if 'T' in period:
                 period = period[0]
-                multiplier = 3
-
-            start_month = int(period) * multiplier
-            end_month = start_month + multiplier
+                start_month = int(period) * 3
+                end_month = start_month + 3
+            else:
+                start_month = int(period)
+                end_month = start_month
 
             year = fiscalyear.start_date.year
             lday = calendar.monthrange(year, end_month)[1]
