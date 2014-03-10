@@ -15,6 +15,25 @@ contains the full copyright notices and license terms. -->
     <label name="period"/>
     <field name="period"/>
 
+    <label name="monthly_return_subscription"/>
+    <field name="monthly_return_subscription"/>
+    <label name="simplificated_regime"/>
+    <field name="simplificated_regime"/>
+    <label name="joint_liquidation"/>
+    <field name="joint_liquidation"/>
+    <label name="auto_bankruptcy_declaration"/>
+    <field name="auto_bankruptcy_declaration"/>
+    <label name="auto_bankruptcy_date"/>
+    <field name="auto_bankruptcy_date"/>
+    <label name="recc"/>
+    <field name="recc"/>
+    <label name="recc_receiver"/>
+    <field name="recc_receiver"/>
+    <label name="special_prorate"/>
+    <field name="special_prorate"/>
+    <label name="special_prorate_revocation"/>
+    <field name="special_prorate_revocation"/>
+
     <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
     <label name="accrued_vat_base_1"/>
     <field name="accrued_vat_base_1"/>
@@ -34,6 +53,18 @@ contains the full copyright notices and license terms. -->
     <field name="accrued_vat_percent_3"/>
     <label name="accrued_vat_tax_3"/>
     <field name="accrued_vat_tax_3"/>
+    <label name="intracommunity_adquisitions_base"/>
+    <field name="intracommunity_adquisitions_base"/>
+    <label name="intracommunity_adquisitions_tax" colspan="3"/>
+    <field name="intracommunity_adquisitions_tax"/>
+    <label name="other_passive_subject_base"/>
+    <field name="other_passive_subject_base"/>
+    <label name="other_passive_subject_tax" colspan="3"/>
+    <field name="other_passive_subject_tax"/>
+    <label name="accrued_vat_base_modification"/>
+    <field name="accrued_vat_base_modification"/>
+    <label name="accrued_vat_tax_modification" colspan="3"/>
+    <field name="accrued_vat_tax_modification"/>
     <label name="accrued_re_base_1"/>
     <field name="accrued_re_base_1"/>
     <label name="accrued_re_percent_1"/>
@@ -52,10 +83,6 @@ contains the full copyright notices and license terms. -->
     <field name="accrued_re_percent_3"/>
     <label name="accrued_re_tax_3"/>
     <field name="accrued_re_tax_3"/>
-    <label name="intracommunity_adquisitions_base"/>
-    <field name="intracommunity_adquisitions_base"/>
-    <label name="intracommunity_adquisitions_tax" colspan="3"/>
-    <field name="intracommunity_adquisitions_tax"/>
     <label name="accrued_total_tax" colspan="5"/>
     <field name="accrued_total_tax"/>
 
@@ -95,6 +122,11 @@ contains the full copyright notices and license terms. -->
     <field name="deductible_investment_intracommunity_operations_base"/>
     <label string="Tax:" id="deductible_investment_intracommunity_operations_tax"/>
     <field name="deductible_investment_intracommunity_operations_tax"/>
+    <label string="Deductible regularization" id="deductible_regularization"/>
+    <label string="Base:" id="deductible_regularization_base" colspan="2"/>
+    <field name="deductible_regularization_base"/>
+    <label string="Tax:" id="deductible_regularization_tax"/>
+    <field name="deductible_regularization_tax"/>
 
     <label name="deductible_compensations" colspan="5"/>
     <field name="deductible_compensations"/>
@@ -104,8 +136,33 @@ contains the full copyright notices and license terms. -->
     <field name="deductible_pro_rata_regularization"/>
     <label name="deductible_total" colspan="5"/>
     <field name="deductible_total"/>
+    <separator id="difference" colspan="6"/>
+    <label name="difference" colspan="5"/>
+    <field name="difference"/>
 
-    <separator id="difference" string="Difference" colspan="6"/>
+    <separator id="additional_information" string="Additional information"
+        colspan="6"/>
+
+    <label name="intracommunity_deliveries" colspan="5"/>
+    <field name="intracommunity_deliveries"/>
+    <label name="exports" colspan="5"/>
+    <field name="exports"/>
+    <label name="not_subject_or_reverse_charge" colspan="5"/>
+    <field name="not_subject_or_reverse_charge"/>
+
+
+    <label string="Special Cash Criteria Deliveries" id="reec_deliveries"/>
+    <label string="Base:" id="recc_deliveries_base" colspan="2"/>
+    <field name="recc_deliveries_base"/>
+    <label string="Tax:" id="recc_deliveries_tax"/>
+    <field name="recc_deliveries_tax"/>
+    <label string="Special Cash Criteria Adquisitions" id="reec_adquisitions"/>
+    <label string="Base:" id="recc_adquisitions_base" colspan="2"/>
+    <field name="recc_adquisitions_base"/>
+    <label string="Supported Tax:" id="recc_adquisitions_tax"/>
+    <field name="recc_adquisitions_tax"/>
+
+    <separator id="result" string="Result" colspan="6"/>
     <label name="difference" colspan="5"/>
     <field name="difference"/>
 
@@ -116,16 +173,6 @@ contains the full copyright notices and license terms. -->
 
     <label name="previous_period_amount_to_compensate" colspan="5"/>
     <field name="previous_period_amount_to_compensate"/>
-
-    <label name="intracommunity_deliveries" colspan="5"/>
-    <field name="intracommunity_deliveries"/>
-    <label name="exports" colspan="5"/>
-    <field name="exports"/>
-    <label name="not_subject_or_reverse_charge" colspan="5"/>
-    <field name="not_subject_or_reverse_charge"/>
-
-    <label name="joint_taxation_state_provincial_councils" colspan="5"/>
-    <field name="joint_taxation_state_provincial_councils"/>
 
     <label name="result" colspan="5"/>
     <field name="result"/>
@@ -142,41 +189,12 @@ contains the full copyright notices and license terms. -->
         <field name="complementary_autoliquidation"/>
         <label name="previous_declaration_receipt"/>
         <field name="previous_declaration_receipt"/>
-        <label name="auto_bankruptcy_declaration"/>
-        <field name="auto_bankruptcy_declaration"/>
         <label name="without_activity"/>
         <field name="without_activity"/>
+    <label name="bank_account"/>
+    <field name="bank_account"/>
     </group>
 
-
-    <!--
-    <label name="refund_amount"/>
-    <field name="refund_amount"/>
-    <label name="refund_bank_account"/>
-    <field name="refund_bank_account"/>
-    <label name="payment_type"/>
-    <field name="payment_type"/>
-    <label name="joint_presentation_allowed"/>
-    <field name="joint_presentation_allowed"/>
-    <label name="monthly_return_subscription"/>
-    <field name="monthly_return_subscription"/>
-    <label name="payment_amount"/>
-    <field name="payment_amount"/>
-    <label name="payment_bank_account"/>
-    <field name="payment_bank_account"/>
-    <label name="previous_period_amount_to_compensate"/>
-    <field name="previous_period_amount_to_compensate"/>
-    -->
-
-    <group id="signature" colspan="6" col="6">
-        <separator id="signature_sep" string="Signature" colspan="6"/>
-        <label name="signature_city"/>
-        <field name="signature_city"/>
-        <label string="Signature Date:" id="signature_date" xexpand="1" xfill="1"/>
-        <field name="signature_day"/>
-        <field name="signature_month"/>
-        <field name="signature_year"/>
-    </group>
 
     <group id="state" colspan="3" col="6">
         <label name="state"/>

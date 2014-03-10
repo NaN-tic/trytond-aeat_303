@@ -240,6 +240,13 @@ class Report(Workflow, ModelSQL, ModelView):
             ('12', 'December'),
             ], 'Period', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
+    simplificated_regime = fields.Boolean('Tribute exclusively on '
+        'simplificated regime')
+    joint_liquidation = fields.Boolean('Is joint liquidation')
+    recc = fields.Boolean('Special Cash Criteria')
+    recc_receiver = fields.Boolean('Special Cash Criteria Receiver')
+    special_prorate = fields.Boolean('Special prorate')
+    special_prorate_revocation = fields.Boolean('Special prorate revocation')
     accrued_vat_base_1 = fields.Numeric('Accrued Vat Base 1', digits=(16, 2))
     accrued_vat_percent_1 = fields.Numeric('Accrued Vat Percent 1',
         digits=(16, 2))
@@ -252,6 +259,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(16, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(16, 2))
+    accrued_vat_base_modification = fields.Numeric('Accrued Vat Base '
+        'Modification', digits=(16, 2))
+    accrued_vat_tax_modification = fields.Numeric('Accrued Vat Tax '
+        'Modification', digits=(16, 2))
     accrued_re_base_1 = fields.Numeric('Accrued Re Base 1', digits=(16, 2))
     accrued_re_percent_1 = fields.Numeric('Accrued Re Percent 1',
         digits=(16, 2))
@@ -264,11 +275,22 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(16, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(16, 2))
+    accrued_re_base_modification = fields.Numeric('Accrued Re Base '
+        'Modification', digits=(16, 2))
+    accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
+        'Modification', digits=(16, 2))
     intracommunity_adquisitions_base = fields.Numeric(
         'Intracommunity Adquisitions Base', digits=(16, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
         'Intracommunity Adquisitions Tax', digits=(16, 2))
-    accrued_total_tax = fields.Numeric('Accrued Total Tax', digits=(16, 2))
+    intracommunity_adquisitions_tax = fields.Numeric(
+        'Intracommunity Adquisitions Tax', digits=(16, 2))
+    other_passive_subject_base = fields.Numeric(
+        'Other Passive Subject Adquisitions Base', digits=(16, 2))
+    other_passive_subject_tax = fields.Numeric(
+        'Other Passive Subject Adquisitions Tax', digits=(16, 2))
+    accrued_total_tax = fields.Function(fields.Numeric('Accrued Total Tax',
+            digits=(16, 2)), 'get_accrued_total_tax')
     deductible_current_domestic_operations_base = fields.Numeric(
         'Deductible Current Domestic Operations Base', digits=(16, 2))
     deductible_current_domestic_operations_tax = fields.Numeric(
@@ -293,6 +315,10 @@ class Report(Workflow, ModelSQL, ModelView):
         'Deductible Investment Intracommunity Operations Base', digits=(16, 2))
     deductible_investment_intracommunity_operations_tax = fields.Numeric(
         'Deductible Investment Intracommunity Operations Tax', digits=(16, 2))
+    deductible_regularization_base = fields.Numeric(
+        'Deductible Regularization Base', digits=(16, 2))
+    deductible_regularization_tax = fields.Numeric(
+        'Deductible Regularization Tax', digits=(16, 2))
     deductible_compensations = fields.Numeric('Deductible Compensations',
         digits=(16, 2))
     deductible_investment_regularization = fields.Numeric(
@@ -324,17 +350,23 @@ class Report(Workflow, ModelSQL, ModelView):
         digits=(16, 2)), 'get_liquidation_result')
     amount_to_compensate = fields.Numeric('Amount To Compensate',
         digits=(16, 2))
+    recc_deliveries_base = fields.Numeric(
+        'Special Cash Criteria Deliveries Base', digits=(16, 2))
+    recc_deliveries_tax = fields.Numeric(
+        'Special Cash Criteria Deliveries Tax', digits=(16, 2))
+    recc_adquisitions_base = fields.Numeric(
+        'Special Cash Criteria Asquistions Base', digits=(16, 2))
+    recc_adquisitions_tax = fields.Numeric(
+        'Special Cash Criteria Adquistions Tax', digits=(16, 2))
     without_activity = fields.Boolean('Without Activity')
-    refund_amount = fields.Numeric('Refund Amount', digits=(16, 2))
-    refund_bank_account = fields.Numeric('Refund Bank Account', digits=(16, 2))
-    payment_type = fields.Selection([
-            ('0', 'N/A'),
-            ('1', 'Cash'),
-            ('2', 'Debit Entry'),
-            ('3', 'Direct Billing'),
-            ], 'Payment Type')
-    payment_amount = fields.Numeric('Payment Amount', digits=(16, 2))
-    payment_bank_account = fields.Char('Payment Bank Account', size=20)
+    company_party = fields.Function(fields.Many2One('party.party',
+            'Company Party', on_change_with=['company']),
+        'on_change_with_company_party')
+    bank_account = fields.Many2One('bank.account', 'Bank Account',
+        domain=[
+            ('owners', '=', Eval('company_party')),
+        ],
+        depends=['company_party'])
     complementary_autoliquidation = fields.Selection([
             ('0', 'No'),
             ('1', 'Yes'),
@@ -350,10 +382,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Before Bankruptcy Proceeding'),
             ('2', 'After Bankruptcy Proceeding'),
             ], 'Auto Bankruptcy Declaration', required=True)
-    signature_city = fields.Char('Signature City', size=16)
-    signature_day = fields.Char('Signature Day', size=2)
-    signature_month = fields.Char('Signature Month', size=10)
-    signature_year = fields.Char('Signature Year', size=4)
+    auto_bankruptcy_date = fields.Date('Auto Bankruptcy Date')
     calculation_date = fields.DateTime('Calculation Date', readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -363,7 +392,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True)
     file_ = fields.Binary('File', states={
             'invisible': Eval('state') != 'done',
-            })
+            }, readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -465,14 +494,42 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_to_deduce():
         return 0
 
+    @classmethod
+    def default_company_party(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = cls.default_company()
+        if company_id:
+            return Company(company_id).party.id
+
+    def on_change_with_company_party(self, name=None):
+        if self.company:
+            return self.company.party.id
+
     def on_change_with_fiscalyear_code(self):
-        return self.fiscalyear.code if self.fiscalyear else None
+        try:
+            return int(self.fiscalyear.code) if self.fiscalyear else None
+        except ValueError:
+            return None
 
     def get_currency(self, name):
         return self.company.currency.id
 
     def get_difference(self, name):
         return (self.accrued_total_tax or _Z) - (self.deductible_total or _Z)
+
+    def get_accrued_total_tax(self, name):
+        return ((self.accrued_vat_tax_1 or _Z) +
+            (self.accrued_vat_tax_2 or _Z) +
+            (self.accrued_vat_tax_3 or _Z) +
+            (self.intracommunity_adquisitions_tax or _Z) +
+            (self.other_passive_subject_tax or _Z) +
+            (self.accrued_vat_tax_modification or _Z) +
+            (self.accrued_re_tax_1 or _Z) +
+            (self.accrued_re_tax_2 or _Z) +
+            (self.accrued_re_tax_3 or _Z) +
+            (self.accrued_re_tax_modification or _Z)
+                )
 
     def get_deductible_total(self, name):
         return ((self.deductible_current_domestic_operations_tax or _Z) +
@@ -481,6 +538,7 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.deductible_investment_import_operations_tax or _Z) +
             (self.deductible_current_intracommunity_operations_tax or _Z) +
             (self.deductible_investment_intracommunity_operations_tax or _Z) +
+            (self.deductible_regularization_tax or _Z) +
             (self.deductible_compensations or _Z) +
             (self.deductible_investment_regularization or _Z) +
             (self.deductible_pro_rata_regularization or _Z)
@@ -532,7 +590,7 @@ class Report(Workflow, ModelSQL, ModelView):
             period = report.period
             if 'T' in period:
                 period = period[0]
-                start_month = (int(period)-1) * 3 +1
+                start_month = (int(period) - 1) * 3 + 1
                 end_month = start_month + 2
             else:
                 start_month = int(period)
@@ -581,15 +639,28 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def create_file(self):
         record = retrofix.Record(aeat303.RECORD)
-        columns = [getattr(self, x) for x in dir(self)
-            if isinstance(getattr(self, x), fields.Field)]
-        columns = [x for x in columns if x.name not in ('report',)]
+        additional_record = retrofix.Record(aeat303.ADDITIONAL_RECORD)
+        columns = [x for x in self.__class__._fields if x not in
+            ('report', 'bank_account')]
         for column in columns:
-            value = record[column]
-            if column == 'without_activity':
-                value = '1' if value else '0'
-            setattr(record, column, record[column])
-        data = retrofix.write([record])
+            value = getattr(self, column, None)
+            if not value:
+                continue
+            if column == 'first_name':
+                column = 'company_name'
+            if column == 'fiscalyear':
+                value = str(self.fiscalyear_code)
+            if column in record._fields:
+                setattr(record, column, value)
+            if column in additional_record._fields:
+                setattr(additional_record, column, value)
+        record.bankruptcy == bool(self.auto_bankruptcy_declaration != ' ')
+        if self.bank_account:
+            for number in self.bank_account.numbers:
+                if number.type == 'iban':
+                    additional_record.bank_account = number.number
+                    break
+        data = retrofix.write([record, additional_record])
         data = data.encode('iso-8859-1')
         self.file_ = buffer(data)
         self.save()

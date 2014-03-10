@@ -6,10 +6,6 @@ msgctxt "error:aeat.303.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic"
 
-msgctxt "error:aeat.303.mapping:"
-msgid "unique_field"
-msgstr "unique_field"
-
 msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
 msgstr "La moneda de l'informe AEAT 303 \"%s\" ha de ser Euro."
@@ -24,10 +20,6 @@ msgstr ""
 msgctxt "error:aeat.303.template.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic"
-
-msgctxt "error:aeat.303.template.mapping:"
-msgid "unique_field"
-msgstr "unique_field"
 
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
@@ -143,87 +135,111 @@ msgstr "Usuari modificació"
 
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
-msgstr "Base Imponible Recàrrec equivalència 1"
+msgstr "Base Imponible Recàrrec equivalència 1 [16]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_2:"
 msgid "Accrued Re Base 2"
-msgstr "Base Imponible Recàrrec equivalència 2"
+msgstr "Base Imponible Recàrrec equivalència 2  [19]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_3:"
 msgid "Accrued Re Base 3"
-msgstr "Base Imponible Recàrrec equivalència 3"
+msgstr "Base Imponible Recàrrec equivalència 3 [22]"
+
+msgctxt "field:aeat.303.report,accrued_re_base_modification:"
+msgid "Accrued Re Base Modification"
+msgstr "Modificació Base Recàrrec equivalència [25]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_1:"
 msgid "Accrued Re Percent 1"
-msgstr "Tipus (%) Recàrrec equivalència 1"
+msgstr "Tipus (%) Recàrrec equivalència 1 [17]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_2:"
 msgid "Accrued Re Percent 2"
-msgstr "Tipus (%) Recàrrec equivalència 2"
+msgstr "Tipus (%) Recàrrec equivalència 2 [20]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_3:"
 msgid "Accrued Re Percent 3"
-msgstr "Tipus (%) Recàrrec equivalència 3"
+msgstr "Tipus (%) Recàrrec equivalència 3 [23]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_1:"
 msgid "Accrued Re Tax 1"
-msgstr "Quota Recàrrec equivalència 1"
+msgstr "Quota Recàrrec equivalència 1 [18]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_2:"
 msgid "Accrued Re Tax 2"
-msgstr "Quota Recàrrec equivalència 2"
+msgstr "Quota Recàrrec equivalència 2 [21]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_3:"
 msgid "Accrued Re Tax 3"
-msgstr "Quota Recàrrec equivalència 3"
+msgstr "Quota Recàrrec equivalència 3 [24]"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
+msgid "Accrued Re Tax Modification"
+msgstr "Modificació Quota Recàrrec equivalència [26]"
 
 msgctxt "field:aeat.303.report,accrued_total_tax:"
 msgid "Accrued Total Tax"
-msgstr "Total quota devengada"
+msgstr "Total quota devengada [27]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_1:"
 msgid "Accrued Vat Base 1"
-msgstr "Base Imponible Règim general 1"
+msgstr "Base Imponible Règim general 1 [01]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_2:"
 msgid "Accrued Vat Base 2"
-msgstr "Base Imponible Règim general 2"
+msgstr "Base Imponible Règim general 2 [04]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_3:"
 msgid "Accrued Vat Base 3"
-msgstr "Base Imponible Règim general 3"
+msgstr "Base Imponible Règim general 3 [07]"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
+msgid "Accrued Vat Base Modification"
+msgstr "Modificació Base Imponible [14]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
 msgid "Accrued Vat Percent 1"
-msgstr "Tipus (%) Règim general 1"
+msgstr "Tipus (%) Règim general 1 [02]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
 msgid "Accrued Vat Percent 2"
-msgstr "Tipus (%) Règim general 2"
+msgstr "Tipus (%) Règim general 2 [05]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
 msgid "Accrued Vat Percent 3"
-msgstr "Tipus (%) Règim general 3"
+msgstr "Tipus (%) Règim general 3 [08]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
 msgid "Accrued Vat Tax 1"
-msgstr "Quota Règim general 1"
+msgstr "Quota Règim general 1 [03]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
 msgid "Accrued Vat Tax 2"
-msgstr "Quota Règim general 2"
+msgstr "Quota Règim general 2 [06]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
 msgid "Accrued Vat Tax 3"
-msgstr "Quota Règim general 3"
+msgstr "Quota Règim general 3 [09]"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
+msgid "Accrued Vat Tax Modification"
+msgstr "Modificació Cuota Imponible [15]"
 
 msgctxt "field:aeat.303.report,amount_to_compensate:"
 msgid "Amount To Compensate"
 msgstr "Import a compensar"
 
+msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
+msgid "Auto Bankruptcy Date"
+msgstr "Data declaració fallida"
+
 msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "Auto Bankruptcy Declaration"
 msgstr "Autodeclaració de fallida"
+
+msgctxt "field:aeat.303.report,bank_account:"
+msgid "Bank Account"
+msgstr "Comptes bancari"
 
 msgctxt "field:aeat.303.report,calculation_date:"
 msgid "Calculation Date"
@@ -255,7 +271,7 @@ msgstr "Moneda"
 
 msgctxt "field:aeat.303.report,deductible_compensations:"
 msgid "Deductible Compensations"
-msgstr "Compensacions deduibles"
+msgstr "Compensacions deduibles [42]"
 
 msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base:"
 msgid "Deductible Current Domestic Operations Base"
@@ -312,15 +328,24 @@ msgstr "Quota adquisicons intracomunitaries de béns d'inversió"
 
 msgctxt "field:aeat.303.report,deductible_investment_regularization:"
 msgid "Deductible Investment Regularization"
-msgstr "Regulatizació d'inversions"
+msgstr "Regulatizació d'inversions [43]"
 
 msgctxt "field:aeat.303.report,deductible_pro_rata_regularization:"
 msgid "Deductible Pro Rata Regularization"
-msgstr "Regularitzación per aplicació del percentatje definitiu de prorrata"
+msgstr ""
+"Regularitzación per aplicació del percentatje definitiu de prorrata [44]"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base:"
+msgid "Deductible Regularization Base"
+msgstr "Base Rectificacació deduïble"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax:"
+msgid "Deductible Regularization Tax"
+msgstr "Quota Rectificacació deduïble"
 
 msgctxt "field:aeat.303.report,deductible_total:"
 msgid "Deductible Total"
-msgstr "Total deduïble"
+msgstr "Total deduïble [45]"
 
 msgctxt "field:aeat.303.report,difference:"
 msgid "Difference"
@@ -328,7 +353,7 @@ msgstr "Diferència"
 
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
-msgstr "Exportacions"
+msgstr "Exportacions [60]"
 
 msgctxt "field:aeat.303.report,file_:"
 msgid "File"
@@ -352,15 +377,19 @@ msgstr "ID"
 
 msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
 msgid "Intracommunity Adquisitions Base"
-msgstr "Base adquisicions intracomunitaries"
+msgstr "Base adquisicions intracomunitaries [10]"
 
 msgctxt "field:aeat.303.report,intracommunity_adquisitions_tax:"
 msgid "Intracommunity Adquisitions Tax"
-msgstr "Impost adquisicions intracomunitaries"
+msgstr "Cuota adquisicions intracomunitaries [11]"
 
 msgctxt "field:aeat.303.report,intracommunity_deliveries:"
 msgid "Intracommunity Deliveries"
-msgstr "Entregues intracomunitaries"
+msgstr "Entregues intracomunitaries [59]"
+
+msgctxt "field:aeat.303.report,joint_liquidation:"
+msgid "Is joint liquidation"
+msgstr "Es liquidació conjunta"
 
 msgctxt "field:aeat.303.report,joint_presentation_allowed:"
 msgid "Joint Presentation Allowed"
@@ -374,7 +403,7 @@ msgstr ""
 
 msgctxt "field:aeat.303.report,liquidation_result:"
 msgid "Liquidation Result"
-msgstr "Resultat liquidació"
+msgstr "Resultat liquidació [71]"
 
 msgctxt "field:aeat.303.report,monthly_return_subscription:"
 msgid "Montly Return Subscription"
@@ -382,19 +411,15 @@ msgstr "Subscripció de devolució mensual"
 
 msgctxt "field:aeat.303.report,not_subject_or_reverse_charge:"
 msgid "Not Subject Or Reverse Charge"
-msgstr "No subjectes o càrrecs inversos"
+msgstr "No subjectes o càrrecs inversos [61]"
 
-msgctxt "field:aeat.303.report,payment_amount:"
-msgid "Payment Amount"
-msgstr "Import del pagament"
+msgctxt "field:aeat.303.report,other_passive_subject_base:"
+msgid "Other Passive Subject Adquisitions Base"
+msgstr "Base altres operación amb subjecte passiu [12]"
 
-msgctxt "field:aeat.303.report,payment_bank_account:"
-msgid "Payment Bank Account"
-msgstr "Codi compte cliente (Pagament)"
-
-msgctxt "field:aeat.303.report,payment_type:"
-msgid "Payment Type"
-msgstr "Tipus de pagament"
+msgctxt "field:aeat.303.report,other_passive_subject_tax:"
+msgid "Other Passive Subject Adquisitions Tax"
+msgstr "Cuota altres operación amb subjecte passiu [13]"
 
 msgctxt "field:aeat.303.report,period:"
 msgid "Period"
@@ -406,39 +431,51 @@ msgstr "Nº justificant declaració previa"
 
 msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
 msgid "Previous Period Amount To Compensate"
-msgstr "Import a compensar períodes anteriors"
+msgstr "Import a compensar períodes anteriors [67]"
 
 msgctxt "field:aeat.303.report,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:aeat.303.report,refund_amount:"
-msgid "Refund Amount"
-msgstr "Import a tornar"
+msgctxt "field:aeat.303.report,recc:"
+msgid "Special Cash Criteria"
+msgstr "Criteri de caixa"
 
-msgctxt "field:aeat.303.report,refund_bank_account:"
-msgid "Refund Bank Account"
-msgstr "Codi compte cliente (Devolució)"
+msgctxt "field:aeat.303.report,recc_adquisitions_base:"
+msgid "Special Cash Criteria Asquistions Base"
+msgstr "Base adquisicions criteri de caixa"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_tax:"
+msgid "Special Cash Criteria Adquistions Tax"
+msgstr "Quota adquisicions criteri de caixa"
+
+msgctxt "field:aeat.303.report,recc_deliveries_base:"
+msgid "Special Cash Criteria Deliveries Base"
+msgstr "Base entregues criteri de caixa"
+
+msgctxt "field:aeat.303.report,recc_deliveries_tax:"
+msgid "Special Cash Criteria Deliveries Tax"
+msgstr "Quota entregues criteri de caixa"
+
+msgctxt "field:aeat.303.report,recc_receiver:"
+msgid "Special Cash Criteria Receiver"
+msgstr "Destinatari Criteri de caixa"
 
 msgctxt "field:aeat.303.report,result:"
 msgid "Result"
-msgstr "Resultat"
+msgstr "Resultat [69]"
 
-msgctxt "field:aeat.303.report,signature_city:"
-msgid "Signature City"
-msgstr "Ciutat de signatura"
+msgctxt "field:aeat.303.report,simplificated_regime:"
+msgid "Tribute exclusively on simplificated regime"
+msgstr "Tributar exclusivament en règim simplificat"
 
-msgctxt "field:aeat.303.report,signature_day:"
-msgid "Signature Day"
-msgstr "Dia de signatura"
+msgctxt "field:aeat.303.report,special_prorate:"
+msgid "Special prorate"
+msgstr "Prorata especial"
 
-msgctxt "field:aeat.303.report,signature_month:"
-msgid "Signature Month"
-msgstr "Mes de signatura"
-
-msgctxt "field:aeat.303.report,signature_year:"
-msgid "Signature Year"
-msgstr "Any de signatura"
+msgctxt "field:aeat.303.report,special_prorate_revocation:"
+msgid "Special prorate revocation"
+msgstr "Revocació prorata especial"
 
 msgctxt "field:aeat.303.report,state:"
 msgid "State"
@@ -446,15 +483,15 @@ msgstr "Estat"
 
 msgctxt "field:aeat.303.report,state_administration_amount:"
 msgid "State Administration Amount"
-msgstr "Import atribuible a l'administració del estat"
+msgstr "Import atribuible a l'administració del estat [66]"
 
 msgctxt "field:aeat.303.report,state_administration_percent:"
 msgid "State Administration Percent"
-msgstr "Percentatje atribuible a l'administració del estat"
+msgstr "Percentatje atribuible a l'administració del estat [65]"
 
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
-msgstr "A deduïr"
+msgstr "A deduïr [70]"
 
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
@@ -552,10 +589,6 @@ msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
 msgid "AEAT 303 Report"
 msgstr "Informe AEAT 303"
 
-msgctxt "model:res.group,name:group_aeat_303"
-msgid "Aeat_303"
-msgstr "AEAT 303"
-
 msgctxt "model:res.group,name:group_aeat_303_admin"
 msgid "Aeat_303 Administration"
 msgstr "Administració AEAT 303"
@@ -595,22 +628,6 @@ msgstr "No"
 msgctxt "selection:aeat.303.report,joint_presentation_allowed:"
 msgid "Yes"
 msgstr "Si"
-
-msgctxt "selection:aeat.303.report,payment_type:"
-msgid "Cash"
-msgstr "Efectiu"
-
-msgctxt "selection:aeat.303.report,payment_type:"
-msgid "Debit Entry"
-msgstr "Entrada de dèbit"
-
-msgctxt "selection:aeat.303.report,payment_type:"
-msgid "Direct Billing"
-msgstr "Facutra directa"
-
-msgctxt "selection:aeat.303.report,payment_type:"
-msgid "N/A"
-msgstr "N/A"
 
 msgctxt "selection:aeat.303.report,period:"
 msgid "April"
@@ -713,6 +730,10 @@ msgid "Accrued VAT"
 msgstr "Iva devengat"
 
 msgctxt "view:aeat.303.report:"
+msgid "Additional information"
+msgstr "Informació addicional"
+
+msgctxt "view:aeat.303.report:"
 msgid "Base:"
 msgstr "Base:"
 
@@ -726,23 +747,23 @@ msgstr "Cancel·la"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Domestic Operations"
-msgstr "Operacions interiors corrents"
+msgstr "Operacions interiors corrents [28][29]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Import Operations"
-msgstr "Importacions de béns corrents"
+msgstr "Importacions de béns corrents [32][33]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Intracommunity Operations"
-msgstr "Adquisicions intracomunitaries de béns corrents"
+msgstr "Adquisicions intracomunitaries de béns corrents [36][37]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Deductible VAT"
 msgstr "IVA deduïble"
 
 msgctxt "view:aeat.303.report:"
-msgid "Difference"
-msgstr "Diferència"
+msgid "Deductible regularization"
+msgstr "Rectificacació deduïble [40][41]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Draft"
@@ -750,15 +771,15 @@ msgstr "Esborrany"
 
 msgctxt "view:aeat.303.report:"
 msgid "Investment Domestic Operations"
-msgstr "Operacions interiors de béns d'inversió"
+msgstr "Operacions interiors de béns d'inversió  [30][31]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Investment Import Operations"
-msgstr "Importacions de béns d'inversió"
+msgstr "Importacions de béns d'inversió [34][35]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Investment Intracommunity Operations"
-msgstr "Adquisicions intracomunitaries de béns d'inversions"
+msgstr "Adquisicions intracomunitaries de béns d'inversions [38][39]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Other"
@@ -769,12 +790,20 @@ msgid "Process"
 msgstr "Processa"
 
 msgctxt "view:aeat.303.report:"
-msgid "Signature"
-msgstr "Firma"
+msgid "Result"
+msgstr "Resultat"
 
 msgctxt "view:aeat.303.report:"
-msgid "Signature Date:"
-msgstr "Data signatura:"
+msgid "Special Cash Criteria Adquisitions"
+msgstr "Adquisicions criteri de caixa [74][75]"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Deliveries"
+msgstr "Entregues criteri de caixa [62][63]"
+
+msgctxt "view:aeat.303.report:"
+msgid "Supported Tax:"
+msgstr "Quota suportada:"
 
 msgctxt "view:aeat.303.report:"
 msgid "Tax:"
