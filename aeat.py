@@ -105,11 +105,12 @@ class UpdateChart:
         #Update current values
         ids = []
         for mapping in Mapping.search([]):
+            if not mapping.template:
+                continue
             vals = mapping.template._get_mapping_value(mapping=mapping)
             if vals:
                 Mapping.write([mapping], vals)
-            if mapping.template:
-                ids.append(mapping.template.id)
+            ids.append(mapping.template.id)
 
         company = self.start.account.company.id
         #Create new one's
