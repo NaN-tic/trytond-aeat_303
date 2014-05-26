@@ -218,8 +218,7 @@ class Report(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
-    fiscalyear_code = fields.Integer('Fiscal Year Code',
-        on_change_with=['fiscalyear'], required=True)
+    fiscalyear_code = fields.Integer('Fiscal Year Code', required=True)
     company_vat = fields.Char('VAT number', size=9, states={
             'required': Eval('state') == 'calculated',
             'readonly': Eval('state') == 'done',
@@ -365,7 +364,7 @@ class Report(Workflow, ModelSQL, ModelView):
         'Special Cash Criteria Adquistions Tax', digits=(16, 2))
     without_activity = fields.Boolean('Without Activity')
     company_party = fields.Function(fields.Many2One('party.party',
-            'Company Party', on_change_with=['company']),
+            'Company Party'),
         'on_change_with_company_party')
     bank_account = fields.Many2One('bank.account', 'Bank Account',
         domain=[
@@ -507,10 +506,12 @@ class Report(Workflow, ModelSQL, ModelView):
         if company_id:
             return Company(company_id).party.id
 
+    @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         if self.company:
             return self.company.party.id
 
+    @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
         try:
             return int(self.fiscalyear.code) if self.fiscalyear else None
