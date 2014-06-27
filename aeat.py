@@ -88,7 +88,7 @@ class TemplateTaxCodeMapping(ModelSQL):
             ids = [c.id for c in TaxCode.search([
                         ('template', 'in', [c.id for c in self.code])
                         ])]
-            res['code'].append(['set', ids])
+            res['code'].append(['add', ids])
         if not mapping or mapping.template != self:
             res['template'] = self.id
         if len(res['code']) == 0:
