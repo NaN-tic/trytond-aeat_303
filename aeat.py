@@ -82,17 +82,27 @@ class TemplateTaxCodeMapping(ModelSQL):
         if not mapping or mapping.number != self.number:
             res['number'] = self.number
         res['code'] = []
+        old_ids = set()
+        new_ids = set()
         if mapping and len(mapping.code) > 0:
-            res['code'].append(['unlink_all'])
+            old_ids = set([c.id for c in mapping.code])
         if len(self.code) > 0:
-            ids = [c.id for c in TaxCode.search([
-                        ('template', 'in', [c.id for c in self.code])
-                        ])]
-            res['code'].append(['add', ids])
+            new_ids = set([c.id for c in TaxCode.search([
+                            ('template', 'in', [c.id for c in self.code])
+                            ])])
         if not mapping or mapping.template != self:
             res['template'] = self.id
-        if len(res['code']) == 0:
-            del res['code']
+        if old_ids or new_ids:
+            key = 'code'
+            res[key] = []
+            to_remove = old_ids - new_ids
+            if to_remove:
+                res[key].append(['remove', list(to_remove)])
+            to_add = new_ids - old_ids
+            if to_add:
+                res[key].append(['add', list(to_add)])
+            if not res[key]:
+                del res[key]
         return res
 
 
