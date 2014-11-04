@@ -7,23 +7,17 @@ from trytond.tests.test_tryton import test_view, test_depends
 
 
 class Aeat303TestCase(unittest.TestCase):
-    '''
-    Test AEAT 303 module.
-    '''
+    'Test AEAT 303 module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('aeat_303')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('aeat_303')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
 
