@@ -469,6 +469,19 @@ class Report(Workflow, ModelSQL, ModelView):
             Transaction().context.get('company'), exception=False)
 
     @staticmethod
+    def default_fiscalyear_code():
+        FiscalYear = Pool().get('account.fiscalyear')
+        fiscalyear = FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
+        if fiscalyear:
+            try:
+                fiscalyear = FiscalYear(fiscalyear)
+                return int(fiscalyear.code)
+            except (ValueError, TypeError):
+                return None
+
+
+    @staticmethod
     def default_compensation_fee():
         return 0
 
@@ -525,7 +538,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def on_change_with_fiscalyear_code(self):
         try:
             return int(self.fiscalyear.code) if self.fiscalyear else None
-        except ValueError:
+        except (ValueError, TypeError):
             return None
 
     def get_currency(self, name):
