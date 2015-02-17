@@ -195,7 +195,6 @@ contains the full copyright notices and license terms. -->
     <field name="bank_account"/>
     </group>
 
-
     <group id="state" colspan="3" col="6">
         <label name="state"/>
         <field name="state"/>
