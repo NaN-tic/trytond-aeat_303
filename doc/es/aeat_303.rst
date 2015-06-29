@@ -47,9 +47,9 @@ requerido por la AEAT para las presentaciones telemáticas.
 
 .. figure:: images/file-303.png
 
-.. Para descargar el archivo clicaremos en el icono con forma de disco duro al
-lado del campo |file| a la izquierda del botón *Cancelar*. Este archivo será
-el que presentaremos telemáticamente en la sede electrónica del AEAT.
+Para descargar el archivo clicaremos en el icono con forma de disco duro al lado 
+del campo |file| a la izquierda del botón *Cancelar*. Este archivo será el que 
+presentaremos telemáticamente en la sede electrónica del AEAT.
           
 .. |menu_303| tryref:: aeat_303.menu_aeat_303_report/complete_name
 .. |company| field:: aeat.303.report/company
