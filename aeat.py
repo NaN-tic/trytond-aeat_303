@@ -713,5 +713,5 @@ class Report(Workflow, ModelSQL, ModelView):
                     break
         data = retrofix.write([record, additional_record])
         data = data.encode('iso-8859-1')
-        self.file_ = buffer(data)
+        self.file_ = bytes(data)
         self.save()
