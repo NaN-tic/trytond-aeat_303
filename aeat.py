@@ -105,6 +105,8 @@ class TemplateTaxCodeMapping(ModelSQL):
                 res[key].append(['add', list(to_add)])
             if not res[key]:
                 del res[key]
+        if not mapping and self.type_ == 'code' and not res['code']:
+            return  # There is nothing to create as there is no mapping
         return res
 
 
@@ -131,8 +133,9 @@ class UpdateChart:
         to_create = []
         for template in MappingTemplate.search([('id', 'not in', ids)]):
             vals = template._get_mapping_value()
-            vals['company'] = company
-            to_create.append(vals)
+            if vals:
+                vals['company'] = company
+                to_create.append(vals)
         if to_create:
             Mapping.create(to_create)
         return ret
@@ -152,8 +155,9 @@ class CreateChart:
         to_create = []
         for template in MappingTemplate.search([]):
             vals = template._get_mapping_value()
-            vals['company'] = company
-            to_create.append(vals)
+            if vals:
+                vals['company'] = company
+                to_create.append(vals)
 
         Mapping.create(to_create)
         return ret
