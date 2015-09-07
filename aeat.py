@@ -413,6 +413,8 @@ class Report(Workflow, ModelSQL, ModelView):
     file_ = fields.Binary('File', states={
             'invisible': Eval('state') != 'done',
             }, readonly=True)
+    filename = fields.Function(fields.Char("File Name"),
+        'get_filename')
 
     @classmethod
     def __setup__(cls):
@@ -505,7 +507,6 @@ class Report(Workflow, ModelSQL, ModelView):
                 return int(fiscalyear.code)
             except (ValueError, TypeError):
                 return None
-
 
     @staticmethod
     def default_compensation_fee():
@@ -610,6 +611,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def get_liquidation_result(self, name):
         return self.result - self.to_deduce
+
+    def get_filename(self, name):
+        return 'aeat303-%s-%s.txt' % (
+            self.fiscalyear_code, self.period)
 
     @classmethod
     def validate(cls, reports):
