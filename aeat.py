@@ -410,7 +410,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('done', 'Done'),
             ('cancelled', 'Cancelled')
             ], 'State', readonly=True)
-    file_ = fields.Binary('File', states={
+    file_ = fields.Binary('File', filename='filename', states={
             'invisible': Eval('state') != 'done',
             }, readonly=True)
     filename = fields.Function(fields.Char("File Name"),
