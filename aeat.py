@@ -563,10 +563,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
-        try:
-            return int(self.fiscalyear.code) if self.fiscalyear else None
-        except (ValueError, TypeError):
-            return None
+        code = None
+        if self.fiscalyear:
+            code = self.fiscalyear.start_date.year
+        return code
 
     def get_currency(self, name):
         return self.company.currency.id
