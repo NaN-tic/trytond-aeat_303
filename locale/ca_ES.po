@@ -249,6 +249,10 @@ msgctxt "field:aeat.303.report,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "Tercer de l'empresa"
+
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT number"
 msgstr "Número CIF/NIF"
@@ -358,6 +362,10 @@ msgstr "Exportacions [60]"
 msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Fitxer"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "Nom fitxer"
 
 msgctxt "field:aeat.303.report,first_name:"
 msgid "First Name"

@@ -35,11 +35,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.303.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping,id:"
 msgid "ID"
@@ -75,11 +75,11 @@ msgstr "Código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,id:"
 msgid "ID"
@@ -107,11 +107,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
 msgid "ID"
@@ -249,6 +249,10 @@ msgctxt "field:aeat.303.report,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "Tercero de la empresa"
+
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT number"
 msgstr "Número CIF/NIF"
@@ -259,11 +263,11 @@ msgstr "Autoliquidación complementaria"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.report,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.report,currency:"
 msgid "Currency"
@@ -368,6 +372,10 @@ msgstr "Exportaciones [60]"
 msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Archivo"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "Nombre fichero"
 
 msgctxt "field:aeat.303.report,first_name:"
 msgid "First Name"
@@ -525,11 +533,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.template.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.template.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.template.mapping,id:"
 msgid "ID"
