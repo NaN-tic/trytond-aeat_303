@@ -477,15 +477,15 @@ msgstr "Resultado [69]"
 
 msgctxt "field:aeat.303.report,simplificated_regime:"
 msgid "Tribute exclusively on simplificated regime"
-msgstr "Tributar exclusivamente en règimen simplificado"
+msgstr "Tributar exclusivamente en régimen simplificado"
 
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
-msgstr "Prorata especial"
+msgstr "Prorrata especial"
 
 msgctxt "field:aeat.303.report,special_prorate_revocation:"
 msgid "Special prorate revocation"
-msgstr "Denegación Prorata especial"
+msgstr "Denegación Prorrata especial"
 
 msgctxt "field:aeat.303.report,state:"
 msgid "State"
