@@ -120,7 +120,10 @@ class UpdateChart:
         ret = super(UpdateChart, self).transition_update()
         #Update current values
         ids = []
-        for mapping in Mapping.search([]):
+        company = self.start.account.company.id
+        for mapping in Mapping.search([
+                    ('company', 'in', [company, None]),
+                    ]):
             if not mapping.template:
                 continue
             vals = mapping.template._get_mapping_value(mapping=mapping)
@@ -128,7 +131,6 @@ class UpdateChart:
                 Mapping.write([mapping], vals)
             ids.append(mapping.template.id)
 
-        company = self.start.account.company.id
         #Create new one's
         to_create = []
         for template in MappingTemplate.search([('id', 'not in', ids)]):
