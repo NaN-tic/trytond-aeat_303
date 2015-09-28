@@ -4,10 +4,11 @@ contains the full copyright notices and license terms. -->
 <form string="AEAT 303 Report" col="6">
     <label name="company"/>
     <field name="company"/>
-    <label name="first_name"/>
-    <field name="first_name"/>
-    <label name="company_vat"/>
-    <field name="company_vat"/>
+    <label name="regime_type"/>
+    <field name="regime_type"/>
+    <label name="type"/>
+    <field name="type"/>
+
     <label name="fiscalyear"/>
     <field name="fiscalyear"/>
     <label name="fiscalyear_code"/>
@@ -17,18 +18,18 @@ contains the full copyright notices and license terms. -->
 
     <label name="monthly_return_subscription"/>
     <field name="monthly_return_subscription"/>
-    <label name="simplificated_regime"/>
-    <field name="simplificated_regime"/>
-    <label name="joint_liquidation"/>
-    <field name="joint_liquidation"/>
     <label name="auto_bankruptcy_declaration"/>
     <field name="auto_bankruptcy_declaration"/>
     <label name="auto_bankruptcy_date"/>
     <field name="auto_bankruptcy_date"/>
+
+    <label name="joint_liquidation"/>
+    <field name="joint_liquidation"/>
     <label name="recc"/>
     <field name="recc"/>
     <label name="recc_receiver"/>
     <field name="recc_receiver"/>
+
     <label name="special_prorate"/>
     <field name="special_prorate"/>
     <label name="special_prorate_revocation"/>
@@ -163,7 +164,7 @@ contains the full copyright notices and license terms. -->
     <field name="recc_adquisitions_tax"/>
 
     <separator id="result" string="Result" colspan="6"/>
-    <label name="difference" colspan="5"/>
+    <label name="difference" string="Difference2" colspan="5"/>
     <field name="difference"/>
 
     <label name="state_administration_percent"/>
@@ -185,8 +186,8 @@ contains the full copyright notices and license terms. -->
 
     <group id="other" colspan="6" col="4">
         <separator id="other_sep" string="Other" colspan="4"/>
-        <label name="complementary_autoliquidation"/>
-        <field name="complementary_autoliquidation"/>
+        <label name="complementary_declaration"/>
+        <field name="complementary_declaration"/>
         <label name="previous_declaration_receipt"/>
         <field name="previous_declaration_receipt"/>
         <label name="without_activity"/>

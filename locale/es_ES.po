@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -249,17 +249,22 @@ msgctxt "field:aeat.303.report,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:aeat.303.report,company_name:"
+msgid "Company Name"
+msgstr "Nombre de la compañia"
+
 msgctxt "field:aeat.303.report,company_party:"
 msgid "Company Party"
 msgstr "Tercero de la empresa"
 
+#, fuzzy
 msgctxt "field:aeat.303.report,company_vat:"
-msgid "VAT number"
+msgid "VAT"
 msgstr "Número CIF/NIF"
 
-msgctxt "field:aeat.303.report,complementary_autoliquidation:"
-msgid "Complementary Autoliquidation"
-msgstr "Autoliquidación complementaria"
+msgctxt "field:aeat.303.report,complementary_declaration:"
+msgid "Complementary Declaration"
+msgstr "Declaración complementaría"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
@@ -377,10 +382,6 @@ msgctxt "field:aeat.303.report,filename:"
 msgid "File Name"
 msgstr "Nombre fichero"
 
-msgctxt "field:aeat.303.report,first_name:"
-msgid "First Name"
-msgstr "Apellidos y Nombre o Razón social"
-
 msgctxt "field:aeat.303.report,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Ejercicio fiscal"
@@ -408,10 +409,6 @@ msgstr "Entregas intracomunitarias [59]"
 msgctxt "field:aeat.303.report,joint_liquidation:"
 msgid "Is joint liquidation"
 msgstr "Es autoliquidación conjunta"
-
-msgctxt "field:aeat.303.report,joint_presentation_allowed:"
-msgid "Joint Presentation Allowed"
-msgstr "Permitir tributacion conjunta"
 
 msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
 msgid "Joint Taxation State Provincial Councils"
@@ -479,13 +476,13 @@ msgctxt "field:aeat.303.report,recc_receiver:"
 msgid "Special Cash Criteria Receiver"
 msgstr "Destinatario Criterio especial de caja"
 
+msgctxt "field:aeat.303.report,regime_type:"
+msgid "Tribute type"
+msgstr "Tipo de Régimen"
+
 msgctxt "field:aeat.303.report,result:"
 msgid "Result"
 msgstr "Resultado [69]"
-
-msgctxt "field:aeat.303.report,simplificated_regime:"
-msgid "Tribute exclusively on simplificated regime"
-msgstr "Tributar exclusivamente en règimen simplificado"
 
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
@@ -510,6 +507,10 @@ msgstr "Porcentaje atribuible a la administración del estado [65]"
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
 msgstr "A deducir [70]"
+
+msgctxt "field:aeat.303.report,type:"
+msgid "Declaration Type"
+msgstr "Tipo declaración"
 
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
@@ -631,22 +632,6 @@ msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "No"
 msgstr "No"
 
-msgctxt "selection:aeat.303.report,complementary_autoliquidation:"
-msgid "No"
-msgstr "No"
-
-msgctxt "selection:aeat.303.report,complementary_autoliquidation:"
-msgid "Yes"
-msgstr "Si"
-
-msgctxt "selection:aeat.303.report,joint_presentation_allowed:"
-msgid "No"
-msgstr "No"
-
-msgctxt "selection:aeat.303.report,joint_presentation_allowed:"
-msgid "Yes"
-msgstr "Si"
-
 msgctxt "selection:aeat.303.report,period:"
 msgid "April"
 msgstr "Abril"
@@ -711,6 +696,18 @@ msgctxt "selection:aeat.303.report,period:"
 msgid "Third quarter"
 msgstr "Tercer trimestre"
 
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on general regime"
+msgstr "Tributa exclusivamente en Régimen General (RG)"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on simplificated regime"
+msgstr "Tributa exclusivamente en Régimen Simplificado (RS)"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute on both simplified and general regime"
+msgstr "Tributa en los dos Régimens Simplificado y General"
+
 msgctxt "selection:aeat.303.report,state:"
 msgid "Calculated"
 msgstr "Calculado"
@@ -726,6 +723,35 @@ msgstr "Realizado"
 msgctxt "selection:aeat.303.report,state:"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Application for compensation"
+msgstr "Solicitud de compensación"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Returns"
+msgstr "Cuenta corriente tributaria-devolución"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Revenue"
+msgstr "Cuenta corriente tributaria-ingreso"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Direct incomes in account"
+msgstr "Domiciliación del ingreso en CCC"
+
+#, fuzzy
+msgctxt "selection:aeat.303.report,type:"
+msgid "Income"
+msgstr "Beneficio"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "No activity / Zero result"
+msgstr "Sin actividad / resultado cero"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return"
+msgstr "Devolución"
 
 msgctxt "selection:aeat.303.template.mapping,type_:"
 msgid "Code"
@@ -782,6 +808,10 @@ msgstr "IVA deducible"
 msgctxt "view:aeat.303.report:"
 msgid "Deductible regularization"
 msgstr "Rectificación deducible [40][41]"
+
+msgctxt "view:aeat.303.report:"
+msgid "Difference2"
+msgstr "Diferencia [64]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Draft"
