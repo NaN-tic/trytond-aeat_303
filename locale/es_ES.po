@@ -6,10 +6,6 @@ msgctxt "error:aeat.303.mapping:"
 msgid "Field must be unique."
 msgstr "El campo debe ser único"
 
-msgctxt "error:aeat.303.mapping:"
-msgid "unique_field"
-msgstr ""
-
 msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
 msgstr "La moneda del informe AEAT 303 \"%s\" debe ser euro."
@@ -24,10 +20,6 @@ msgstr ""
 msgctxt "error:aeat.303.template.mapping:"
 msgid "Field must be unique."
 msgstr "El campo debe ser único"
-
-msgctxt "error:aeat.303.template.mapping:"
-msgid "unique_field"
-msgstr ""
 
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"

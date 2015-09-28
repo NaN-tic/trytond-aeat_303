@@ -491,7 +491,7 @@ class Report(Workflow, ModelSQL, ModelView):
         super(Report, cls).__register__(module_name)
 
         # Migration to model 303 of 2015
-        if not regime_type:
+        if not regime_type and table.column_exist('simplificated_regime'):
             # Don't use UPDATE FROM because SQLite nor MySQL support it.
             cursor.execute(*model_table.update(
                     columns=[model_table.regime_type],
@@ -509,7 +509,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
             table.not_null_action('simplificated_regime', action='remove')
 
-        if not complementary_declaration:
+        if not complementary_declaration and table.column_exist('complementary_declaration'):
             # Don't use UPDATE FROM because SQLite nor MySQL support it.
             cursor.execute(*model_table.update(
                     columns=[model_table.complementary_declaration],
