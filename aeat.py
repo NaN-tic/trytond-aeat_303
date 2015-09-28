@@ -6,8 +6,9 @@ import calendar
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
+from trytond import backend
 from sql import Literal
 
 
@@ -237,11 +238,6 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
     fiscalyear_code = fields.Integer('Fiscal Year Code', required=True)
-    company_vat = fields.Char('VAT number', size=9, states={
-            'required': Eval('state') == 'calculated',
-            'readonly': Eval('state') == 'done',
-            }, depends=['state'])
-    first_name = fields.Char('First Name')
     monthly_return_subscription = fields.Boolean('Montly Return Subscription')
     period = fields.Selection([
             ('1T', 'First quarter'),
@@ -262,8 +258,22 @@ class Report(Workflow, ModelSQL, ModelView):
             ('12', 'December'),
             ], 'Period', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
-    simplificated_regime = fields.Boolean('Tribute exclusively on '
-        'simplificated regime')
+    type = fields.Selection([
+            ('C', 'Application for compensation'),
+            ('D', 'Return'),
+            ('G', 'Current account tax - Revenue'),
+            ('I', 'Income'),
+            ('N', 'No activity / Zero result'),
+            ('V', 'Current account tax - Returns'),
+            ('U', 'Direct incomes in account'),
+            ], 'Declaration Type', required=True, sort=False, states=_STATES,
+        depends=_DEPENDS)
+    regime_type = fields.Selection([
+            ('1', 'Tribute exclusively on simplificated regime'),
+            ('2', 'Tribute on both simplified and general regime'),
+            ('3', 'Tribute exclusively on general regime'),
+            ], 'Tribute type', required=True, sort=False, states=_STATES,
+        depends=_DEPENDS)
     joint_liquidation = fields.Boolean('Is joint liquidation')
     recc = fields.Boolean('Special Cash Criteria')
     recc_receiver = fields.Boolean('Special Cash Criteria Receiver')
@@ -387,18 +397,18 @@ class Report(Workflow, ModelSQL, ModelView):
     bank_account = fields.Many2One('bank.account', 'Bank Account',
         domain=[
             ('owners', '=', Eval('company_party')),
-        ],
-        depends=['company_party'])
-    complementary_autoliquidation = fields.Selection([
-            ('0', 'No'),
-            ('1', 'Yes'),
-            ], 'Complementary Autoliquidation')
+        ], states={
+            'required': Eval('type') == 'U',
+            },
+        depends=['company_party', 'type'])
+    company_vat = fields.Char('VAT')
+    company_name = fields.Char('Company Name')
+    complementary_declaration = fields.Boolean(
+        'Complementary Declaration')
     previous_declaration_receipt = fields.Numeric(
-        'Previous Declaration Receipt', digits=(16, 2))
-    joint_presentation_allowed = fields.Selection([
-            (' ', 'No'),
-            ('1', 'Yes'),
-            ], 'Joint Presentation Allowed', required=True)
+        'Previous Declaration Receipt', digits=(16, 2), states={
+                'required': Bool(Eval('complementary_declaration')),
+            }, depends=['complementary_declaration'])
     auto_bankruptcy_declaration = fields.Selection([
             (' ', 'No'),
             ('1', 'Before Bankruptcy Proceeding'),
@@ -456,6 +466,9 @@ class Report(Workflow, ModelSQL, ModelView):
         ModelData = pool.get('ir.model.data')
         Module = pool.get('ir.module.module')
         cursor = Transaction().cursor
+        TableHandler = backend.get('TableHandler')
+        table = TableHandler(cursor, cls, module_name)
+        model_table = cls.__table__()
         module_table = Module.__table__()
         sql_table = ModelData.__table__()
         # Meld aeat_303_es into aeat_303
@@ -468,7 +481,48 @@ class Report(Workflow, ModelSQL, ModelView):
                 columns=[sql_table.module],
                 values=[module_name],
                 where=sql_table.module == Literal('aeat_303_es')))
+
+        regime_type = table.column_exist('regime_type')
+        complementary_declaration = table.column_exist(
+            'complementary_declaration')
+        joint_presentation_allowed = table.column_exist(
+            'joint_presentation_allowed')
+
         super(Report, cls).__register__(module_name)
+
+        # Migration to model 303 of 2015
+        if not regime_type:
+            # Don't use UPDATE FROM because SQLite nor MySQL support it.
+            cursor.execute(*model_table.update(
+                    columns=[model_table.regime_type],
+                    values=['1'],
+                    where=model_table.simplificated_regime == True))
+            cursor.execute(*model_table.update(
+                    columns=[model_table.regime_type],
+                    values=['3'],
+                    where=model_table.simplificated_regime == False))
+
+            cursor.execute(*model_table.update(
+                    columns=[model_table.type],
+                    values=['U'],
+                    where=model_table.simplificated_regime == False))
+
+            table.not_null_action('simplificated_regime', action='remove')
+
+        if not complementary_declaration:
+            # Don't use UPDATE FROM because SQLite nor MySQL support it.
+            cursor.execute(*model_table.update(
+                    columns=[model_table.complementary_declaration],
+                    values=[True],
+                    where=model_table.complementary_autoliquidation == 'X'))
+            cursor.execute(*model_table.update(
+                    columns=[model_table.complementary_declaration],
+                    values=[False],
+                    where=model_table.complementary_autoliquidation == ' '))
+
+        if joint_presentation_allowed:
+            table.not_null_action('joint_presentation_allowed',
+                action='remove')
 
     @staticmethod
     def default_state():
@@ -479,8 +533,8 @@ class Report(Workflow, ModelSQL, ModelView):
         return '0'
 
     @staticmethod
-    def default_complementary_autoliquidation():
-        return '0'
+    def default_complementary_declaration():
+        return False
 
     @staticmethod
     def default_state_administration_percent():
@@ -508,14 +562,9 @@ class Report(Workflow, ModelSQL, ModelView):
             except (ValueError, TypeError):
                 return None
 
-
     @staticmethod
     def default_compensation_fee():
         return 0
-
-    @staticmethod
-    def default_joint_presentation_allowed():
-        return ' '
 
     @staticmethod
     def default_auto_bankruptcy_declaration():
@@ -557,10 +606,37 @@ class Report(Workflow, ModelSQL, ModelView):
         if company_id:
             return Company(company_id).party.id
 
+    @classmethod
+    def default_company_name(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = cls.default_company()
+        if company_id:
+            return Company(company_id).party.name.upper()
+
+    @classmethod
+    def default_company_vat(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = cls.default_company()
+        if company_id:
+            return Company(company_id).party.vat_number
+
+
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         if self.company:
             return self.company.party.id
+
+    @fields.depends('company')
+    def on_change_with_company_name(self, name=None):
+        if self.company:
+            return self.company.party.name
+
+    @fields.depends('company')
+    def on_change_with_company_vat(self, name=None):
+        if self.company:
+            return self.company.party.vat_number
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
@@ -695,6 +771,8 @@ class Report(Workflow, ModelSQL, ModelView):
         pass
 
     def create_file(self):
+        header = retrofix.Record(aeat303.HEADER_RECORD)
+        footer = retrofix.Record(aeat303.FOOTER_RECORD)
         record = retrofix.Record(aeat303.RECORD)
         additional_record = retrofix.Record(aeat303.ADDITIONAL_RECORD)
         columns = [x for x in self.__class__._fields if x not in
@@ -703,21 +781,23 @@ class Report(Workflow, ModelSQL, ModelView):
             value = getattr(self, column, None)
             if not value:
                 continue
-            if column == 'first_name':
-                column = 'company_name'
             if column == 'fiscalyear':
                 value = str(self.fiscalyear_code)
+            if column in header._fields:
+                setattr(header, column, value)
             if column in record._fields:
                 setattr(record, column, value)
             if column in additional_record._fields:
                 setattr(additional_record, column, value)
+            if column in footer._fields:
+                setattr(footer, column, value)
         record.bankruptcy == bool(self.auto_bankruptcy_declaration != ' ')
         if self.bank_account:
             for number in self.bank_account.numbers:
                 if number.type == 'iban':
-                    additional_record.bank_account = number.number
+                    additional_record.bank_account = number.number_compact
                     break
-        data = retrofix.write([record, additional_record])
+        data = retrofix.write([header, record, additional_record, footer], separator='')
         data = data.encode('iso-8859-1')
         self.file_ = buffer(data)
         self.save()

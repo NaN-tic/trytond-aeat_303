@@ -1,10 +1,14 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:aeat.303.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic"
+
+msgctxt "error:aeat.303.mapping:"
+msgid "unique_field"
+msgstr ""
 
 msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
@@ -20,6 +24,10 @@ msgstr ""
 msgctxt "error:aeat.303.template.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic"
+
+msgctxt "error:aeat.303.template.mapping:"
+msgid "unique_field"
+msgstr ""
 
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
@@ -249,13 +257,21 @@ msgctxt "field:aeat.303.report,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:aeat.303.report,company_vat:"
-msgid "VAT number"
-msgstr "Número CIF/NIF"
+msgctxt "field:aeat.303.report,company_name:"
+msgid "Company Name"
+msgstr "Nom de l'empresa"
 
-msgctxt "field:aeat.303.report,complementary_autoliquidation:"
-msgid "Complementary Autoliquidation"
-msgstr "Liquidació complementaria"
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "Tercer de l'empresa"
+
+msgctxt "field:aeat.303.report,company_vat:"
+msgid "VAT"
+msgstr "CIF/NIF"
+
+msgctxt "field:aeat.303.report,complementary_declaration:"
+msgid "Complementary Declaration"
+msgstr "Declaració complementària"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
@@ -349,7 +365,7 @@ msgstr "Total deduïble [45]"
 
 msgctxt "field:aeat.303.report,difference:"
 msgid "Difference"
-msgstr "Diferència"
+msgstr "Diferència [46]"
 
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
@@ -358,10 +374,6 @@ msgstr "Exportacions [60]"
 msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Fitxer"
-
-msgctxt "field:aeat.303.report,first_name:"
-msgid "First Name"
-msgstr "Cognoms i nom o Raó Social"
 
 msgctxt "field:aeat.303.report,fiscalyear:"
 msgid "Fiscal Year"
@@ -389,11 +401,7 @@ msgstr "Entregues intracomunitaries [59]"
 
 msgctxt "field:aeat.303.report,joint_liquidation:"
 msgid "Is joint liquidation"
-msgstr "Es liquidació conjunta"
-
-msgctxt "field:aeat.303.report,joint_presentation_allowed:"
-msgid "Joint Presentation Allowed"
-msgstr "Es pot tributar conjuntament"
+msgstr "És autoliquidació conjunta"
 
 msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
 msgid "Joint Taxation State Provincial Councils"
@@ -461,13 +469,13 @@ msgctxt "field:aeat.303.report,recc_receiver:"
 msgid "Special Cash Criteria Receiver"
 msgstr "Destinatari Criteri de caixa"
 
+msgctxt "field:aeat.303.report,regime_type:"
+msgid "Tribute type"
+msgstr "Tipus de Règim"
+
 msgctxt "field:aeat.303.report,result:"
 msgid "Result"
 msgstr "Resultat [69]"
-
-msgctxt "field:aeat.303.report,simplificated_regime:"
-msgid "Tribute exclusively on simplificated regime"
-msgstr "Tributar exclusivament en règim simplificat"
 
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
@@ -492,6 +500,10 @@ msgstr "Percentatje atribuible a l'administració del estat [65]"
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
 msgstr "A deduïr [70]"
+
+msgctxt "field:aeat.303.report,type:"
+msgid "Declaration Type"
+msgstr "Tipus declaració"
 
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
@@ -613,22 +625,6 @@ msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "No"
 msgstr "No"
 
-msgctxt "selection:aeat.303.report,complementary_autoliquidation:"
-msgid "No"
-msgstr "No"
-
-msgctxt "selection:aeat.303.report,complementary_autoliquidation:"
-msgid "Yes"
-msgstr "Si"
-
-msgctxt "selection:aeat.303.report,joint_presentation_allowed:"
-msgid "No"
-msgstr "No"
-
-msgctxt "selection:aeat.303.report,joint_presentation_allowed:"
-msgid "Yes"
-msgstr "Si"
-
 msgctxt "selection:aeat.303.report,period:"
 msgid "April"
 msgstr "Abril"
@@ -693,6 +689,18 @@ msgctxt "selection:aeat.303.report,period:"
 msgid "Third quarter"
 msgstr "Tercer trimestre"
 
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on general regime"
+msgstr "Tributa exclusivament en Règim General (RG)"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on simplificated regime"
+msgstr "Tributa exclusivament en Règim Simplificat (RS)"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute on both simplified and general regime"
+msgstr "Tributa en els dos Règims Simplificat i General"
+
 msgctxt "selection:aeat.303.report,state:"
 msgid "Calculated"
 msgstr "Calculat"
@@ -708,6 +716,34 @@ msgstr "Realitzat"
 msgctxt "selection:aeat.303.report,state:"
 msgid "Draft"
 msgstr "Esborrany"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Application for compensation"
+msgstr "Sol·licitud de compensació"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Returns"
+msgstr "Compte corrent tributària-devolució"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Revenue"
+msgstr "Compte corrent tributària-ingrés"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Direct incomes in account"
+msgstr "Domiciliació de l'ingrés a CCC"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Income"
+msgstr "Ingrés"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "No activity / Zero result"
+msgstr "Sense activitat / Resultat zero"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return"
+msgstr "Devolució"
 
 msgctxt "selection:aeat.303.template.mapping,type_:"
 msgid "Code"
@@ -764,6 +800,10 @@ msgstr "IVA deduïble"
 msgctxt "view:aeat.303.report:"
 msgid "Deductible regularization"
 msgstr "Rectificacació deduïble [40][41]"
+
+msgctxt "view:aeat.303.report:"
+msgid "Difference2"
+msgstr "Diferència [64]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Draft"
