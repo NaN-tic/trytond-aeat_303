@@ -4,7 +4,7 @@ from decimal import Decimal
 import datetime
 import calendar
 
-from trytond.model import Workflow, ModelSQL, ModelView, fields
+from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -61,13 +61,11 @@ class TemplateTaxCodeMapping(ModelSQL):
     @classmethod
     def __setup__(cls):
         super(TemplateTaxCodeMapping, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('aeat303_field_uniq', 'unique (aeat303_field)',
-                'unique_field')
+            ('aeat303_field_uniq', Unique(t, t.aeat303_field),
+                'Field must be unique.')
             ]
-        cls._error_messages.update({
-                'unique_field': 'Field must be unique.',
-                })
 
     @staticmethod
     def default_type_():
@@ -204,13 +202,11 @@ class TaxCodeMapping(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxCodeMapping, cls).__setup__()
+        t = cls.__table__()
         cls._sql_constraints += [
-            ('aeat303_field_uniq', 'unique (company, aeat303_field)',
-                'unique_field')
+            ('aeat303_field_uniq', Unique(t, t.company, t.aeat303_field),
+                'Field must be unique.')
             ]
-        cls._error_messages.update({
-                'unique_field': 'Field must be unique.',
-                })
 
     @staticmethod
     def default_type_():
