@@ -618,7 +618,7 @@ class Report(Workflow, ModelSQL, ModelView):
         Company = pool.get('company.company')
         company_id = cls.default_company()
         if company_id:
-            return Company(company_id).party.vat_number
+            return Company(company_id).party.vat_code
 
 
     @fields.depends('company')
@@ -634,7 +634,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
         if self.company:
-            return self.company.party.vat_number
+            return self.company.party.vat_code
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
