@@ -527,10 +527,6 @@ class Report(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     @staticmethod
-    def default_payment_type():
-        return '0'
-
-    @staticmethod
     def default_complementary_declaration():
         return False
 
@@ -559,10 +555,6 @@ class Report(Workflow, ModelSQL, ModelView):
                 return int(fiscalyear.code)
             except (ValueError, TypeError):
                 return None
-
-    @staticmethod
-    def default_compensation_fee():
-        return 0
 
     @staticmethod
     def default_auto_bankruptcy_declaration():
