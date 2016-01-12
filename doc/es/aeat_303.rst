@@ -1,6 +1,7 @@
 *************************
 Generación del modelo 303
 *************************
+
 Desde |menu_303| podremos generar, de forma automática, el **Modelo 303**
 correspondiente a la Autoliquidación del IVA. Para ello, en la pestaña que nos
 aparecerá, deberemos clicar en el icono *Nuevo* para que se nos abra el
@@ -12,7 +13,7 @@ oficial), se rellenarán de forma automática.
 Los campos que deberemos rellenar son: |company|, con el nombre de nuestra
 empresa; |fiscalyear| donde relacionaremos la declaración con uno de los
 ejercicios fiscales de nuestro sistema; |fiscalyear_code| donde deberemos
-indicar el año del ejercicio fiscal; |company_vat|; |first_name|; el |period|
+indicar el año del ejercicio fiscal; |company_vat|; el |period|
 sobre el que generaremos el modelo (elegiremos un mes o un trimestre
 dependiendo del tipo de fiscalidad que tengamos); y, por último, si nuestra
 empresa tiene una |auto_bankruptcy_declaration| también deberemos indicarlo,
@@ -22,8 +23,8 @@ así como, en caso afirmativo, la |auto_bankruptcy_date|.
 
 A parte de estos campos, dependiendo del carácter que tenga nuestra
 declaración, deberemos marcar o no los siguientes campos:
-|monthly_return_subscription|, |recc_receiver|, |simplificated_regime|,
-|special_prorate|, |joint_liquidation|, |recc| y |special_prorate_revocation|.
+|monthly_return_subscription|, |recc_receiver|, |special_prorate|, |joint_liquidation|,
+|recc| y |special_prorate_revocation|.
 
 Una vez tengamos todos los campos de la cabecera rellenados conforme al
 carácter de nuestra declaración, deberemos ir a la parte inferior derecha del
@@ -58,11 +59,9 @@ presentaremos telemáticamente en la sede electrónica del AEAT.
 .. |period| field:: aeat.303.report/period
 .. |auto_bankruptcy_declaration| field:: aeat.303.report/auto_bankruptcy_declaration
 .. |auto_bankruptcy_date| field:: aeat.303.report/auto_bankruptcy_date
-.. |first_name| field:: aeat.303.report/first_name
 .. |fiscalyear| field:: aeat.303.report/fiscalyear
 .. |monthly_return_subscription| field:: aeat.303.report/monthly_return_subscription
 .. |recc_receiver| field:: aeat.303.report/recc_receiver
-.. |simplificated_regime| field:: aeat.303.report/simplificated_regime
 .. |special_prorate| field:: aeat.303.report/special_prorate
 .. |joint_liquidation| field:: aeat.303.report/joint_liquidation
 .. |recc| field:: aeat.303.report/recc
