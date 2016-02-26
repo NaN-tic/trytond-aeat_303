@@ -259,7 +259,7 @@ msgstr "Tercero de la empresa"
 
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT"
-msgstr "Número CIF/NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:aeat.303.report,complementary_declaration:"
 msgid "Complementary Declaration"
@@ -363,7 +363,7 @@ msgstr "Total a deducir [45]"
 
 msgctxt "field:aeat.303.report,difference:"
 msgid "Difference"
-msgstr "Diferencia"
+msgstr "Diferencia [46]"
 
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
@@ -735,14 +735,13 @@ msgctxt "selection:aeat.303.report,type:"
 msgid "Direct incomes in account"
 msgstr "Domiciliación del ingreso en CC"
 
-#, fuzzy
 msgctxt "selection:aeat.303.report,type:"
 msgid "Income"
-msgstr "Beneficio"
+msgstr "Ingreso"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "No activity / Zero result"
-msgstr "Sin actividad / resultado cero"
+msgstr "Sin actividad / Resultado cero"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Return"
