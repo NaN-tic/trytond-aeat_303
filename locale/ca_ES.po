@@ -259,7 +259,7 @@ msgstr "Tercer de l'empresa"
 
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT"
-msgstr "Número CIF/NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:aeat.303.report,complementary_declaration:"
 msgid "Complementary Declaration"
@@ -357,7 +357,7 @@ msgstr "Total deduïble [45]"
 
 msgctxt "field:aeat.303.report,difference:"
 msgid "Difference"
-msgstr "Diferència"
+msgstr "Diferència [46]"
 
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
@@ -715,7 +715,7 @@ msgstr "Esborrany"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Application for compensation"
-msgstr "Aplicació de compensació"
+msgstr "Sol·licitud de compensació"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Current account tax - Returns"
@@ -735,7 +735,7 @@ msgstr "Ingrés"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "No activity / Zero result"
-msgstr "Sense activitat / resultat zero"
+msgstr "Sense activitat / Resultat zero"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Return"
