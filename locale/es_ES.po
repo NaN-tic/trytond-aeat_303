@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:aeat.303.mapping:"
 msgid "Field must be unique."
-msgstr "El campo debe ser único"
+msgstr "El campo debe ser único."
 
 msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
@@ -14,8 +14,8 @@ msgctxt "error:aeat.303.report:"
 msgid ""
 "No configuration found for AEAT303. Please, update your chart of accounts."
 msgstr ""
-"No se ha encontrado configuración para el modelo AEAT 303. Por favor, "
-"actualiza el plan contable."
+"No se ha encontrado la configuración para el modelo AEAT 303. Por favor, "
+"actualice el plan contable."
 
 msgctxt "error:aeat.303.template.mapping:"
 msgid "Field must be unique."
@@ -35,11 +35,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.303.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping,id:"
 msgid "ID"
@@ -75,11 +75,11 @@ msgstr "Código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,id:"
 msgid "ID"
@@ -107,11 +107,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
 msgid "ID"
@@ -183,15 +183,15 @@ msgstr "Total cuota devengada [27]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_1:"
 msgid "Accrued Vat Base 1"
-msgstr "Base Imponible Regimen General 1 [01]"
+msgstr "Base Imponible Régimen General 1 [01]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_2:"
 msgid "Accrued Vat Base 2"
-msgstr "Base Imponible Regimen General 2 [04]"
+msgstr "Base Imponible Régimen General 2 [04]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_3:"
 msgid "Accrued Vat Base 3"
-msgstr "Base Imponible Regimen General 3 [07]"
+msgstr "Base Imponible Régimen General 3 [07]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
 msgid "Accrued Vat Base Modification"
@@ -199,27 +199,27 @@ msgstr "Modificación Base Imponible [14]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
 msgid "Accrued Vat Percent 1"
-msgstr "Tipo (%) Regimen General 1 [02]"
+msgstr "Tipo (%) Régimen General 1 [02]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
 msgid "Accrued Vat Percent 2"
-msgstr "Tipo (%) Regimen General 2 [05]"
+msgstr "Tipo (%) Régimen General 2 [05]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
 msgid "Accrued Vat Percent 3"
-msgstr "Tipo (%) Regimen General 3 [08]"
+msgstr "Tipo (%) Régimen General 3 [08]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
 msgid "Accrued Vat Tax 1"
-msgstr "Cuota Regimen General 1 [03]"
+msgstr "Cuota Régimen General 1 [03]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
 msgid "Accrued Vat Tax 2"
-msgstr "Cuota Regimen General 2 [06]"
+msgstr "Cuota Régimen General 2 [06]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
 msgid "Accrued Vat Tax 3"
-msgstr "Cuota Regimen General 3 [09]"
+msgstr "Cuota Régimen General 3 [09]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
 msgid "Accrued Vat Tax Modification"
@@ -231,7 +231,7 @@ msgstr "Importe a compensar"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
 msgid "Auto Bankruptcy Date"
-msgstr "Fecha declaración bancarrota"
+msgstr "Fecha declaración de bancarrota"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "Auto Bankruptcy Declaration"
@@ -251,7 +251,7 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.303.report,company_name:"
 msgid "Company Name"
-msgstr "Nombre de la compañia"
+msgstr "Nombre de la compañía"
 
 msgctxt "field:aeat.303.report,company_party:"
 msgid "Company Party"
@@ -267,11 +267,11 @@ msgstr "Declaración complementaria"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.report,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.report,currency:"
 msgid "Currency"
@@ -291,58 +291,54 @@ msgstr "Impuesto cuotas soportadas en operaciones interiores corrientes"
 
 msgctxt "field:aeat.303.report,deductible_current_import_operations_base:"
 msgid "Deductible Current Import Operations Base"
-msgstr "Base cuotas devengadas en importaconines de bienes corrientes"
+msgstr "Base cuotas soportadas en las importaciones de bienes corrientes"
 
 msgctxt "field:aeat.303.report,deductible_current_import_operations_tax:"
 msgid "Deductible Current Import Operations Tax"
-msgstr "Impuesto cuotas devengadas en importaconines de bienes corrientes"
+msgstr "Impuesto cuotas soportadas en las importaciones de bienes corrientes"
 
 msgctxt ""
 "field:aeat.303.report,deductible_current_intracommunity_operations_base:"
 msgid "Deductible Current Intracommunity Operations Base"
 msgstr ""
-"Base cuotas soportadas en operaciones intracomunitarias de bienes corrientes"
+"Base en adquisiciones intracomunitarias de bienes corrientes"
 
 msgctxt ""
 "field:aeat.303.report,deductible_current_intracommunity_operations_tax:"
 msgid "Deductible Current Intracommunity Operations Tax"
 msgstr ""
-"Impuesto cuotas soportadas en operaciones intracomunitarias de bienes "
-"corrientes"
+"Impuesto en adquisiciones intracomunitarias de bienes corrientes"
 
 msgctxt ""
 "field:aeat.303.report,deductible_investment_domestic_operations_base:"
 msgid "Deductible Investment Domestic Operations Base"
 msgstr ""
-"Base cuotas soportadas en operaciones intracomunitarias de bienes de "
-"inversión"
+"Base cuotas soportadas en operaciones interiores con bienes de inversión"
 
 msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax:"
 msgid "Deductible Investment Domestic Operations Tax"
 msgstr ""
-"Impuesto cuotas soportadas en operaciones corrientes con bienes de inversión"
+"Impuesto cuotas soportadas en operaciones interiores con bienes de inversión"
 
 msgctxt "field:aeat.303.report,deductible_investment_import_operations_base:"
 msgid "Deductible Investment Import Operations Base"
-msgstr "Impuesto cuotas devengadas en importaconines de bienes de inversión"
+msgstr "Base cuotas soportadas en las importaciones de bienes de inversión"
 
 msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax:"
 msgid "Deductible Investment Import Operations Tax"
-msgstr "Impuesto cuotas devengadas en importaconines de bienes de inversión"
+msgstr "Impuesto cuotas soportadas en las importaciones de bienes de inversión"
 
 msgctxt ""
 "field:aeat.303.report,deductible_investment_intracommunity_operations_base:"
 msgid "Deductible Investment Intracommunity Operations Base"
 msgstr ""
-"Base cuotas soportadas en operaciones intracomunitarias de bienes de "
-"inversión"
+"Base en adquisiciones intracomunitarias de bienes de inversión"
 
 msgctxt ""
 "field:aeat.303.report,deductible_investment_intracommunity_operations_tax:"
 msgid "Deductible Investment Intracommunity Operations Tax"
 msgstr ""
-"Impuesto cuotas soportadas en operaciones intracomunitarias de bienes de "
-"inversión"
+"Impuesto en adquisiciones intracomunitarias de bienes de inversión"
 
 msgctxt "field:aeat.303.report,deductible_investment_regularization:"
 msgid "Deductible Investment Regularization"
@@ -377,13 +373,17 @@ msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Archivo"
 
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "Nombre archivo"
+
 msgctxt "field:aeat.303.report,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Ejercicio fiscal"
 
 msgctxt "field:aeat.303.report,fiscalyear_code:"
 msgid "Fiscal Year Code"
-msgstr "Código Ejercicio Fiscal"
+msgstr "Código ejercicio fiscal"
 
 msgctxt "field:aeat.303.report,id:"
 msgid "ID"
@@ -408,8 +408,8 @@ msgstr "Es autoliquidación conjunta"
 msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
 msgid "Joint Taxation State Provincial Councils"
 msgstr ""
-"Sujetos pasivos que tributan conjuntamente a la Administración del Estado y "
-"Diputaciones Forales"
+"Sujetos pasivos que tributan conjuntamente en la administración del estado y "
+"diputaciones forales"
 
 msgctxt "field:aeat.303.report,liquidation_result:"
 msgid "Liquidation Result"
@@ -425,11 +425,11 @@ msgstr "Operaciones no sujetas o con inversión del sujeto pasivo [61]"
 
 msgctxt "field:aeat.303.report,other_passive_subject_base:"
 msgid "Other Passive Subject Adquisitions Base"
-msgstr "Base Otras operacions del sujeto pasivo [12]"
+msgstr "Base Otras operaciones del sujeto pasivo [12]"
 
 msgctxt "field:aeat.303.report,other_passive_subject_tax:"
 msgid "Other Passive Subject Adquisitions Tax"
-msgstr "Cuota Otras operacions del sujeto pasivo [13]"
+msgstr "Cuota Otras operaciones del sujeto pasivo [13]"
 
 msgctxt "field:aeat.303.report,period:"
 msgid "Period"
@@ -469,7 +469,7 @@ msgstr "Cuota entregas criterio especial de caja"
 
 msgctxt "field:aeat.303.report,recc_receiver:"
 msgid "Special Cash Criteria Receiver"
-msgstr "Destinatario Criterio especial de caja"
+msgstr "Destinatario criterio especial de caja"
 
 msgctxt "field:aeat.303.report,regime_type:"
 msgid "Tribute type"
@@ -485,7 +485,7 @@ msgstr "Prorrata especial"
 
 msgctxt "field:aeat.303.report,special_prorate_revocation:"
 msgid "Special prorate revocation"
-msgstr "Denegación Prorrata especial"
+msgstr "Denegación prorrata especial"
 
 msgctxt "field:aeat.303.report,state:"
 msgid "State"
@@ -529,11 +529,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.template.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "Fecha creación"
 
 msgctxt "field:aeat.303.template.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "Usuario creación"
 
 msgctxt "field:aeat.303.template.mapping,id:"
 msgid "ID"
@@ -561,15 +561,15 @@ msgstr "Usuario modificación"
 
 msgctxt "model:aeat.303.mapping,name:"
 msgid "AEAT 303 TaxCode Mapping"
-msgstr "Mapeo Codigos Impuestos AEAT 303"
+msgstr "Mapeo Códigos Impuestos AEAT 303"
 
 msgctxt "model:aeat.303.mapping-account.tax.code,name:"
 msgid "AEAT 303 TaxCode Mapping Codes Relation"
-msgstr "Relación Mapping AEAT303 Codigos d'impuesto"
+msgstr "Relación Mapeo AEAT303 Códigos de impuesto"
 
 msgctxt "model:aeat.303.mapping-account.tax.code.template,name:"
 msgid "AEAT 303 TaxCode Mapping Codes Relation"
-msgstr "Relación Mapping AEAT303 Codigos d'impuesto"
+msgstr "Relación Mapeo AEAT303 Códigos de impuesto"
 
 msgctxt "model:aeat.303.report,name:"
 msgid "AEAT 303 Report"
@@ -577,7 +577,7 @@ msgstr "Informe AEAT 303"
 
 msgctxt "model:aeat.303.template.mapping,name:"
 msgid "AEAT 303 TemplateTaxCode Mapping"
-msgstr "Relación Mapping AEAT303 Plantila codigos d'impuesto"
+msgstr "Relación Mapeo AEAT303 Plantilla códigos de impuesto"
 
 msgctxt "model:ir.action,name:act_aeat_303_mapping"
 msgid "AEAT 303 mapping"
@@ -597,11 +597,11 @@ msgstr "Informe AEAT 303"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_303_mapping"
 msgid "AEAT 303 Mapping"
-msgstr "Mapeo AEAT 303"
+msgstr "Mapeos AEAT 303"
 
 msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
 msgid "AEAT 303 Report"
-msgstr "Informe AEAT 303"
+msgstr "Informes AEAT 303"
 
 msgctxt "model:res.group,name:group_aeat_303_admin"
 msgid "Aeat_303 Administration"
@@ -613,7 +613,7 @@ msgstr "Código"
 
 msgctxt "selection:aeat.303.mapping,type_:"
 msgid "Numeric"
-msgstr "Numerico"
+msgstr "Numérico"
 
 msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "After Bankruptcy Proceeding"
@@ -701,7 +701,7 @@ msgstr "Tributa exclusivamente en Régimen Simplificado (RS)"
 
 msgctxt "selection:aeat.303.report,regime_type:"
 msgid "Tribute on both simplified and general regime"
-msgstr "Tributa en los dos Régimens Simplificado y General"
+msgstr "Tributa en los dos Regímenes Simplificado y General"
 
 msgctxt "selection:aeat.303.report,state:"
 msgid "Calculated"
@@ -733,7 +733,7 @@ msgstr "Cuenta corriente tributaria-ingreso"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Direct incomes in account"
-msgstr "Domiciliación del ingreso en CCC"
+msgstr "Domiciliación del ingreso en CC"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Income"
@@ -741,7 +741,7 @@ msgstr "Ingreso"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "No activity / Zero result"
-msgstr "Sin actividad / resultado cero"
+msgstr "Sin actividad / Resultado cero"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Return"
@@ -753,7 +753,7 @@ msgstr "Código"
 
 msgctxt "selection:aeat.303.template.mapping,type_:"
 msgid "Numeric"
-msgstr "Numerico"
+msgstr "Numérico"
 
 msgctxt "view:aeat.303.mapping:"
 msgid "AEAT 303 Mapping"
@@ -769,7 +769,7 @@ msgstr "IVA devengado"
 
 msgctxt "view:aeat.303.report:"
 msgid "Additional information"
-msgstr "Informació addicional"
+msgstr "Información adicional"
 
 msgctxt "view:aeat.303.report:"
 msgid "Base:"
