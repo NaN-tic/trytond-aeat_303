@@ -463,9 +463,9 @@ class Report(Workflow, ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Module = pool.get('ir.module')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         TableHandler = backend.get('TableHandler')
-        table = TableHandler(cursor, cls, module_name)
+        table = TableHandler(cls, module_name)
         model_table = cls.__table__()
         module_table = Module.__table__()
         sql_table = ModelData.__table__()
