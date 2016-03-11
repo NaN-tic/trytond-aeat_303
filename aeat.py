@@ -822,7 +822,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(additional_record, column, value)
             if column in footer._fields:
                 setattr(footer, column, value)
-        record.bankruptcy == bool(self.auto_bankruptcy_declaration != ' ')
+        record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
         if self.bank_account:
             for number in self.bank_account.numbers:
                 if number.type == 'iban':
