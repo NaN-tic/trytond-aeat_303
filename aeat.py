@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 import retrofix
 from retrofix import aeat303
 from decimal import Decimal
 import datetime
 import calendar
+import unicodedata
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
@@ -25,6 +27,29 @@ _DEPENDS = ['state']
 __metaclass__ = PoolMeta
 
 _Z = Decimal("0.0")
+
+
+def remove_accents(unicode_string):
+    if isinstance(unicode_string, str):
+        unicode_string_bak = unicode_string
+        try:
+            unicode_string = unicode_string_bak.decode('iso-8859-1')
+        except UnicodeDecodeError:
+            try:
+                unicode_string = unicode_string_bak.decode('utf-8')
+            except UnicodeDecodeError:
+                return unicode_string_bak
+
+    if not isinstance(unicode_string, unicode):
+        return unicode_string
+
+    unicode_string_nfd = ''.join(
+        (c for c in unicodedata.normalize('NFD', unicode_string)
+            if (unicodedata.category(c) != 'Mn'
+                or c in (u'\u0327', u'\u0303'))  # Avoids normalize ç and ñ
+            ))
+    # It converts nfd to nfc to allow unicode.decode()
+    return unicodedata.normalize('NFC', unicode_string_nfd)
 
 
 class TemplateTaxCodeRelation(ModelSQL):
@@ -804,6 +829,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     additional_record.bank_account = number.number_compact
                     break
         data = retrofix.write([header, record, additional_record, footer], separator='')
-        data = data.encode('iso-8859-1')
+        data = remove_accents(data).upper()
+        if isinstance(data, unicode):
+            data = data.encode('iso-8859-1')
         self.file_ = bytes(data)
         self.save()
