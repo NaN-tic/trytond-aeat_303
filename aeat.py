@@ -635,8 +635,10 @@ class Report(Workflow, ModelSQL, ModelView):
         Company = pool.get('company.company')
         company_id = cls.default_company()
         if company_id:
-            return Company(company_id).party.vat_code
-
+            vat_code = Company(company_id).party.vat_code
+            if vat_code.startswith('ES'):
+                return vat_code[2:]
+            return vat_code
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
@@ -651,7 +653,10 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
         if self.company:
-            return self.company.party.vat_code
+            vat_code = self.company.party.vat_code
+            if vat_code.startswith('ES'):
+                return vat_code[2:]
+            return vat_code
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
