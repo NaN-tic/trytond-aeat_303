@@ -28,7 +28,7 @@
         </record>
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_05">
             <field name="type_">numeric</field>
-            <field name="number" eval="Decimal('1.0')" />
+            <field name="number" eval="Decimal('1.4')" />
             <field name="aeat303_field"
                 search="[('name', '=','accrued_re_percent_2')]"/>
         </record>
