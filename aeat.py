@@ -24,8 +24,6 @@ _STATES = {
 
 _DEPENDS = ['state']
 
-__metaclass__ = PoolMeta
-
 _Z = Decimal("0.0")
 
 
@@ -135,6 +133,7 @@ class TemplateTaxCodeMapping(ModelSQL):
 
 
 class UpdateChart:
+    __metaclass__ = PoolMeta
     __name__ = 'account.update_chart'
 
     def transition_update(self):
@@ -168,6 +167,7 @@ class UpdateChart:
 
 
 class CreateChart:
+    __metaclass__ = PoolMeta
     __name__ = 'account.create_chart'
 
     def transition_create_account(self):
