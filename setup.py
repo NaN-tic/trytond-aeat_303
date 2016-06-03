@@ -23,7 +23,7 @@ major_version, minor_version, _ = info.get('version', '0.0.1').split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
 
-requires = []
+requires = ['retrofix']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
@@ -34,7 +34,12 @@ requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
 tests_require = ['proteus >= %s.%s, < %s.%s' %
-    (major_version, minor_version, major_version, minor_version + 1)]
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytonspain_account_es >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    'trytond_account_invoice >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1),
+    ]
 
 setup(name='%s_%s' % (PREFIX, MODULE),
     version=info.get('version', '0.0.1'),
