@@ -55,6 +55,7 @@ tests_require = [get_require_version('proteus'),
     ]
 dependency_links = []
 if minor_version % 2:
+    dependency_links.append('http://trydevpi.trytonspain.com/')
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
