@@ -42,14 +42,17 @@ minor_version = int(minor_version)
 name = 'trytonspain_aeat_303'
 download_url = 'https://bitbucket.org/trytonspain/trytond-aeat_303'
 
-requires = []
+requires = ['retrofix']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
         requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'),
+    get_require_version('trytonspain_account_es'),
+    get_require_version('trytond_account_invoice'),
+    ]
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with proteus
