@@ -214,29 +214,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_dev_03" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_04_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_04" />
-            <field name="code" ref="account_es.iva_dev_04" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_04_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_04" />
-            <field name="code" ref="account_es.iva_dev_04_8" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_04_val3">
             <field name="mapping" ref="aeat_303_mapping_code_04" />
             <field name="code" ref="account_es.iva_dev_04_10" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_06_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_06" />
-            <field name="code" ref="account_es.iva_dev_06" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_06_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_06" />
-            <field name="code" ref="account_es.iva_dev_06_8" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_06_val3">
@@ -244,29 +224,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_dev_06_10" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_07_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_07" />
-            <field name="code" ref="account_es.iva_dev_07" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_07_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_07" />
-            <field name="code" ref="account_es.iva_dev_07_18" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_07_val3">
             <field name="mapping" ref="aeat_303_mapping_code_07" />
             <field name="code" ref="account_es.iva_dev_07_21" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_09_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_09" />
-            <field name="code" ref="account_es.iva_dev_09" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_09_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_09" />
-            <field name="code" ref="account_es.iva_dev_09_18" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_09_val3">
@@ -284,19 +244,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_dev_12" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_13_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_13" />
-            <field name="code" ref="account_es.iva_dev_13" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_13_val2">
             <field name="mapping" ref="aeat_303_mapping_code_13" />
             <field name="code" ref="account_es.iva_dev_13_14" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_15_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_15" />
-            <field name="code" ref="account_es.iva_dev_15" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_15_val2">
@@ -304,19 +254,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_dev_15_14" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_16_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_16" />
-            <field name="code" ref="account_es.iva_dev_16" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_16_val2">
             <field name="mapping" ref="aeat_303_mapping_code_16" />
             <field name="code" ref="account_es.iva_dev_16_52" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_18_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_18" />
-            <field name="code" ref="account_es.iva_dev_18" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_18_val2">
@@ -446,29 +386,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es_pyme.iva_pymes_dev_03" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_04_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_04" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_04" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_04_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_04" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_04_8" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_04_val3">
             <field name="mapping" ref="aeat_303_mapping_code_04" />
             <field name="code" ref="account_es_pyme.iva_pymes_dev_04_10" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_06_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_06" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_06" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_06_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_06" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_06_8" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_06_val3">
@@ -476,29 +396,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es_pyme.iva_pymes_dev_06_10" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_07_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_07" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_07" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_07_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_07" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_07_18" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_07_val3">
             <field name="mapping" ref="aeat_303_mapping_code_07" />
             <field name="code" ref="account_es_pyme.iva_pymes_dev_07_21" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_09_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_09" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_09" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_09_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_09" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_09_18" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_09_val3">
@@ -516,19 +416,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es_pyme.iva_pymes_dev_12" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_13_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_13" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_13" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_13_val2">
             <field name="mapping" ref="aeat_303_mapping_code_13" />
             <field name="code" ref="account_es_pyme.iva_pymes_dev_13_14" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_15_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_15" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_15" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_15_val2">
@@ -536,19 +426,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es_pyme.iva_pymes_dev_15_14" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_16_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_16" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_16" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_16_val2">
             <field name="mapping" ref="aeat_303_mapping_code_16" />
             <field name="code" ref="account_es_pyme.iva_pymes_dev_16_52" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_code_18_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_18" />
-            <field name="code" ref="account_es_pyme.iva_pymes_dev_18" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_18_val2">
