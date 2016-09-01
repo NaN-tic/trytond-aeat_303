@@ -171,3 +171,10 @@ Generate 303 Report::
     Decimal('240.00')
     >>> report.accrued_vat_tax_3
     Decimal('50.40')
+
+Test report is generated correctly::
+
+    >>> report.file_
+    >>> report.click('process')
+    >>> bool(report.file_)
+    True
