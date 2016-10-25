@@ -8,7 +8,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import install_modules
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -20,7 +20,7 @@ Imports::
 
 Install aeat_303::
 
-    >>> config = install_modules(['account_es', 'aeat_303', 'account_invoice'])
+    >>> config = activate_modules(['account_es', 'aeat_303', 'account_invoice'])
 
 Create company::
 
