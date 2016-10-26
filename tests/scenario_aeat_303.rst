@@ -20,7 +20,7 @@ Imports::
 
 Install aeat_303::
 
-    >>> config = activate_modules(['account_es', 'aeat_303', 'account_invoice'])
+    >>> config = activate_modules(['aeat_303', 'account_es', 'account_invoice'])
 
 Create company::
 
