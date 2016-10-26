@@ -582,7 +582,7 @@ class Report(Workflow, ModelSQL, ModelView):
         if fiscalyear:
             try:
                 fiscalyear = FiscalYear(fiscalyear)
-                return int(fiscalyear.code)
+                return fiscalyear.start_date.year
             except (ValueError, TypeError):
                 return None
 
