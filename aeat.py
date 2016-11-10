@@ -628,22 +628,17 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def default_company_name(cls):
-        pool = Pool()
-        Company = pool.get('company.company')
         company_id = cls.default_company()
         if company_id:
-            return Company(company_id).party.name.upper()
+            self = cls(company=company_id)
+            return self.on_change_with_company_name()
 
     @classmethod
     def default_company_vat(cls):
-        pool = Pool()
-        Company = pool.get('company.company')
         company_id = cls.default_company()
         if company_id:
-            vat_code = Company(company_id).party.vat_code
-            if vat_code and vat_code.startswith('ES'):
-                return vat_code[2:]
-            return vat_code
+            self = cls(company=company_id)
+            return self.on_change_with_company_vat()
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
@@ -653,15 +648,14 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_name(self, name=None):
         if self.company:
-            return self.company.party.name
+            return self.company.party.rec_name.upper()
 
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
         if self.company:
-            vat_code = self.company.party.vat_code
-            if vat_code and vat_code.startswith('ES'):
-                return vat_code[2:]
-            return vat_code
+            tax_identifier = self.company.party.tax_identifier
+            if tax_identifier and tax_identifier.code.startswith('ES'):
+                return tax_identifier.code[2:]
 
     @fields.depends('fiscalyear')
     def on_change_with_fiscalyear_code(self):
