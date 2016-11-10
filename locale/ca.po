@@ -35,15 +35,15 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.303.mapping,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.303.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.303.mapping,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.303.mapping,number:"
 msgid "Number"
@@ -63,11 +63,11 @@ msgstr "Tipus"
 
 msgctxt "field:aeat.303.mapping,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.303.mapping,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,code:"
 msgid "Tax Code"
@@ -75,15 +75,15 @@ msgstr "Codi d'impost"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
 msgid "Mapping"
@@ -95,11 +95,11 @@ msgstr "Nom"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
 msgid "Tax Code Template"
@@ -107,15 +107,15 @@ msgstr "Plantilla de codi d'impost"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
 msgid "Mapping"
@@ -127,11 +127,11 @@ msgstr "Nom"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
@@ -231,7 +231,7 @@ msgstr "Import a compensar"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
 msgid "Auto Bankruptcy Date"
-msgstr "Data declaració de fallida"
+msgstr "Dataclaració de fallida"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "Auto Bankruptcy Declaration"
@@ -267,11 +267,11 @@ msgstr "Declaració complementària"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.303.report,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.303.report,currency:"
 msgid "Currency"
@@ -381,7 +381,7 @@ msgstr "Codi exercici fiscal"
 
 msgctxt "field:aeat.303.report,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
 msgid "Intracommunity Adquisitions Base"
@@ -507,11 +507,11 @@ msgstr "Sense activitat"
 
 msgctxt "field:aeat.303.report,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.303.report,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
@@ -523,15 +523,15 @@ msgstr "Plantilla de codi d'impost"
 
 msgctxt "field:aeat.303.template.mapping,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.303.template.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.303.template.mapping,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.303.template.mapping,number:"
 msgid "Number"
@@ -547,11 +547,11 @@ msgstr "Tipus"
 
 msgctxt "field:aeat.303.template.mapping,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.303.template.mapping,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "model:aeat.303.mapping,name:"
 msgid "AEAT 303 TaxCode Mapping"
