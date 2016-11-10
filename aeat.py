@@ -575,18 +575,6 @@ class Report(Workflow, ModelSQL, ModelView):
             Transaction().context.get('company'), exception=False)
 
     @staticmethod
-    def default_fiscalyear_code():
-        FiscalYear = Pool().get('account.fiscalyear')
-        fiscalyear = FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
-        if fiscalyear:
-            try:
-                fiscalyear = FiscalYear(fiscalyear)
-                return fiscalyear.start_date.year
-            except (ValueError, TypeError):
-                return None
-
-    @staticmethod
     def default_auto_bankruptcy_declaration():
         return ' '
 
@@ -617,28 +605,6 @@ class Report(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_to_deduce():
         return 0
-
-    @classmethod
-    def default_company_party(cls):
-        pool = Pool()
-        Company = pool.get('company.company')
-        company_id = cls.default_company()
-        if company_id:
-            return Company(company_id).party.id
-
-    @classmethod
-    def default_company_name(cls):
-        company_id = cls.default_company()
-        if company_id:
-            self = cls(company=company_id)
-            return self.on_change_with_company_name()
-
-    @classmethod
-    def default_company_vat(cls):
-        company_id = cls.default_company()
-        if company_id:
-            self = cls(company=company_id)
-            return self.on_change_with_company_vat()
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
