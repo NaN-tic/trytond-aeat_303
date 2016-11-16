@@ -35,11 +35,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.303.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:aeat.303.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:aeat.303.mapping,id:"
 msgid "ID"
@@ -63,11 +63,11 @@ msgstr "Tipo"
 
 msgctxt "field:aeat.303.mapping,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:aeat.303.mapping,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,code:"
 msgid "Tax Code"
@@ -75,11 +75,11 @@ msgstr "Código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,id:"
 msgid "ID"
@@ -95,11 +95,11 @@ msgstr "Nombre"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
 msgid "Tax Code Template"
@@ -107,11 +107,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
 msgid "ID"
@@ -127,11 +127,11 @@ msgstr "Nombre"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
@@ -267,11 +267,11 @@ msgstr "Declaración complementaria"
 
 msgctxt "field:aeat.303.report,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:aeat.303.report,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:aeat.303.report,currency:"
 msgid "Currency"
@@ -513,11 +513,11 @@ msgstr "Sin actividad"
 
 msgctxt "field:aeat.303.report,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:aeat.303.report,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
@@ -529,11 +529,11 @@ msgstr "Plantilla de código de impuesto"
 
 msgctxt "field:aeat.303.template.mapping,create_date:"
 msgid "Create Date"
-msgstr "Fecha creación"
+msgstr "Fecha de creación"
 
 msgctxt "field:aeat.303.template.mapping,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Usuario de creación"
 
 msgctxt "field:aeat.303.template.mapping,id:"
 msgid "ID"
@@ -553,11 +553,11 @@ msgstr "Tipo"
 
 msgctxt "field:aeat.303.template.mapping,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de modificación"
 
 msgctxt "field:aeat.303.template.mapping,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "model:aeat.303.mapping,name:"
 msgid "AEAT 303 TaxCode Mapping"
