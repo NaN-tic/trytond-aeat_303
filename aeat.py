@@ -451,7 +451,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(cls, Report).__setup__()
+        super(Report, cls).__setup__()
         cls._error_messages.update({
                 'invalid_currency': ('Currency in AEAT 303 report "%s" must be'
                     ' Euro.'),
