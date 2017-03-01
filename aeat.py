@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import retrofix
-from retrofix import aeat303
 from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
 
+from retrofix import aeat303
+from retrofix.record import Record, write as retrofix_write
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
@@ -832,10 +832,10 @@ class Report(Workflow, ModelSQL, ModelView):
         pass
 
     def create_file(self):
-        header = retrofix.Record(aeat303.HEADER_RECORD)
-        footer = retrofix.Record(aeat303.FOOTER_RECORD)
-        record = retrofix.Record(aeat303.RECORD)
-        additional_record = retrofix.Record(aeat303.ADDITIONAL_RECORD)
+        header = Record(aeat303.HEADER_RECORD)
+        footer = Record(aeat303.FOOTER_RECORD)
+        record = Record(aeat303.RECORD)
+        additional_record = Record(aeat303.ADDITIONAL_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
         for column in columns:
@@ -860,7 +860,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     additional_record.swift_bank = (
                         number.bank and number.bank.bic or '')
                     break
-        data = retrofix.write([header, record, additional_record, footer],
+        data = retrofix_write([header, record, additional_record, footer],
             separator='')
         data = remove_accents(data).upper()
         if isinstance(data, unicode):
