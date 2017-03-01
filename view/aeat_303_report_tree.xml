@@ -4,7 +4,7 @@
     <field name="period"/>
     <field name="accrued_total_tax"/>
     <field name="deductible_total"/>
-    <field name="difference"/>
+    <field name="general_regime_result"/>
     <field name="result"/>
     <field name="state"/>
     <button name="draft" string="Draft" tree_invisible="1"/>
