@@ -137,9 +137,9 @@ contains the full copyright notices and license terms. -->
     <field name="deductible_pro_rata_regularization"/>
     <label name="deductible_total" colspan="5"/>
     <field name="deductible_total"/>
-    <separator id="difference" colspan="6"/>
-    <label name="difference" colspan="5"/>
-    <field name="difference"/>
+    <separator id="general_regime_result" colspan="6"/>
+    <label name="general_regime_result" colspan="5"/>
+    <field name="general_regime_result"/>
 
     <separator id="additional_information" string="Additional information"
         colspan="6"/>
@@ -164,13 +164,19 @@ contains the full copyright notices and license terms. -->
     <field name="recc_adquisitions_tax"/>
 
     <separator id="result" string="Result" colspan="6"/>
-    <label name="difference" string="Difference2" colspan="5"/>
-    <field name="difference"/>
+    <label name="result_tax_regularitzation" colspan="5"/>
+    <field name="result_tax_regularitzation"/>
+
+    <label name="sum_results" colspan="5"/>
+    <field name="sum_results"/>
 
     <label name="state_administration_percent"/>
     <field name="state_administration_percent"/>
     <label name="state_administration_amount" colspan="3"/>
     <field name="state_administration_amount"/>
+
+    <label name="aduana_tax_pending" colspan="5"/>
+    <field name="aduana_tax_pending"/>
 
     <label name="previous_period_amount_to_compensate" colspan="5"/>
     <field name="previous_period_amount_to_compensate"/>
@@ -184,17 +190,17 @@ contains the full copyright notices and license terms. -->
     <label name="liquidation_result" colspan="5"/>
     <field name="liquidation_result"/>
 
-    <group id="other" colspan="6" col="4">
-        <separator id="other_sep" string="Other" colspan="4"/>
-        <label name="complementary_declaration"/>
-        <field name="complementary_declaration"/>
-        <label name="previous_declaration_receipt"/>
-        <field name="previous_declaration_receipt"/>
-        <label name="without_activity"/>
-        <field name="without_activity"/>
+    <separator id="other_sep" string="Other" colspan="6"/>
+    <label name="complementary_declaration"/>
+    <field name="complementary_declaration"/>
+    <label name="previous_declaration_receipt"/>
+    <field name="previous_declaration_receipt"/>
+    <label name="exonerated_mod390"/>
+    <field name="exonerated_mod390"/>
+    <label name="without_activity"/>
+    <field name="without_activity" colspan="2"/>
     <label name="bank_account"/>
-    <field name="bank_account"/>
-    </group>
+    <field name="bank_account" colspan="2"/>
 
     <group id="state" colspan="3" col="6">
         <label name="state"/>
