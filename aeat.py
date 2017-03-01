@@ -678,7 +678,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_name(self, name=None):
         if self.company:
-            return self.company.party.name
+            return self.company.party.name.pper()
 
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
