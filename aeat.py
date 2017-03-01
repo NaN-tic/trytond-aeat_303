@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import retrofix
-from retrofix import aeat303
 from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
 
+from retrofix import aeat303
+from retrofix.record import Record, write as retrofix_write
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
@@ -23,8 +23,6 @@ _STATES = {
     }
 
 _DEPENDS = ['state']
-
-__metaclass__ = PoolMeta
 
 _Z = Decimal("0.0")
 
@@ -135,6 +133,7 @@ class TemplateTaxCodeMapping(ModelSQL):
 
 
 class UpdateChart:
+    __metaclass__ = PoolMeta
     __name__ = 'account.update_chart'
 
     def transition_update(self):
@@ -168,6 +167,7 @@ class UpdateChart:
 
 
 class CreateChart:
+    __metaclass__ = PoolMeta
     __name__ = 'account.create_chart'
 
     def transition_create_account(self):
@@ -654,7 +654,7 @@ class Report(Workflow, ModelSQL, ModelView):
         company_id = cls.default_company()
         if company_id:
             vat_code = Company(company_id).party.vat_code
-            if vat_code.startswith('ES'):
+            if vat_code and vat_code.startswith('ES'):
                 return vat_code[2:]
             return vat_code
 
@@ -678,13 +678,13 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_name(self, name=None):
         if self.company:
-            return self.company.party.name
+            return self.company.party.name.upper()
 
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
         if self.company:
             vat_code = self.company.party.vat_code
-            if vat_code.startswith('ES'):
+            if vat_code and vat_code.startswith('ES'):
                 return vat_code[2:]
             return vat_code
 
@@ -726,6 +726,7 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.deductible_investment_regularization or _Z) +
             (self.deductible_pro_rata_regularization or _Z)
                 )
+
     def get_sum_results(self, name):
         # Here have to sum the box 46 + 58 + 76. The 58 is only for There
         #  Regime Simplified. By the moment this type are not supported so
@@ -832,10 +833,10 @@ class Report(Workflow, ModelSQL, ModelView):
         pass
 
     def create_file(self):
-        header = retrofix.Record(aeat303.HEADER_RECORD)
-        footer = retrofix.Record(aeat303.FOOTER_RECORD)
-        record = retrofix.Record(aeat303.RECORD)
-        additional_record = retrofix.Record(aeat303.ADDITIONAL_RECORD)
+        header = Record(aeat303.HEADER_RECORD)
+        footer = Record(aeat303.FOOTER_RECORD)
+        record = Record(aeat303.RECORD)
+        additional_record = Record(aeat303.ADDITIONAL_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
         for column in columns:
@@ -861,7 +862,7 @@ class Report(Workflow, ModelSQL, ModelView):
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
                     break
-        data = retrofix.write([header, record, additional_record, footer],
+        data = retrofix_write([header, record, additional_record, footer],
             separator='')
         data = remove_accents(data).upper()
         if isinstance(data, unicode):
