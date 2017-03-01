@@ -858,7 +858,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 if number.type == 'iban':
                     additional_record.bank_account = number.number_compact
                     additional_record.swift_bank = (
-                        number.bank and number.bank.bic or '')
+                        self.bank_account.bank and self.bank_account.bank.bic
+                        or '')
                     break
         data = retrofix.write([header, record, additional_record, footer], separator='')
         data = remove_accents(data).upper()
