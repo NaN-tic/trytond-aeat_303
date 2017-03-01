@@ -380,8 +380,12 @@ class Report(Workflow, ModelSQL, ModelView):
         'Deductible Pro Rata Regularization', digits=(16, 2))
     deductible_total = fields.Function(fields.Numeric('Deductible Total',
             digits=(16, 2)), 'get_deductible_total')
-    difference = fields.Function(fields.Numeric('Difference', digits=(16, 2)),
-        'get_difference')
+    result_tax_regularitzation = fields.Numeric(
+        'Tax Regularization art. 80.cinco.50a LIVA', digits=(16, 2),
+        help="Only fill if you have done the 952 model. To Fill with the tax "
+        "to recover.")
+    general_regime_result = fields.Function(fields.Numeric(
+            'General Regime Result', digits=(16, 2)), 'get_general_regime_result')
     state_administration_percent = fields.Numeric(
         'State Administration Percent', digits=(16, 2))
     state_administration_amount = fields.Function(
@@ -394,6 +398,11 @@ class Report(Workflow, ModelSQL, ModelView):
     exports = fields.Numeric('Exports', digits=(16, 2))
     not_subject_or_reverse_charge = fields.Numeric(
         'Not Subject Or Reverse Charge', digits=(16, 2))
+    sum_results = fields.Function(fields.Numeric(
+            'Sum of Results', digits=(16, 2)), 'get_sum_results')
+    aduana_tax_pending = fields.Numeric(
+        'Aduana Tax Pending', digits=(16, 2),
+        help="Import VAT paid by Aduana pending entry")
     joint_taxation_state_provincial_councils = fields.Numeric(
         'Joint Taxation State Provincial Councils', digits=(16, 2))
     result = fields.Function(fields.Numeric('Result', digits=(16, 2)),
@@ -422,6 +431,14 @@ class Report(Workflow, ModelSQL, ModelView):
             'required': Eval('type') == 'U',
             },
         depends=['company_party', 'type'])
+    exonerated_mod390 = fields.Selection([
+            ('0', ''),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Exonerated Model 390', help="Exclusively to fill in the last "
+            "period exonerated from the Annual Declaration-VAT summary. "
+            "(Exempt from presenting the model 390 and with volume of "
+            "operations zero).")
     company_vat = fields.Char('VAT')
     company_name = fields.Char('Company Name')
     complementary_declaration = fields.Boolean(
@@ -641,6 +658,18 @@ class Report(Workflow, ModelSQL, ModelView):
                 return vat_code[2:]
             return vat_code
 
+    @classmethod
+    def default_result_tax_regularitzation(cls):
+        return 0
+
+    @classmethod
+    def default_aduana_tax_pending(cls):
+        return 0
+
+    @classmethod
+    def default_exonerated_mod390(cls):
+        return '0'
+
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         if self.company:
@@ -669,7 +698,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def get_currency(self, name):
         return self.company.currency.id
 
-    def get_difference(self, name):
+    def get_general_regime_result(self, name):
         return (self.accrued_total_tax or _Z) - (self.deductible_total or _Z)
 
     def get_accrued_total_tax(self, name):
@@ -697,13 +726,20 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.deductible_investment_regularization or _Z) +
             (self.deductible_pro_rata_regularization or _Z)
                 )
+    def get_sum_results(self, name):
+        # Here have to sum the box 46 + 58 + 76. The 58 is only for There
+        #  Regime Simplified. By the moment this type are not supported so
+        #  only sum 46 + 76.
+        return ((self.general_regime_result or _Z) +
+            (self.result_tax_regularitzation or _Z))
 
     def get_state_administration_amount(self, name):
-        return (self.difference * self.state_administration_percent /
+        return (
+            self.general_regime_result * self.state_administration_percent /
             Decimal('100.0'))
 
     def get_result(self, name):
-        return (self.state_administration_amount -
+        return (self.state_administration_amount + self.aduana_tax_pending -
             self.previous_period_amount_to_compensate +
             self.joint_taxation_state_provincial_councils)
 
@@ -821,6 +857,8 @@ class Report(Workflow, ModelSQL, ModelView):
             for number in self.bank_account.numbers:
                 if number.type == 'iban':
                     additional_record.bank_account = number.number_compact
+                    additional_record.swift_bank = (
+                        number.bank and number.bank.bic or '')
                     break
         data = retrofix.write([header, record, additional_record, footer],
             separator='')
