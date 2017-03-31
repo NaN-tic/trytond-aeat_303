@@ -735,8 +735,9 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.result_tax_regularitzation or _Z))
 
     def get_state_administration_amount(self, name):
+        # This box [66] = ([64] x [65]) / 100
         return (
-            self.general_regime_result * self.state_administration_percent /
+            self.sum_results * self.state_administration_percent /
             Decimal('100.0'))
 
     def get_result(self, name):
