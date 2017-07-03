@@ -3,11 +3,9 @@ from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
-import sys
 
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
-
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
@@ -738,9 +736,8 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.result_tax_regularitzation or _Z))
 
     def get_state_administration_amount(self, name):
-        # This box [66] = ([64] x [65]) / 100
         return (
-            self.sum_results * self.state_administration_percent /
+            self.general_regime_result * self.state_administration_percent /
             Decimal('100.0'))
 
     def get_result(self, name):
