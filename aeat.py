@@ -680,7 +680,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('company')
     def on_change_with_company_name(self, name=None):
         if self.company:
-            return self.company.party.rec_name.upper()
+            return self.company.party.name.upper()
 
     @fields.depends('company')
     def on_change_with_company_vat(self, name=None):
@@ -727,6 +727,7 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.deductible_investment_regularization or _Z) +
             (self.deductible_pro_rata_regularization or _Z)
                 )
+
     def get_sum_results(self, name):
         # Here have to sum the box 46 + 58 + 76. The 58 is only for There
         #  Regime Simplified. By the moment this type are not supported so
@@ -859,7 +860,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 if number.type == 'iban':
                     additional_record.bank_account = number.number_compact
                     additional_record.swift_bank = (
-                        number.bank and number.bank.bic or '')
+                        self.bank_account.bank and self.bank_account.bank.bic
+                        or '')
                     break
         data = retrofix_write([header, record, additional_record, footer],
             separator='')
