@@ -12,7 +12,10 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 
-MODULE2PREFIX = {}
+MODULE2PREFIX = {
+    'account_es': 'trytonspain',
+    'account_es_pyme': 'trytonspain',
+}
 
 
 def read(fname):
@@ -20,14 +23,16 @@ def read(fname):
         os.path.join(os.path.dirname(__file__), fname),
         'r', encoding='utf-8').read()
 
+
 def get_require_version(name):
     if minor_version % 2:
         require = '%s >= %s.%s.dev0, < %s.%s'
     else:
         require = '%s >= %s.%s, < %s.%s'
-    require %= (name, major_version, minor_version,
-        major_version, minor_version + 1)
+    require %= (
+        name, major_version, minor_version, major_version, minor_version + 1)
     return require
+
 
 config = ConfigParser()
 config.readfp(open('tryton.cfg'))
@@ -49,17 +54,19 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'),
+tests_require = [
+    get_require_version('proteus'),
     get_require_version('trytonspain_account_es'),
     get_require_version('trytond_account_invoice'),
-    ]
+]
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('http://trydevpi.trytonspain.com/')
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
-setup(name=name,
+setup(
+    name=name,
     version=version,
     description='Tryton Aeat 303 Module',
     long_description=read('README'),
@@ -72,12 +79,12 @@ setup(name=name,
     packages=[
         'trytond.modules.aeat_303',
         'trytond.modules.aeat_303.tests',
-        ],
+    ],
     package_data={
-        'trytond.modules.aeat_303': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
-                'icons/*.svg', 'tests/*.rst']),
-        },
+        'trytond.modules.aeat_303': (info.get('xml', []) + [
+            'tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
+            'icons/*.svg', 'tests/*.rst']),
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -107,7 +114,7 @@ setup(name=name,
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
-        ],
+    ],
     license='GPL-3',
     install_requires=requires,
     dependency_links=dependency_links,
@@ -121,4 +128,4 @@ setup(name=name,
     tests_require=tests_require,
     use_2to3=True,
     convert_2to3_doctests=['tests/scenario_aeat_303.rst'],
-    )
+)
