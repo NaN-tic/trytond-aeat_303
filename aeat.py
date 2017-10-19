@@ -3,6 +3,7 @@ from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
+import sys
 
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
@@ -655,7 +656,9 @@ class Report(Workflow, ModelSQL, ModelView):
         Company = pool.get('company.company')
         company_id = cls.default_company()
         if company_id:
-            vat_code = Company(company_id).party.vat_code
+            company = Company(company_id)
+            vat_code = company.party.tax_identifier and \
+                company.party.tax_identifier.code or None
             if vat_code and vat_code.startswith('ES'):
                 return vat_code[2:]
             return vat_code
