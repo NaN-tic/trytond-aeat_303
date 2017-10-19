@@ -3,6 +3,7 @@ from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
+import sys
 
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
