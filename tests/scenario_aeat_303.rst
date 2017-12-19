@@ -86,13 +86,11 @@ Create product::
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('40')
-    >>> template.cost_price = Decimal('25')
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> tax, = Tax.find([
@@ -107,9 +105,10 @@ Create product::
     ...     ('parent', '=', None),
     ...     ], limit = 1)
     >>> template.supplier_taxes.append(tax)
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('25')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create payment term::
 
