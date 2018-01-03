@@ -190,6 +190,28 @@ contains the full copyright notices and license terms. -->
     <label name="liquidation_result" colspan="5"/>
     <field name="liquidation_result"/>
 
+    <separator id="extra_information" string="Extra information" colspan="6"/>
+    <label name="info_territory_alava" colspan="5"/>
+    <field name="info_territory_alava"/>
+    <label name="info_territory_guipuzcoa" colspan="5"/>
+    <field name="info_territory_guipuzcoa"/>
+    <label name="info_territory_vizcaya" colspan="5"/>
+    <field name="info_territory_vizcaya"/>
+    <label name="info_territory_navarra" colspan="5"/>
+    <field name="info_territory_navarra"/>
+    <label name="special_info_exempt_op_2bdeduced" colspan="5"/>
+    <field name="special_info_exempt_op_2bdeduced"/>
+    <label name="special_info_farming_cattleraising_fishing" colspan="5"/>
+    <field name="special_info_farming_cattleraising_fishing"/>
+    <label name="special_info_passive_subject_re" colspan="5"/>
+    <field name="special_info_passive_subject_re"/>
+    <label name="special_info_art_antiques_collectibles" colspan="5"/>
+    <field name="special_info_art_antiques_collectibles"/>
+    <label name="special_info_travel_agency" colspan="5"/>
+    <field name="special_info_travel_agency"/>
+    <label name="special_info_delivery_investment_domestic_operations" colspan="5"/>
+    <field name="special_info_delivery_investment_domestic_operations"/>
+
     <separator id="other_sep" string="Other" colspan="6"/>
     <label name="complementary_declaration"/>
     <field name="complementary_declaration"/>
