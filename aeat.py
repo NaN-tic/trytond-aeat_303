@@ -420,6 +420,27 @@ class Report(Workflow, ModelSQL, ModelView):
         'Special Cash Criteria Asquistions Base', digits=(16, 2))
     recc_adquisitions_tax = fields.Numeric(
         'Special Cash Criteria Adquistions Tax', digits=(16, 2))
+    info_territory_alava = fields.Numeric(
+        'Taxation Information by Territory: Alava', digits=(16,2))
+    info_territory_guipuzcoa = fields.Numeric(
+        'Taxation Information by Territory: Guipuzcoa', digits=(16,2))
+    info_territory_vizcaya = fields.Numeric(
+        'Taxation Information by Territory: Vizcaya', digits=(16,2))
+    info_territory_navarra = fields.Numeric(
+        'Taxation Information by Territory: Navarra', digits=(16,2))
+    special_info_exempt_op_2bdeduced = fields.Numeric(
+        'Exports and Other Exempt Oprations to be Deduce', digits=(16,2))
+    special_info_farming_cattleraising_fishing = fields.Numeric(
+        'Especial Regime of Farming, Cattle rasing and Fishing', digits=(16,2))
+    special_info_passive_subject_re = fields.Numeric(
+        'Passive Subject on Equivalence Regime', digits=(16,2))
+    special_info_art_antiques_collectibles = fields.Numeric(
+        'Special Regime Operations on Art, Antiques and Collectibles',
+        digits=(16,2))
+    special_info_travel_agency = fields.Numeric(
+        'Special Regime Operations on Travel Agency', digits=(16,2))
+    special_info_delivery_investment_domestic_operations = fields.Numeric(
+        'Delivery of Investment Domestic Operations', digits=(16,2))
     without_activity = fields.Boolean('Without Activity')
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party'),
@@ -669,6 +690,46 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def default_exonerated_mod390(cls):
         return '0'
+
+    @classmethod
+    def default_info_territory_alava(cls):
+        return 0
+
+    @classmethod
+    def default_info_territory_guipuzcoa(cls):
+        return 0
+
+    @classmethod
+    def default_info_territory_vizcaya(cls):
+        return 0
+
+    @classmethod
+    def default_info_territory_navarra(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_exempt_op_2bdeduced(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_farming_cattleraising_fishing(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_passive_subject_re(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_art_antiques_collectibles(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_travel_agency(cls):
+        return 0
+
+    @classmethod
+    def default_special_info_delivery_investment_domestic_operations(cls):
+        return 0
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):

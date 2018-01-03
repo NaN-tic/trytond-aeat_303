@@ -6,6 +6,10 @@ msgctxt "error:aeat.303.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic."
 
+msgctxt "error:aeat.303.mapping:"
+msgid "unique_field"
+msgstr ""
+
 msgctxt "error:aeat.303.report:"
 msgid "Currency in AEAT 303 report \"%s\" must be Euro."
 msgstr "La moneda de l'informe AEAT 303 \"%s\" ha de ser Euro."
@@ -20,6 +24,10 @@ msgstr ""
 msgctxt "error:aeat.303.template.mapping:"
 msgid "Field must be unique."
 msgstr "El camp ha de ser únic."
+
+msgctxt "error:aeat.303.template.mapping:"
+msgid "unique_field"
+msgstr ""
 
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
@@ -261,6 +269,7 @@ msgctxt "field:aeat.303.report,company_party:"
 msgid "Company Party"
 msgstr "Tercer de l'empresa"
 
+#, fuzzy
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT"
 msgstr "CIF/NIF"
@@ -371,10 +380,6 @@ msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Fitxer"
 
-msgctxt "field:aeat.303.report,filename:"
-msgid "File Name"
-msgstr "Nom fitxer"
-
 msgctxt "field:aeat.303.report,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercici fiscal"
@@ -390,6 +395,22 @@ msgstr "Resultat Règim General [46]"
 msgctxt "field:aeat.303.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:aeat.303.report,info_territory_alava:"
+msgid "Taxation Information by Territory: Alava"
+msgstr "Informació de la tributació per raó de territori: Àlava [89]"
+
+msgctxt "field:aeat.303.report,info_territory_guipuzcoa:"
+msgid "Taxation Information by Territory: Guipuzcoa"
+msgstr "Informació de la tributació per raó de territori: Guipuzcoa [90]"
+
+msgctxt "field:aeat.303.report,info_territory_navarra:"
+msgid "Taxation Information by Territory: Navarra"
+msgstr "Informació de la tributació per raó de territori: Navarra [92]"
+
+msgctxt "field:aeat.303.report,info_territory_vizcaya:"
+msgid "Taxation Information by Territory: Vizcaya"
+msgstr "Informació de la tributació per raó de territori: Vizcaya [91]"
 
 msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
 msgid "Intracommunity Adquisitions Base"
@@ -484,6 +505,35 @@ msgstr "Resultat [69]"
 msgctxt "field:aeat.303.report,result_tax_regularitzation:"
 msgid "Tax Regularization art. 80.cinco.50a LIVA"
 msgstr "Regularització quotes art. 80.cinco.5ª LIVA  [76]"
+
+msgctxt "field:aeat.303.report,special_info_art_antiques_collectibles:"
+msgid "Special Regime Operations on Art, Antiques and Collectibles"
+msgstr ""
+"Operacions en Règim especial de bens usats, objectes d'art, antiguitats i "
+"objectes de col·lecció [97]"
+
+msgctxt ""
+"field:aeat.303.report,special_info_delivery_investment_domestic_operations:"
+msgid "Delivery of Investment Domestic Operations"
+msgstr "Entregues de bens d'inversió [99]"
+
+msgctxt "field:aeat.303.report,special_info_exempt_op_2bdeduced:"
+msgid "Exports and Other Exempt Oprations to be Deduce"
+msgstr "Exportacions i altres operacions exemptes amb dret a deducció [94]"
+
+msgctxt "field:aeat.303.report,special_info_farming_cattleraising_fishing:"
+msgid "Especial Regime of Farming, Cattle rasing and Fishing"
+msgstr "Operacions en règim especial de l'agricultura, remaderia i pesca [95]"
+
+msgctxt "field:aeat.303.report,special_info_passive_subject_re:"
+msgid "Passive Subject on Equivalence Regime"
+msgstr ""
+"Operacions realizades per subjectes pasius acollits al règim especial del "
+"recàrrec d'equivalència [96]"
+
+msgctxt "field:aeat.303.report,special_info_travel_agency:"
+msgid "Special Regime Operations on Travel Agency"
+msgstr "Operacions en règim especial d'Agències de Viatges [98]"
 
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
@@ -847,6 +897,10 @@ msgstr "Rectificació deduïble [40][41]"
 msgctxt "view:aeat.303.report:"
 msgid "Draft"
 msgstr "Esborrany"
+
+msgctxt "view:aeat.303.report:"
+msgid "Extra information"
+msgstr "Informació extra"
 
 msgctxt "view:aeat.303.report:"
 msgid "Investment Domestic Operations"
