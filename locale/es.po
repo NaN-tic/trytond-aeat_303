@@ -269,7 +269,6 @@ msgctxt "field:aeat.303.report,company_party:"
 msgid "Company Party"
 msgstr "Tercero de la empresa"
 
-#, fuzzy
 msgctxt "field:aeat.303.report,company_vat:"
 msgid "VAT"
 msgstr "CIF/NIF"
