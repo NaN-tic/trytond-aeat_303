@@ -43,15 +43,30 @@ major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
 
-requires = []
+requires = ['retrofix']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
         requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
-dependency_links = []
+tests_require = [get_require_version('proteus'),
+    get_require_version('trytonspain_account_es'),
+    get_require_version('trytond_account_invoice'),
+    ]
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'default'
+else:
+    branch = series
+dependency_links = [
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es@%(branch)s'
+        '#egg=trytonspain-account_es-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ]
 if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
