@@ -79,10 +79,12 @@ class TemplateTaxCodeMapping(ModelSQL):
         'mapping', 'code', 'Tax Code Template', states={
             'invisible': Eval('type_') != 'code',
         }, depends=['type_'])
-    number = fields.Numeric('Number', states={
+    number = fields.Numeric('Number',
+        states={
             'required': Eval('type_') == 'numeric',
             'invisible': Eval('type_') != 'numeric',
-        }, depends=['type_'])
+            },
+        depends=['type_'])
 
     @classmethod
     def __setup__(cls):
@@ -221,10 +223,12 @@ class TaxCodeMapping(ModelSQL, ModelView):
             'required': Eval('type_') == 'code',
             'invisible': Eval('type_') != 'code',
         }, depends=['type_'])
-    number = fields.Numeric('Number', states={
+    number = fields.Numeric('Number',
+        states={
             'required': Eval('type_') == 'numeric',
             'invisible': Eval('type_') != 'numeric',
-        }, depends=['type_'])
+            },
+        depends=['type_'])
     template = fields.Many2One('aeat.303.template.mapping', 'Template')
 
     @classmethod
@@ -388,7 +392,8 @@ class Report(Workflow, ModelSQL, ModelView):
         help="Only fill if you have done the 952 model. To Fill with the tax "
         "to recover.")
     general_regime_result = fields.Function(fields.Numeric(
-            'General Regime Result', digits=(16, 2)), 'get_general_regime_result')
+            'General Regime Result',
+            digits=(16, 2)), 'get_general_regime_result')
     state_administration_percent = fields.Numeric(
         'State Administration Percent', digits=(16, 2))
     state_administration_amount = fields.Function(
@@ -424,26 +429,27 @@ class Report(Workflow, ModelSQL, ModelView):
     recc_adquisitions_tax = fields.Numeric(
         'Special Cash Criteria Adquistions Tax', digits=(16, 2))
     info_territory_alava = fields.Numeric(
-        'Taxation Information by Territory: Alava', digits=(16,2))
+        'Taxation Information by Territory: Alava', digits=(16, 2))
     info_territory_guipuzcoa = fields.Numeric(
-        'Taxation Information by Territory: Guipuzcoa', digits=(16,2))
+        'Taxation Information by Territory: Guipuzcoa', digits=(16, 2))
     info_territory_vizcaya = fields.Numeric(
-        'Taxation Information by Territory: Vizcaya', digits=(16,2))
+        'Taxation Information by Territory: Vizcaya', digits=(16, 2))
     info_territory_navarra = fields.Numeric(
-        'Taxation Information by Territory: Navarra', digits=(16,2))
+        'Taxation Information by Territory: Navarra', digits=(16, 2))
     special_info_exempt_op_2bdeduced = fields.Numeric(
-        'Exports and Other Exempt Oprations to be Deduce', digits=(16,2))
+        'Exports and Other Exempt Oprations to be Deduce', digits=(16, 2))
     special_info_farming_cattleraising_fishing = fields.Numeric(
-        'Especial Regime of Farming, Cattle rasing and Fishing', digits=(16,2))
+        'Especial Regime of Farming, Cattle rasing and Fishing',
+        digits=(16, 2))
     special_info_passive_subject_re = fields.Numeric(
-        'Passive Subject on Equivalence Regime', digits=(16,2))
+        'Passive Subject on Equivalence Regime', digits=(16, 2))
     special_info_art_antiques_collectibles = fields.Numeric(
         'Special Regime Operations on Art, Antiques and Collectibles',
-        digits=(16,2))
+        digits=(16, 2))
     special_info_travel_agency = fields.Numeric(
-        'Special Regime Operations on Travel Agency', digits=(16,2))
+        'Special Regime Operations on Travel Agency', digits=(16, 2))
     special_info_delivery_investment_domestic_operations = fields.Numeric(
-        'Delivery of Investment Domestic Operations', digits=(16,2))
+        'Delivery of Investment Domestic Operations', digits=(16, 2))
     without_activity = fields.Boolean('Without Activity')
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party'),
@@ -468,9 +474,11 @@ class Report(Workflow, ModelSQL, ModelView):
     complementary_declaration = fields.Boolean(
         'Complementary Declaration')
     previous_declaration_receipt = fields.Numeric(
-        'Previous Declaration Receipt', digits=(16, 2), states={
-                'required': Bool(Eval('complementary_declaration')),
-            }, depends=['complementary_declaration'])
+        'Previous Declaration Receipt', digits=(16, 2),
+        states={
+            'required': Bool(Eval('complementary_declaration')),
+            },
+        depends=['complementary_declaration'])
     auto_bankruptcy_declaration = fields.Selection([
             (' ', 'No'),
             ('1', 'Before Bankruptcy Proceeding'),

@@ -1,19 +1,19 @@
-#This file is part of Tryton.  The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .aeat import *
+from . import aeat
 
 
 def register():
     Pool.register(
-        Report,
-        TemplateTaxCodeMapping,
-        TemplateTaxCodeRelation,
-        TaxCodeMapping,
-        TaxCodeRelation,
+        aeat.Report,
+        aeat.TemplateTaxCodeMapping,
+        aeat.TemplateTaxCodeRelation,
+        aeat.TaxCodeMapping,
+        aeat.TaxCodeRelation,
         module='aeat_303', type_='model')
     Pool.register(
-        CreateChart,
-        UpdateChart,
+        aeat.CreateChart,
+        aeat.UpdateChart,
         module='aeat_303', type_='wizard')
