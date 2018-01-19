@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <!-- TODO: Add mappings for recc -->
@@ -193,6 +195,26 @@
             <field name="aeat303_field"
                 search="[('name', '=','other_passive_subject_tax')]"/>
         </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_48">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_modification')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_49">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_modification')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_50">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','deductible_regularization_base')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','deductible_regularization_tax')]"/>
+        </record>
         <record model="aeat.303.template.mapping"
                 id="aeat_303_mapping_ded_compensations">
             <field name="type_">code</field>
@@ -278,9 +300,19 @@
             <field name="code" ref="account_es.iva_ded_22" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_26_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_22" />
+            <field name="code" ref="account_es.baser_ispc" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_23_val1">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.iva_ded_23" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_27_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_23" />
+            <field name="code" ref="account_es.cuotar_ispc" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_24_val1">
@@ -368,14 +400,34 @@
             <field name="code" ref="account_es.cuotas_ispc" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_ded_compensations_val1">
-            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
-            <field name="code" ref="account_es.cuota_ded_reagp_12" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_77_val2">
             <field name="mapping" ref="aeat_303_mapping_code_77" />
             <field name="code" ref="account_es.iva_aduana_cuota_ingres" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_78_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.bases_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_79_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.cuotas_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_80_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.baser_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_81_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.cuotar_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_ded_compensations_val1">
+            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
+            <field name="code" ref="account_es.cuota_ded_reagp_12" />
         </record>
     </data>
     <data depends="account_es_pyme" grouped="1">
@@ -585,14 +637,44 @@
             <field name="code" ref="account_es_pyme.base_pymes_extra_44" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_pyme_mapping_ded_compensations_val1">
-            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
-            <field name="code" ref="account_es_pyme.cuota_pymes_ded_reagp_12" />
+            id="aeat_303_pyme_mapping_code_45_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_45" />
+            <field name="code" ref="account_es.bases_pymes_ispc" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_46_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_46" />
+            <field name="code" ref="account_es.cuotas_pymes_ispc" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_77_val2">
             <field name="mapping" ref="aeat_303_mapping_code_77" />
             <field name="code" ref="account_es_pyme.iva_pymes_aduana_cuota_ingres" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_78_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.bases_pymes_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_79_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.cuotas_pymes_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_80_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.baser_pymes_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_81_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.cuotar_pymes_ispca" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_ded_compensations_val1">
+            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
+            <field name="code" ref="account_es_pyme.cuota_pymes_ded_reagp_12" />
         </record>
     </data>
 </tryton>
