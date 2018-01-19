@@ -330,19 +330,9 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_ded_26" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_26_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.baser_ispc" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_27_val1">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
             <field name="code" ref="account_es.iva_ded_27" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_27_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.cuotar_ispc" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_28_val1">
