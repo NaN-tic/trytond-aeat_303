@@ -20,8 +20,7 @@ Imports::
 
 Install aeat_303::
 
-    >>> config = activate_modules(['aeat_303', 'account_es', 'account_es_es',
-    ...     'account_invoice'])
+    >>> config = activate_modules(['aeat_303', 'account_es_normal', 'account_invoice'])
 
 Create company::
 
@@ -49,22 +48,22 @@ Create chart of accounts::
     >>> create_chart.execute('create_account')
     >>> receivable, = Account.find([
     ...         ('kind', '=', 'receivable'),
-    ...         ('code', '=', '43000'),
+    ...         ('code', '=', '4300'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> payable, = Account.find([
     ...         ('kind', '=', 'payable'),
-    ...         ('code', '=', '41000'),
+    ...         ('code', '=', '4100'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> revenue, = Account.find([
     ...         ('kind', '=', 'revenue'),
-    ...         ('code', '=', '70000'),
+    ...         ('code', '=', '7000'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> expense, = Account.find([
     ...         ('kind', '=', 'expense'),
-    ...         ('code', '=', '6000'),
+    ...         ('code', '=', '600'),
     ...         ('company', '=', company.id),
     ...         ])
     >>> create_chart.form.account_receivable = receivable
