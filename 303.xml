@@ -395,11 +395,6 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.cuotas_ispc" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
-            id="aeat_303_mapping_code_77_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_77" />
-            <field name="code" ref="account_es.iva_aduana_cuota_ingres" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_78_val1">
             <field name="mapping" ref="aeat_303_mapping_code_48" />
             <field name="code" ref="account_es.bases_ispca" />
