@@ -195,6 +195,26 @@ contains the full copyright notices and license terms. -->
             <field name="aeat303_field"
                 search="[('name', '=','other_passive_subject_tax')]"/>
         </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_48">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_modification')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_49">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_modification')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_50">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','deductible_regularization_base')]"/>
+        </record>
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','deductible_regularization_tax')]"/>
+        </record>
         <record model="aeat.303.template.mapping"
                 id="aeat_303_mapping_ded_compensations">
             <field name="type_">code</field>
