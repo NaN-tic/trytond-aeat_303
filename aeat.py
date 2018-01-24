@@ -623,18 +623,6 @@ class Report(Workflow, ModelSQL, ModelView):
             Transaction().context.get('company'), exception=False)
 
     @staticmethod
-    def default_fiscalyear_code():
-        FiscalYear = Pool().get('account.fiscalyear')
-        fiscalyear = FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
-        if fiscalyear:
-            try:
-                fiscalyear = FiscalYear(fiscalyear)
-                return int(fiscalyear.code)
-            except (ValueError, TypeError):
-                return None
-
-    @staticmethod
     def default_auto_bankruptcy_declaration():
         return ' '
 
