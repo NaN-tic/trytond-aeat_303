@@ -467,8 +467,8 @@ class Report(Workflow, ModelSQL, ModelView):
     company_name = fields.Char('Company Name')
     complementary_declaration = fields.Boolean(
         'Complementary Declaration')
-    previous_declaration_receipt = fields.Numeric(
-        'Previous Declaration Receipt', digits=(16, 2), states={
+    previous_declaration_receipt = fields.Char(
+        'Previous Declaration Receipt', size=13, states={
                 'required': Bool(Eval('complementary_declaration')),
             }, depends=['complementary_declaration'])
     auto_bankruptcy_declaration = fields.Selection([
@@ -551,6 +551,9 @@ class Report(Workflow, ModelSQL, ModelView):
             'complementary_declaration')
         joint_presentation_allowed = table.column_exist(
             'joint_presentation_allowed')
+
+        if table.column_exist('previous_declaration_receipt'):
+            table.alter_type('previous_declaration_receipt', 'character varying')
 
         super(Report, cls).__register__(module_name)
 
