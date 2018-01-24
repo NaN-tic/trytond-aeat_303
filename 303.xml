@@ -551,7 +551,7 @@ contains the full copyright notices and license terms. -->
         -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1_pyme">
             <field name="mapping" ref="aeat_303_mapping_ded_compensations"/>
-            <field name="code" ref="account_es_pyme.cuota_ded_reagp_12_pyme"/>
+            <field name="code" ref="account_es.cuota_ded_reagp_12_pyme"/>
         </record>
     </data>
 
