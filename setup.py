@@ -52,7 +52,6 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus'),
     get_require_version('trytond_account_es'),
-    get_require_version('trytonspain_account_es_es'),
     get_require_version('trytonspain_account_es_normal'),
     get_require_version('trytonspain_account_es_pyme'),
     get_require_version('trytond_account_invoice'),
