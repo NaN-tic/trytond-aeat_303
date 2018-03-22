@@ -14,7 +14,11 @@ except ImportError:
 
 MODULE = 'aeat_303'
 PREFIX = 'trytonspain'
-MODULE2PREFIX = {}
+MODULE2PREFIX = {
+    'account_es_es': 'trytonspain',
+    'account_es_normal': 'trytonspain',
+    'account_es_pyme': 'trytonspain',
+}
 
 
 def read(fname):
@@ -65,6 +69,24 @@ dependency_links = [
     ('hg+https://bitbucket.org/trytonspain/'
         'trytond-account_es@%(branch)s'
         '#egg=trytonspain-account_es-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_es@%(branch)s'
+        '#egg=trytonspain-account_es_es-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_normal@%(branch)s'
+        '#egg=trytonspain-account_es_normal-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('hg+https://bitbucket.org/trytonspain/'
+        'trytond-account_es_pyme@%(branch)s'
+        '#egg=trytonspain-account_es_pyme-%(series)s' % {
             'branch': branch,
             'series': series,
             }),
