@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+          <data depends="account_es_normal_pyme" grouped="1">
+              <!-- normal -->
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_01_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_01"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_01_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_03_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_03"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_03_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_04_val3_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_04"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_04_10_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_06_val3_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_06"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_06_10_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_07_val3_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_07"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_07_21_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_09_val3_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_09"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_09_21_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_10"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_10_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_12_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_12"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_12_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_13_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_13"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_13_14_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_15_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_15"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_15_14_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_16_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_16"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_16_52_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_18_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_18"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_18_52_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_19"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_19_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_20"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_20_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_22"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_22_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_23"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_23_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_24"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_24_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_25"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_25_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_26"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_26_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_22" />
+                  <field name="code" ref="account_es_normal_pyme.baser_ispc_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_27"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_27_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_23" />
+                  <field name="code" ref="account_es_normal_pyme.cuotar_ispc_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_28"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_28_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_29"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_29_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_30"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_30_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_31"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_31_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_32"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_32_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_33"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_33_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_42_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_42"/>
+                  <field name="code" ref="account_es_normal_pyme.base_intra_42_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_43_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_43"/>
+                  <field name="code" ref="account_es_normal_pyme.base_extra_43_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_44"/>
+                  <field name="code" ref="account_es_normal_pyme.base_extra_44_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_45"/>
+                  <field name="code" ref="account_es_normal_pyme.bases_ispc_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_46"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotas_ispc_normal"/>
+              </record>
+              <!--account_es_normal_pyme.cuotas_ispca_normal
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_77"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_aduana_cuota_ingres_normal"/>
+              </record>
+              -->
+              <!--
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_78_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_48"/>
+                  <field name="code" ref="account_es_normal_pyme.bases_ispca_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_79_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_49"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotas_ispca_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_50"/>
+                  <field name="code" ref="account_es_normal_pyme.baser_ispca_normal"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_81_val2_normal">
+                  <field name="mapping" ref="aeat_303_mapping_code_51"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotar_ispca_normal"/>
+              </record>
+              -->
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1_normal">
+                  <field name="mapping" ref="aeat_303_mapping_ded_compensations"/>
+                  <field name="code" ref="account_es_normal_pyme.cuota_ded_reagp_12_normal"/>
+              </record>
+
+              <!-- pyme -->
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_01_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_01"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_01_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_03_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_03"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_03_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_04_val3_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_04"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_04_10_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_06_val3_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_06"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_06_10_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_07_val3_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_07"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_07_21_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_09_val3_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_09"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_09_21_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_10"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_10_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_12_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_12"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_12_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_13_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_13"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_13_14_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_15_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_15"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_15_14_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_16_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_16"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_16_52_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_18_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_18"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_18_52_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_19"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_19_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_20"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_dev_20_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_22"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_22_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_23"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_23_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_24"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_24_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_25"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_25_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_26"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_26_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_26"/>
+                  <field name="code" ref="account_es_normal_pyme.baser_ispc_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_27"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_27_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_27"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotar_ispc_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_28"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_28_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_29"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_29_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_30"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_30_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_31"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_31_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_32"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_32_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_33"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_ded_33_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_42_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_42"/>
+                  <field name="code" ref="account_es_normal_pyme.base_intra_42_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_43_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_43"/>
+                  <field name="code" ref="account_es_normal_pyme.base_extra_43_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_44"/>
+                  <field name="code" ref="account_es_normal_pyme.base_extra_44_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_45"/>
+                  <field name="code" ref="account_es_normal_pyme.bases_ispc_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_46"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotas_ispc_pyme"/>
+              </record>
+              <!--
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_77"/>
+                  <field name="code" ref="account_es_normal_pyme.iva_aduana_cuota_ingres_pyme"/>
+              </record>
+              -->
+              <!--
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_78_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_48"/>
+                  <field name="code" ref="account_es_normal_pyme.bases_ispca_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_79_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_49"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotas_ispca_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_50"/>
+                  <field name="code" ref="account_es_normal_pyme.baser_ispca_pyme"/>
+              </record>
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_81_val2_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_code_51"/>
+                  <field name="code" ref="account_es_normal_pyme.cuotar_ispca_pyme"/>
+              </record>
+              -->
+              <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1_pyme">
+                  <field name="mapping" ref="aeat_303_mapping_ded_compensations"/>
+                  <field name="code" ref="account_es_normal_pyme.cuota_ded_reagp_12_pyme"/>
+              </record>
+          </data>
+    </data>
+</tryton>

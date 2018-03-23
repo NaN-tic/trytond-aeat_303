@@ -20,8 +20,7 @@ Imports::
 
 Install aeat_303::
 
-    >>> config = activate_modules(['aeat_303', 'account_es', 'account_es_normal',
-    ...     'account_invoice'])
+    >>> config = activate_modules(['aeat_303', 'account_es', 'account_invoice'])
 
 Create company::
 
@@ -41,7 +40,7 @@ Create chart of accounts::
     >>> AccountTemplate = Model.get('account.account.template')
     >>> Account = Model.get('account.account')
     >>> account_template, = AccountTemplate.find([('parent', '=', None),
-    ...     ('name', 'ilike', 'Plan General Contable%')], limit=1)
+    ...     ('name', 'ilike', 'Plan General Contable%')])
     >>> create_chart = Wizard('account.create_chart')
     >>> create_chart.execute('account')
     >>> create_chart.form.account_template = account_template
@@ -51,22 +50,22 @@ Create chart of accounts::
     ...         ('kind', '=', 'receivable'),
     ...         ('code', '=', '4300'),
     ...         ('company', '=', company.id),
-    ...         ])
+    ...         ], limit=1)
     >>> payable, = Account.find([
     ...         ('kind', '=', 'payable'),
     ...         ('code', '=', '4100'),
     ...         ('company', '=', company.id),
-    ...         ])
+    ...         ], limit=1)
     >>> revenue, = Account.find([
     ...         ('kind', '=', 'revenue'),
     ...         ('code', '=', '7000'),
     ...         ('company', '=', company.id),
-    ...         ])
+    ...         ], limit=1)
     >>> expense, = Account.find([
     ...         ('kind', '=', 'expense'),
     ...         ('code', '=', '600'),
     ...         ('company', '=', company.id),
-    ...         ])
+    ...         ], limit=1)
     >>> create_chart.form.account_receivable = receivable
     >>> create_chart.form.account_payable = payable
     >>> create_chart.execute('create_properties')
