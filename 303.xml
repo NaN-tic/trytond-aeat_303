@@ -375,6 +375,11 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.base_intra_42" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_mapping_code_42_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_42" />
+            <field name="code" ref="account_es.base_intra_serv_42" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_mapping_code_43_val1">
             <field name="mapping" ref="aeat_303_mapping_code_43" />
             <field name="code" ref="account_es.base_extra_43" />
@@ -560,6 +565,11 @@ contains the full copyright notices and license terms. -->
             id="aeat_303_pyme_mapping_code_42_val1">
             <field name="mapping" ref="aeat_303_mapping_code_42" />
             <field name="code" ref="account_es_pyme.base_pymes_intra_42" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template"
+            id="aeat_303_pyme_mapping_code_42_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_42" />
+            <field name="code" ref="account_es_pyme.base_pymes_intra_serv_42" />
         </record>
         <record model="aeat.303.mapping-account.tax.code.template"
             id="aeat_303_pyme_mapping_code_43_val1">
