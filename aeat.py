@@ -469,6 +469,20 @@ class Report(Workflow, ModelSQL, ModelView):
             "period exonerated from the Annual Declaration-VAT summary. "
             "(Exempt from presenting the model 390 and with volume of "
             "operations zero).")
+    passive_subject_foral_administration = fields.Selection([
+            ('0', 'January month (01)'),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Passive Subject on a Foral Administration', help="Passive "
+            "Subject that tribute exclusively on a Foral Administration with "
+            "an import TAX paid by Aduana pending entry.")
+    taken_vat_book_to_aeat = fields.Selection([
+            ('0', 'January month (01)'),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Taken the VAT Registration Book to AEAT', help="Have you "
+            "voluntarily taken the VAT Registration Books through the AEAT's "
+            "Electronic Office during the fiscal year?")
     company_vat = fields.Char('VAT')
     company_name = fields.Char('Company Name')
     complementary_declaration = fields.Boolean(
@@ -694,6 +708,14 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def default_exonerated_mod390(cls):
         return '0'
+
+    @classmethod
+    def default_passive_subject_foral_administration(cls):
+        return '2'
+
+    @classmethod
+    def default_taken_vat_book_to_aeat(cls):
+        return '2'
 
     @classmethod
     def default_info_territory_alava(cls):

@@ -3,11 +3,14 @@
 contains the full copyright notices and license terms. -->
 <form col="6">
     <label name="company"/>
-    <field name="company"/>
+    <field name="company" colspan="2"/>
     <label name="regime_type"/>
-    <field name="regime_type"/>
+    <field name="regime_type" colspan="2"/>
+
     <label name="type"/>
-    <field name="type"/>
+    <field name="type" colspan="2"/>
+    <label name="bank_account"/>
+    <field name="bank_account" colspan="2"/>
 
     <label name="fiscalyear"/>
     <field name="fiscalyear"/>
@@ -220,9 +223,11 @@ contains the full copyright notices and license terms. -->
     <label name="exonerated_mod390"/>
     <field name="exonerated_mod390"/>
     <label name="without_activity"/>
-    <field name="without_activity" colspan="2"/>
-    <label name="bank_account"/>
-    <field name="bank_account" colspan="2"/>
+    <field name="without_activity"/>
+    <label name="passive_subject_foral_administration"/>
+    <field name="passive_subject_foral_administration"/>
+    <label name="taken_vat_book_to_aeat"/>
+    <field name="taken_vat_book_to_aeat"/>
 
     <group id="state" colspan="3" col="6">
         <label name="state"/>
