@@ -374,6 +374,14 @@ msgctxt "field:aeat.303.report,exonerated_mod390:"
 msgid "Exonerated Model 390"
 msgstr "Exonerados de presentar el model 390"
 
+msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
+msgid "Passive Subject on a Foral Administration"
+msgstr "Sujeto pasivo a una Administración Foral"
+
+msgctxt "field:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "Taken the VAT Registration Book to AEAT"
+msgstr "Llevar los Libros registro del IVA a una Sede"
+
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
 msgstr "Exportaciones [60]"
@@ -637,6 +645,22 @@ msgstr ""
 "Declaración-resumen anual del IVA. (Exonerado de presentar el modelo 390 y "
 "con volumen de operaciones cero)."
 
+msgctxt "help:aeat.303.report,passive_subject_foral_administration:"
+msgid ""
+"Passive Subject that tribute exclusively on a Foral Administration with an "
+"import TAX paid by Aduana pending entry."
+msgstr ""
+"Sujeto pasivo que tributa exclusivamente a una Administración tributaria Foral"
+" con IVA a la importación liquidado por la Aduana pendiente de ingreso"
+
+msgctxt "help:aeat.303.report,taken_vat_book_to_aeat:"
+msgid ""
+"Have you voluntarily taken the VAT Registration Books through the AEAT's "
+"Electronic Office during the fiscal year?"
+msgstr ""
+"¿Ha llevado voluntariamente los Libros registro del IVA a través de la Sede "
+"electrónica de la AEAT durante el ejercicio?"
+
 msgctxt "help:aeat.303.report,result_tax_regularitzation:"
 msgid ""
 "Only fill if you have done the 952 model. To Fill with the tax to recover."
@@ -721,6 +745,31 @@ msgstr "No"
 msgctxt "selection:aeat.303.report,exonerated_mod390:"
 msgid "Yes"
 msgstr "Si"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "January month (01)"
+msgstr "Para el mes de enero (01)"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "Yes"
+msgstr "Si"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "No"
+msgstr "No"
+
+msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "January month (01)"
+msgstr "Para el mes de enero (01)"
+
+msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "Yes"
+msgstr "Si"
+
+msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "No"
+msgstr "No"
+
 
 msgctxt "selection:aeat.303.report,period:"
 msgid "April"
