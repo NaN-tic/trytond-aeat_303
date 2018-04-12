@@ -892,7 +892,7 @@ class Report(Workflow, ModelSQL, ModelView):
             with Transaction().set_context(periods=periods):
                 for tax in TaxCode.browse(mapping.keys()):
                     value = getattr(report, mapping[tax.id])
-                    setattr(report, mapping[tax.id], value + tax.sum)
+                    setattr(report, mapping[tax.id], value + tax.amount)
             report.save()
 
         cls.write(reports, {
