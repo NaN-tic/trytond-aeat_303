@@ -30,7 +30,7 @@ _Z = Decimal("0.0")
 
 def remove_accents(unicode_string):
     str_ = str if sys.version_info < (3, 0) else bytes
-    unicode_ = unicode if sys.version_info < (3, 0) else str
+    unicode_ = str if sys.version_info < (3, 0) else str
     if isinstance(unicode_string, str_):
         unicode_string_bak = unicode_string
         try:
@@ -47,7 +47,7 @@ def remove_accents(unicode_string):
     unicode_string_nfd = ''.join(
         (c for c in unicodedata.normalize('NFD', unicode_string)
             if (unicodedata.category(c) != 'Mn'
-                or c in (u'\u0327', u'\u0303'))  # Avoids normalize ç and ñ
+                or c in ('\\u0327', '\\u0303'))  # Avoids normalize ç and ñ
             ))
     # It converts nfd to nfc to allow unicode.decode()
     return unicodedata.normalize('NFC', unicode_string_nfd)
@@ -137,8 +137,7 @@ class TemplateTaxCodeMapping(ModelSQL):
         return res
 
 
-class UpdateChart:
-    __metaclass__ = PoolMeta
+class UpdateChart(metaclass=PoolMeta):
     __name__ = 'account.update_chart'
 
     def transition_update(self):
@@ -171,8 +170,7 @@ class UpdateChart:
         return ret
 
 
-class CreateChart:
-    __metaclass__ = PoolMeta
+class CreateChart(metaclass=PoolMeta):
     __name__ = 'account.create_chart'
 
     def transition_create_account(self):
@@ -885,7 +883,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('end_date', '<=', datetime.date(year, end_month, lday))
                     ])]
 
-            for field, value in fixed.iteritems():
+            for field, value in fixed.items():
                 setattr(report, field, value)
             for field in mapping.values():
                 setattr(report, field, Decimal('0.0'))
@@ -951,7 +949,7 @@ class Report(Workflow, ModelSQL, ModelView):
         data = retrofix_write([header, record, additional_record, footer],
             separator='')
         data = remove_accents(data).upper()
-        if isinstance(data, unicode):
+        if isinstance(data, str):
             data = data.encode('iso-8859-1')
         self.file_ = self.__class__.file_.cast(data)
         self.save()
