@@ -79,10 +79,31 @@ Create party::
     >>> identifier.code='ES00000000T'
     >>> party.save()
 
+Create account category::
+
+    >>> Tax = Model.get('account.tax')
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> tax, = Tax.find([
+    ...     ('group.kind', '=', 'sale'),
+    ...     ('name', '=', 'IVA 21%'),
+    ...     ('parent', '=', None),
+    ...     ], limit = 1)
+    >>> account_category.customer_taxes.append(tax)
+    >>> tax, = Tax.find([
+    ...     ('group.kind', '=', 'purchase'),
+    ...     ('name', '=', '21% IVA Soportado (operaciones corrientes)'),
+    ...     ('parent', '=', None),
+    ...     ], limit = 1)
+    >>> account_category.supplier_taxes.append(tax)
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
-    >>> Tax = Model.get('account.tax')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
@@ -91,20 +112,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('40')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
-    >>> tax, = Tax.find([
-    ...     ('group.kind', '=', 'sale'),
-    ...     ('name', '=', 'IVA 21%'),
-    ...     ('parent', '=', None),
-    ...     ], limit = 1)
-    >>> template.customer_taxes.append(tax)
-    >>> tax, = Tax.find([
-    ...     ('group.kind', '=', 'purchase'),
-    ...     ('name', '=', '21% IVA Soportado (operaciones corrientes)'),
-    ...     ('parent', '=', None),
-    ...     ], limit = 1)
-    >>> template.supplier_taxes.append(tax)
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('25')
     >>> template.save()
