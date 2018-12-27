@@ -341,8 +341,6 @@ class Report(Workflow, ModelSQL, ModelView):
         'Intracommunity Adquisitions Base', digits=(16, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
         'Intracommunity Adquisitions Tax', digits=(16, 2))
-    intracommunity_adquisitions_tax = fields.Numeric(
-        'Intracommunity Adquisitions Tax', digits=(16, 2))
     other_passive_subject_base = fields.Numeric(
         'Other Passive Subject Adquisitions Base', digits=(16, 2))
     other_passive_subject_tax = fields.Numeric(
