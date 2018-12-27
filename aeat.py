@@ -443,6 +443,9 @@ class Report(Workflow, ModelSQL, ModelView):
         'Special Regime Operations on Travel Agency', digits=(16,2))
     special_info_delivery_investment_domestic_operations = fields.Numeric(
         'Delivery of Investment Domestic Operations', digits=(16,2))
+    information_taxation_reason_territory = fields.Numeric(
+        'Information on taxation by reason of territorya: Commo territory',
+        digits=(3, 2))
     without_activity = fields.Boolean('Without Activity')
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party'),
@@ -459,6 +462,17 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Exonerated Model 390', help="Exclusively to fill in the last "
+            "period exonerated from the Annual Declaration-VAT summary. "
+            "(Exempt from presenting the model 390 and with volume of "
+            "operations zero).")
+    annual_operation_volume = fields.Selection([
+            ('0', ''),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Exist operations annual volume (art. 121 LIVA)', states={
+                'readonly': Eval('exonerated_mod390') != '1',
+                'required': Eval('exonerated_mod390') == '1',
+                }, help="Exclusively to fill in the last "
             "period exonerated from the Annual Declaration-VAT summary. "
             "(Exempt from presenting the model 390 and with volume of "
             "operations zero).")
@@ -714,6 +728,10 @@ class Report(Workflow, ModelSQL, ModelView):
         return '0'
 
     @classmethod
+    def default_annual_operation_volume(cls):
+        return '0'
+
+    @classmethod
     def default_passive_subject_foral_administration(cls):
         return '2'
 
@@ -759,6 +777,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def default_special_info_delivery_investment_domestic_operations(cls):
+        return 0
+
+    @classmethod
+    def default_information_taxation_reason_territory(cls):
         return 0
 
     @fields.depends('company')

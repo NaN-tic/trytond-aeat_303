@@ -214,6 +214,8 @@ contains the full copyright notices and license terms. -->
     <field name="special_info_travel_agency"/>
     <label name="special_info_delivery_investment_domestic_operations" colspan="5"/>
     <field name="special_info_delivery_investment_domestic_operations"/>
+    <label name="information_taxation_reason_territory" colspan="5"/>
+    <field name="information_taxation_reason_territory"/>
 
     <separator id="other_sep" string="Other" colspan="6"/>
     <label name="complementary_declaration"/>
@@ -222,6 +224,8 @@ contains the full copyright notices and license terms. -->
     <field name="previous_declaration_receipt"/>
     <label name="exonerated_mod390"/>
     <field name="exonerated_mod390"/>
+    <label name="annual_operation_volume"/>
+    <field name="annual_operation_volume"/>
     <label name="without_activity"/>
     <field name="without_activity"/>
     <label name="passive_subject_foral_administration"/>
