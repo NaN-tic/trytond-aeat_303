@@ -547,6 +547,11 @@ msgctxt "field:aeat.303.report,special_info_travel_agency:"
 msgid "Special Regime Operations on Travel Agency"
 msgstr "Operaciones en régimen especial de Agencias de Viajes [98]"
 
+msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
+msgid "Information on taxation by reason of territorya: Commo territory"
+msgstr ""
+"Información de la tributación por razón de territorio: Territorio común [107]"
+
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
 msgstr "Prorrata especial"
