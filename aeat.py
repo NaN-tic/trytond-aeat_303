@@ -473,14 +473,12 @@ class Report(Workflow, ModelSQL, ModelView):
             "(Exempt from presenting the model 390 and with volume of "
             "operations zero).")
     passive_subject_foral_administration = fields.Selection([
-            ('0', 'January month (01)'),
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Passive Subject on a Foral Administration', help="Passive "
             "Subject that tribute exclusively on a Foral Administration with "
             "an import TAX paid by Aduana pending entry.")
     taken_vat_book_to_aeat = fields.Selection([
-            ('0', 'January month (01)'),
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Taken the VAT Registration Book to AEAT', help="Have you "
