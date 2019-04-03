@@ -10,6 +10,8 @@ from retrofix.record import Record, write as retrofix_write
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 from trytond import backend
 from sql import Literal
@@ -523,12 +525,6 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_currency': ('Currency in AEAT 303 report "%s" must be'
-                    ' Euro.'),
-                'no_config': 'No configuration found for AEAT303. Please, '
-                    'update your chart of accounts.'
-                })
         cls._buttons.update({
                 'draft': {
                     'invisible': ~Eval('state').in_(['calculated',
@@ -860,7 +856,9 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_euro(self):
         if self.currency.code != 'EUR':
-            self.raise_user_error('invalid_currency', self.rec_name)
+            raise UserError(gettext('aeat_303.msg_invalid_currency',
+                name=self.rec_name,
+                ))
 
     @classmethod
     @ModelView.button
@@ -880,7 +878,7 @@ class Report(Workflow, ModelSQL, ModelView):
             fixed[mapp.aeat303_field.name] = mapp.number
 
         if len(fixed) == 0:
-            cls.raise_user_error('no_config')
+            raise UserError(gettext('aeat_303.no_config'))
 
         for report in reports:
             fiscalyear = report.fiscalyear

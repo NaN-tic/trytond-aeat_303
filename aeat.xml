@@ -129,6 +129,7 @@ contains the full copyright notices and license terms. -->
             name="AEAT 303 Mapping"/>
 
         <record model="ir.rule.group" id="rule_group_aeat303">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'aeat.303.report')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -140,6 +141,7 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat303_mapping">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'aeat.303.mapping')]"/>
             <field name="global_p" eval="True"/>
         </record>
