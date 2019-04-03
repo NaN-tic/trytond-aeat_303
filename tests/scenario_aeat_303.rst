@@ -47,22 +47,22 @@ Create chart of accounts::
     >>> create_chart.form.company = company
     >>> create_chart.execute('create_account')
     >>> receivable, = Account.find([
-    ...         ('kind', '=', 'receivable'),
+    ...         ('type.receivable', '=', True),
     ...         ('code', '=', '4300'),
     ...         ('company', '=', company.id),
     ...         ], limit=1)
     >>> payable, = Account.find([
-    ...         ('kind', '=', 'payable'),
+    ...         ('type.payable', '=', True),
     ...         ('code', '=', '4100'),
     ...         ('company', '=', company.id),
     ...         ], limit=1)
     >>> revenue, = Account.find([
-    ...         ('kind', '=', 'revenue'),
+    ...         ('type.revenue', '=', True),
     ...         ('code', '=', '7000'),
     ...         ('company', '=', company.id),
     ...         ], limit=1)
     >>> expense, = Account.find([
-    ...         ('kind', '=', 'expense'),
+    ...         ('type.expense', '=', True),
     ...         ('code', '=', '600'),
     ...         ('company', '=', company.id),
     ...         ], limit=1)
