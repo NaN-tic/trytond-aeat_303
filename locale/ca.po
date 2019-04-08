@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:aeat.303.mapping:"
-msgid "Field must be unique."
-msgstr "El camp ha de ser únic."
-
-msgctxt "error:aeat.303.template.mapping:"
-msgid "Field must be unique."
-msgstr "El camp ha de ser únic."
-
-msgctxt "error:aeat.303.template.mapping:"
-msgid "unique_field"
-msgstr ""
-
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Camp"
@@ -43,7 +31,7 @@ msgid "Number"
 msgstr "Número"
 
 msgctxt "field:aeat.303.mapping,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.303.mapping,template:"
@@ -83,7 +71,7 @@ msgid "Mapping"
 msgstr "Codi d'impost"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,write_date:"
@@ -115,7 +103,7 @@ msgid "Mapping"
 msgstr "Codi d'impost"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.303.mapping-account.tax.code.template,write_date:"
@@ -225,6 +213,10 @@ msgstr "IVA d'Aduana pendent [77]"
 msgctxt "field:aeat.303.report,amount_to_compensate:"
 msgid "Amount To Compensate"
 msgstr "Import a compensar"
+
+msgctxt "field:aeat.303.report,annual_operation_volume:"
+msgid "Exist operations annual volume (art. 121 LIVA)"
+msgstr "Volum anual d'operacions existents (art. 121 LIVA)."
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
 msgid "Auto Bankruptcy Date"
@@ -356,14 +348,6 @@ msgctxt "field:aeat.303.report,exonerated_mod390:"
 msgid "Exonerated Model 390"
 msgstr "Exonerats de presentar el model 390"
 
-msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
-msgid "Passive Subject on a Foral Administration"
-msgstr "Subjecte passiu a una Administració Foral"
-
-msgctxt "field:aeat.303.report,taken_vat_book_to_aeat:"
-msgid "Taken the VAT Registration Book to AEAT"
-msgstr "Portar els llibres registres de l'IVA a una Seu"
-
 msgctxt "field:aeat.303.report,exports:"
 msgid "Exports"
 msgstr "Exportacions [60]"
@@ -371,6 +355,10 @@ msgstr "Exportacions [60]"
 msgctxt "field:aeat.303.report,file_:"
 msgid "File"
 msgstr "Fitxer"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "Nom fitxer"
 
 msgctxt "field:aeat.303.report,fiscalyear:"
 msgid "Fiscal Year"
@@ -403,6 +391,11 @@ msgstr "Informació de la tributació per raó de territori: Navarra [92]"
 msgctxt "field:aeat.303.report,info_territory_vizcaya:"
 msgid "Taxation Information by Territory: Vizcaya"
 msgstr "Informació de la tributació per raó de territori: Vizcaya [91]"
+
+msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
+msgid "Information on taxation by reason of territorya: Commo territory"
+msgstr ""
+"Informació de la tributació per raó de territori: Territori común [107]"
 
 msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
 msgid "Intracommunity Adquisitions Base"
@@ -446,6 +439,10 @@ msgctxt "field:aeat.303.report,other_passive_subject_tax:"
 msgid "Other Passive Subject Adquisitions Tax"
 msgstr "Quota altres operacions amb subjecte passiu [13]"
 
+msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
+msgid "Passive Subject on a Foral Administration"
+msgstr "Subjecte passiu a una Administració Foral"
+
 msgctxt "field:aeat.303.report,period:"
 msgid "Period"
 msgstr "Període"
@@ -459,7 +456,7 @@ msgid "Previous Period Amount To Compensate"
 msgstr "Import a compensar períodes anteriors [67]"
 
 msgctxt "field:aeat.303.report,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.303.report,recc:"
@@ -527,11 +524,6 @@ msgctxt "field:aeat.303.report,special_info_travel_agency:"
 msgid "Special Regime Operations on Travel Agency"
 msgstr "Operacions en règim especial d'Agències de Viatges [98]"
 
-msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
-msgid "Information on taxation by reason of territorya: Commo territory"
-msgstr ""
-"Informació de la tributació per raó de territori: Territori común [107]"
-
 msgctxt "field:aeat.303.report,special_prorate:"
 msgid "Special prorate"
 msgstr "Prorrata especial"
@@ -555,6 +547,10 @@ msgstr "Percentatge atribuïble a l'administració de l'estat [65]"
 msgctxt "field:aeat.303.report,sum_results:"
 msgid "Sum of Results"
 msgstr "Suma de resultats [64]"
+
+msgctxt "field:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "Taken the VAT Registration Book to AEAT"
+msgstr "Portar els llibres registres de l'IVA a una Seu"
 
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
@@ -601,7 +597,7 @@ msgid "Number"
 msgstr "Número"
 
 msgctxt "field:aeat.303.template.mapping,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:aeat.303.template.mapping,type_:"
@@ -620,6 +616,16 @@ msgctxt "help:aeat.303.report,aduana_tax_pending:"
 msgid "Import VAT paid by Aduana pending entry"
 msgstr "IVA a la importació liquidat per l'Aduana pendent d'ingrés."
 
+msgctxt "help:aeat.303.report,annual_operation_volume:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr ""
+"Exclusivament a cumplimentar en l'últim període exonerats de la Declaració-"
+"resum anual de l'IVA. (Exonerat de presentar el model 390 i amb volum "
+"d'operacions zero)."
+
 msgctxt "help:aeat.303.report,exonerated_mod390:"
 msgid ""
 "Exclusively to fill in the last period exonerated from the Annual "
@@ -635,8 +641,13 @@ msgid ""
 "Passive Subject that tribute exclusively on a Foral Administration with an "
 "import TAX paid by Aduana pending entry."
 msgstr ""
-"Sujeto pasivo que tributa exclusivamente a una Administración tributaria Foral"
-" con IVA a la importación liquidado por la Aduana pendiente de ingreso"
+"Sujeto pasivo que tributa exclusivamente a una Administración tributaria "
+"Foral con IVA a la importación liquidado por la Aduana pendiente de ingreso"
+
+msgctxt "help:aeat.303.report,result_tax_regularitzation:"
+msgid ""
+"Only fill if you have done the 952 model. To Fill with the tax to recover."
+msgstr "Només omplir si has fet el model 952 amb la quota a recuperar."
 
 msgctxt "help:aeat.303.report,taken_vat_book_to_aeat:"
 msgid ""
@@ -645,11 +656,6 @@ msgid ""
 msgstr ""
 "¿Ha llevado voluntariamente los Libros registro del IVA a través de la Sede "
 "electrónica de la AEAT durante el ejercicio?"
-
-msgctxt "help:aeat.303.report,result_tax_regularitzation:"
-msgid ""
-"Only fill if you have done the 952 model. To Fill with the tax to recover."
-msgstr "Només omplir si has fet el model 952 amb la quota a recuperar."
 
 msgctxt "model:aeat.303.mapping,name:"
 msgid "AEAT 303 TaxCode Mapping"
@@ -698,6 +704,30 @@ msgstr ""
 "No s'ha trobat la configuració del model AEAT 303. Si us plau, actualitzeu "
 "el vostre pla comptable."
 
+msgctxt "model:ir.model.button,string:aeat_303_report_calculate_button"
+msgid "Calculate"
+msgstr "Calcula"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·lat"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_mapping"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
 msgctxt "model:ir.ui.menu,name:menu_aeat_303_mapping"
 msgid "AEAT 303 Mapping"
 msgstr "Mapeig AEAT 303"
@@ -718,6 +748,14 @@ msgctxt "selection:aeat.303.mapping,type_:"
 msgid "Numeric"
 msgstr "Numèric"
 
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "No"
+msgstr "No"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "Yes"
+msgstr "Si"
+
 msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "After Bankruptcy Proceeding"
 msgstr "Després de procediment de fallida"
@@ -731,10 +769,6 @@ msgid "No"
 msgstr "No"
 
 msgctxt "selection:aeat.303.report,exonerated_mod390:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:aeat.303.report,exonerated_mod390:"
 msgid "No"
 msgstr "No"
 
@@ -743,28 +777,12 @@ msgid "Yes"
 msgstr "Si"
 
 msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
-msgid "January month (01)"
-msgstr "Per el mes de gener (01)"
+msgid "No"
+msgstr "No"
 
 msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
 msgid "Yes"
 msgstr "Si"
-
-msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
-msgid "No"
-msgstr "No"
-
-msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
-msgid "January month (01)"
-msgstr "Per el mes de gener (01)"
-
-msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
-msgid "Yes"
-msgstr "Si"
-
-msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
-msgid "No"
-msgstr "No"
 
 msgctxt "selection:aeat.303.report,period:"
 msgid "April"
@@ -857,6 +875,14 @@ msgstr "Realitzat"
 msgctxt "selection:aeat.303.report,state:"
 msgid "Draft"
 msgstr "Esborrany"
+
+msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "No"
+msgstr "No"
+
+msgctxt "selection:aeat.303.report,taken_vat_book_to_aeat:"
+msgid "Yes"
+msgstr "Si"
 
 msgctxt "selection:aeat.303.report,type:"
 msgid "Application for compensation"
