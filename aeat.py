@@ -578,9 +578,6 @@ class Report(Workflow, ModelSQL, ModelView):
         joint_presentation_allowed = table.column_exist(
             'joint_presentation_allowed')
 
-        if table.column_exist('previous_declaration_receipt'):
-            table.alter_type('previous_declaration_receipt', 'character varying')
-
         super(Report, cls).__register__(module_name)
 
         # Migration to model 303 of 2015
