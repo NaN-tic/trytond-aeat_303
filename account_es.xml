@@ -3,197 +3,321 @@
 contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="account_es" grouped="1">
+        <!-- 303 box - Code Tax related -->
+        <!-- [01] - Régimen general IVA Devengado. Base Imponible 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_01_val1">
             <field name="mapping" ref="aeat_303_mapping_code_01" />
             <field name="code" ref="account_es.iva_dev_01" />
         </record>
+        <!-- [03] - Régimen general IVA Devengado. Cuota 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_03_val1">
             <field name="mapping" ref="aeat_303_mapping_code_03" />
             <field name="code" ref="account_es.iva_dev_03" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_04_val3">
+        <!-- [04] - Régimen general IVA Devengado. Base Imponible 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_04_val1">
             <field name="mapping" ref="aeat_303_mapping_code_04" />
             <field name="code" ref="account_es.iva_dev_04_10" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_06_val3">
+        <!-- [06] - Régimen general IVA Devengado. Cuota 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_06_val1">
             <field name="mapping" ref="aeat_303_mapping_code_06" />
             <field name="code" ref="account_es.iva_dev_06_10" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_07_val3">
+        <!-- [07] - Régimen general IVA Devengado. Base Imponible 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_07_val1">
             <field name="mapping" ref="aeat_303_mapping_code_07" />
             <field name="code" ref="account_es.iva_dev_07_21" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_09_val3">
+        <!-- [09] - Régimen general IVA Devengado. Cuota 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_09_val1">
             <field name="mapping" ref="aeat_303_mapping_code_09" />
             <field name="code" ref="account_es.iva_dev_09_21" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_10" />
-            <field name="code" ref="account_es.iva_dev_10" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_12_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_12" />
-            <field name="code" ref="account_es.iva_dev_12" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_13_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_13" />
-            <field name="code" ref="account_es.iva_dev_13_14" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_15_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_15" />
-            <field name="code" ref="account_es.iva_dev_15_14" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_16_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_16" />
-            <field name="code" ref="account_es.iva_dev_16_52" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_18_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_18" />
-            <field name="code" ref="account_es.iva_dev_18_52" />
-        </record>
+        <!-- [10] - Adquisiciones intracomunitarias. Base Imponible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val1">
             <field name="mapping" ref="aeat_303_mapping_code_19" />
             <field name="code" ref="account_es.iva_dev_19" />
         </record>
+        <!-- [11] - Adquisiciones intracomunitarias. Cuota -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val1">
             <field name="mapping" ref="aeat_303_mapping_code_20" />
             <field name="code" ref="account_es.iva_dev_20" />
         </record>
+        <!-- [12] - Base soportada Inversión del sujeto pasivo compras -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_45" />
+            <field name="code" ref="account_es.baser_ispc" />
+        </record>
+        <!-- [12] - Base repercutida Inversión del sujeto pasivo compras bienes inversión -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_45" />
+            <field name="code" ref="account_es.baser_ispc_bi" />
+        </record>
+        <!-- [13] - Cuota repercutida Inversión del sujeto pasivo compras -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_46" />
+            <field name="code" ref="account_es.cuotar_ispc" />
+        </record>
+        <!-- [13] - Cuota repercutida Inversión del sujeto pasivo compras bienes inversión -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_46" />
+            <field name="code" ref="account_es.cuotar_ispc_bi" />
+        </record>
+        <!-- [14] - Régimen general IVA Devengado (abonos). Base Imponible 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.iva_dev_01_cn" />
+        </record>
+        <!-- [14] - Régimen general IVA Devengado (abonos). Base Imponible 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.iva_dev_04_10_cn" />
+        </record>
+        <!-- [14] - Régimen general IVA Devengado (abonos). Base Imponible 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.iva_dev_07_21_cn" />
+        </record>
+        <!-- [14] - Base soportada Inversión del sujeto pasivo compras (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.bases_ispca" />
+        </record>
+        <!-- [14] - Base soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.bases_ispca_bi" />
+        </record>
+        <!-- [14] - Adquisiciones intracomunitarias (abonos). Base Imponible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_48" />
+            <field name="code" ref="account_es.iva_dev_19_cn" />
+        </record>
+        <!-- [15] - Régimen general IVA Devengado (abono). Cuota 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.iva_dev_03_cn" />
+        </record>
+        <!-- [15] - Régimen general IVA Devengado (abono). Cuota 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.iva_dev_06_10_cn" />
+        </record>
+        <!-- [15] - Régimen general IVA Devengado (abono). Cuota 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.iva_dev_09_21_cn" />
+        </record>
+        <!-- [15] - Cuota soportada Inversión del sujeto pasivo compras (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.cuotas_ispca" />
+        </record>
+        <!-- [15] - Cuota soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.cuotas_ispca_bi" />
+        </record>
+        <!-- [15] - Adquisiciones intracomunitarias (abonos). Cuota -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.iva_dev_20_cn" />
+        </record>
+        <!-- [16] - Recargo Equivalencia Base Imponible 0.5% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_10" />
+            <field name="code" ref="account_es.iva_dev_10" />
+        </record>
+        <!-- [18] - Recargo Equivalencia. Cuota 0.5%-->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_12_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_12" />
+            <field name="code" ref="account_es.iva_dev_12" />
+        </record>
+        <!-- [19] - Recargo Equivalencia Base Imponible 1.4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_13_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_13" />
+            <field name="code" ref="account_es.iva_dev_13_14" />
+        </record>
+        <!-- [21] - Recargo Equivalencia. Cuota 1.4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_15_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_15" />
+            <field name="code" ref="account_es.iva_dev_15_14" />
+        </record>
+        <!-- [22] - Recargo Equivalencia Base Imponible 5.2% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_16_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_16" />
+            <field name="code" ref="account_es.iva_dev_16_52" />
+        </record>
+        <!-- [24] - Recargo Equivalencia. Cuota 5.2% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_18_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_18" />
+            <field name="code" ref="account_es.iva_dev_18_52" />
+        </record>
+        <!-- [28] - Base operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val1">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.iva_ded_22" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2">
+        <!-- [28] - Base soportada Inversión del sujeto pasivo compras -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val2">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.baser_ispc" />
+            <field name="code" ref="account_es.bases_ispc" />
         </record>
+        <!-- [29] - Cuotas soportadas operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.iva_ded_23" />
         </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val2">
+        <!-- [29] - Cuota soportada Inversión del sujeto pasivo compras -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val2">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.cuotar_ispc" />
+            <field name="code" ref="account_es.cuotas_ispc" />
         </record>
+        <!-- [30] - Base operaciones interiores bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1">
             <field name="mapping" ref="aeat_303_mapping_code_24" />
             <field name="code" ref="account_es.iva_ded_24" />
         </record>
+        <!-- [30] - Base soportada Inversión del sujeto pasivo compras bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val2">
             <field name="mapping" ref="aeat_303_mapping_code_24" />
-            <field name="code" ref="account_es.baser_ispc_bi" />
+            <field name="code" ref="account_es.bases_ispc_bi" />
         </record>
+        <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val1">
             <field name="mapping" ref="aeat_303_mapping_code_25" />
             <field name="code" ref="account_es.iva_ded_25" />
         </record>
+        <!-- [31] - Cuota soportada Inversión del sujeto pasivo compras bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val2">
             <field name="mapping" ref="aeat_303_mapping_code_25" />
-            <field name="code" ref="account_es.cuotar_ispc_bi" />
+            <field name="code" ref="account_es.cuotas_ispc_bi" />
         </record>
+        <!-- [32] - Base importaciones bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1">
             <field name="mapping" ref="aeat_303_mapping_code_26" />
             <field name="code" ref="account_es.iva_ded_26" />
         </record>
+        <!-- [33] -Cuotas devengadas importaciones bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val1">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
             <field name="code" ref="account_es.iva_ded_27" />
         </record>
+        <!-- [34]- Base importaciones bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1">
             <field name="mapping" ref="aeat_303_mapping_code_28" />
             <field name="code" ref="account_es.iva_ded_28" />
         </record>
+        <!-- [35] - Cuotas devengadas importaciones bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val1">
             <field name="mapping" ref="aeat_303_mapping_code_29" />
             <field name="code" ref="account_es.iva_ded_29" />
         </record>
+        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes-->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1">
             <field name="mapping" ref="aeat_303_mapping_code_30" />
             <field name="code" ref="account_es.iva_ded_30" />
         </record>
+        <!-- [37] - En adquisiciones intracomunitarias bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
             <field name="code" ref="account_es.iva_ded_31" />
         </record>
+        <!-- [38] - Base adquisiciones intracomunitarias bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1">
             <field name="mapping" ref="aeat_303_mapping_code_32" />
             <field name="code" ref="account_es.iva_ded_32" />
         </record>
+        <!-- [39] - En adquisiciones intracomunitarias bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val1">
             <field name="mapping" ref="aeat_303_mapping_code_33" />
             <field name="code" ref="account_es.iva_ded_33" />
         </record>
+        <!-- [40] - Base operaciones interiores corrientes (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.iva_ded_22_cn" />
+        </record>
+        <!-- [40] - Base operaciones interiores bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.iva_ded_24_cn" />
+        </record>
+        <!-- [40] - Base adquisiciones intracomunitarias bienes corrientes (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.iva_ded_30_cn" />
+        </record>
+        <!-- [40] - Base adquisiciones intracomunitarias bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.iva_ded_32_cn" />
+        </record>
+        <!-- [40] - Base soportada Inversión del sujeto pasivo compras (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.bases_ispca" />
+        </record>
+        <!-- [40] - Base soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.bases_ispca_bi" />
+        </record>
+        <!-- [41] - Cuotas soportadas operaciones interiores corrientes (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.iva_ded_23_cn" />
+        </record>
+        <!-- [41] - Cuotas soportadas operaciones interiores bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.iva_ded_25_cn" />
+        </record>
+        <!-- [41] - En adquisiciones intracomunitarias bienes corrientes (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.iva_ded_31_cn" />
+        </record>
+        <!-- [41] - En adquisiciones intracomunitarias bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.iva_ded_33_cn" />
+        </record>
+        <!-- [41] - Cuota soportada Inversión del sujeto pasivo compras (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.cuotas_ispca" />
+        </record>
+        <!-- [41] - Cuota soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.cuotas_ispca_bi" />
+        </record>
+        <!-- [42] - Cuotas soportadas regimen especial agricultura ganaderia y pesca (12%) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1">
+            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
+            <field name="code" ref="account_es.cuota_ded_reagp_12" />
+        </record>
+        <!-- [59] - Entregas Intracomunitarias (Bienes) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_42_val1">
             <field name="mapping" ref="aeat_303_mapping_code_42" />
             <field name="code" ref="account_es.base_intra_42" />
         </record>
+        <!-- [59] - Entregas Intracomunitarias (Servicios) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_42_val2">
             <field name="mapping" ref="aeat_303_mapping_code_42" />
             <field name="code" ref="account_es.base_intra_serv_42" />
         </record>
+        <!-- [60] - Exportaciones y operaciones asimiladas -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_43_val1">
             <field name="mapping" ref="aeat_303_mapping_code_43" />
             <field name="code" ref="account_es.base_extra_43" />
         </record>
+        <!-- [61] - Inversión del sujeto pasivo -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1">
             <field name="mapping" ref="aeat_303_mapping_code_44" />
             <field name="code" ref="account_es.base_extra_44" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_45" />
-            <field name="code" ref="account_es.bases_ispc" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_45" />
-            <field name="code" ref="account_es.bases_ispc_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_46" />
-            <field name="code" ref="account_es.cuotas_ispc" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_46" />
-            <field name="code" ref="account_es.cuotas_ispc_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_77" />
-            <field name="code" ref="account_es.iva_aduana_cuota_ingres" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_78_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_48" />
-            <field name="code" ref="account_es.bases_ispca" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_78_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_48" />
-            <field name="code" ref="account_es.bases_ispca_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_79_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_49" />
-            <field name="code" ref="account_es.cuotas_ispca" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_79_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_49" />
-            <field name="code" ref="account_es.cuotas_ispca_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_50" />
-            <field name="code" ref="account_es.baser_ispca" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_50" />
-            <field name="code" ref="account_es.baser_ispca_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_81_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_51" />
-            <field name="code" ref="account_es.cuotar_ispca" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_81_val2">
-            <field name="mapping" ref="aeat_303_mapping_code_51" />
-            <field name="code" ref="account_es.cuotar_ispca_bi" />
-        </record>
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1">
-            <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
-            <field name="code" ref="account_es.cuota_ded_reagp_12" />
         </record>
     </data>
 </tryton>
