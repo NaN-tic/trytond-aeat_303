@@ -107,17 +107,21 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','other_passive_subject_tax')]"/>
         </record>
         <!-- [14] -->
+        <!-- Temporally not used
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_48">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_base_modification')]"/>
         </record>
+        -->
         <!-- [15] -->
+        <!-- Temporally not used
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_49">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_tax_modification')]"/>
         </record>
+        -->
         <!-- [16] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_10">
             <field name="type_">code</field>
@@ -227,17 +231,22 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','deductible_investment_intracommunity_operations_tax')]"/>
         </record>
         <!-- [40] -->
+        <!-- Temporally not used
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_50">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','deductible_regularization_base')]"/>
         </record>
+        -->
+        -->
         <!-- [41] -->
+        <!-- Temporally not used
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','deductible_regularization_tax')]"/>
         </record>
+        -->
         <!-- [42] -->
         <record model="aeat.303.template.mapping"
                 id="aeat_303_mapping_ded_compensations">
