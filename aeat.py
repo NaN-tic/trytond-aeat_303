@@ -766,6 +766,22 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_information_taxation_reason_territory(cls):
         return 0
 
+    @staticmethod
+    def default_accrued_vat_base_modification():
+        return 0
+
+    @staticmethod
+    def default_accrued_vat_tax_modification():
+        return 0
+
+    @staticmethod
+    def default_deductible_regularization_base():
+        return 0
+
+    @staticmethod
+    def default_deductible_regularization_tax():
+        return 0
+
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         if self.company:
