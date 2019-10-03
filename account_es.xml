@@ -254,125 +254,45 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_25" />
             <field name="code" ref="account_es.iva_ded_25_cn" />
         </record>
-        <!-- [32] - Base importaciones bienes corrientes (4%) -->
+        <!-- [32] - Base importaciones bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1">
             <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_4" />
+            <field name="code" ref="account_es.iva_ded_26" />
         </record>
-        <!-- [32] - Base importaciones bienes corrientes (abonos) (4%) -->
+        <!-- [32] - Base importaciones bienes corrientes (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2">
             <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_4_cn" />
+            <field name="code" ref="account_es.iva_ded_26_cn" />
         </record>
-        <!-- [32] - Base importaciones bienes corrientes (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_10" />
-        </record>
-        <!-- [32] - Base importaciones bienes corrientes (abonos) (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_10_cn" />
-        </record>
-        <!-- [32] - Base importaciones bienes corrientes (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_21" />
-        </record>
-        <!-- [32] - Base importaciones bienes corrientes (abonos) (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_21_cn" />
-        </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (4%) -->
+        <!-- [33] -Cuotas devengadas importaciones bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val1">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_4" />
+            <field name="code" ref="account_es.iva_ded_27" />
         </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (abonos) (4%) -->
+        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val2">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_4_cn" />
+            <field name="code" ref="account_es.iva_ded_27_cn" />
         </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_10" />
-        </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (abonos) (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_10_cn" />
-        </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_21" />
-        </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes (abonos) (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27_21_cn" />
-        </record>
-        <!-- [34] - Base importaciones bienes inversión (4%) -->
+        <!-- [34] - Base importaciones bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1">
             <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_4" />
+            <field name="code" ref="account_es.iva_ded_28" />
         </record>
-        <!-- [34] - Base importaciones bienes inversión (abonos) (4%) -->
+        <!-- [34] - Base importaciones bienes inversión (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val2">
             <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_4_cn" />
+            <field name="code" ref="account_es.iva_ded_28_cn" />
         </record>
-        <!-- [34] - Base importaciones bienes inversión (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_10" />
-        </record>
-        <!-- [34] - Base importaciones bienes inversión (abonos) (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_10_cn" />
-        </record>
-        <!-- [34] - Base importaciones bienes inversión (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_21" />
-        </record>
-        <!-- [34] - Base importaciones bienes inversión (abonos) (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_21_cn" />
-        </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (4%) -->
+        <!-- [35] -Cuotas devengadas importaciones bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val1">
             <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_4" />
+            <field name="code" ref="account_es.iva_ded_29" />
         </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (abonos) (4%) -->
+        <!-- [35] -Cuotas devengadas importaciones bienes inversión (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val2">
             <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_4_cn" />
-        </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_10" />
-        </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (abonos) (10%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_10_cn" />
-        </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_21" />
-        </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión (abonos) (21%) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29_21_cn" />
+            <field name="code" ref="account_es.iva_ded_29_cn" />
         </record>
         <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes-->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1">
