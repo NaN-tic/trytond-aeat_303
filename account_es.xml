@@ -106,13 +106,13 @@ contains the full copyright notices and license terms. -->
         <!-- [12] - Base soportada Inversión del sujeto pasivo compras (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val4">
             <field name="mapping" ref="aeat_303_mapping_code_45" />
-            <field name="code" ref="account_es.bases_ispca" />
+            <field name="code" ref="account_es.baser_ispca" />
         </record>
         <!-- Move temporally from [14] until found a good solution -->
         <!-- [12] - Base soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_48_val5">
             <field name="mapping" ref="aeat_303_mapping_code_45" />
-            <field name="code" ref="account_es.bases_ispca_bi" />
+            <field name="code" ref="account_es.baser_ispca_bi" />
         </record>
         <!-- [13] - Cuota repercutida Inversión del sujeto pasivo compras -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1">
@@ -128,13 +128,13 @@ contains the full copyright notices and license terms. -->
         <!-- [13] - Cuota soportada Inversión del sujeto pasivo compras (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val4">
             <field name="mapping" ref="aeat_303_mapping_code_46" />
-            <field name="code" ref="account_es.cuotas_ispca" />
+            <field name="code" ref="account_es.cuotar_ispca" />
         </record>
         <!-- Move temporally from [14] until found a good solution -->
         <!-- [13] - Cuota soportada Inversión del sujeto pasivo compras bienes inversión (abonos) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val5">
             <field name="mapping" ref="aeat_303_mapping_code_46" />
-            <field name="code" ref="account_es.cuotas_ispca_bi" />
+            <field name="code" ref="account_es.cuotar_ispca_bi" />
         </record>
         <!-- [16] - Recargo Equivalencia Base Imponible 0.5% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1">
