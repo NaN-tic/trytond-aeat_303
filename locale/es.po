@@ -14,25 +14,9 @@ msgctxt "field:aeat.303.mapping,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:aeat.303.mapping,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:aeat.303.mapping,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:aeat.303.mapping,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:aeat.303.mapping,number:"
 msgid "Number"
 msgstr "Número"
-
-msgctxt "field:aeat.303.mapping,rec_name:"
-msgid "Record Name"
-msgstr "Nombre"
 
 msgctxt "field:aeat.303.mapping,template:"
 msgid "Template"
@@ -42,77 +26,21 @@ msgctxt "field:aeat.303.mapping,type_:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:aeat.303.mapping,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:aeat.303.mapping,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:aeat.303.mapping-account.tax.code,code:"
 msgid "Tax Code"
 msgstr "Código de impuesto"
-
-msgctxt "field:aeat.303.mapping-account.tax.code,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
 msgid "Mapping"
 msgstr "Código de impuesto"
 
-msgctxt "field:aeat.303.mapping-account.tax.code,rec_name:"
-msgid "Record Name"
-msgstr "Nombre"
-
-msgctxt "field:aeat.303.mapping-account.tax.code,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
 msgid "Tax Code Template"
 msgstr "Plantilla de código de impuesto"
 
-msgctxt "field:aeat.303.mapping-account.tax.code.template,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code.template,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code.template,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
 msgid "Mapping"
 msgstr "Código de impuesto"
-
-msgctxt "field:aeat.303.mapping-account.tax.code.template,rec_name:"
-msgid "Record Name"
-msgstr "Nombre"
-
-msgctxt "field:aeat.303.mapping-account.tax.code.template,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:aeat.303.mapping-account.tax.code.template,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
@@ -254,14 +182,6 @@ msgctxt "field:aeat.303.report,complementary_declaration:"
 msgid "Complementary Declaration"
 msgstr "Declaración complementaria"
 
-msgctxt "field:aeat.303.report,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:aeat.303.report,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:aeat.303.report,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -375,10 +295,6 @@ msgctxt "field:aeat.303.report,general_regime_result:"
 msgid "General Regime Result"
 msgstr "Resultado Régimen General [46]"
 
-msgctxt "field:aeat.303.report,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:aeat.303.report,info_territory_alava:"
 msgid "Taxation Information by Territory: Alava"
 msgstr "Información de la tributación por razón de territorio: Álava [89]"
@@ -458,10 +374,6 @@ msgstr "Nº Justificante declaración previa"
 msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
 msgid "Previous Period Amount To Compensate"
 msgstr "Cuotas a compensar período anterior [67]"
-
-msgctxt "field:aeat.303.report,rec_name:"
-msgid "Record Name"
-msgstr "Nombre"
 
 msgctxt "field:aeat.303.report,recc:"
 msgid "Special Cash Criteria"
@@ -570,14 +482,6 @@ msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
 msgstr "Sin actividad"
 
-msgctxt "field:aeat.303.report,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:aeat.303.report,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Campo"
@@ -586,37 +490,13 @@ msgctxt "field:aeat.303.template.mapping,code:"
 msgid "Tax Code Template"
 msgstr "Plantilla de código de impuesto"
 
-msgctxt "field:aeat.303.template.mapping,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:aeat.303.template.mapping,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:aeat.303.template.mapping,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:aeat.303.template.mapping,number:"
 msgid "Number"
 msgstr "Número"
 
-msgctxt "field:aeat.303.template.mapping,rec_name:"
-msgid "Record Name"
-msgstr "Nombre"
-
 msgctxt "field:aeat.303.template.mapping,type_:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:aeat.303.template.mapping,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:aeat.303.template.mapping,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "help:aeat.303.report,aduana_tax_pending:"
 msgid "Import VAT paid by Aduana pending entry"
@@ -931,10 +811,6 @@ msgid "AEAT 303 Mapping"
 msgstr "Mapeo AEAT 303"
 
 msgctxt "view:aeat.303.report:"
-msgid "AEAT 303 Report"
-msgstr "Informe AEAT 303"
-
-msgctxt "view:aeat.303.report:"
 msgid "Accrued VAT"
 msgstr "IVA devengado"
 
@@ -945,14 +821,6 @@ msgstr "Información adicional"
 msgctxt "view:aeat.303.report:"
 msgid "Base:"
 msgstr "Base:"
-
-msgctxt "view:aeat.303.report:"
-msgid "Calculate"
-msgstr "Calcular"
-
-msgctxt "view:aeat.303.report:"
-msgid "Cancel"
-msgstr "Cancelar"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Domestic Operations"
@@ -975,10 +843,6 @@ msgid "Deductible regularization"
 msgstr "Rectificación deducible [40][41]"
 
 msgctxt "view:aeat.303.report:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:aeat.303.report:"
 msgid "Extra information"
 msgstr "Información extra"
 
@@ -997,10 +861,6 @@ msgstr "Adquisiciones intracomunitarias de bienes de inversión [38][39]"
 msgctxt "view:aeat.303.report:"
 msgid "Other"
 msgstr "Otro"
-
-msgctxt "view:aeat.303.report:"
-msgid "Process"
-msgstr "Procesar"
 
 msgctxt "view:aeat.303.report:"
 msgid "Result"
