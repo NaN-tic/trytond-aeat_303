@@ -238,7 +238,6 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','deductible_regularization_base')]"/>
         </record>
         -->
-        -->
         <!-- [41] -->
         <!-- Temporally not used
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
