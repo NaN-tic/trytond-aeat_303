@@ -891,7 +891,7 @@ class Report(Workflow, ModelSQL, ModelView):
             fixed[mapp.aeat303_field.name] = mapp.number
 
         if len(fixed) == 0:
-            raise UserError(gettext('aeat_303.no_config'))
+            raise UserError(gettext('aeat_303.msg_no_config'))
 
         for report in reports:
             fiscalyear = report.fiscalyear
