@@ -525,6 +525,11 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
+        cls._order = [
+            ('fiscalyear_code', 'DESC'),
+            ('period', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._buttons.update({
                 'draft': {
                     'invisible': ~Eval('state').in_(['calculated',
