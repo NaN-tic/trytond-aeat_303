@@ -148,7 +148,7 @@ msgstr "Volum anual d'operacions existents (art. 121 LIVA)."
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
 msgid "Auto Bankruptcy Date"
-msgstr "Dataclaració de fallida"
+msgstr "Data declaració de fallida"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "Auto Bankruptcy Declaration"
