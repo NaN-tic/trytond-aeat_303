@@ -148,7 +148,7 @@ msgstr "Volumen anual de operaciones existentes (art. 121 LIVA)."
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
 msgid "Auto Bankruptcy Date"
-msgstr "Fechaclaración de bancarrota"
+msgstr "Fecha declaración de bancarrota"
 
 msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
 msgid "Auto Bankruptcy Declaration"
