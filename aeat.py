@@ -470,6 +470,20 @@ class Report(Workflow, ModelSQL, ModelView):
             "period exonerated from the Annual Declaration-VAT summary. "
             "(Exempt from presenting the model 390 and with volume of "
             "operations zero).")
+    give_up_simplificated_regime = fields.Selection([
+            ('0', 'No'),
+            ('1', 'Yes'),
+            ], 'Give Up Simplified Regime', states={
+                'invisible': ~Eval('period').in_(['1T', '01', '02', '03']),
+            }, help="Present a new declaration to give up the Simplified "
+            "Regime")
+    reduce_days_on_simplificated_regime = fields.Selection([
+            ('0', 'No'),
+            ('1', 'Yes'),
+            ], 'Reduce days on Simplified Regime', states={
+                'invisible': ~Eval('period').in_(['1T', '01', '02', '03']),
+            }, help="Present a new declaration to reduce the exercise "
+            "execution days of activity on Simplified Regime")
     annual_operation_volume = fields.Selection([
             ('0', ''),
             ('1', 'Yes'),
@@ -716,6 +730,14 @@ class Report(Workflow, ModelSQL, ModelView):
         return '0'
 
     @classmethod
+    def default_give_up_simplificated_regime(cls):
+        return '0'
+
+    @classmethod
+    def default_reduce_days_on_simplificated_regime(cls):
+        return '0'
+
+    @classmethod
     def default_annual_operation_volume(cls):
         return '0'
 
@@ -877,6 +899,29 @@ class Report(Workflow, ModelSQL, ModelView):
             raise UserError(gettext('aeat_303.msg_invalid_currency',
                 name=self.rec_name,
                 ))
+
+    @classmethod
+    def check_period_1q(cls, values):
+        if (values.get('period', None) and
+                values['period'] not in ['1T', '01', '02', '03']):
+            values['reduce_days_on_simplificated_regime'] = '0'
+            values['give_up_simplificated_regime'] = '0'
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for report, values in zip(actions, actions):
+            cls.check_period_1q(values)
+            args.extend((report, values))
+        super().write(*args)
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            cls.check_period_1q(vals)
+        return super().create(vlist)
 
     @classmethod
     @ModelView.button

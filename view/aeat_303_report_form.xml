@@ -38,6 +38,12 @@ contains the full copyright notices and license terms. -->
     <label name="special_prorate_revocation"/>
     <field name="special_prorate_revocation"/>
 
+    <newline/>
+    <label name="give_up_simplificated_regime"/>
+    <field name="give_up_simplificated_regime"/>
+    <label name="reduce_days_on_simplificated_regime"/>
+    <field name="reduce_days_on_simplificated_regime"/>
+
     <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
     <label name="accrued_vat_base_1"/>
     <field name="accrued_vat_base_1"/>
