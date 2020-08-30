@@ -873,14 +873,15 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.result_tax_regularitzation or _Z))
 
     def get_state_administration_amount(self, name):
-        return (
-            self.general_regime_result * self.state_administration_percent /
-            Decimal('100.0'))
+        return (self.general_regime_result
+            * (self.state_administration_percent or _Z)
+            / Decimal('100.0'))
 
     def get_result(self, name):
-        return (self.state_administration_amount + self.aduana_tax_pending -
-            self.previous_period_amount_to_compensate +
-            self.joint_taxation_state_provincial_councils)
+        return ((self.state_administration_amount or _Z)
+            + (self.aduana_tax_pending or _Z)
+            - (self.previous_period_amount_to_compensate or _Z)
+            + (self.joint_taxation_state_provincial_councils or _Z))
 
     def get_liquidation_result(self, name):
         return self.result - self.to_deduce
