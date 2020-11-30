@@ -3,14 +3,6 @@
 contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_aeat_303_admin">
-            <field name="name">Aeat_303 Administration</field>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_aeat_303_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_aeat_303_admin"/>
-        </record>
-
         <record model="ir.ui.view" id="aeat_303_report_form_view">
             <field name="model">aeat.303.report</field>
             <field name="type">form</field>
@@ -47,7 +39,7 @@ contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_aeat_303_report_admin">
             <field name="model" search="[('model', '=', 'aeat.303.report')]"/>
-            <field name="group" ref="group_aeat_303_admin"/>
+            <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -86,7 +78,7 @@ contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_aeat_303_mapping_admin">
             <field name="model" search="[('model', '=', 'aeat.303.mapping')]"/>
-            <field name="group" ref="group_aeat_303_admin"/>
+            <field name="group" ref="account.group_account"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

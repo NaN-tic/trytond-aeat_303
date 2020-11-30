@@ -622,10 +622,6 @@ msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
 msgid "AEAT 303 Report"
 msgstr "Informes AEAT 303"
 
-msgctxt "model:res.group,name:group_aeat_303_admin"
-msgid "Aeat_303 Administration"
-msgstr "Administración AEAT 303"
-
 msgctxt "selection:aeat.303.mapping,type_:"
 msgid "Code"
 msgstr "Código"
