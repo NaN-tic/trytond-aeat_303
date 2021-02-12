@@ -1034,8 +1034,11 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(record, column, value)
             if column in general_record._fields:
                 setattr(general_record, column, value)
-            if column in additional_record._fields:
-                setattr(additional_record, column, value)
+            #If period is diffenret of 12/4T the fourth page will be without
+            #   content.
+            if self.period in ('12', '4T'):
+                if column in additional_record._fields:
+                    setattr(additional_record, column, value)
             if column in footer._fields:
                 setattr(footer, column, value)
         record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
@@ -1048,7 +1051,8 @@ class Report(Workflow, ModelSQL, ModelView):
                         or '')
                     break
         records = [header, record, general_record]
-        records.append(additional_record)
+        if self.period in ('12', '4T'):
+            records.append(additional_record)
         records.append(footer)
         data = retrofix_write(records, separator='')
         data = remove_accents(data).upper()
