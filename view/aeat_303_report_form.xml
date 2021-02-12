@@ -38,12 +38,6 @@ contains the full copyright notices and license terms. -->
     <label name="special_prorate_revocation"/>
     <field name="special_prorate_revocation"/>
 
-    <newline/>
-    <label name="give_up_simplificated_regime"/>
-    <field name="give_up_simplificated_regime"/>
-    <label name="reduce_days_on_simplificated_regime"/>
-    <field name="reduce_days_on_simplificated_regime"/>
-
     <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
     <label name="accrued_vat_base_1"/>
     <field name="accrued_vat_base_1"/>
@@ -187,6 +181,8 @@ contains the full copyright notices and license terms. -->
     <label name="aduana_tax_pending" colspan="5"/>
     <field name="aduana_tax_pending"/>
 
+    <label name="previous_period_pending_amount_to_compensate" colspan="5"/>
+    <field name="previous_period_pending_amount_to_compensate"/>
     <label name="previous_period_amount_to_compensate" colspan="5"/>
     <field name="previous_period_amount_to_compensate"/>
 
