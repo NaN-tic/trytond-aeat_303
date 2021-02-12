@@ -181,10 +181,14 @@ contains the full copyright notices and license terms. -->
     <label name="aduana_tax_pending" colspan="5"/>
     <field name="aduana_tax_pending"/>
 
-    <label name="previous_period_pending_amount_to_compensate" colspan="5"/>
+    <label name="previous_report"/>
+    <field name="previous_report"/>
+    <label name="previous_period_pending_amount_to_compensate" colspan="3"/>
     <field name="previous_period_pending_amount_to_compensate"/>
     <label name="previous_period_amount_to_compensate" colspan="5"/>
     <field name="previous_period_amount_to_compensate"/>
+    <label name="result_previous_period_amount_to_compensate" colspan="5"/>
+    <field name="result_previous_period_amount_to_compensate"/>
 
     <label name="result" colspan="5"/>
     <field name="result"/>

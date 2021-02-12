@@ -371,6 +371,10 @@ msgctxt "field:aeat.303.report,previous_declaration_receipt:"
 msgid "Previous Declaration Receipt"
 msgstr "Nº Justificante declaración previa"
 
+msgctxt "field:aeat.303.report,previous_report:"
+msgid "Previous Report"
+msgstr "Informe Anterior"
+
 msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
 msgid "Previous Period Pending Amount To Compensate"
 msgstr "Cuotas a compensar pendientes de periodos anteriores [110]"

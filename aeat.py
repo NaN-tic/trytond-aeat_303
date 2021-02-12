@@ -397,6 +397,10 @@ class Report(Workflow, ModelSQL, ModelView):
     state_administration_amount = fields.Function(
         fields.Numeric('State Administration Amount', digits=(16, 2)),
         'get_state_administration_amount')
+    previous_report = fields.Many2One('aeat.303.report', 'Previous Report',
+        states={
+            'readonly': Eval('state') == 'done',
+            }, depends=['state'])
     previous_period_pending_amount_to_compensate = fields.Numeric(
         'Previous Period Pending Amount To Compensate', digits=(16, 2))
     previous_period_amount_to_compensate = fields.Numeric(
@@ -823,6 +827,12 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.fiscalyear:
             code = self.fiscalyear.start_date.year
         return code
+
+    @fields.depends('previous_report')
+    def on_change_previous_report(self):
+        self.previous_period_pending_amount_to_compensate = (
+            self.previous_report.result_previous_period_amount_to_compensate
+            if self.previous_report else _Z)
 
     def get_currency(self, name):
         return self.company.currency.id
