@@ -371,9 +371,17 @@ msgctxt "field:aeat.303.report,previous_declaration_receipt:"
 msgid "Previous Declaration Receipt"
 msgstr "Nº Justificante declaración previa"
 
+msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
+msgid "Previous Period Pending Amount To Compensate"
+msgstr "Cuotas a compensar pendientes de periodos anteriores [110]"
+
 msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
 msgid "Previous Period Amount To Compensate"
-msgstr "Cuotas a compensar período anterior [67]"
+msgstr "Cuotas a compensar de periodos anteriores aplicadas en este periodo [78]"
+
+msgctxt "field:aeat.303.report,result_previous_period_amount_to_compensate:"
+msgid "Result Previous Period Amount To Compensate"
+msgstr "Cuotas a compensar de periodos previos pendientes para periodos posteriores [87]"
 
 msgctxt "field:aeat.303.report,recc:"
 msgid "Special Cash Criteria"
