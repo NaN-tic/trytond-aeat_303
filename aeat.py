@@ -297,8 +297,8 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'Declaration Type', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
     regime_type = fields.Selection([
-            ('1', 'Tribute exclusively on simplificated regime'),
-            ('2', 'Tribute on both simplified and general regime'),
+            #('1', 'Tribute exclusively on simplificated regime'),
+            #('2', 'Tribute on both simplified and general regime'),
             ('3', 'Tribute exclusively on general regime'),
             ], 'Tribute type', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
@@ -397,8 +397,13 @@ class Report(Workflow, ModelSQL, ModelView):
     state_administration_amount = fields.Function(
         fields.Numeric('State Administration Amount', digits=(16, 2)),
         'get_state_administration_amount')
+    previous_period_pending_amount_to_compensate = fields.Numeric(
+        'Previous Period Pending Amount To Compensate', digits=(16, 2))
     previous_period_amount_to_compensate = fields.Numeric(
         'Previous Period Amount To Compensate', digits=(16, 2))
+    result_previous_period_amount_to_compensate = fields.Function(
+        fields.Numeric('Result Previous Period Amount To Compensate',
+            digits=(16, 2)), 'get_result_previous_period_amount_to_compensate')
     intracommunity_deliveries = fields.Numeric(
         'Intracommunity Deliveries', digits=(16, 2))
     exports = fields.Numeric('Exports', digits=(16, 2))
@@ -470,20 +475,6 @@ class Report(Workflow, ModelSQL, ModelView):
             "period exonerated from the Annual Declaration-VAT summary. "
             "(Exempt from presenting the model 390 and with volume of "
             "operations zero).")
-    give_up_simplificated_regime = fields.Selection([
-            ('0', 'No'),
-            ('1', 'Yes'),
-            ], 'Give Up Simplified Regime', states={
-                'invisible': ~Eval('period').in_(['1T', '01', '02', '03']),
-            }, help="Present a new declaration to give up the Simplified "
-            "Regime")
-    reduce_days_on_simplificated_regime = fields.Selection([
-            ('0', 'No'),
-            ('1', 'Yes'),
-            ], 'Reduce days on Simplified Regime', states={
-                'invisible': ~Eval('period').in_(['1T', '01', '02', '03']),
-            }, help="Present a new declaration to reduce the exercise "
-            "execution days of activity on Simplified Regime")
     annual_operation_volume = fields.Selection([
             ('0', ''),
             ('1', 'Yes'),
@@ -680,6 +671,10 @@ class Report(Workflow, ModelSQL, ModelView):
         return 0
 
     @staticmethod
+    def default_previous_period_pending_amount_to_compensate():
+        return 0
+
+    @staticmethod
     def default_previous_period_amount_to_compensate():
         return 0
 
@@ -716,80 +711,72 @@ class Report(Workflow, ModelSQL, ModelView):
                 return vat_code[2:]
             return vat_code
 
-    @classmethod
-    def default_result_tax_regularitzation(cls):
+    @staticmethod
+    def default_result_tax_regularitzation():
         return 0
 
-    @classmethod
-    def default_aduana_tax_pending(cls):
+    @staticmethod
+    def default_aduana_tax_pending():
         return 0
 
-    @classmethod
-    def default_exonerated_mod390(cls):
+    @staticmethod
+    def default_exonerated_mod390():
         return '0'
 
-    @classmethod
-    def default_give_up_simplificated_regime(cls):
+    @staticmethod
+    def default_annual_operation_volume():
         return '0'
 
-    @classmethod
-    def default_reduce_days_on_simplificated_regime(cls):
-        return '0'
-
-    @classmethod
-    def default_annual_operation_volume(cls):
-        return '0'
-
-    @classmethod
-    def default_passive_subject_foral_administration(cls):
+    @staticmethod
+    def default_passive_subject_foral_administration():
         return '2'
 
-    @classmethod
-    def default_taken_vat_book_to_aeat(cls):
+    @staticmethod
+    def default_taken_vat_book_to_aeat():
         return '2'
 
-    @classmethod
-    def default_info_territory_alava(cls):
+    @staticmethod
+    def default_info_territory_alava():
         return 0
 
-    @classmethod
-    def default_info_territory_guipuzcoa(cls):
+    @staticmethod
+    def default_info_territory_guipuzcoa():
         return 0
 
-    @classmethod
-    def default_info_territory_vizcaya(cls):
+    @staticmethod
+    def default_info_territory_vizcaya():
         return 0
 
-    @classmethod
-    def default_info_territory_navarra(cls):
+    @staticmethod
+    def default_info_territory_navarra():
         return 0
 
-    @classmethod
-    def default_special_info_exempt_op_2bdeduced(cls):
+    @staticmethod
+    def default_special_info_exempt_op_2bdeduced():
         return 0
 
-    @classmethod
-    def default_special_info_farming_cattleraising_fishing(cls):
+    @staticmethod
+    def default_special_info_farming_cattleraising_fishing():
         return 0
 
-    @classmethod
-    def default_special_info_passive_subject_re(cls):
+    @staticmethod
+    def default_special_info_passive_subject_re():
         return 0
 
-    @classmethod
-    def default_special_info_art_antiques_collectibles(cls):
+    @staticmethod
+    def default_special_info_art_antiques_collectibles():
         return 0
 
-    @classmethod
-    def default_special_info_travel_agency(cls):
+    @staticmethod
+    def default_special_info_travel_agency():
         return 0
 
-    @classmethod
-    def default_special_info_delivery_investment_domestic_operations(cls):
+    @staticmethod
+    def default_special_info_delivery_investment_domestic_operations():
         return 0
 
-    @classmethod
-    def default_information_taxation_reason_territory(cls):
+    @staticmethod
+    def default_information_taxation_reason_territory():
         return 0
 
     @staticmethod
@@ -807,6 +794,10 @@ class Report(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_deductible_regularization_tax():
         return 0
+
+    @staticmethod
+    def default_regime_type():
+        return '3'
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
@@ -876,6 +867,10 @@ class Report(Workflow, ModelSQL, ModelView):
             * (self.state_administration_percent or _Z)
             / Decimal('100.0'))
 
+    def get_result_previous_period_amount_to_compensate(self, name):
+        return ((self.previous_period_pending_amount_to_compensate or _Z)
+            - (self.previous_period_amount_to_compensate or _Z))
+
     def get_result(self, name):
         return ((self.state_administration_amount or _Z)
             + (self.aduana_tax_pending or _Z)
@@ -901,27 +896,12 @@ class Report(Workflow, ModelSQL, ModelView):
                 ))
 
     @classmethod
-    def check_period_1q(cls, values):
-        if (values.get('period', None) and
-                values['period'] not in ['1T', '01', '02', '03']):
-            values['reduce_days_on_simplificated_regime'] = '0'
-            values['give_up_simplificated_regime'] = '0'
-
-    @classmethod
     def write(cls, *args):
         actions = iter(args)
         args = []
         for report, values in zip(actions, actions):
-            cls.check_period_1q(values)
             args.extend((report, values))
         super().write(*args)
-
-    @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            cls.check_period_1q(vals)
-        return super().create(vlist)
 
     @classmethod
     @ModelView.button
@@ -999,6 +979,7 @@ class Report(Workflow, ModelSQL, ModelView):
         header = Record(aeat303.HEADER_RECORD)
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
+        general_record = Record(aeat303.GENERAL_RECORD)
         additional_record = Record(aeat303.ADDITIONAL_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
@@ -1012,6 +993,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(header, column, value)
             if column in record._fields:
                 setattr(record, column, value)
+            if column in general_record._fields:
+                setattr(general_record, column, value)
             if column in additional_record._fields:
                 setattr(additional_record, column, value)
             if column in footer._fields:
@@ -1020,13 +1003,15 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.bank_account:
             for number in self.bank_account.numbers:
                 if number.type == 'iban':
-                    additional_record.bank_account = number.number_compact
-                    additional_record.swift_bank = (
+                    general_record.bank_account = number.number_compact
+                    general_record.swift_bank = (
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
                     break
-        data = retrofix_write([header, record, additional_record, footer],
-            separator='')
+        records = [header, record, general_record]
+        records.append(additional_record)
+        records.append(footer)
+        data = retrofix_write(records, separator='')
         data = remove_accents(data).upper()
         if isinstance(data, str):
             data = data.encode('iso-8859-1')

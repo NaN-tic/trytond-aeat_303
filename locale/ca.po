@@ -367,9 +367,17 @@ msgctxt "field:aeat.303.report,previous_declaration_receipt:"
 msgid "Previous Declaration Receipt"
 msgstr "Nº justificant declaració prèvia"
 
+msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
+msgid "Previous Period Pending Amount To Compensate"
+msgstr "Quota a compensar pendent de períodes anteriors [110]"
+
 msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
 msgid "Previous Period Amount To Compensate"
-msgstr "Import a compensar períodes anteriors [67]"
+msgstr "Quotes a compensar de períodes anteriors aplicades en aquest període [78]"
+
+msgctxt "field:aeat.303.report,result_previous_period_amount_to_compensate:"
+msgid "Result Previous Period Amount To Compensate"
+msgstr "Quotes a compensar de periodes previs pendents per a períodes posteriors [87]"
 
 msgctxt "field:aeat.303.report,recc:"
 msgid "Special Cash Criteria"
