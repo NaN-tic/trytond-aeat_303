@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_no_config">
             <field name="text">No configuration found for AEAT303. Please, update your chart of accounts.</field>
         </record>
+        <record model="ir.message" id="msg_invalid_compensate">
+            <field name="text">To compensate periods before need to have the actual period result postive ([66] + [77]) and you can't compensate more than this result.</field>
+        </record>
     </data>
 </tryton>

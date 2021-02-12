@@ -402,7 +402,10 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
     previous_period_pending_amount_to_compensate = fields.Numeric(
-        'Previous Period Pending Amount To Compensate', digits=(16, 2))
+        'Previous Period Pending Amount To Compensate', digits=(16, 2),
+        states={
+            'readonly': Bool(Eval('previous_report')),
+            }, depends=['previous_report'])
     previous_period_amount_to_compensate = fields.Numeric(
         'Previous Period Amount To Compensate', digits=(16, 2))
     result_previous_period_amount_to_compensate = fields.Function(
@@ -827,11 +830,35 @@ class Report(Workflow, ModelSQL, ModelView):
             code = self.fiscalyear.start_date.year
         return code
 
-    @fields.depends('previous_report')
+    @fields.depends('state_administration_amount',
+        'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
+    def set_previous_period_amount_to_compensate(self):
+        result = ((self.state_administration_amount or _Z) +
+            (self.aduana_tax_pending or _Z))
+        if (result > 0 and (self.previous_period_pending_amount_to_compensate or
+                    self.previous_period_pending_amount_to_compensate != _Z)):
+            self.previous_period_amount_to_compensate = min(result,
+                self.previous_period_pending_amount_to_compensate)
+
+    @fields.depends(methods=['set_previous_period_amount_to_compensate'])
+    def on_change_state_administration_amount(self):
+        self.set_previous_period_amount_to_compensate()
+
+    @fields.depends(methods=['set_previous_period_amount_to_compensate'])
+    def on_change_aduana_tax_pending(self):
+        self.set_previous_period_amount_to_compensate()
+
+    @fields.depends(methods=['set_previous_period_amount_to_compensate'])
+    def on_change_previous_period_pending_amount_to_compensate(self):
+        self.set_previous_period_amount_to_compensate()
+
+    @fields.depends('previous_report',
+        methods=['set_previous_period_amount_to_compensate'])
     def on_change_previous_report(self):
         self.previous_period_pending_amount_to_compensate = (
             self.previous_report.result_previous_period_amount_to_compensate
             if self.previous_report else _Z)
+        self.on_change_previous_period_pending_amount_to_compensate()
 
     def get_currency(self, name):
         return self.company.currency.id
@@ -898,6 +925,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def validate(cls, reports):
         for report in reports:
             report.check_euro()
+            report.check_compensate()
 
     def check_euro(self):
         if self.currency.code != 'EUR':
@@ -905,13 +933,13 @@ class Report(Workflow, ModelSQL, ModelView):
                 name=self.rec_name,
                 ))
 
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for report, values in zip(actions, actions):
-            args.extend((report, values))
-        super().write(*args)
+    def check_compensate(self):
+        result = ((self.state_administration_amount or _Z)
+                + (self.aduana_tax_pending or _Z))
+        if ((result <= _Z and self.previous_period_amount_to_compensate != _Z)
+                or (result > _Z and (self.previous_period_amount_to_compensate
+                    or _Z) > result)):
+            raise UserError(gettext('aeat_303.msg_invalid_compensate'))
 
     @classmethod
     @ModelView.button
