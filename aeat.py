@@ -838,7 +838,7 @@ class Report(Workflow, ModelSQL, ModelView):
         if (result > 0 and (self.previous_period_pending_amount_to_compensate or
                     self.previous_period_pending_amount_to_compensate != _Z)):
             self.previous_period_amount_to_compensate = min(result,
-                self.previous_period_pending_amount_to_compensate)
+                self.previous_period_pending_amount_to_compensate or _Z)
 
     @fields.depends(methods=['set_previous_period_amount_to_compensate'])
     def on_change_state_administration_amount(self):
