@@ -8,9 +8,11 @@ contains the full copyright notices and license terms. -->
     <field name="regime_type" colspan="2"/>
 
     <label name="type"/>
-    <field name="type" colspan="2"/>
+    <field name="type"/>
     <label name="bank_account"/>
-    <field name="bank_account" colspan="2"/>
+    <field name="bank_account"/>
+    <label name="sepa_check"/>
+    <field name="sepa_check"/>
 
     <label name="fiscalyear"/>
     <field name="fiscalyear"/>
@@ -153,7 +155,14 @@ contains the full copyright notices and license terms. -->
     <field name="exports"/>
     <label name="not_subject_or_reverse_charge" colspan="5"/>
     <field name="not_subject_or_reverse_charge"/>
-
+    <label name="not_subject_localitzation_rules" colspan="5"/>
+    <field name="not_subject_localitzation_rules"/>
+    <label name="subject_operations_w_reverse_charge" colspan="5"/>
+    <field name="subject_operations_w_reverse_charge"/>
+    <label name="oss_not_subject_operations" colspan="5"/>
+    <field name="oss_not_subject_operations"/>
+    <label name="oss_subject_operations" colspan="5"/>
+    <field name="oss_subject_operations"/>
 
     <label string="Special Cash Criteria Deliveries" id="reec_deliveries"/>
     <label string="Base:" id="recc_deliveries_base" colspan="2"/>
@@ -236,8 +245,8 @@ contains the full copyright notices and license terms. -->
     <field name="without_activity"/>
     <label name="passive_subject_foral_administration"/>
     <field name="passive_subject_foral_administration"/>
-    <label name="taken_vat_book_to_aeat"/>
-    <field name="taken_vat_book_to_aeat"/>
+    <label name="passive_subject_voluntarily_sii"/>
+    <field name="passive_subject_voluntarily_sii"/>
 
     <group id="state" colspan="3" col="6">
         <label name="state"/>
