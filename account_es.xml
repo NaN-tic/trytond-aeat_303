@@ -174,10 +174,10 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_33" />
             <field name="code" ref="account_es.iva_ded_33" />
         </record>
-        <!-- [42] - Cuotas soportadas regimen especial agricultura ganaderia y pesca (12%) -->
+        <!-- [42] - Cuotas soportadas regimen especial agricultura ganaderia y pesca -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1">
             <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
-            <field name="code" ref="account_es.cuota_ded_reagp_12" />
+            <field name="code" ref="account_es.cuota_ded_reagp" />
         </record>
         <!-- [59] - Entregas Intracomunitarias (Bienes) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_42_val1">

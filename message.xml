@@ -10,7 +10,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">No configuration found for AEAT303. Please, update your chart of accounts.</field>
         </record>
         <record model="ir.message" id="msg_invalid_compensate">
-            <field name="text">To compensate periods before need to have the actual period result postive ([66] + [77]) and you can't compensate more than this result.</field>
+            <field name="text">To compensate periods before need to have the actual period result postive ([66] + [77] - [78]) and you can't compensate more than this result.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_type_period">
+            <field name="text">The type of 'Return by trasnfer to foreign account' it's only for periods '3T', '4T' and from '07' to '12', check report with ID: %(report)s</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_exonerated_mod390">
+            <field name="text">The Exonerated Model 390 field could be 'YES' or 'NO' only for periods '12' or '4T', check report with ID: %(report)s</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_annual_operation_volume">
+            <field name="text">The Annual Operation Volume field could be 'YES' or 'NO' only for periods '12' or '4T', check report with ID: %(report)s</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_sepa_check">
+            <field name="text">The Sepa Check field is not correct for the period of the report. Check report with ID: %(report)s</field>
         </record>
     </data>
 </tryton>

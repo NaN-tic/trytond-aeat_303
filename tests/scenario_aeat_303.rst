@@ -169,6 +169,8 @@ Generate 303 Report::
     >>> report.type = 'I'
     >>> report.regime_type = '3'
     >>> report.period = "%02d" % (today.month)
+    >>> report.sepa_check = '0'
+    >>> report.exonerated_mod390 = '0' if report.period != '12' else '2'
     >>> report.company_vat = '123456789'
     >>> report.click('calculate')
     >>> report.accrued_vat_base_3
