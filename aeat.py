@@ -294,11 +294,12 @@ class Report(Workflow, ModelSQL, ModelView):
             ('N', 'No activity / Zero result'),
             ('V', 'Current account tax - Returns'),
             ('U', 'Direct incomes in account'),
+            ('X', 'Return by trasnfer to foreign account'),
             ], 'Declaration Type', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
     regime_type = fields.Selection([
-            #('1', 'Tribute exclusively on simplificated regime'),
-            #('2', 'Tribute on both simplified and general regime'),
+            # ('1', 'Tribute exclusively on simplificated regime'),
+            # ('2', 'Tribute on both simplified and general regime'),
             ('3', 'Tribute exclusively on general regime'),
             ], 'Tribute type', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
@@ -415,7 +416,27 @@ class Report(Workflow, ModelSQL, ModelView):
         'Intracommunity Deliveries', digits=(16, 2))
     exports = fields.Numeric('Exports', digits=(16, 2))
     not_subject_or_reverse_charge = fields.Numeric(
-        'Not Subject Or Reverse Charge', digits=(16, 2))
+        'Not Subject Or Reverse Charge', digits=(16, 2),
+        states={
+            'readonly': ~Bool(Eval('period').in_(['1T', '2T', '01', '06']))
+            })
+    not_subject_localitzation_rules = fields.Numeric("Not Subject To "
+        "Localitzation Rules (Except For Those Included in Box 123)",
+        digits=(16, 2), states={
+            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
+            })
+    subject_operations_w_reverse_charge = fields.Numeric(
+        "Subject Operations With Reverse Charge", digits=(16, 2), states={
+            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
+            })
+    oss_not_subject_operations = fields.Numeric("OSS, Not Subject Operations",
+        digits=(16, 2), states={
+            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
+            })
+    oss_subject_operations = fields.Numeric("OSS, Subject Operations",
+        digits=(16, 2), states={
+            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
+            })
     sum_results = fields.Function(fields.Numeric(
             'Sum of Results', digits=(16, 2)), 'get_sum_results')
     aduana_tax_pending = fields.Numeric(
@@ -474,6 +495,13 @@ class Report(Workflow, ModelSQL, ModelView):
             'required': Eval('type') == 'U',
             },
         depends=['company_party', 'type'])
+    sepa_check = fields.Selection([
+            (' ', 'Only for periods 1T, 2T and 01 to 06.'),
+            ('0', 'Empty'),
+            ('1', 'Spain account'),
+            ('2', 'SEPA European Union'),
+            ('3', 'Other countries'),
+            ], 'Sepa Check On Return')
     exonerated_mod390 = fields.Selection([
             ('0', ''),
             ('1', 'Yes'),
@@ -497,14 +525,12 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Passive Subject on a Foral Administration', help="Passive "
-            "Subject that tribute exclusively on a Foral Administration with "
-            "an import TAX paid by Aduana pending entry.")
-    taken_vat_book_to_aeat = fields.Selection([
+        "Subject that tribute exclusively on a Foral Administration with "
+        "an import TAX paid by Aduana pending entry.")
+    passive_subject_voluntarily_sii = fields.Selection([
             ('1', 'Yes'),
             ('2', 'No'),
-            ], 'Taken the VAT Registration Book to AEAT', help="Have you "
-            "voluntarily taken the VAT Registration Books through the AEAT's "
-            "Electronic Office during the fiscal year?")
+            ], 'Passive Subject voluntarily opted for the SII')
     company_vat = fields.Char('VAT')
     company_name = fields.Char('Company Name')
     complementary_declaration = fields.Boolean(
@@ -740,7 +766,7 @@ class Report(Workflow, ModelSQL, ModelView):
         return '2'
 
     @staticmethod
-    def default_taken_vat_book_to_aeat():
+    def default_passive_subject_voluntarily_sii():
         return '2'
 
     @staticmethod
@@ -825,19 +851,27 @@ class Report(Workflow, ModelSQL, ModelView):
                 return tax_identifier.code[2:]
 
     @fields.depends('fiscalyear')
-    def on_change_with_fiscalyear_code(self):
+    def on_change_with_fiscalyear_code(self, name=None):
         code = None
         if self.fiscalyear:
             code = self.fiscalyear.start_date.year
         return code
+
+    @fields.depends('exonerated_mod390', 'period')
+    def on_change_with_exonerated_mod390(self, name=None):
+        if self.period in ('4T', '12') and self.exonerated_mod390 == '0':
+            return '2'
+        else:
+            return self.exonerated_mod390
 
     @fields.depends('state_administration_amount',
         'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
     def set_previous_period_amount_to_compensate(self):
         result = ((self.state_administration_amount or _Z) +
             (self.aduana_tax_pending or _Z))
-        if (result > 0 and (self.previous_period_pending_amount_to_compensate or
-                    self.previous_period_pending_amount_to_compensate != _Z)):
+        if (result > 0 and (self.previous_period_pending_amount_to_compensate
+                    or self.previous_period_pending_amount_to_compensate != _Z
+                    )):
             self.previous_period_amount_to_compensate = min(result,
                 self.previous_period_pending_amount_to_compensate or _Z)
 
@@ -860,6 +894,21 @@ class Report(Workflow, ModelSQL, ModelView):
             self.previous_report.result_previous_period_amount_to_compensate
             if self.previous_report else _Z)
         self.on_change_previous_period_pending_amount_to_compensate()
+
+    @fields.depends('passive_subject_foral_administration', 'regime_type',
+        'joint_liquidation', 'recc', 'recc_receiver', 'special_prorate',
+        'special_prorate_revocation', 'auto_bankruptcy_declaration',
+        'passive_subject_voluntarily_sii')
+    def on_change_passive_subject_foral_administration(self):
+        if self.passive_subject_foral_administration == '1':
+            self.regime_type = '2'
+            self.joint_liquidation = '2'
+            self.recc = '2'
+            self.recc_receiver = '2'
+            self.special_prorate = '2'
+            self.special_prorate_revocation = '2'
+            self.auto_bankruptcy_declaration = '2'
+            self.passive_subject_voluntarily_sii = '2'
 
     def get_currency(self, name):
         return self.company.currency.id
@@ -927,6 +976,10 @@ class Report(Workflow, ModelSQL, ModelView):
         for report in reports:
             report.check_euro()
             report.check_compensate()
+            report.check_type()
+            report.check_exonerated_mod390()
+            report.check_annual_operation_volume()
+            report.check_sepa_check()
 
     def check_euro(self):
         if self.currency.code != 'EUR':
@@ -941,6 +994,37 @@ class Report(Workflow, ModelSQL, ModelView):
                 or (result > _Z and (self.previous_period_amount_to_compensate
                     or _Z) > result)):
             raise UserError(gettext('aeat_303.msg_invalid_compensate'))
+
+    def check_type(self):
+        if (self.type and self.period and self.type == 'X' and
+                self.period not in ('3T', '4T', '07', '08', '09', '10', '11',
+                    '12')):
+            raise UserError(gettext('aeat_303.msg_invalid_type_period',
+                    report=self))
+
+    def check_exonerated_mod390(self):
+        if ((self.period not in ('12', '4T') and self.exonerated_mod390 != '0')
+                or (self.period in ('12', '4T') and self.exonerated_mod390 ==
+                    '0')):
+            raise UserError(gettext(
+                    'aeat_303.msg_invalid_exonerated_mod390',
+                    report=self))
+
+    def check_annual_operation_volume(self):
+        if ((self.period not in ('12', '4T') and
+                    self.annual_operation_volume != '0')
+                or (self.period in ('12', '4T') and self.exonerated_mod390 ==
+                    '1' and self.annual_operation_volume == '0')):
+            raise UserError(gettext(
+                    'aeat_303.msg_invalid_annual_operation_volume',
+                    report=self))
+
+    def check_sepa_check(self):
+        if self.sepa_check == '' and self.period not in (
+                '1T', '2T', '01', '02', '03', '04', '05', '06'):
+            raise UserError(gettext(
+                    'aeat_303.msg_invalid_sepa_check',
+                    report=self))
 
     @classmethod
     @ModelView.button
@@ -1020,6 +1104,7 @@ class Report(Workflow, ModelSQL, ModelView):
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
         additional_record = Record(aeat303.ADDITIONAL_RECORD)
+        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
         for column in columns:
@@ -1034,11 +1119,13 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(record, column, value)
             if column in general_record._fields:
                 setattr(general_record, column, value)
-            #If period is diffenret of 12/4T the fourth page will be without
+            # If period is diffenret of 12/4T the fourth page will be without
             #   content.
             if self.period in ('12', '4T'):
                 if column in additional_record._fields:
                     setattr(additional_record, column, value)
+                # if column in annual_resume_record._fields:
+                #     setattr(annual_resume_record, column, value)
             if column in footer._fields:
                 setattr(footer, column, value)
         record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
@@ -1049,6 +1136,18 @@ class Report(Workflow, ModelSQL, ModelView):
                     general_record.swift_bank = (
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
+                    general_record.bank_name = (
+                        self.bank_account.bank and self.bank_account.bank.name
+                        or '')
+                    general_record.bank_address = (
+                        self.bank_account.bank and
+                        self.bank_account.bank.party.address[0] or '')
+                    general_record.bank_city = (
+                        self.bank_account.bank and
+                        self.bank_account.bank.party.address[0] or '')
+                    general_record.bank_country_code = (
+                        self.bank_account.bank and
+                        self.bank_account.bank.party.address[0] or '')
                     break
         records = [header, record, general_record]
         if self.period in ('12', '4T'):
