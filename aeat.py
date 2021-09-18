@@ -1136,7 +1136,8 @@ class Report(Workflow, ModelSQL, ModelView):
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
                     general_record.bank_name = (
-                        self.bank_account.bank and self.bank_account.bank.name
+                        self.bank_account.bank
+                        and self.bank_account.bank.rec_name
                         or '')
                     general_record.bank_address = (
                         self.bank_account.bank and
