@@ -447,7 +447,7 @@ msgctxt "field:aeat.303.report,result_tax_regularitzation:"
 msgid "Tax Regularization art. 80.cinco.50a LIVA"
 msgstr "Regularización cuotas art. 80.cinco.5ª LIVA  [76]"
 
-msgctxt "field:aeat.303.report,sepa_check:"
+msgctxt "field:aeat.303.report,return_sepa_check:"
 msgid "Sepa Check On Return"
 msgstr "Marca SEPA (Devolución)"
 
@@ -642,7 +642,7 @@ msgstr ""
 "El campo Exonerados de presentar el modelo 390 sólo puede ser 'SI' o 'NO' "
 "para pos periodos '12' o '4T'. Revisa el registro con ID: %s(report)s"
 
-msgctxt "model:ir.message,text:msg_invalid_sepa_check"
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check"
 msgid ""
 "The Sepa Check field is not correct for the period of the report. Check "
 "report with ID: %(report)s"
@@ -818,23 +818,23 @@ msgctxt "selection:aeat.303.report,regime_type:"
 msgid "Tribute exclusively on general regime"
 msgstr "Tributa exclusivamente en Régimen General (RG)"
 
-msgctxt "selection:aeat.303.report,sepa_check:"
+msgctxt "selection:aeat.303.report,return_sepa_check:"
 msgid "Empty"
 msgstr "Buit"
 
-msgctxt "selection:aeat.303.report,sepa_check:"
+msgctxt "selection:aeat.303.report,return_sepa_check:"
 msgid "Only for periods 1T, 2T and 01 to 06."
 msgstr "Sólo para periodos 1T, 2T y 01 a 06"
 
-msgctxt "selection:aeat.303.report,sepa_check:"
+msgctxt "selection:aeat.303.report,return_sepa_check:"
 msgid "Other countries"
 msgstr "Resto Países"
 
-msgctxt "selection:aeat.303.report,sepa_check:"
+msgctxt "selection:aeat.303.report,return_sepa_check:"
 msgid "SEPA European Union"
 msgstr "Unión Europea SEPA"
 
-msgctxt "selection:aeat.303.report,sepa_check:"
+msgctxt "selection:aeat.303.report,return_sepa_check:"
 msgid "Spain account"
 msgstr "Cuenta España"
 

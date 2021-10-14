@@ -11,8 +11,8 @@ contains the full copyright notices and license terms. -->
     <field name="type"/>
     <label name="bank_account"/>
     <field name="bank_account"/>
-    <label name="sepa_check"/>
-    <field name="sepa_check"/>
+    <label name="return_sepa_check"/>
+    <field name="return_sepa_check"/>
 
     <label name="fiscalyear"/>
     <field name="fiscalyear"/>
