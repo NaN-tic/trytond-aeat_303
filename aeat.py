@@ -1141,13 +1141,13 @@ class Report(Workflow, ModelSQL, ModelView):
                         or '')
                     general_record.return_bank_address = (
                         self.bank_account.bank and
-                        self.bank_account.bank.party.address[0] or '')
+                        self.bank_account.bank.party.addresses[0] or '')
                     general_record.return_bank_city = (
                         self.bank_account.bank and
-                        self.bank_account.bank.party.address[0] or '')
+                        self.bank_account.bank.party.addresses[0] or '')
                     general_record.return_bank_country_code = (
                         self.bank_account.bank and
-                        self.bank_account.bank.party.address[0] or '')
+                        self.bank_account.bank.party.addresses[0] or '')
                     break
         records = [header, record, general_record]
         if self.period in ('12', '4T'):
