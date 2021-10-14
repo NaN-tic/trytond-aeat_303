@@ -1135,19 +1135,28 @@ class Report(Workflow, ModelSQL, ModelView):
                     general_record.swift_bank = (
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
-                    general_record.return_bank_name = (
-                        self.bank_account.bank
-                        and self.bank_account.bank.rec_name
-                        or '')
-                    general_record.return_bank_address = (
-                        self.bank_account.bank and
-                        self.bank_account.bank.party.addresses[0] or '')
-                    general_record.return_bank_city = (
-                        self.bank_account.bank and
-                        self.bank_account.bank.party.addresses[0] or '')
-                    general_record.return_bank_country_code = (
-                        self.bank_account.bank and
-                        self.bank_account.bank.party.addresses[0] or '')
+                    if self.return_sepa_check in ('1', '2', '3'):
+                        general_record.return_bank_name = (
+                            self.bank_account.bank
+                            and self.bank_account.bank.rec_name
+                            or '')
+                        general_record.return_bank_address = (
+                            self.bank_account.bank and
+                            self.bank_account.bank.party.addresses and
+                            ' '.join(self.bank_account.bank.party.addresses[0].
+                                full_address.replace('\n', '').split())
+                            or '')
+                        general_record.return_bank_city = (
+                            self.bank_account.bank and
+                            self.bank_account.bank.party.addresses and
+                            self.bank_account.bank.party.addresses[0].city or
+                            '')
+                        general_record.return_bank_country_code = (
+                            self.bank_account.bank and
+                            self.bank_account.bank.party.addresses and
+                            self.bank_account.bank.party.addresses[0].country
+                            and self.bank_account.bank.party.addresses[0].
+                                country.code or '')
                     break
         records = [header, record, general_record]
         if self.period in ('12', '4T'):
