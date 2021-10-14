@@ -495,7 +495,7 @@ class Report(Workflow, ModelSQL, ModelView):
             'required': Eval('type') == 'U',
             },
         depends=['company_party', 'type'])
-    sepa_check = fields.Selection([
+    return_sepa_check = fields.Selection([
             (' ', 'Only for periods 1T, 2T and 01 to 06.'),
             ('0', 'Empty'),
             ('1', 'Spain account'),
@@ -979,7 +979,7 @@ class Report(Workflow, ModelSQL, ModelView):
             report.check_type()
             report.check_exonerated_mod390()
             report.check_annual_operation_volume()
-            report.check_sepa_check()
+            report.check_return_sepa_check()
 
     def check_euro(self):
         if self.currency.code != 'EUR':
@@ -1019,11 +1019,11 @@ class Report(Workflow, ModelSQL, ModelView):
                     'aeat_303.msg_invalid_annual_operation_volume',
                     report=self))
 
-    def check_sepa_check(self):
-        if self.sepa_check == '' and self.period not in (
+    def check_return_sepa_check(self):
+        if self.return_sepa_check == '' and self.period not in (
                 '1T', '2T', '01', '02', '03', '04', '05', '06'):
             raise UserError(gettext(
-                    'aeat_303.msg_invalid_sepa_check',
+                    'aeat_303.msg_invalid_return_sepa_check',
                     report=self))
 
     @classmethod
@@ -1136,17 +1136,17 @@ class Report(Workflow, ModelSQL, ModelView):
                     general_record.swift_bank = (
                         self.bank_account.bank and self.bank_account.bank.bic
                         or '')
-                    general_record.bank_name = (
+                    general_record.return_bank_name = (
                         self.bank_account.bank
                         and self.bank_account.bank.rec_name
                         or '')
-                    general_record.bank_address = (
+                    general_record.return_bank_address = (
                         self.bank_account.bank and
                         self.bank_account.bank.party.address[0] or '')
-                    general_record.bank_city = (
+                    general_record.return_bank_city = (
                         self.bank_account.bank and
                         self.bank_account.bank.party.address[0] or '')
-                    general_record.bank_country_code = (
+                    general_record.return_bank_country_code = (
                         self.bank_account.bank and
                         self.bank_account.bank.party.address[0] or '')
                     break
