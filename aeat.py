@@ -1023,6 +1023,13 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.return_sepa_check == '' and self.period not in (
                 '1T', '2T', '01', '02', '03', '04', '05', '06'):
             raise UserError(gettext(
+                    'aeat_303.msg_invalid_return_sepa_check_period',
+                    report=self))
+        if ((self.type in ('D', 'X') and
+                    self.return_sepa_check not in ('1', '2', '3')) or (
+                    self.type not in ('D', 'X') and
+                        self.return_sepa_check in ('1', '2', '3'))):
+            raise UserError(gettext(
                     'aeat_303.msg_invalid_return_sepa_check',
                     report=self))
 
