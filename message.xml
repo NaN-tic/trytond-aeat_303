@@ -21,8 +21,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_annual_operation_volume">
             <field name="text">The Annual Operation Volume field could be 'YES' or 'NO' only for periods '12' or '4T', check report with ID: %(report)s</field>
         </record>
-        <record model="ir.message" id="msg_invalid_return_sepa_check">
+        <record model="ir.message" id="msg_invalid_return_sepa_check_period">
             <field name="text">The Sepa Check field is not correct for the period of the report. Check report with ID: %(report)s</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_return_sepa_check">
+            <field name="text">The Sepa Check field is not correct for the type selected. Check report with ID: %(report)s</field>
         </record>
     </data>
 </tryton>
