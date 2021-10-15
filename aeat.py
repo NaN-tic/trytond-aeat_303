@@ -1132,10 +1132,10 @@ class Report(Workflow, ModelSQL, ModelView):
             for number in self.bank_account.numbers:
                 if number.type == 'iban':
                     general_record.bank_account = number.number_compact
-                    general_record.swift_bank = (
-                        self.bank_account.bank and self.bank_account.bank.bic
-                        or '')
                     if self.return_sepa_check in ('1', '2', '3'):
+                        general_record.swift_bank = (
+                            self.bank_account.bank and
+                            self.bank_account.bank.bic or '')
                         general_record.return_bank_name = (
                             self.bank_account.bank
                             and self.bank_account.bank.rec_name
