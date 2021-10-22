@@ -1063,7 +1063,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 start_month = int(period)
                 end_month = start_month
 
-            year = fiscalyear.start_date.year
+            year = report.fiscalyear_code
             lday = calendar.monthrange(year, end_month)[1]
             periods = [p.id for p in Period.search([
                     ('fiscalyear', '=', fiscalyear.id),
