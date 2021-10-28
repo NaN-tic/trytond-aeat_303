@@ -194,7 +194,12 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_43" />
             <field name="code" ref="account_es.base_extra_43" />
         </record>
-        <!-- [61] - Inversión del sujeto pasivo -->
+        <!-- [120] - Exportaciones territorios españoles excluidos del IVA -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_47_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_47" />
+            <field name="code" ref="account_es.base_extra_45" />
+        </record>
+        <!-- [122] - Inversión del sujeto pasivo -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1">
             <field name="mapping" ref="aeat_303_mapping_code_44" />
             <field name="code" ref="account_es.base_extra_44" />
