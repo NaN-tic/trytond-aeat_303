@@ -265,11 +265,17 @@ contains the full copyright notices and license terms. -->
             <field name="aeat303_field"
                 search="[('module', '=', 'aeat_303'), ('name', '=','exports')]"/>
         </record>
-        <!-- [61] -->
+        <!-- [120] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_47">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','not_subject_localitzation_rules')]"/>
+        </record>
+        <!-- [122] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_44">
             <field name="type_">code</field>
             <field name="aeat303_field"
-                search="[('name', '=','not_subject_or_reverse_charge')]"/>
+                search="[('name', '=','subject_operations_w_reverse_charge')]"/>
         </record>
         <!-- [77] -->
         <!-- <record model="aeat.303.template.mapping"
