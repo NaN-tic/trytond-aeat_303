@@ -1169,7 +1169,10 @@ class Report(Workflow, ModelSQL, ModelView):
         if self.period in ('12', '4T'):
             records.append(additional_record)
         records.append(footer)
-        data = retrofix_write(records, separator='')
+        try:
+            data = retrofix_write(records, separator='')
+        except AssertionError as e:
+            raise UserError(str(e))
         data = remove_accents(data).upper()
         if isinstance(data, str):
             data = data.encode('iso-8859-1')
