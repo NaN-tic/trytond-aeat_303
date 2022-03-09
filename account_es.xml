@@ -4,6 +4,7 @@ contains the full copyright notices and license terms. -->
 <tryton>
     <data depends="account_es" grouped="1">
         <!-- 303 box - Code Tax related -->
+        <!-- Devengado -->
         <!-- [01] - Régimen general IVA Devengado. Base Imponible 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_01_val1">
             <field name="mapping" ref="aeat_303_mapping_code_01" />
@@ -44,26 +45,27 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_20" />
             <field name="code" ref="account_es.iva_dev_20" />
         </record>
-        <!-- [12] - Base soportada Inversión del sujeto pasivo compras -->
+        <!-- [12] - Inversión del sujeto pasivo compras. Base Devengado -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1">
             <field name="mapping" ref="aeat_303_mapping_code_45" />
             <field name="code" ref="account_es.baser_ispc" />
         </record>
-        <!-- [12] - Base repercutida Inversión del sujeto pasivo compras bienes inversión -->
+        <!-- [12] - Inversión del sujeto pasivo compras bienes inversión. Base Devengado -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val2">
             <field name="mapping" ref="aeat_303_mapping_code_45" />
             <field name="code" ref="account_es.baser_ispc_bi" />
         </record>
-        <!-- [13] - Cuota repercutida Inversión del sujeto pasivo compras -->
+        <!-- [13] - Inversión del sujeto pasivo compras. Cuota Devengado -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val1">
             <field name="mapping" ref="aeat_303_mapping_code_46" />
             <field name="code" ref="account_es.cuotar_ispc" />
         </record>
-        <!-- [13] - Cuota repercutida Inversión del sujeto pasivo compras bienes inversión -->
+        <!-- [13] - Inversión del sujeto pasivo compras bienes inversión. Cuota Devengado -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_46_val2">
             <field name="mapping" ref="aeat_303_mapping_code_46" />
             <field name="code" ref="account_es.cuotar_ispc_bi" />
         </record>
+        <!-- TODO: 14 and 15 for refund -->
         <!-- [16] - Recargo Equivalencia Base Imponible 0.5% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_10_val1">
             <field name="mapping" ref="aeat_303_mapping_code_10" />
@@ -94,35 +96,47 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_18" />
             <field name="code" ref="account_es.iva_dev_18_52" />
         </record>
+
+        <!-- Deducible -->
         <!-- [28] - Base operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val1">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.iva_ded_22" />
         </record>
-        <!-- [28] - Base soportada Inversión del sujeto pasivo compras -->
+        <!-- [28] - Inversión del sujeto pasivo compras. Base Deducible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val2">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.bases_ispc" />
         </record>
-        <!-- [28] - Base soportada Inversión del sujeto pasivo compras bienes inversión -->
+        <!-- [28] - Inversión del sujeto pasivo compras bienes inversión. Base Deducible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val3">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.bases_ispc_bi" />
+        </record>
+        <!-- [28] - Adquisiciones intracomunitarias [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_22" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base" />
         </record>
         <!-- [29] - Cuotas soportadas operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.iva_ded_23" />
         </record>
-        <!-- [29] - Cuota soportada Inversión del sujeto pasivo compras -->
+        <!-- [29] - Inversión del sujeto pasivo compras. Cuota Deducible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val2">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.cuotas_ispc" />
         </record>
-        <!-- [29] - Cuota soportada Inversión del sujeto pasivo compras bienes inversión -->
+        <!-- [29] - Inversión del sujeto pasivo compras bienes inversión. Cuota Deducible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val3">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.cuotas_ispc_bi" />
+        </record>
+        <!-- [29] - Adquisiciones intracomunitarias [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_23" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota" />
         </record>
         <!-- [30] - Base operaciones interiores bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1">
@@ -154,15 +168,25 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_29" />
             <field name="code" ref="account_es.iva_ded_29" />
         </record>
-        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes-->
+        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1">
             <field name="mapping" ref="aeat_303_mapping_code_30" />
             <field name="code" ref="account_es.iva_ded_30" />
         </record>
-        <!-- [37] - En adquisiciones intracomunitarias bienes corrientes -->
+        <!-- [36] - Base adquisiciones intracomunitarias servicios -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_30" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base" />
+        </record>
+        <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
             <field name="code" ref="account_es.iva_ded_31" />
+        </record>
+        <!-- [37] - Cuota adquisiciones intracomunitarias servicios -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_31" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota" />
         </record>
         <!-- [38] - Base adquisiciones intracomunitarias bienes inversión -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1">
@@ -174,6 +198,7 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_33" />
             <field name="code" ref="account_es.iva_ded_33" />
         </record>
+        <!-- TODO: 40 and 41 for refund -->
         <!-- [42] - Cuotas soportadas regimen especial agricultura ganaderia y pesca -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1">
             <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
@@ -199,7 +224,7 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_47" />
             <field name="code" ref="account_es.base_extra_45" />
         </record>
-        <!-- [122] - Inversión del sujeto pasivo -->
+        <!-- [122] - Inversión del sujeto pasivo (Clientes) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1">
             <field name="mapping" ref="aeat_303_mapping_code_44" />
             <field name="code" ref="account_es.base_extra_44" />
