@@ -95,7 +95,7 @@ Create account category::
     >>> account_category.customer_taxes.append(tax)
     >>> tax, = Tax.find([
     ...     ('group.kind', '=', 'purchase'),
-    ...     ('name', '=', '21% IVA Soportado (operaciones corrientes)'),
+    ...     ('name', '=', 'IVA Deducible 21% (operaciones corrientes)'),
     ...     ('parent', '=', None),
     ...     ], limit = 1)
     >>> account_category.supplier_taxes.append(tax)

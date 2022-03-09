@@ -153,8 +153,6 @@ contains the full copyright notices and license terms. -->
     <field name="intracommunity_deliveries"/>
     <label name="exports" colspan="5"/>
     <field name="exports"/>
-    <label name="not_subject_or_reverse_charge" colspan="5"/>
-    <field name="not_subject_or_reverse_charge"/>
     <label name="not_subject_localitzation_rules" colspan="5"/>
     <field name="not_subject_localitzation_rules"/>
     <label name="subject_operations_w_reverse_charge" colspan="5"/>
