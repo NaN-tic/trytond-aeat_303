@@ -415,28 +415,15 @@ class Report(Workflow, ModelSQL, ModelView):
     intracommunity_deliveries = fields.Numeric(
         'Intracommunity Deliveries', digits=(16, 2))
     exports = fields.Numeric('Exports', digits=(16, 2))
-    not_subject_or_reverse_charge = fields.Numeric(
-        'Not Subject Or Reverse Charge', digits=(16, 2),
-        states={
-            'readonly': ~Bool(Eval('period').in_(['1T', '2T', '01', '06']))
-            })
     not_subject_localitzation_rules = fields.Numeric("Not Subject To "
         "Localitzation Rules (Except For Those Included in Box 123)",
-        digits=(16, 2), states={
-            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
-            })
+        digits=(16, 2))
     subject_operations_w_reverse_charge = fields.Numeric(
-        "Subject Operations With Reverse Charge", digits=(16, 2), states={
-            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
-            })
+        "Subject Operations With Reverse Charge", digits=(16, 2))
     oss_not_subject_operations = fields.Numeric("OSS, Not Subject Operations",
-        digits=(16, 2), states={
-            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
-            })
+        digits=(16, 2))
     oss_subject_operations = fields.Numeric("OSS, Subject Operations",
-        digits=(16, 2), states={
-            'readonly': ~Bool(Eval('period').in_(['3T', '4T', '07', '12']))
-            })
+        digits=(16, 2))
     sum_results = fields.Function(fields.Numeric(
             'Sum of Results', digits=(16, 2)), 'get_sum_results')
     aduana_tax_pending = fields.Numeric(
@@ -979,7 +966,6 @@ class Report(Workflow, ModelSQL, ModelView):
             report.check_type()
             report.check_exonerated_mod390()
             report.check_annual_operation_volume()
-            report.check_return_sepa_check()
 
     def check_euro(self):
         if self.currency.code != 'EUR':
@@ -1017,20 +1003,6 @@ class Report(Workflow, ModelSQL, ModelView):
                     '1' and self.annual_operation_volume == '0')):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_annual_operation_volume',
-                    report=self))
-
-    def check_return_sepa_check(self):
-        if self.return_sepa_check == '' and self.period not in (
-                '1T', '2T', '01', '02', '03', '04', '05', '06'):
-            raise UserError(gettext(
-                    'aeat_303.msg_invalid_return_sepa_check_period',
-                    report=self))
-        if ((self.type in ('D', 'X') and
-                    self.return_sepa_check not in ('1', '2', '3')) or (
-                    self.type not in ('D', 'X') and
-                        self.return_sepa_check in ('1', '2', '3'))):
-            raise UserError(gettext(
-                    'aeat_303.msg_invalid_return_sepa_check',
                     report=self))
 
     @classmethod
