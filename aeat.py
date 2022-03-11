@@ -1013,18 +1013,24 @@ class Report(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
 
-        mapping = {}
-        fixed = {}
-        for mapp in Mapping.search([('type_', '=', 'code')]):
-            for code in mapp.code:
-                mapping[code.id] = mapp.aeat303_field.name
-        for mapp in Mapping.search([('type_', '=', 'numeric')]):
-            fixed[mapp.aeat303_field.name] = mapp.number
-
-        if len(fixed) == 0:
-            raise UserError(gettext('aeat_303.msg_no_config'))
-
         for report in reports:
+            mapping = {}
+            fixed = {}
+            for mapp in Mapping.search([
+                    ('type_', '=', 'code'),
+                    ('company', '=', report.company),
+                    ]):
+                for code in mapp.code:
+                    mapping[code.id] = mapp.aeat303_field.name
+            for mapp in Mapping.search([
+                    ('type_', '=', 'numeric'),
+                    ('company', '=', report.company),
+                    ]):
+                fixed[mapp.aeat303_field.name] = mapp.number
+
+            if len(fixed) == 0:
+                raise UserError(gettext('aeat_303.msg_no_config'))
+
             fiscalyear = report.fiscalyear
             period = report.period
             if 'T' in period:
