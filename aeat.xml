@@ -122,9 +122,7 @@ contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_303_1">
-            <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
+            <field name="domain" eval="[['company', 'in', Eval('companies', [])]]" pyson="1" />
             <field name="rule_group" ref="rule_group_aeat303"/>
         </record>
 
@@ -134,9 +132,7 @@ contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_aeat_303_mapping_1">
-            <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
+            <field name="domain" eval="[['company', 'in', Eval('companies', [])]]" pyson="1" />
             <field name="rule_group" ref="rule_group_aeat303_mapping"/>
         </record>
     </data>
