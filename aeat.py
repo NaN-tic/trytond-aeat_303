@@ -473,7 +473,10 @@ class Report(Workflow, ModelSQL, ModelView):
         digits=(3, 2))
     without_activity = fields.Boolean('Without Activity')
     company_party = fields.Function(fields.Many2One('party.party',
-            'Company Party'),
+            'Company Party', context={
+                'company': Eval('company'),
+            },
+            depends=['company']),
         'on_change_with_company_party')
     bank_account = fields.Many2One('bank.account', 'Bank Account',
         domain=[
