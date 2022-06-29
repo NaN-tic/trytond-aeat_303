@@ -27,5 +27,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_return_sepa_check">
             <field name="text">The Sepa Check field is not correct for the type selected. Check report with ID: %(report)s</field>
         </record>
+        <record model="ir.message" id="msg_invalid_year">
+            <field name="text">The year "%(year)s" is not valid.</field>
+        </record>
     </data>
 </tryton>
