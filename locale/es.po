@@ -283,14 +283,6 @@ msgctxt "field:aeat.303.report,filename:"
 msgid "File Name"
 msgstr "Nombre archivo"
 
-msgctxt "field:aeat.303.report,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Ejercicio fiscal"
-
-msgctxt "field:aeat.303.report,fiscalyear_code:"
-msgid "Fiscal Year Code"
-msgstr "Código ejercicio fiscal"
-
 msgctxt "field:aeat.303.report,general_regime_result:"
 msgid "General Regime Result"
 msgstr "Resultado Régimen General [46]"
@@ -517,6 +509,10 @@ msgstr "Tipo declaración"
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
 msgstr "Sin actividad"
+
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "Año"
 
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
