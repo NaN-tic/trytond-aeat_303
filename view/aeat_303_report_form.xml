@@ -89,6 +89,10 @@ contains the full copyright notices and license terms. -->
     <field name="accrued_re_percent_3"/>
     <label name="accrued_re_tax_3"/>
     <field name="accrued_re_tax_3"/>
+    <label name="accrued_re_base_modification"/>
+    <field name="accrued_re_base_modification"/>
+    <label name="accrued_re_tax_modification"/>
+    <field name="accrued_re_tax_modification"/>
     <label name="accrued_total_tax" colspan="5"/>
     <field name="accrued_total_tax"/>
 
