@@ -912,9 +912,7 @@ class Report(Workflow, ModelSQL, ModelView):
             (self.accrued_vat_tax_modification or _Z) +
             (self.accrued_re_tax_1 or _Z) +
             (self.accrued_re_tax_2 or _Z) +
-            (self.accrued_re_tax_3 or _Z) +
-            (self.accrued_re_tax_modification or _Z)
-                )
+            (self.accrued_re_tax_3 or _Z))
 
     def get_deductible_total(self, name):
         return ((self.deductible_current_domestic_operations_tax or _Z) +
