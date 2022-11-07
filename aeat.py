@@ -1061,7 +1061,8 @@ class Report(Workflow, ModelSQL, ModelView):
             lday = calendar.monthrange(year, end_month)[1]
             periods = [p.id for p in Period.search([
                     ('start_date', '>=', datetime.date(year, start_month, 1)),
-                    ('end_date', '<=', datetime.date(year, end_month, lday))
+                    ('end_date', '<=', datetime.date(year, end_month, lday)),
+                    ('company', '=', report.company),
                     ])]
 
             for field, value in fixed.items():
