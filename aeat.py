@@ -838,11 +838,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @fields.depends('year')
     def check_year_digits(self):
-        if self.year:
-            if len(str(self.year)) != 4:
-                raise UserError(
-                    gettext('aeat_303.msg_invalid_year',
-                        year=self.year))
+        if self.year and len(str(self.year)) != 4:
+            raise UserError(
+                gettext('aeat_303.msg_invalid_year',
+                    year=self.year))
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):

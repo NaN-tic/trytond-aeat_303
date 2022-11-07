@@ -651,6 +651,10 @@ msgstr ""
 "El tipus 'Devolució per transferéncia a l'estranger' es només pels períodes "
 "'3T', '4T' i del '07' la '12'. Revisa el registre amb ID: %(report)s"
 
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "L'any \"%(year)s\" no és vàlid."
+
 msgctxt "model:ir.message,text:msg_no_config"
 msgid ""
 "No configuration found for AEAT303. Please, update your chart of accounts."
