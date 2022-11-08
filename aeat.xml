@@ -16,9 +16,7 @@ contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_aeat_303_report">
             <field name="name">AEAT 303 Report</field>
             <field name="res_model">aeat.303.report</field>
-            <field name="search_value"
-                eval="[('fiscalyear.start_date', '>=', Date(day=1, month=1))]"
-                pyson="1"/>
+            <field name="search_value" eval="" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_aeat_303_report_view1">
             <field name="sequence" eval="10"/>
