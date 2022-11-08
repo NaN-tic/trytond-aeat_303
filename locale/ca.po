@@ -280,14 +280,6 @@ msgctxt "field:aeat.303.report,filename:"
 msgid "File Name"
 msgstr "Nom fitxer"
 
-msgctxt "field:aeat.303.report,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
-msgctxt "field:aeat.303.report,fiscalyear_code:"
-msgid "Fiscal Year Code"
-msgstr "Codi exercici fiscal"
-
 msgctxt "field:aeat.303.report,general_regime_result:"
 msgid "General Regime Result"
 msgstr "Resultat Règim General [46]"
@@ -512,6 +504,10 @@ msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
 msgstr "Sense activitat"
 
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "Any"
+
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Camp"
@@ -654,6 +650,10 @@ msgid ""
 msgstr ""
 "El tipus 'Devolució per transferéncia a l'estranger' es només pels períodes "
 "'3T', '4T' i del '07' la '12'. Revisa el registre amb ID: %(report)s"
+
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "L'any \"%(year)s\" no és vàlid."
 
 msgctxt "model:ir.message,text:msg_no_config"
 msgid ""
