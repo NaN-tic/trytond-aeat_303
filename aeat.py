@@ -15,6 +15,7 @@ from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 from trytond import backend
 from sql import Literal
+from sql.functions import Extract
 
 
 __all__ = ['Report', 'TemplateTaxCodeMapping', 'TemplateTaxCodeRelation',
@@ -261,11 +262,7 @@ class Report(Workflow, ModelSQL, ModelView):
             }, depends=['state'])
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        states={
-            'readonly': Eval('state') == 'done',
-            }, depends=['state'])
-    fiscalyear_code = fields.Integer('Fiscal Year Code', required=True)
+    year = fields.Integer("Year", required=True)
     monthly_return_subscription = fields.Boolean('Montly Return Subscription')
     period = fields.Selection([
             ('1T', 'First quarter'),
@@ -554,7 +551,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Report, cls).__setup__()
         cls._order = [
-            ('fiscalyear_code', 'DESC'),
+            ('year', 'DESC'),
             ('period', 'DESC'),
             ('id', 'DESC'),
             ]
@@ -588,11 +585,15 @@ class Report(Workflow, ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Module = pool.get('ir.module')
+        FiscalYear = pool.get('account.fiscalyear')
+
         cursor = Transaction().connection.cursor()
-        table = backend.TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         model_table = cls.__table__()
         module_table = Module.__table__()
         sql_table = ModelData.__table__()
+        fiscalyear_table = FiscalYear.__table__()
+
         # Meld aeat_303_es into aeat_303
         cursor.execute(*module_table.update(
                 columns=[module_table.state],
@@ -647,6 +648,17 @@ class Report(Workflow, ModelSQL, ModelView):
             table.not_null_action('joint_presentation_allowed',
                 action='remove')
 
+        # migration fiscalyear to year
+        if table.column_exist('fiscalyear'):
+            query = model_table.update(columns=[model_table.year],
+                    values=[Extract('YEAR', fiscalyear_table.start_date)],
+                    from_=[fiscalyear_table],
+                    where=model_table.fiscalyear == fiscalyear_table.id)
+            cursor.execute(*query)
+            table.drop_column('fiscalyear')
+        if table.column_exist('fiscalyear_code'):
+            table.drop_column('fiscalyear_code')
+
     @staticmethod
     def default_state():
         return 'draft'
@@ -662,12 +674,6 @@ class Report(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @staticmethod
-    def default_fiscalyear():
-        FiscalYear = Pool().get('account.fiscalyear')
-        return FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
 
     @staticmethod
     def default_auto_bankruptcy_declaration():
@@ -822,6 +828,21 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_regime_type():
         return '3'
 
+    @staticmethod
+    def default_return_sepa_check():
+        return '0'
+
+    def pre_validate(self):
+        super().pre_validate()
+        self.check_year_digits()
+
+    @fields.depends('year')
+    def check_year_digits(self):
+        if self.year and len(str(self.year)) != 4:
+            raise UserError(
+                gettext('aeat_303.msg_invalid_year',
+                    year=self.year))
+
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
         if self.company:
@@ -838,13 +859,6 @@ class Report(Workflow, ModelSQL, ModelView):
             tax_identifier = self.company.party.tax_identifier
             if tax_identifier and tax_identifier.code.startswith('ES'):
                 return tax_identifier.code[2:]
-
-    @fields.depends('fiscalyear')
-    def on_change_with_fiscalyear_code(self, name=None):
-        code = None
-        if self.fiscalyear:
-            code = self.fiscalyear.start_date.year
-        return code
 
     @fields.depends('exonerated_mod390', 'period')
     def on_change_with_exonerated_mod390(self, name=None):
@@ -958,7 +972,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def get_filename(self, name):
         return 'aeat303-%s-%s.txt' % (
-            self.fiscalyear_code, self.period)
+            self.year, self.period)
 
     @classmethod
     def validate(cls, reports):
@@ -1034,7 +1048,6 @@ class Report(Workflow, ModelSQL, ModelView):
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
 
-            fiscalyear = report.fiscalyear
             period = report.period
             if 'T' in period:
                 period = period[0]
@@ -1044,12 +1057,12 @@ class Report(Workflow, ModelSQL, ModelView):
                 start_month = int(period)
                 end_month = start_month
 
-            year = fiscalyear.start_date.year
+            year = report.year
             lday = calendar.monthrange(year, end_month)[1]
             periods = [p.id for p in Period.search([
-                    ('fiscalyear', '=', fiscalyear.id),
                     ('start_date', '>=', datetime.date(year, start_month, 1)),
-                    ('end_date', '<=', datetime.date(year, end_month, lday))
+                    ('end_date', '<=', datetime.date(year, end_month, lday)),
+                    ('company', '=', report.company),
                     ])]
 
             for field, value in fixed.items():
@@ -1098,8 +1111,8 @@ class Report(Workflow, ModelSQL, ModelView):
             value = getattr(self, column, None)
             if not value:
                 continue
-            if column == 'fiscalyear':
-                value = str(self.fiscalyear_code)
+            if column == 'year':
+                value = str(self.year)
             if column in header._fields:
                 setattr(header, column, value)
             if column in record._fields:

@@ -283,14 +283,6 @@ msgctxt "field:aeat.303.report,filename:"
 msgid "File Name"
 msgstr "Nombre archivo"
 
-msgctxt "field:aeat.303.report,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Ejercicio fiscal"
-
-msgctxt "field:aeat.303.report,fiscalyear_code:"
-msgid "Fiscal Year Code"
-msgstr "Código ejercicio fiscal"
-
 msgctxt "field:aeat.303.report,general_regime_result:"
 msgid "General Regime Result"
 msgstr "Resultado Régimen General [46]"
@@ -518,6 +510,10 @@ msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
 msgstr "Sin actividad"
 
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "Año"
+
 msgctxt "field:aeat.303.template.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Campo"
@@ -662,6 +658,10 @@ msgstr ""
 "El tipo 'Devolución por transferencia al extranjero' es sólo para los "
 "periodis '3T', '4T' y del '07' la '12'. Revisa el registro con ID: "
 "%(report)s"
+
+msgctxt "model:ir.message,text:msg_invalid_year"
+msgid "The year \"%(year)s\" is not valid."
+msgstr "El año \"%(year)s\" no es correcto."
 
 msgctxt "model:ir.message,text:msg_no_config"
 msgid ""
