@@ -63,9 +63,9 @@ class TemplateTaxCodeRelation(ModelSQL):
     __name__ = 'aeat.303.mapping-account.tax.code.template'
 
     mapping = fields.Many2One('aeat.303.template.mapping', 'Mapping',
-        required=True, select=True)
+        required=True)
     code = fields.Many2One('account.tax.code.template', 'Tax Code Template',
-        required=True, select=True)
+        required=True)
 
 
 class TemplateTaxCodeMapping(ModelSQL):
@@ -201,10 +201,8 @@ class TaxCodeRelation(ModelSQL):
     '''
     __name__ = 'aeat.303.mapping-account.tax.code'
 
-    mapping = fields.Many2One('aeat.303.mapping', 'Mapping', required=True,
-        select=True)
-    code = fields.Many2One('account.tax.code', 'Tax Code', required=True,
-        select=True)
+    mapping = fields.Many2One('aeat.303.mapping', 'Mapping', required=True)
+    code = fields.Many2One('account.tax.code', 'Tax Code', required=True)
 
 
 class TaxCodeMapping(ModelSQL, ModelView):
