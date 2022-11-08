@@ -14,10 +14,8 @@ contains the full copyright notices and license terms. -->
     <label name="return_sepa_check"/>
     <field name="return_sepa_check"/>
 
-    <label name="fiscalyear"/>
-    <field name="fiscalyear"/>
-    <label name="fiscalyear_code"/>
-    <field name="fiscalyear_code"/>
+    <label name="year"/>
+    <field name="year"/>
     <label name="period"/>
     <field name="period"/>
 

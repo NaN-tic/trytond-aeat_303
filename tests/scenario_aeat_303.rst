@@ -165,7 +165,7 @@ Generate 303 Report::
 
     >>> Report = Model.get('aeat.303.report')
     >>> report = Report()
-    >>> report.fiscalyear_code = 2013
+    >>> report.year = today.year
     >>> report.type = 'I'
     >>> report.regime_type = '3'
     >>> report.period = "%02d" % (today.month)
