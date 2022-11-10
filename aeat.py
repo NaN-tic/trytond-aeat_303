@@ -13,7 +13,6 @@ from trytond.pyson import Eval, Bool
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from trytond.transaction import Transaction
-from trytond import backend
 from sql import Literal
 from sql.functions import Extract
 
@@ -603,44 +602,10 @@ class Report(Workflow, ModelSQL, ModelView):
                 values=[module_name],
                 where=sql_table.module == Literal('aeat_303_es')))
 
-        regime_type = table.column_exist('regime_type')
-        complementary_declaration = table.column_exist(
-            'complementary_declaration')
         joint_presentation_allowed = table.column_exist(
             'joint_presentation_allowed')
 
         super(Report, cls).__register__(module_name)
-
-        # Migration to model 303 of 2015
-        if not regime_type and table.column_exist('simplificated_regime'):
-            # Don't use UPDATE FROM because SQLite nor MySQL support it.
-            cursor.execute(*model_table.update(
-                    columns=[model_table.regime_type],
-                    values=['1'],
-                    where=model_table.simplificated_regime == True))
-            cursor.execute(*model_table.update(
-                    columns=[model_table.regime_type],
-                    values=['3'],
-                    where=model_table.simplificated_regime == False))
-
-            cursor.execute(*model_table.update(
-                    columns=[model_table.type],
-                    values=['U'],
-                    where=model_table.simplificated_regime == False))
-
-            table.not_null_action('simplificated_regime', action='remove')
-
-        if not complementary_declaration and table.column_exist(
-                'complementary_declaration'):
-            # Don't use UPDATE FROM because SQLite nor MySQL support it.
-            cursor.execute(*model_table.update(
-                    columns=[model_table.complementary_declaration],
-                    values=[True],
-                    where=model_table.complementary_autoliquidation == 'X'))
-            cursor.execute(*model_table.update(
-                    columns=[model_table.complementary_declaration],
-                    values=[False],
-                    where=model_table.complementary_autoliquidation == ' '))
 
         if joint_presentation_allowed:
             table.not_null_action('joint_presentation_allowed',
