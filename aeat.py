@@ -510,7 +510,7 @@ class Report(Workflow, ModelSQL, ModelView):
         states={
             'invisible': ~Eval('type').in_(['D', 'X']),
             })
-    return_bank_city = fields.Char('Bank city',
+    return_bank_city = fields.Char('Bank City',
         states={
             'invisible': ~Eval('type').in_(['D', 'X']),
             })
@@ -1162,8 +1162,8 @@ class Report(Workflow, ModelSQL, ModelView):
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
-        #annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
-        #annual_additional_record = Record(
+        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
+        # annual_additional_record = Record(
         #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
         bank_data_record = Record(aeat303.BANK_DATA_RECORD)
         columns = [x for x in self.__class__._fields if x not in
@@ -1194,7 +1194,7 @@ class Report(Workflow, ModelSQL, ModelView):
         record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
         bank_data_record.bank_account = next((n.number_compact
                 for n in self.bank_account.numbers
-                if n.type == 'iban'), '')
+                if n.type == 'iban'), '') if self.bank_account else ''
         # if self.period in ('12', '4T'):
         #     records = [header, record, general_record, annual_resume_record,
         #         annual_additional_record, bank_data_record]
