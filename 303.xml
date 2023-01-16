@@ -4,12 +4,26 @@ contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <!-- TODO: Add mappings for recc -->
+        <!-- [151] fix -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_00">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('0.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_percent_0')]"/>
+        </record>
         <!-- [02] fix -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_01">
             <field name="type_">numeric</field>
             <field name="number" eval="Decimal('4.0')" />
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_percent_1')]"/>
+        </record>
+        <!-- [154] fix -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_14">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('5.0')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_percent_4')]"/>
         </record>
         <!-- [05] fix -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_02">
@@ -24,6 +38,14 @@ contains the full copyright notices and license terms. -->
             <field name="number" eval="Decimal('21.0')" />
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_percent_3')]"/>
+        </record>
+
+        <!-- [157] fix -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_15">
+            <field name="type_">numeric</field>
+            <field name="number" eval="Decimal('1.75')" />
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_percent_4')]"/>
         </record>
         <!-- [17] fix -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_04">
@@ -46,6 +68,19 @@ contains the full copyright notices and license terms. -->
             <field name="aeat303_field"
                 search="[('name', '=','accrued_re_percent_3')]"/>
         </record>
+
+        <!-- [150] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_00">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_0')]"/>
+        </record>
+        <!-- [152] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_08">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_0')]"/>
+        </record>
         <!-- [01] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_01">
             <field name="type_">code</field>
@@ -57,6 +92,18 @@ contains the full copyright notices and license terms. -->
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_tax_1')]"/>
+        </record>
+        <!-- [153] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_11">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_base_4')]"/>
+        </record>
+        <!-- [155] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_14">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_vat_tax_4')]"/>
         </record>
         <!-- [04] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_04">
@@ -122,6 +169,18 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','accrued_vat_tax_modification')]"/>
         </record>
         -->
+        <!-- [156] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_re_base_05">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_base_4')]"/>
+        </record>
+        <!-- [158] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_re_tax_05">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_tax_4')]"/>
+        </record>
         <!-- [16] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_10">
             <field name="type_">code</field>

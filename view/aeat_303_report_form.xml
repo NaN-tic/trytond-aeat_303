@@ -6,247 +6,293 @@ contains the full copyright notices and license terms. -->
     <field name="company" colspan="2"/>
     <label name="regime_type"/>
     <field name="regime_type" colspan="2"/>
+    <newline/>
 
-    <label name="type"/>
-    <field name="type"/>
-    <label name="bank_account"/>
-    <field name="bank_account"/>
-    <label name="return_sepa_check"/>
-    <field name="return_sepa_check"/>
+    <notebook colspan="6">
+        <page string="Page 01" id="aeat303page01" col="6">
+            <label name="type"/>
+            <field name="type"/>
+            <label name="year"/>
+            <field name="year"/>
+            <label name="period"/>
+            <field name="period"/>
 
-    <label name="year"/>
-    <field name="year"/>
-    <label name="period"/>
-    <field name="period"/>
+            <label name="passive_subject_foral_administration"/>
+            <field name="passive_subject_foral_administration"/>
+            <label name="monthly_return_subscription"/>
+            <field name="monthly_return_subscription"/>
+            <label name="joint_liquidation"/>
+            <field name="joint_liquidation"/>
 
-    <label name="monthly_return_subscription"/>
-    <field name="monthly_return_subscription"/>
-    <label name="auto_bankruptcy_declaration"/>
-    <field name="auto_bankruptcy_declaration"/>
-    <label name="auto_bankruptcy_date"/>
-    <field name="auto_bankruptcy_date"/>
+            <label name="recc"/>
+            <field name="recc"/>
+            <label name="recc_receiver"/>
+            <field name="recc_receiver"/>
+            <label name="special_prorate"/>
+            <field name="special_prorate"/>
 
-    <label name="joint_liquidation"/>
-    <field name="joint_liquidation"/>
-    <label name="recc"/>
-    <field name="recc"/>
-    <label name="recc_receiver"/>
-    <field name="recc_receiver"/>
+            <label name="special_prorate_revocation"/>
+            <field name="special_prorate_revocation"/>
+            <label name="auto_bankruptcy_date"/>
+            <field name="auto_bankruptcy_date"/>
+            <label name="auto_bankruptcy_declaration"/>
+            <field name="auto_bankruptcy_declaration"/>
 
-    <label name="special_prorate"/>
-    <field name="special_prorate"/>
-    <label name="special_prorate_revocation"/>
-    <field name="special_prorate_revocation"/>
+            <label name="passive_subject_voluntarily_sii"/>
+            <field name="passive_subject_voluntarily_sii"/>
+            <label name="exonerated_mod390"/>
+            <field name="exonerated_mod390"/>
+            <label name="annual_operation_volume"/>
+            <field name="annual_operation_volume"/>
 
-    <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
-    <label name="accrued_vat_base_1"/>
-    <field name="accrued_vat_base_1"/>
-    <label name="accrued_vat_percent_1"/>
-    <field name="accrued_vat_percent_1"/>
-    <label name="accrued_vat_tax_1"/>
-    <field name="accrued_vat_tax_1"/>
-    <label name="accrued_vat_base_2"/>
-    <field name="accrued_vat_base_2"/>
-    <label name="accrued_vat_percent_2"/>
-    <field name="accrued_vat_percent_2"/>
-    <label name="accrued_vat_tax_2"/>
-    <field name="accrued_vat_tax_2"/>
-    <label name="accrued_vat_base_3"/>
-    <field name="accrued_vat_base_3"/>
-    <label name="accrued_vat_percent_3"/>
-    <field name="accrued_vat_percent_3"/>
-    <label name="accrued_vat_tax_3"/>
-    <field name="accrued_vat_tax_3"/>
-    <label name="intracommunity_adquisitions_base"/>
-    <field name="intracommunity_adquisitions_base"/>
-    <label name="intracommunity_adquisitions_tax" colspan="3"/>
-    <field name="intracommunity_adquisitions_tax"/>
-    <label name="other_passive_subject_base"/>
-    <field name="other_passive_subject_base"/>
-    <label name="other_passive_subject_tax" colspan="3"/>
-    <field name="other_passive_subject_tax"/>
-    <label name="accrued_vat_base_modification"/>
-    <field name="accrued_vat_base_modification"/>
-    <label name="accrued_vat_tax_modification" colspan="3"/>
-    <field name="accrued_vat_tax_modification"/>
-    <label name="accrued_re_base_1"/>
-    <field name="accrued_re_base_1"/>
-    <label name="accrued_re_percent_1"/>
-    <field name="accrued_re_percent_1"/>
-    <label name="accrued_re_tax_1"/>
-    <field name="accrued_re_tax_1"/>
-    <label name="accrued_re_base_2"/>
-    <field name="accrued_re_base_2"/>
-    <label name="accrued_re_percent_2"/>
-    <field name="accrued_re_percent_2"/>
-    <label name="accrued_re_tax_2"/>
-    <field name="accrued_re_tax_2"/>
-    <label name="accrued_re_base_3"/>
-    <field name="accrued_re_base_3"/>
-    <label name="accrued_re_percent_3"/>
-    <field name="accrued_re_percent_3"/>
-    <label name="accrued_re_tax_3"/>
-    <field name="accrued_re_tax_3"/>
-    <label name="accrued_re_base_modification"/>
-    <field name="accrued_re_base_modification"/>
-    <label name="accrued_re_tax_modification"/>
-    <field name="accrued_re_tax_modification"/>
-    <label name="accrued_total_tax" colspan="5"/>
-    <field name="accrued_total_tax"/>
+            <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
+            <label name="accrued_vat_base_0"/>
+            <field name="accrued_vat_base_0"/>
+            <label name="accrued_vat_percent_0"/>
+            <field name="accrued_vat_percent_0"/>
+            <label name="accrued_vat_tax_0"/>
+            <field name="accrued_vat_tax_0"/>
+            <label name="accrued_vat_base_1"/>
+            <field name="accrued_vat_base_1"/>
+            <label name="accrued_vat_percent_1"/>
+            <field name="accrued_vat_percent_1"/>
+            <label name="accrued_vat_tax_1"/>
+            <field name="accrued_vat_tax_1"/>
+            <label name="accrued_vat_base_4"/>
+            <field name="accrued_vat_base_4"/>
+            <label name="accrued_vat_percent_4"/>
+            <field name="accrued_vat_percent_4"/>
+            <label name="accrued_vat_tax_4"/>
+            <field name="accrued_vat_tax_4"/>
+            <label name="accrued_vat_base_2"/>
+            <field name="accrued_vat_base_2"/>
+            <label name="accrued_vat_percent_2"/>
+            <field name="accrued_vat_percent_2"/>
+            <label name="accrued_vat_tax_2"/>
+            <field name="accrued_vat_tax_2"/>
+            <label name="accrued_vat_base_3"/>
+            <field name="accrued_vat_base_3"/>
+            <label name="accrued_vat_percent_3"/>
+            <field name="accrued_vat_percent_3"/>
+            <label name="accrued_vat_tax_3"/>
+            <field name="accrued_vat_tax_3"/>
+            <label name="intracommunity_adquisitions_base"/>
+            <field name="intracommunity_adquisitions_base"/>
+            <label name="intracommunity_adquisitions_tax" colspan="3"/>
+            <field name="intracommunity_adquisitions_tax"/>
+            <label name="other_passive_subject_base"/>
+            <field name="other_passive_subject_base"/>
+            <label name="other_passive_subject_tax" colspan="3"/>
+            <field name="other_passive_subject_tax"/>
+            <label name="accrued_vat_base_modification"/>
+            <field name="accrued_vat_base_modification"/>
+            <label name="accrued_vat_tax_modification" colspan="3"/>
+            <field name="accrued_vat_tax_modification"/>
+            <label name="accrued_re_base_4"/>
+            <field name="accrued_re_base_4"/>
+            <label name="accrued_re_percent_4"/>
+            <field name="accrued_re_percent_4"/>
+            <label name="accrued_re_tax_4"/>
+            <field name="accrued_re_tax_4"/>
+            <label name="accrued_re_base_1"/>
+            <field name="accrued_re_base_1"/>
+            <label name="accrued_re_percent_1"/>
+            <field name="accrued_re_percent_1"/>
+            <label name="accrued_re_tax_1"/>
+            <field name="accrued_re_tax_1"/>
+            <label name="accrued_re_base_2"/>
+            <field name="accrued_re_base_2"/>
+            <label name="accrued_re_percent_2"/>
+            <field name="accrued_re_percent_2"/>
+            <label name="accrued_re_tax_2"/>
+            <field name="accrued_re_tax_2"/>
+            <label name="accrued_re_base_3"/>
+            <field name="accrued_re_base_3"/>
+            <label name="accrued_re_percent_3"/>
+            <field name="accrued_re_percent_3"/>
+            <label name="accrued_re_tax_3"/>
+            <field name="accrued_re_tax_3"/>
+            <label name="accrued_re_base_modification"/>
+            <field name="accrued_re_base_modification"/>
+            <label name="accrued_re_tax_modification"/>
+            <field name="accrued_re_tax_modification"/>
+            <label name="accrued_total_tax" colspan="5"/>
+            <field name="accrued_total_tax"/>
 
-    <separator id="deductible_vat" string="Deductible VAT" colspan="6"/>
-    <label string="Current Domestic Operations" id="current_domestic_operations"/>
-    <label string="Base:" id="deductible_current_domestic_operations_base" colspan="2"/>
-    <field name="deductible_current_domestic_operations_base"/>
-    <label string="Tax:" id="deductible_current_domestic_operations_tax"/>
-    <field name="deductible_current_domestic_operations_tax"/>
+            <separator id="deductible_vat" string="Deductible VAT" colspan="6"/>
+            <label string="Current Domestic Operations" id="current_domestic_operations"/>
+            <label string="Base:" id="deductible_current_domestic_operations_base" colspan="2"/>
+            <field name="deductible_current_domestic_operations_base"/>
+            <label string="Tax:" id="deductible_current_domestic_operations_tax"/>
+            <field name="deductible_current_domestic_operations_tax"/>
 
-    <label string="Investment Domestic Operations" id="investment_domestic_operations"/>
-    <label string="Base:" id="deductible_investment_domestic_operations_base" colspan="2"/>
-    <field name="deductible_investment_domestic_operations_base"/>
-    <label string="Tax:" id="deductible_investment_domestic_operations_tax"/>
-    <field name="deductible_investment_domestic_operations_tax"/>
+            <label string="Investment Domestic Operations" id="investment_domestic_operations"/>
+            <label string="Base:" id="deductible_investment_domestic_operations_base" colspan="2"/>
+            <field name="deductible_investment_domestic_operations_base"/>
+            <label string="Tax:" id="deductible_investment_domestic_operations_tax"/>
+            <field name="deductible_investment_domestic_operations_tax"/>
 
-    <label string="Current Import Operations" id="current_import_operations"/>
-    <label string="Base:" id="deductible_current_import_operations_base" colspan="2"/>
-    <field name="deductible_current_import_operations_base"/>
-    <label string="Tax:" id="deductible_current_import_operations_tax"/>
-    <field name="deductible_current_import_operations_tax"/>
+            <label string="Current Import Operations" id="current_import_operations"/>
+            <label string="Base:" id="deductible_current_import_operations_base" colspan="2"/>
+            <field name="deductible_current_import_operations_base"/>
+            <label string="Tax:" id="deductible_current_import_operations_tax"/>
+            <field name="deductible_current_import_operations_tax"/>
 
-    <label string="Investment Import Operations" id="investment_import_operations"/>
-    <label string="Base:" id="deductible_investment_import_operations_base" colspan="2"/>
-    <field name="deductible_investment_import_operations_base"/>
-    <label string="Tax:" id="deductible_investment_import_operations_tax"/>
-    <field name="deductible_investment_import_operations_tax"/>
+            <label string="Investment Import Operations" id="investment_import_operations"/>
+            <label string="Base:" id="deductible_investment_import_operations_base" colspan="2"/>
+            <field name="deductible_investment_import_operations_base"/>
+            <label string="Tax:" id="deductible_investment_import_operations_tax"/>
+            <field name="deductible_investment_import_operations_tax"/>
 
-    <label string="Current Intracommunity Operations" id="current_intracommunity_operations"/>
-    <label string="Base:" id="deductible_current_intracommunity_operations_base" colspan="2"/>
-    <field name="deductible_current_intracommunity_operations_base"/>
-    <label string="Tax:" id="deductible_current_intracommunity_operations_tax"/>
-    <field name="deductible_current_intracommunity_operations_tax"/>
+            <label string="Current Intracommunity Operations" id="current_intracommunity_operations"/>
+            <label string="Base:" id="deductible_current_intracommunity_operations_base" colspan="2"/>
+            <field name="deductible_current_intracommunity_operations_base"/>
+            <label string="Tax:" id="deductible_current_intracommunity_operations_tax"/>
+            <field name="deductible_current_intracommunity_operations_tax"/>
 
-    <label string="Investment Intracommunity Operations" id="investment_intracommunity_operations"/>
-    <label string="Base:" id="deductible_investment_intracommunity_operations_base" colspan="2"/>
-    <field name="deductible_investment_intracommunity_operations_base"/>
-    <label string="Tax:" id="deductible_investment_intracommunity_operations_tax"/>
-    <field name="deductible_investment_intracommunity_operations_tax"/>
-    <label string="Deductible regularization" id="deductible_regularization"/>
-    <label string="Base:" id="deductible_regularization_base" colspan="2"/>
-    <field name="deductible_regularization_base"/>
-    <label string="Tax:" id="deductible_regularization_tax"/>
-    <field name="deductible_regularization_tax"/>
+            <label string="Investment Intracommunity Operations" id="investment_intracommunity_operations"/>
+            <label string="Base:" id="deductible_investment_intracommunity_operations_base" colspan="2"/>
+            <field name="deductible_investment_intracommunity_operations_base"/>
+            <label string="Tax:" id="deductible_investment_intracommunity_operations_tax"/>
+            <field name="deductible_investment_intracommunity_operations_tax"/>
+            <label string="Deductible regularization" id="deductible_regularization"/>
+            <label string="Base:" id="deductible_regularization_base" colspan="2"/>
+            <field name="deductible_regularization_base"/>
+            <label string="Tax:" id="deductible_regularization_tax"/>
+            <field name="deductible_regularization_tax"/>
 
-    <label name="deductible_compensations" colspan="5"/>
-    <field name="deductible_compensations"/>
-    <label name="deductible_investment_regularization" colspan="5"/>
-    <field name="deductible_investment_regularization"/>
-    <label name="deductible_pro_rata_regularization" colspan="5"/>
-    <field name="deductible_pro_rata_regularization"/>
-    <label name="deductible_total" colspan="5"/>
-    <field name="deductible_total"/>
-    <separator id="general_regime_result" colspan="6"/>
-    <label name="general_regime_result" colspan="5"/>
-    <field name="general_regime_result"/>
+            <label name="deductible_compensations" colspan="5"/>
+            <field name="deductible_compensations"/>
+            <label name="deductible_investment_regularization" colspan="5"/>
+            <field name="deductible_investment_regularization"/>
+            <label name="deductible_pro_rata_regularization" colspan="5"/>
+            <field name="deductible_pro_rata_regularization"/>
+            <label name="deductible_total" colspan="5"/>
+            <field name="deductible_total"/>
+            <separator id="general_regime_result" colspan="6"/>
+            <label name="general_regime_result" colspan="5"/>
+            <field name="general_regime_result"/>
+        </page>
+        <!-- Simplified Regime
+        <page string="Page 02" id="aeat303page02" col="6">
+        </page>
+        -->
+        <page string="Page 03" id="aeat303page03" col="6">
+            <separator id="additional_information" string="Additional information"
+                colspan="6"/>
+            <label name="intracommunity_deliveries" colspan="5"/>
+            <field name="intracommunity_deliveries"/>
+            <label name="exports" colspan="5"/>
+            <field name="exports"/>
+            <label name="not_subject_localitzation_rules" colspan="5"/>
+            <field name="not_subject_localitzation_rules"/>
+            <label name="subject_operations_w_reverse_charge" colspan="5"/>
+            <field name="subject_operations_w_reverse_charge"/>
+            <label name="oss_not_subject_operations" colspan="5"/>
+            <field name="oss_not_subject_operations"/>
+            <label name="oss_subject_operations" colspan="5"/>
+            <field name="oss_subject_operations"/>
 
-    <separator id="additional_information" string="Additional information"
-        colspan="6"/>
+            <label string="Special Cash Criteria Deliveries" id="reec_deliveries"/>
+            <label string="Base:" id="recc_deliveries_base" colspan="2"/>
+            <field name="recc_deliveries_base"/>
+            <label string="Tax:" id="recc_deliveries_tax"/>
+            <field name="recc_deliveries_tax"/>
+            <label string="Special Cash Criteria Adquisitions" id="reec_adquisitions"/>
+            <label string="Base:" id="recc_adquisitions_base" colspan="2"/>
+            <field name="recc_adquisitions_base"/>
+            <label string="Supported Tax:" id="recc_adquisitions_tax"/>
+            <field name="recc_adquisitions_tax"/>
 
-    <label name="intracommunity_deliveries" colspan="5"/>
-    <field name="intracommunity_deliveries"/>
-    <label name="exports" colspan="5"/>
-    <field name="exports"/>
-    <label name="not_subject_localitzation_rules" colspan="5"/>
-    <field name="not_subject_localitzation_rules"/>
-    <label name="subject_operations_w_reverse_charge" colspan="5"/>
-    <field name="subject_operations_w_reverse_charge"/>
-    <label name="oss_not_subject_operations" colspan="5"/>
-    <field name="oss_not_subject_operations"/>
-    <label name="oss_subject_operations" colspan="5"/>
-    <field name="oss_subject_operations"/>
+            <separator id="result" string="Result" colspan="6"/>
+            <label name="result_tax_regularitzation" colspan="5"/>
+            <field name="result_tax_regularitzation"/>
 
-    <label string="Special Cash Criteria Deliveries" id="reec_deliveries"/>
-    <label string="Base:" id="recc_deliveries_base" colspan="2"/>
-    <field name="recc_deliveries_base"/>
-    <label string="Tax:" id="recc_deliveries_tax"/>
-    <field name="recc_deliveries_tax"/>
-    <label string="Special Cash Criteria Adquisitions" id="reec_adquisitions"/>
-    <label string="Base:" id="recc_adquisitions_base" colspan="2"/>
-    <field name="recc_adquisitions_base"/>
-    <label string="Supported Tax:" id="recc_adquisitions_tax"/>
-    <field name="recc_adquisitions_tax"/>
+            <label name="sum_results" colspan="5"/>
+            <field name="sum_results"/>
 
-    <separator id="result" string="Result" colspan="6"/>
-    <label name="result_tax_regularitzation" colspan="5"/>
-    <field name="result_tax_regularitzation"/>
+            <label name="state_administration_percent"/>
+            <field name="state_administration_percent"/>
+            <label name="state_administration_amount" colspan="3"/>
+            <field name="state_administration_amount"/>
 
-    <label name="sum_results" colspan="5"/>
-    <field name="sum_results"/>
+            <label name="aduana_tax_pending" colspan="5"/>
+            <field name="aduana_tax_pending"/>
 
-    <label name="state_administration_percent"/>
-    <field name="state_administration_percent"/>
-    <label name="state_administration_amount" colspan="3"/>
-    <field name="state_administration_amount"/>
+            <label name="previous_report"/>
+            <field name="previous_report"/>
+            <label name="previous_period_pending_amount_to_compensate" colspan="3"/>
+            <field name="previous_period_pending_amount_to_compensate"/>
+            <label name="previous_period_amount_to_compensate" colspan="5"/>
+            <field name="previous_period_amount_to_compensate"/>
+            <label name="result_previous_period_amount_to_compensate" colspan="5"/>
+            <field name="result_previous_period_amount_to_compensate"/>
+            <label name="joint_taxation_state_provincial_councils" colspan="5"/>
+            <field name="joint_taxation_state_provincial_councils"/>
 
-    <label name="aduana_tax_pending" colspan="5"/>
-    <field name="aduana_tax_pending"/>
+            <label name="result" colspan="5"/>
+            <field name="result"/>
+            <label name="before_result" colspan="5"/>
+            <field name="before_result"/>
+            <label name="to_deduce" colspan="5"/>
+            <field name="to_deduce"/>
+            <label name="liquidation_result" colspan="5"/>
+            <field name="liquidation_result"/>
 
-    <label name="previous_report"/>
-    <field name="previous_report"/>
-    <label name="previous_period_pending_amount_to_compensate" colspan="3"/>
-    <field name="previous_period_pending_amount_to_compensate"/>
-    <label name="previous_period_amount_to_compensate" colspan="5"/>
-    <field name="previous_period_amount_to_compensate"/>
-    <label name="result_previous_period_amount_to_compensate" colspan="5"/>
-    <field name="result_previous_period_amount_to_compensate"/>
-
-    <label name="result" colspan="5"/>
-    <field name="result"/>
-
-    <label name="to_deduce" colspan="5"/>
-    <field name="to_deduce"/>
-
-    <label name="liquidation_result" colspan="5"/>
-    <field name="liquidation_result"/>
-
-    <separator id="extra_information" string="Extra information" colspan="6"/>
-    <label name="info_territory_alava" colspan="5"/>
-    <field name="info_territory_alava"/>
-    <label name="info_territory_guipuzcoa" colspan="5"/>
-    <field name="info_territory_guipuzcoa"/>
-    <label name="info_territory_vizcaya" colspan="5"/>
-    <field name="info_territory_vizcaya"/>
-    <label name="info_territory_navarra" colspan="5"/>
-    <field name="info_territory_navarra"/>
-    <label name="special_info_exempt_op_2bdeduced" colspan="5"/>
-    <field name="special_info_exempt_op_2bdeduced"/>
-    <label name="special_info_farming_cattleraising_fishing" colspan="5"/>
-    <field name="special_info_farming_cattleraising_fishing"/>
-    <label name="special_info_passive_subject_re" colspan="5"/>
-    <field name="special_info_passive_subject_re"/>
-    <label name="special_info_art_antiques_collectibles" colspan="5"/>
-    <field name="special_info_art_antiques_collectibles"/>
-    <label name="special_info_travel_agency" colspan="5"/>
-    <field name="special_info_travel_agency"/>
-    <label name="special_info_delivery_investment_domestic_operations" colspan="5"/>
-    <field name="special_info_delivery_investment_domestic_operations"/>
-    <label name="information_taxation_reason_territory" colspan="5"/>
-    <field name="information_taxation_reason_territory"/>
-
-    <separator id="other_sep" string="Other" colspan="6"/>
-    <label name="complementary_declaration"/>
-    <field name="complementary_declaration"/>
-    <label name="previous_declaration_receipt"/>
-    <field name="previous_declaration_receipt"/>
-    <label name="exonerated_mod390"/>
-    <field name="exonerated_mod390"/>
-    <label name="annual_operation_volume"/>
-    <field name="annual_operation_volume"/>
-    <label name="without_activity"/>
-    <field name="without_activity"/>
-    <label name="passive_subject_foral_administration"/>
-    <field name="passive_subject_foral_administration"/>
-    <label name="passive_subject_voluntarily_sii"/>
-    <field name="passive_subject_voluntarily_sii"/>
+            <label name="without_activity"/>
+            <field name="without_activity"/>
+            <label name="complementary_declaration"/>
+            <field name="complementary_declaration"/>
+            <label name="previous_declaration_receipt"/>
+            <field name="previous_declaration_receipt"/>
+        </page>
+        <!--
+        <page string="Page 04" id="aeat303page04" col="6">
+            <label name="info_territory_alava" colspan="5"/>
+            <field name="info_territory_alava"/>
+            <label name="info_territory_guipuzcoa" colspan="5"/>
+            <field name="info_territory_guipuzcoa"/>
+            <label name="info_territory_vizcaya" colspan="5"/>
+            <field name="info_territory_vizcaya"/>
+            <label name="info_territory_navarra" colspan="5"/>
+            <field name="info_territory_navarra"/>
+            <label name="special_info_exempt_op_2bdeduced" colspan="5"/>
+            <field name="special_info_exempt_op_2bdeduced"/>
+            <label name="special_info_farming_cattleraising_fishing" colspan="5"/>
+            <field name="special_info_farming_cattleraising_fishing"/>
+            <label name="special_info_passive_subject_re" colspan="5"/>
+            <field name="special_info_passive_subject_re"/>
+            <label name="special_info_art_antiques_collectibles" colspan="5"/>
+            <field name="special_info_art_antiques_collectibles"/>
+            <label name="special_info_travel_agency" colspan="5"/>
+            <field name="special_info_travel_agency"/>
+            <label name="special_info_delivery_investment_domestic_operations" colspan="5"/>
+            <field name="special_info_delivery_investment_domestic_operations"/>
+            <label name="information_taxation_reason_territory" colspan="5"/>
+            <field name="information_taxation_reason_territory"/>
+        </page>
+        <page string="Page 05" id="aeat303page05" col="6">
+        </page>
+        -->
+        <page string="Page DID" id="aeat303pagedid" col="6">
+            <label name="bank_account"/>
+            <field name="bank_account" colspan="5"/>
+            <group id="return_bank_data" colspan="6" col="4">
+                <label name="return_sepa_check"/>
+                <field name="return_sepa_check" colspan="3"/>
+                <label name="swift_bank"/>
+                <field name="swift_bank"/>
+                <label name="return_bank_name"/>
+                <field name="return_bank_name"/>
+                <label name="return_bank_address"/>
+                <field name="return_bank_address" colspan="3"/>
+                <label name="return_bank_city"/>
+                <field name="return_bank_city"/>
+                <label name="return_bank_country_code"/>
+                <field name="return_bank_country_code"/>
+            </group>
+        </page>
+    </notebook>
 
     <group id="state" colspan="3" col="6">
         <label name="state"/>
