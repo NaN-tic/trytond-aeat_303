@@ -42,45 +42,57 @@ msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
 msgid "Mapping"
 msgstr "Código de impuesto"
 
+msgctxt "field:aeat.303.report,accrued_re_base_4:"
+msgid "Accrued Re Base 4"
+msgstr "Base Imponible Recargo equivalencia 1 [156]"
+
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
-msgstr "Base Imponible Recargo equivalencia 1 [16]"
+msgstr "Base Imponible Recargo equivalencia 2 [16]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_2:"
 msgid "Accrued Re Base 2"
-msgstr "Base Imponible Recargo equivalencia 2 [19]"
+msgstr "Base Imponible Recargo equivalencia 3 [19]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_3:"
 msgid "Accrued Re Base 3"
-msgstr "Base Imponible Recargo equivalencia 3 [22]"
+msgstr "Base Imponible Recargo equivalencia 4 [22]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_modification:"
 msgid "Accrued Re Base Modification"
 msgstr "Modificación Base Recargo equivalencia [25]"
 
+msgctxt "field:aeat.303.report,accrued_re_percent_4:"
+msgid "Accrued Re Percent 4"
+msgstr "Tipo (%) Recargo equivalencia 1 [157]"
+
 msgctxt "field:aeat.303.report,accrued_re_percent_1:"
 msgid "Accrued Re Percent 1"
-msgstr "Tipo (%) Recargo equivalencia 1 [17]"
+msgstr "Tipo (%) Recargo equivalencia 2 [17]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_2:"
 msgid "Accrued Re Percent 2"
-msgstr "Tipo (%) Recargo equivalencia 2 [20]"
+msgstr "Tipo (%) Recargo equivalencia 3 [20]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_3:"
 msgid "Accrued Re Percent 3"
-msgstr "Tipo (%) Recargo equivalencia 3 [23]"
+msgstr "Tipo (%) Recargo equivalencia 4 [23]"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_4:"
+msgid "Accrued Re Tax 4"
+msgstr "Cuota Recargo equivalencia 1 [158]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_1:"
 msgid "Accrued Re Tax 1"
-msgstr "Cuota Recargo equivalencia 1 [18]"
+msgstr "Cuota Recargo equivalencia 2 [18]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_2:"
 msgid "Accrued Re Tax 2"
-msgstr "Cuota Recargo equivalencia 2 [21]"
+msgstr "Cuota Recargo equivalencia 3 [21]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_3:"
 msgid "Accrued Re Tax 3"
-msgstr "Cuota Recargo equivalencia 3 [24]"
+msgstr "Cuota Recargo equivalencia 4 [24]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
 msgid "Accrued Re Tax Modification"
@@ -90,45 +102,69 @@ msgctxt "field:aeat.303.report,accrued_total_tax:"
 msgid "Accrued Total Tax"
 msgstr "Total cuota devengada [27]"
 
+msgctxt "field:aeat.303.report,accrued_vat_base_0:"
+msgid "Accrued Vat Base 0"
+msgstr "Base Imponible Régimen General 1 [150]"
+
 msgctxt "field:aeat.303.report,accrued_vat_base_1:"
 msgid "Accrued Vat Base 1"
-msgstr "Base Imponible Régimen General 1 [01]"
+msgstr "Base Imponible Régimen General 2 [01]"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_4:"
+msgid "Accrued Vat Base 4"
+msgstr "Base Imponible Régimen General 3 [153]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_2:"
 msgid "Accrued Vat Base 2"
-msgstr "Base Imponible Régimen General 2 [04]"
+msgstr "Base Imponible Régimen General 4 [04]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_3:"
 msgid "Accrued Vat Base 3"
-msgstr "Base Imponible Régimen General 3 [07]"
+msgstr "Base Imponible Régimen General 5 [07]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
 msgid "Accrued Vat Base Modification"
 msgstr "Modificación Base Imponible [14]"
 
+msgctxt "field:aeat.303.report,accrued_vat_percent_0:"
+msgid "Accrued Vat Percent 0"
+msgstr "Tipo (%) Régimen General 1 [151]"
+
 msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
 msgid "Accrued Vat Percent 1"
-msgstr "Tipo (%) Régimen General 1 [02]"
+msgstr "Tipo (%) Régimen General 2 [02]"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_4:"
+msgid "Accrued Vat Percent 4"
+msgstr "Tipo (%) Régimen General 3 [154]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
 msgid "Accrued Vat Percent 2"
-msgstr "Tipo (%) Régimen General 2 [05]"
+msgstr "Tipo (%) Régimen General 4 [05]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
 msgid "Accrued Vat Percent 3"
-msgstr "Tipo (%) Régimen General 3 [08]"
+msgstr "Tipo (%) Régimen General 5 [08]"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_0:"
+msgid "Accrued Vat Tax 0"
+msgstr "Cuota Régimen General 1 [152]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
 msgid "Accrued Vat Tax 1"
-msgstr "Cuota Régimen General 1 [03]"
+msgstr "Cuota Régimen General 2 [03]"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_4:"
+msgid "Accrued Vat Tax 4"
+msgstr "Cuota Régimen General 3 [155]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
 msgid "Accrued Vat Tax 2"
-msgstr "Cuota Régimen General 2 [06]"
+msgstr "Cuota Régimen General 4 [06]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
 msgid "Accrued Vat Tax 3"
-msgstr "Cuota Régimen General 3 [09]"
+msgstr "Cuota Régimen General 5 [09]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
 msgid "Accrued Vat Tax Modification"
@@ -157,6 +193,26 @@ msgstr "Declaración de bancarrota"
 msgctxt "field:aeat.303.report,bank_account:"
 msgid "Bank Account"
 msgstr "Cuenta bancaria"
+
+msgctxt "field:aeat.303.report,swift_bank:"
+msgid "Swift"
+msgstr "BIC"
+
+msgctxt "field:aeat.303.report,retunr_bank_name:"
+msgid "Bank Name"
+msgstr "Nombre del Banco"
+
+msgctxt "field:aeat.303.report,return_bank_address:"
+msgid "Ban Address"
+msgstr "Dirección del Banco"
+
+msgctxt "field:aeat.303.report,return_bank_city:"
+msgid "Bank City"
+msgstr "Ciudad del Banco"
+
+msgctxt "field:aeat.303.report,return_bank_country_code:"
+msgid "Bank Country Code"
+msgstr "Código pais del Banco"
 
 msgctxt "field:aeat.303.report,calculation_date:"
 msgid "Calculation Date"
@@ -498,9 +554,13 @@ msgctxt "field:aeat.303.report,sum_results:"
 msgid "Sum of Results"
 msgstr "Suma de resultados [64]"
 
+msgctxt "field:aeat.303.report,before_result:"
+msgid "Before Result"
+msgstr "Resultados anteriores a ingresar [70]"
+
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
-msgstr "A deducir [70]"
+msgstr "A deducir [109]"
 
 msgctxt "field:aeat.303.report,type:"
 msgid "Declaration Type"
@@ -508,7 +568,7 @@ msgstr "Tipo declaración"
 
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
-msgstr "Sin actividad"
+msgstr "Declaración Sin actividad"
 
 msgctxt "field:aeat.303.report,year:"
 msgid "Year"

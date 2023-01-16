@@ -42,45 +42,57 @@ msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
 msgid "Mapping"
 msgstr "Codi d'impost"
 
+msgctxt "field:aeat.303.report,accrued_re_base_4:"
+msgid "Accrued Re Base 4"
+msgstr "Base Imposable Recàrrec equivalència 1 [156]"
+
 msgctxt "field:aeat.303.report,accrued_re_base_1:"
 msgid "Accrued Re Base 1"
-msgstr "Base Imposable Recàrrec equivalència 1 [16]"
+msgstr "Base Imposable Recàrrec equivalència 2 [16]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_2:"
 msgid "Accrued Re Base 2"
-msgstr "Base Imposable Recàrrec equivalència 2 [19]"
+msgstr "Base Imposable Recàrrec equivalència 3 [19]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_3:"
 msgid "Accrued Re Base 3"
-msgstr "Base Imposable Recàrrec equivalència 3 [22]"
+msgstr "Base Imposable Recàrrec equivalència 4 [22]"
 
 msgctxt "field:aeat.303.report,accrued_re_base_modification:"
 msgid "Accrued Re Base Modification"
 msgstr "Modificació Base Recàrrec equivalència [25]"
 
+msgctxt "field:aeat.303.report,accrued_re_percent_4:"
+msgid "Accrued Re Percent 4"
+msgstr "Tipus (%) Recàrrec equivalència 1 [157]"
+
 msgctxt "field:aeat.303.report,accrued_re_percent_1:"
 msgid "Accrued Re Percent 1"
-msgstr "Tipus (%) Recàrrec equivalència 1 [17]"
+msgstr "Tipus (%) Recàrrec equivalència 2 [17]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_2:"
 msgid "Accrued Re Percent 2"
-msgstr "Tipus (%) Recàrrec equivalència 2 [20]"
+msgstr "Tipus (%) Recàrrec equivalència 3 [20]"
 
 msgctxt "field:aeat.303.report,accrued_re_percent_3:"
 msgid "Accrued Re Percent 3"
-msgstr "Tipus (%) Recàrrec equivalència 3 [23]"
+msgstr "Tipus (%) Recàrrec equivalència 4 [23]"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_4:"
+msgid "Accrued Re Tax 4"
+msgstr "Quota Recàrrec equivalència 1 [158]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_1:"
 msgid "Accrued Re Tax 1"
-msgstr "Quota Recàrrec equivalència 1 [18]"
+msgstr "Quota Recàrrec equivalència 2 [18]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_2:"
 msgid "Accrued Re Tax 2"
-msgstr "Quota Recàrrec equivalència 2 [21]"
+msgstr "Quota Recàrrec equivalència 3 [21]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_3:"
 msgid "Accrued Re Tax 3"
-msgstr "Quota Recàrrec equivalència 3 [24]"
+msgstr "Quota Recàrrec equivalència 4 [24]"
 
 msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
 msgid "Accrued Re Tax Modification"
@@ -90,45 +102,69 @@ msgctxt "field:aeat.303.report,accrued_total_tax:"
 msgid "Accrued Total Tax"
 msgstr "Total quota meritada [27]"
 
+msgctxt "field:aeat.303.report,accrued_vat_base_0:"
+msgid "Accrued Vat Base 0"
+msgstr "Base Imposable Règim general 1 [150]"
+
 msgctxt "field:aeat.303.report,accrued_vat_base_1:"
 msgid "Accrued Vat Base 1"
-msgstr "Base Imposable Règim general 1 [01]"
+msgstr "Base Imposable Règim general 2 [01]"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_4:"
+msgid "Accrued Vat Base 4"
+msgstr "Base Imposable Règim general 3 [153]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_2:"
 msgid "Accrued Vat Base 2"
-msgstr "Base Imposable Règim general 2 [04]"
+msgstr "Base Imposable Règim general 4 [04]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_3:"
 msgid "Accrued Vat Base 3"
-msgstr "Base Imposable Règim general 3 [07]"
+msgstr "Base Imposable Règim general 5 [07]"
 
 msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
 msgid "Accrued Vat Base Modification"
 msgstr "Modificació Base Imposable [14]"
 
+msgctxt "field:aeat.303.report,accrued_vat_percent_0:"
+msgid "Accrued Vat Percent 0"
+msgstr "Tipus (%) Règim general 1 [151]"
+
 msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
 msgid "Accrued Vat Percent 1"
-msgstr "Tipus (%) Règim general 1 [02]"
+msgstr "Tipus (%) Règim general 2 [02]"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_4:"
+msgid "Accrued Vat Percent 4"
+msgstr "Tipus (%) Règim general 3 [154]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
 msgid "Accrued Vat Percent 2"
-msgstr "Tipus (%) Règim general 2 [05]"
+msgstr "Tipus (%) Règim general 4 [05]"
 
 msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
 msgid "Accrued Vat Percent 3"
-msgstr "Tipus (%) Règim general 3 [08]"
+msgstr "Tipus (%) Règim general 5 [08]"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_0:"
+msgid "Accrued Vat Tax 0"
+msgstr "Quota Règim general 1 [152]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
 msgid "Accrued Vat Tax 1"
-msgstr "Quota Règim general 1 [03]"
+msgstr "Quota Règim general 2 [03]"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_4:"
+msgid "Accrued Vat Tax 4"
+msgstr "Quota Règim general 3 [155]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
 msgid "Accrued Vat Tax 2"
-msgstr "Quota Règim general 2 [06]"
+msgstr "Quota Règim general 4 [06]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
 msgid "Accrued Vat Tax 3"
-msgstr "Quota Règim general 3 [09]"
+msgstr "Quota Règim general 5 [09]"
 
 msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
 msgid "Accrued Vat Tax Modification"
@@ -157,6 +193,26 @@ msgstr "Autodeclaració de fallida"
 msgctxt "field:aeat.303.report,bank_account:"
 msgid "Bank Account"
 msgstr "Compte bancari"
+
+msgctxt "field:aeat.303.report,swift_bank:"
+msgid "Swift"
+msgstr "BIC"
+
+msgctxt "field:aeat.303.report,retunr_bank_name:"
+msgid "Bank Name"
+msgstr "Nom del Banc"
+
+msgctxt "field:aeat.303.report,return_bank_address:"
+msgid "Ban Address"
+msgstr "Direcció del Banc"
+
+msgctxt "field:aeat.303.report,return_bank_city:"
+msgid "Bank City"
+msgstr "Ciutat del Banc"
+
+msgctxt "field:aeat.303.report,return_bank_country_code:"
+msgid "Bank Country Code"
+msgstr "Codi país del Banc"
 
 msgctxt "field:aeat.303.report,calculation_date:"
 msgid "Calculation Date"
@@ -492,9 +548,13 @@ msgctxt "field:aeat.303.report,sum_results:"
 msgid "Sum of Results"
 msgstr "Suma de resultats [64]"
 
+msgctxt "field:aeat.303.report,before_result:"
+msgid "Before Result"
+msgstr "Resultats anteriors a ingressar [70]"
+
 msgctxt "field:aeat.303.report,to_deduce:"
 msgid "To Deduce"
-msgstr "A deduir [70]"
+msgstr "A deduir [109]"
 
 msgctxt "field:aeat.303.report,type:"
 msgid "Declaration Type"
@@ -502,7 +562,7 @@ msgstr "Tipus declaració"
 
 msgctxt "field:aeat.303.report,without_activity:"
 msgid "Without Activity"
-msgstr "Sense activitat"
+msgstr "Declració Sense activitat"
 
 msgctxt "field:aeat.303.report,year:"
 msgid "Year"
