@@ -198,12 +198,12 @@ msgctxt "field:aeat.303.report,swift_bank:"
 msgid "Swift"
 msgstr "BIC"
 
-msgctxt "field:aeat.303.report,retunr_bank_name:"
+msgctxt "field:aeat.303.report,return_bank_name:"
 msgid "Bank Name"
 msgstr "Nombre del Banco"
 
 msgctxt "field:aeat.303.report,return_bank_address:"
-msgid "Ban Address"
+msgid "Bank Address"
 msgstr "Dirección del Banco"
 
 msgctxt "field:aeat.303.report,return_bank_city:"
