@@ -304,6 +304,10 @@ class Report(Workflow, ModelSQL, ModelView):
     recc_receiver = fields.Boolean('Special Cash Criteria Receiver')
     special_prorate = fields.Boolean('Special prorate')
     special_prorate_revocation = fields.Boolean('Special prorate revocation')
+    accrued_vat_base_0 = fields.Numeric('Accrued Vat Base 0', digits=(16, 2))
+    accrued_vat_percent_0 = fields.Numeric('Accrued Vat Percent 0',
+        digits=(16, 2))
+    accrued_vat_tax_0 = fields.Numeric('Accrued Vat Tax 0', digits=(16, 2))
     accrued_vat_base_1 = fields.Numeric('Accrued Vat Base 1', digits=(16, 2))
     accrued_vat_percent_1 = fields.Numeric('Accrued Vat Percent 1',
         digits=(16, 2))
@@ -316,6 +320,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(16, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(16, 2))
+    accrued_vat_base_4 = fields.Numeric('Accrued Vat Base 4', digits=(16, 2))
+    accrued_vat_percent_4 = fields.Numeric('Accrued Vat Percent 4',
+        digits=(16, 2))
+    accrued_vat_tax_4 = fields.Numeric('Accrued Vat Tax 4', digits=(16, 2))
     accrued_vat_base_modification = fields.Numeric('Accrued Vat Base '
         'Modification', digits=(16, 2))
     accrued_vat_tax_modification = fields.Numeric('Accrued Vat Tax '
@@ -332,6 +340,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(16, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(16, 2))
+    accrued_re_base_4 = fields.Numeric('Accrued Re Base 4', digits=(16, 2))
+    accrued_re_percent_4 = fields.Numeric('Accrued Re Percent 4',
+        digits=(16, 2))
+    accrued_re_tax_4 = fields.Numeric('Accrued Re Tax 4', digits=(16, 2))
     accrued_re_base_modification = fields.Numeric('Accrued Re Base '
         'Modification', digits=(16, 2))
     accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
@@ -429,6 +441,7 @@ class Report(Workflow, ModelSQL, ModelView):
         'Joint Taxation State Provincial Councils', digits=(16, 2))
     result = fields.Function(fields.Numeric('Result', digits=(16, 2)),
         'get_result')
+    before_result = fields.Numeric('Before Result', digits=(16, 2))
     to_deduce = fields.Numeric('To Deduce', digits=(16, 2))
     liquidation_result = fields.Function(fields.Numeric('Liquidation Result',
         digits=(16, 2)), 'get_liquidation_result')
@@ -478,16 +491,35 @@ class Report(Workflow, ModelSQL, ModelView):
         domain=[
             ('owners', '=', Eval('company_party')),
         ], states={
-            'required': Eval('type') == 'U',
+            'required': Eval('type').in_(['U', 'D', 'X']),
             },
         depends=['company_party', 'type'])
     return_sepa_check = fields.Selection([
-            (' ', 'Only for periods 1T, 2T and 01 to 06.'),
             ('0', 'Empty'),
             ('1', 'Spain account'),
             ('2', 'SEPA European Union'),
             ('3', 'Other countries'),
             ], 'Sepa Check On Return')
+    swift_bank = fields.Char('Swift',
+        states={
+            'invisible': ~Eval('type').in_(['D', 'X']),
+            })
+    return_bank_name = fields.Char('Bank Name',
+        states={
+            'invisible': ~Eval('type').in_(['D', 'X']),
+            })
+    return_bank_address = fields.Char('Bank Address',
+        states={
+            'invisible': ~Eval('type').in_(['D', 'X']),
+            })
+    return_bank_city = fields.Char('Bank city',
+        states={
+            'invisible': ~Eval('type').in_(['D', 'X']),
+            })
+    return_bank_country_code = fields.Char('Bank Country Code',
+        states={
+            'invisible': ~Eval('type').in_(['D', 'X']),
+            })
     exonerated_mod390 = fields.Selection([
             ('0', ''),
             ('1', 'Yes'),
@@ -670,6 +702,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_previous_period_amount_to_compensate():
+        return 0
+
+    @staticmethod
+    def default_before_result():
         return 0
 
     @staticmethod
@@ -878,6 +914,40 @@ class Report(Workflow, ModelSQL, ModelView):
             self.auto_bankruptcy_declaration = '2'
             self.passive_subject_voluntarily_sii = '2'
 
+    @fields.depends('bank_account', 'type', 'swift_bank', 'return_bank_name',
+        'return_bank_address', 'return_bank_city', 'return_bank_country_code')
+    def set_bank_account_information(self):
+        if (self.bank_account and self.type and any(n.type == 'iban'
+                    for n in self.bank_account.numbers)
+                and self.type in ('D', 'X')):
+            self.swift_bank = (self.bank_account.bank
+                and self.bank_account.bank.bic or '')
+            self.return_bank_name = (self.bank_account.bank
+                and self.bank_account.bank.rec_name or '')
+            self.return_bank_address = (self.bank_account.bank
+                and self.bank_account.bank.party.addresses
+                and ' '.join(
+                    self.bank_account.bank.party.addresses[0].
+                    full_address.replace('\n', '').split())
+                or '')
+            self.return_bank_city = (self.bank_account.bank
+                and self.bank_account.bank.party.addresses
+                and self.bank_account.bank.party.addresses[0].city
+                or '')
+            self.return_bank_country_code = (self.bank_account.bank
+                and self.bank_account.bank.party.addresses
+                and self.bank_account.bank.party.addresses[0].country
+                and self.bank_account.bank.party.addresses[0].
+                    country.code or '')
+
+    @fields.depends(methods=['set_bank_account_information'])
+    def on_change_bank_account(self):
+        self.set_bank_account_information()
+
+    @fields.depends(methods=['set_bank_account_information'])
+    def on_change_type(self):
+        self.set_bank_account_information()
+
     def get_currency(self, name):
         return self.company.currency.id
 
@@ -885,12 +955,15 @@ class Report(Workflow, ModelSQL, ModelView):
         return (self.accrued_total_tax or _Z) - (self.deductible_total or _Z)
 
     def get_accrued_total_tax(self, name):
-        return ((self.accrued_vat_tax_1 or _Z) +
+        return ((self.accrued_vat_tax_0 or _Z) +
+            (self.accrued_vat_tax_1 or _Z) +
+            (self.accrued_vat_tax_4 or _Z) +
             (self.accrued_vat_tax_2 or _Z) +
             (self.accrued_vat_tax_3 or _Z) +
             (self.intracommunity_adquisitions_tax or _Z) +
             (self.other_passive_subject_tax or _Z) +
             (self.accrued_vat_tax_modification or _Z) +
+            (self.accrued_re_tax_4 or _Z) +
             (self.accrued_re_tax_1 or _Z) +
             (self.accrued_re_tax_2 or _Z) +
             (self.accrued_re_tax_3 or _Z) +
@@ -933,7 +1006,8 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.joint_taxation_state_provincial_councils or _Z))
 
     def get_liquidation_result(self, name):
-        return self.result - self.to_deduce
+        return (self.result or _Z - self.to_deduce or _Z
+            + self.before_result or _Z)
 
     def get_filename(self, name):
         return 'aeat303-%s-%s.txt' % (
@@ -945,6 +1019,7 @@ class Report(Workflow, ModelSQL, ModelView):
             report.check_euro()
             report.check_compensate()
             report.check_type()
+            report.check_sepa_check()
             report.check_exonerated_mod390()
             report.check_annual_operation_volume()
 
@@ -967,6 +1042,12 @@ class Report(Workflow, ModelSQL, ModelView):
                 self.period not in ('3T', '4T', '07', '08', '09', '10', '11',
                     '12')):
             raise UserError(gettext('aeat_303.msg_invalid_type_period',
+                    report=self))
+
+    def check_sepa_check(self):
+        if self.type in ('D', 'X') and self.return_sepa_check == '0':
+            raise UserError(gettext(
+                    'aeat_303.msg_invalid_sepa_check',
                     report=self))
 
     def check_exonerated_mod390(self):
@@ -1034,10 +1115,30 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, value)
             for field in mapping.values():
                 setattr(report, field, Decimal('0.0'))
+
+            # For the value of the field accrued_re_percent_1 we have to fill
+            # 3 differents Recargos Equivalencia.
+            # As Information note [1] say, whe have to show the value with the
+            # max amount of the 3 possibles.
+            #
+            # https://sede.agenciatributaria.gob.es/Sede/Nota_informativa_sobre_los_nuevos_tipos_de_recargo_de_equivalencia__en_el_IVA.html
+            accrued_re_base_1 = {
+                '0.0': 0,
+                '0.5': 0,
+                '0.62': 0,
+                }
             with Transaction().set_context(periods=periods):
                 for tax in TaxCode.browse(mapping.keys()):
                     value = getattr(report, mapping[tax.id])
-                    setattr(report, mapping[tax.id], value + tax.amount)
+                    amount = value + tax.amount
+                    setattr(report, mapping[tax.id], amount)
+                    if mapping[tax.id] == 'accrued_re_base_1':
+                        for key in accrued_re_base_1.keys():
+                            if key in tax.code:
+                                accrued_re_base_1[key] += amount
+            report.accrued_re_percent_1 = max(accrued_re_base_1,
+                key=accrued_re_base_1.get)
+
             report.save()
 
         cls.write(reports, {
@@ -1068,8 +1169,10 @@ class Report(Workflow, ModelSQL, ModelView):
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
-        additional_record = Record(aeat303.ADDITIONAL_RECORD)
-        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
+        #annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
+        #annual_additional_record = Record(
+        #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
+        bank_data_record = Record(aeat303.BANK_DATA_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
         for column in columns:
@@ -1086,47 +1189,25 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(general_record, column, value)
             # If period is diffenret of 12/4T the fourth page will be without
             #   content.
-            if self.period in ('12', '4T'):
-                if column in additional_record._fields:
-                    setattr(additional_record, column, value)
-                # if column in annual_resume_record._fields:
-                #     setattr(annual_resume_record, column, value)
+            # if self.period in ('12', '4T'):
+            #     if column in annual_additional_record._fields:
+            #         setattr(annual_additional_record, column, value)
+            #     if column in annual_resume_record._fields:
+            #         setattr(annual_resume_record, column, value)
+            if column in bank_data_record._fields:
+                setattr(bank_data_record, column, value)
             if column in footer._fields:
                 setattr(footer, column, value)
         record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
-        if self.bank_account:
-            for number in self.bank_account.numbers:
-                if number.type == 'iban':
-                    general_record.bank_account = number.number_compact
-                    if self.return_sepa_check in ('1', '2', '3'):
-                        general_record.swift_bank = (
-                            self.bank_account.bank and
-                            self.bank_account.bank.bic or '')
-                        general_record.return_bank_name = (
-                            self.bank_account.bank
-                            and self.bank_account.bank.rec_name
-                            or '')
-                        general_record.return_bank_address = (
-                            self.bank_account.bank and
-                            self.bank_account.bank.party.addresses and
-                            ' '.join(self.bank_account.bank.party.addresses[0].
-                                full_address.replace('\n', '').split())
-                            or '')
-                        general_record.return_bank_city = (
-                            self.bank_account.bank and
-                            self.bank_account.bank.party.addresses and
-                            self.bank_account.bank.party.addresses[0].city or
-                            '')
-                        general_record.return_bank_country_code = (
-                            self.bank_account.bank and
-                            self.bank_account.bank.party.addresses and
-                            self.bank_account.bank.party.addresses[0].country
-                            and self.bank_account.bank.party.addresses[0].
-                                country.code or '')
-                    break
-        records = [header, record, general_record]
-        if self.period in ('12', '4T'):
-            records.append(additional_record)
+        bank_data_record.bank_account = next((n.number_compact
+                for n in self.bank_account.numbers
+                if n.type == 'iban'), '')
+        # if self.period in ('12', '4T'):
+        #     records = [header, record, general_record, annual_resume_record,
+        #         annual_additional_record, bank_data_record]
+        # else:
+        #     records = [header, record, general_record, bank_data_record]
+        records = [header, record, general_record, bank_data_record]
         records.append(footer)
         try:
             data = retrofix_write(records, separator='')
