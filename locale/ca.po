@@ -203,7 +203,7 @@ msgid "Bank Name"
 msgstr "Nom del Banc"
 
 msgctxt "field:aeat.303.report,return_bank_address:"
-msgid "Ban Address"
+msgid "Bank Address"
 msgstr "Direcció del Banc"
 
 msgctxt "field:aeat.303.report,return_bank_city:"
