@@ -1165,7 +1165,7 @@ class Report(Workflow, ModelSQL, ModelView):
         # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
         # annual_additional_record = Record(
         #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
-        bank_data_record = Record(aeat303.BANK_DATA_RECORD)
+        ###bank_data_record = Record(aeat303.BANK_DATA_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
         for column in columns:
@@ -1187,20 +1187,21 @@ class Report(Workflow, ModelSQL, ModelView):
             #         setattr(annual_additional_record, column, value)
             #     if column in annual_resume_record._fields:
             #         setattr(annual_resume_record, column, value)
-            if column in bank_data_record._fields:
-                setattr(bank_data_record, column, value)
+            ###if column in bank_data_record._fields:
+            ###    setattr(bank_data_record, column, value)
             if column in footer._fields:
                 setattr(footer, column, value)
         record.bankruptcy = bool(self.auto_bankruptcy_declaration != ' ')
-        bank_data_record.bank_account = next((n.number_compact
-                for n in self.bank_account.numbers
-                if n.type == 'iban'), '') if self.bank_account else ''
+        ###bank_data_record.bank_account = next((n.number_compact
+        ###        for n in self.bank_account.numbers
+        ###        if n.type == 'iban'), '') if self.bank_account else ''
         # if self.period in ('12', '4T'):
         #     records = [header, record, general_record, annual_resume_record,
         #         annual_additional_record, bank_data_record]
         # else:
         #     records = [header, record, general_record, bank_data_record]
-        records = [header, record, general_record, bank_data_record]
+        ###records = [header, record, general_record, bank_data_record]
+        records = [header, record, general_record]
         records.append(footer)
         try:
             data = retrofix_write(records, separator='')
