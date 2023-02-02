@@ -9,7 +9,7 @@ contains the full copyright notices and license terms. -->
     <newline/>
 
     <notebook colspan="6">
-        <page string="Page 01" id="aeat303page01" col="6">
+        <page string="Page 01" id="dp30301" col="6">
             <label name="type"/>
             <field name="type"/>
             <label name="year"/>
@@ -114,7 +114,7 @@ contains the full copyright notices and license terms. -->
             <field name="accrued_re_tax_3"/>
             <label name="accrued_re_base_modification"/>
             <field name="accrued_re_base_modification"/>
-            <label name="accrued_re_tax_modification"/>
+            <label name="accrued_re_tax_modification" colspan="3"/>
             <field name="accrued_re_tax_modification"/>
             <label name="accrued_total_tax" colspan="5"/>
             <field name="accrued_total_tax"/>
@@ -174,10 +174,10 @@ contains the full copyright notices and license terms. -->
             <field name="general_regime_result"/>
         </page>
         <!-- Simplified Regime
-        <page string="Page 02" id="aeat303page02" col="6">
+        <page string="Page 02" id="dp30302" col="6">
         </page>
         -->
-        <page string="Page 03" id="aeat303page03" col="6">
+        <page string="Page 03" id="dp30303" col="6">
             <separator id="additional_information" string="Additional information"
                 colspan="6"/>
             <label name="intracommunity_deliveries" colspan="5"/>
@@ -246,8 +246,33 @@ contains the full copyright notices and license terms. -->
             <label name="previous_declaration_receipt"/>
             <field name="previous_declaration_receipt"/>
         </page>
-        <!--
-        <page string="Page 04" id="aeat303page04" col="6">
+        <page string="Page 04" id="dp30304" col="6">
+            <label name="special_info_key_main" colspan="5"/>
+            <field name="special_info_key_main"/>
+            <label name="special_info_section_iae_main" colspan="5"/>
+            <field name="special_info_section_iae_main"/>
+            <label name="special_info_key_others_1" colspan="5"/>
+            <field name="special_info_key_others_1"/>
+            <label name="special_info_section_iae_others_1" colspan="5"/>
+            <field name="special_info_section_iae_others_1"/>
+            <label name="special_info_key_others_2" colspan="5"/>
+            <field name="special_info_key_others_2"/>
+            <label name="special_info_section_iae_others_2" colspan="5"/>
+            <field name="special_info_section_iae_others_2"/>
+            <label name="special_info_key_others_3" colspan="5"/>
+            <field name="special_info_key_others_3"/>
+            <label name="special_info_section_iae_others_3" colspan="5"/>
+            <field name="special_info_section_iae_others_3"/>
+            <label name="special_info_key_others_4" colspan="5"/>
+            <field name="special_info_key_others_4"/>
+            <label name="special_info_section_iae_others_4" colspan="5"/>
+            <field name="special_info_section_iae_others_4"/>
+            <label name="special_info_key_others_5" colspan="5"/>
+            <field name="special_info_key_others_5"/>
+            <label name="special_info_section_iae_others_5" colspan="5"/>
+            <field name="special_info_section_iae_others_5"/>
+            <label name="special_info_required_declare_third_party_operation" colspan="5"/>
+            <field name="special_info_required_declare_third_party_operation"/>
             <label name="info_territory_alava" colspan="5"/>
             <field name="info_territory_alava"/>
             <label name="info_territory_guipuzcoa" colspan="5"/>
@@ -256,8 +281,28 @@ contains the full copyright notices and license terms. -->
             <field name="info_territory_vizcaya"/>
             <label name="info_territory_navarra" colspan="5"/>
             <field name="info_territory_navarra"/>
+            <label name="information_taxation_reason_territory" colspan="5"/>
+            <field name="information_taxation_reason_territory"/>
+            <label name="special_info_rg_operations" colspan="5"/>
+            <field name="special_info_rg_operations"/>
+            <label name="special_info_recc" colspan="5"/>
+            <field name="special_info_recc"/>
+            <label name="special_info_intracommunity_deliveries_2bdeduced" colspan="5"/>
+            <field name="special_info_intracommunity_deliveries_2bdeduced"/>
             <label name="special_info_exempt_op_2bdeduced" colspan="5"/>
             <field name="special_info_exempt_op_2bdeduced"/>
+            <label name="special_info_exempt_op_wo_permission_2bdeduced" colspan="5"/>
+            <field name="special_info_exempt_op_wo_permission_2bdeduced"/>
+            <label name="annual_subject_operations_w_reverse_charge" colspan="5"/>
+            <field name="annual_subject_operations_w_reverse_charge"/>
+            <label name="annual_oss_not_subject_operations" colspan="5"/>
+            <field name="annual_oss_not_subject_operations"/>
+            <label name="annual_oss_subject_operations" colspan="5"/>
+            <field name="annual_oss_subject_operations"/>
+            <label name="annual_intragroup_transaction" colspan="5"/>
+            <field name="annual_intragroup_transaction"/>
+            <label name="special_info_operations_rs" colspan="5"/>
+            <field name="special_info_operations_rs"/>
             <label name="special_info_farming_cattleraising_fishing" colspan="5"/>
             <field name="special_info_farming_cattleraising_fishing"/>
             <label name="special_info_passive_subject_re" colspan="5"/>
@@ -266,15 +311,144 @@ contains the full copyright notices and license terms. -->
             <field name="special_info_art_antiques_collectibles"/>
             <label name="special_info_travel_agency" colspan="5"/>
             <field name="special_info_travel_agency"/>
+            <label name="special_info_financial_op_not_usual" colspan="5"/>
+            <field name="special_info_financial_op_not_usual"/>
             <label name="special_info_delivery_investment_domestic_operations" colspan="5"/>
             <field name="special_info_delivery_investment_domestic_operations"/>
-            <label name="information_taxation_reason_territory" colspan="5"/>
-            <field name="information_taxation_reason_territory"/>
+            <label name="special_info_total" colspan="5"/>
+            <field name="special_info_total"/>
         </page>
-        <page string="Page 05" id="aeat303page05" col="6">
+        <page string="Page 05" id="dp30305" col="6">
+            <label name="cnae1" colspan="5"/>
+            <field name="cnae1"/>
+            <label name="operations_amount1" colspan="5"/>
+            <field name="operations_amount1"/>
+            <label name="operations_amount_w_deduction1" colspan="5"/>
+            <field name="operations_amount_w_deduction1"/>
+            <label name="prorrata_type1" colspan="5"/>
+            <field name="prorrata_type1"/>
+            <label name="prorrata_percent1" colspan="5"/>
+            <field name="prorrata_percent1"/>
+
+            <label name="cnae2" colspan="5"/>
+            <field name="cnae2"/>
+            <label name="operations_amount2" colspan="5"/>
+            <field name="operations_amount2"/>
+            <label name="operations_amount_w_deduction2" colspan="5"/>
+            <field name="operations_amount_w_deduction2"/>
+            <label name="prorrata_type2" colspan="5"/>
+            <field name="prorrata_type2"/>
+            <label name="prorrata_percent2" colspan="5"/>
+            <field name="prorrata_percent2"/>
+
+            <label name="cnae3" colspan="5"/>
+            <field name="cnae3"/>
+            <label name="operations_amount3" colspan="5"/>
+            <field name="operations_amount3"/>
+            <label name="operations_amount_w_deduction3" colspan="5"/>
+            <field name="operations_amount_w_deduction3"/>
+            <label name="prorrata_type3" colspan="5"/>
+            <field name="prorrata_type3"/>
+            <label name="prorrata_percent3" colspan="5"/>
+            <field name="prorrata_percent3"/>
+
+            <label name="cnae4" colspan="5"/>
+            <field name="cnae4"/>
+            <label name="operations_amount4" colspan="5"/>
+            <field name="operations_amount4"/>
+            <label name="operations_amount_w_deduction4" colspan="5"/>
+            <field name="operations_amount_w_deduction4"/>
+            <label name="prorrata_type4" colspan="5"/>
+            <field name="prorrata_type4"/>
+            <label name="prorrata_percent4" colspan="5"/>
+            <field name="prorrata_percent4"/>
+
+            <label name="cnae5" colspan="5"/>
+            <field name="cnae5"/>
+            <label name="operations_amount5" colspan="5"/>
+            <field name="operations_amount5"/>
+            <label name="operations_amount_w_deduction5" colspan="5"/>
+            <field name="operations_amount_w_deduction5"/>
+            <label name="prorrata_type5" colspan="5"/>
+            <field name="prorrata_type5"/>
+            <label name="prorrata_percent5" colspan="5"/>
+            <field name="prorrata_percent5"/>
+
+            <label name="deductible_current_domestic_operations_base1" colspan="5"/>
+            <field name="deductible_current_domestic_operations_base1"/>
+            <label name="deductible_current_domestic_operations_tax1" colspan="5"/>
+            <field name="deductible_current_domestic_operations_tax1"/>
+            <label name="deductible_investment_domestic_operations_base1" colspan="5"/>
+            <field name="deductible_investment_domestic_operations_base1"/>
+            <label name="deductible_investment_domestic_operations_tax1" colspan="5"/>
+            <field name="deductible_investment_domestic_operations_tax1"/>
+            <label name="deductible_current_import_operations_base1" colspan="5"/>
+            <field name="deductible_current_import_operations_base1"/>
+            <label name="deductible_current_import_operations_tax1" colspan="5"/>
+            <field name="deductible_current_import_operations_tax1"/>
+            <label name="deductible_investment_import_operations_base1" colspan="5"/>
+            <field name="deductible_investment_import_operations_base1"/>
+            <label name="deductible_investment_import_operations_tax1" colspan="5"/>
+            <field name="deductible_investment_import_operations_tax1"/>
+            <label name="deductible_current_intracommunity_operations_base1" colspan="5"/>
+            <field name="deductible_current_intracommunity_operations_base1"/>
+            <label name="deductible_current_intracommunity_operations_tax1" colspan="5"/>
+            <field name="deductible_current_intracommunity_operations_tax1"/>
+            <label name="deductible_investment_intracommunity_operations_base1" colspan="5"/>
+            <field name="deductible_investment_intracommunity_operations_base1"/>
+            <label name="deductible_investment_intracommunity_operations_tax1" colspan="5"/>
+            <field name="deductible_investment_intracommunity_operations_tax1"/>
+            <label name="deductible_compensations_base1" colspan="5"/>
+            <field name="deductible_compensations_base1"/>
+            <label name="deductible_compensations_tax1" colspan="5"/>
+            <field name="deductible_compensations_tax1"/>
+            <label name="deductible_regularization_base1" colspan="5"/>
+            <field name="deductible_regularization_base1"/>
+            <label name="deductible_regularization_tax1" colspan="5"/>
+            <field name="deductible_regularization_tax1"/>
+            <label name="deductible_investment_regularization1" colspan="5"/>
+            <field name="deductible_investment_regularization1"/>
+            <label name="deductible_total1" colspan="5"/>
+            <field name="deductible_total1"/>
+
+            <label name="deductible_current_domestic_operations_base2" colspan="5"/>
+            <field name="deductible_current_domestic_operations_base2"/>
+            <label name="deductible_current_domestic_operations_tax2" colspan="5"/>
+            <field name="deductible_current_domestic_operations_tax2"/>
+            <label name="deductible_investment_domestic_operations_base2" colspan="5"/>
+            <field name="deductible_investment_domestic_operations_base2"/>
+            <label name="deductible_investment_domestic_operations_tax2" colspan="5"/>
+            <field name="deductible_investment_domestic_operations_tax2"/>
+            <label name="deductible_current_import_operations_base2" colspan="5"/>
+            <field name="deductible_current_import_operations_base2"/>
+            <label name="deductible_current_import_operations_tax2" colspan="5"/>
+            <field name="deductible_current_import_operations_tax2"/>
+            <label name="deductible_investment_import_operations_base2" colspan="5"/>
+            <field name="deductible_investment_import_operations_base2"/>
+            <label name="deductible_investment_import_operations_tax2" colspan="5"/>
+            <field name="deductible_investment_import_operations_tax2"/>
+            <label name="deductible_current_intracommunity_operations_base2" colspan="5"/>
+            <field name="deductible_current_intracommunity_operations_base2"/>
+            <label name="deductible_current_intracommunity_operations_tax2" colspan="5"/>
+            <field name="deductible_current_intracommunity_operations_tax2"/>
+            <label name="deductible_investment_intracommunity_operations_base2" colspan="5"/>
+            <field name="deductible_investment_intracommunity_operations_base2"/>
+            <label name="deductible_investment_intracommunity_operations_tax2" colspan="5"/>
+            <field name="deductible_investment_intracommunity_operations_tax2"/>
+            <label name="deductible_compensations_base2" colspan="5"/>
+            <field name="deductible_compensations_base2"/>
+            <label name="deductible_compensations_tax2" colspan="5"/>
+            <field name="deductible_compensations_tax2"/>
+            <label name="deductible_regularization_base2" colspan="5"/>
+            <field name="deductible_regularization_base2"/>
+            <label name="deductible_regularization_tax2" colspan="5"/>
+            <field name="deductible_regularization_tax2"/>
+            <label name="deductible_investment_regularization2" colspan="5"/>
+            <field name="deductible_investment_regularization2"/>
+            <label name="deductible_total2" colspan="5"/>
+            <field name="deductible_total2"/>
         </page>
-        -->
-        <page string="Page DID" id="aeat303pagedid" col="6">
+        <page string="Page DID" id="dp303did" col="6">
             <label name="bank_account"/>
             <field name="bank_account" colspan="5"/>
             <group id="return_bank_data" colspan="6" col="4">
@@ -294,6 +468,7 @@ contains the full copyright notices and license terms. -->
         </page>
     </notebook>
 
+    <separator id="303footer" colspan="6"/>
     <group id="state" colspan="3" col="6">
         <label name="state"/>
         <field name="state"/>
