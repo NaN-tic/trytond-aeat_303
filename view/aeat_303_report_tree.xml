@@ -8,7 +8,7 @@ contains the full copyright notices and license terms. -->
     <field name="accrued_total_tax"/>
     <field name="deductible_total"/>
     <field name="general_regime_result"/>
-    <field name="result"/>
+    <field name="liquidation_result"/>
     <field name="state"/>
     <field name="calculation_date" widget="date"/>
     <button name="draft" tree_invisible="1"/>
