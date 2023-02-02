@@ -27,6 +27,12 @@ _STATES = {
 
 _DEPENDS = ['state']
 
+_STATES_390 = {
+    'invisible': Eval('exonerated_mod390') != '1',
+    }
+
+_DEPENDS_390 = ['exonerated_mod390']
+
 _Z = Decimal("0.0")
 
 
@@ -75,11 +81,14 @@ class TemplateTaxCodeMapping(ModelSQL):
 
     aeat303_field = fields.Many2One('ir.model.field', 'Field',
         domain=[('module', '=', 'aeat_303')], required=True)
-    type_ = fields.Selection([('code', 'Code'), ('numeric', 'Numeric')],
-        'Type', required=True)
+    type_ = fields.Selection([
+            ('code', 'Code'),
+            ('exonerated390', 'Exonerate 390'),
+            ('numeric', 'Numeric')
+            ], 'Type', required=True)
     code = fields.Many2Many('aeat.303.mapping-account.tax.code.template',
         'mapping', 'code', 'Tax Code Template', states={
-            'invisible': Eval('type_') != 'code',
+            'invisible': Eval('type_') == 'numeric',
         }, depends=['type_'])
     number = fields.Numeric('Number',
         states={
@@ -214,12 +223,15 @@ class TaxCodeMapping(ModelSQL, ModelView):
         ondelete="RESTRICT")
     aeat303_field = fields.Many2One('ir.model.field', 'Field',
         domain=[('module', '=', 'aeat_303')], required=True)
-    type_ = fields.Selection([('code', 'Code'), ('numeric', 'Numeric')],
-        'Type', required=True)
+    type_ = fields.Selection([
+            ('code', 'Code'),
+            ('exonerated390', 'Exonerate 390'),
+            ('numeric', 'Numeric')
+            ], 'Type', required=True)
     code = fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
         'code', 'Tax Code', states={
-            'required': Eval('type_') == 'code',
-            'invisible': Eval('type_') != 'code',
+            'required': Eval('type_') != 'numeric',
+            'invisible': Eval('type_') == 'numeric',
         }, depends=['type_'])
     number = fields.Numeric('Number',
         states={
@@ -253,14 +265,38 @@ class Report(Workflow, ModelSQL, ModelView):
     '''
     __name__ = 'aeat.303.report'
 
+    # Header
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Eval('state') == 'done',
+            'readonly': Eval('state').in_(['done', 'calculated']),
             }, depends=['state'])
+    regime_type = fields.Selection([
+            # ('1', 'Tribute exclusively on simplificated regime'),
+            # ('2', 'Tribute on both simplified and general regime'),
+            ('3', 'Tribute exclusively on general regime'),
+            ], 'Tribute type', required=True, sort=False, states={
+                'readonly': Eval('state').in_(['done', 'calculated']),
+                }, depends=_DEPENDS)
+    company_vat = fields.Char('VAT')
+    company_name = fields.Char('Company Name')
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
-    year = fields.Integer("Year", required=True)
-    monthly_return_subscription = fields.Boolean('Montly Return Subscription')
+
+    # Page01
+    type = fields.Selection([
+            ('C', 'Application for compensation'),
+            ('D', 'Return'),
+            ('G', 'Current account tax - Revenue'),
+            ('I', 'Income'),
+            ('N', 'No activity / Zero result'),
+            ('V', 'Current account tax - Returns'),
+            ('U', 'Direct incomes in account'),
+            ('X', 'Return by trasnfer to foreign account'),
+            ], 'Declaration Type', required=True, sort=False, states=_STATES,
+        depends=_DEPENDS)
+    year = fields.Integer("Year", required=True, states={
+            'readonly': Eval('state').in_(['done', 'calculated']),
+            }, depends=_DEPENDS)
     period = fields.Selection([
             ('1T', 'First quarter'),
             ('2T', 'Second quarter'),
@@ -278,207 +314,501 @@ class Report(Workflow, ModelSQL, ModelView):
             ('10', 'October'),
             ('11', 'November'),
             ('12', 'December'),
-            ], 'Period', required=True, sort=False, states=_STATES,
-        depends=_DEPENDS)
-    type = fields.Selection([
-            ('C', 'Application for compensation'),
-            ('D', 'Return'),
-            ('G', 'Current account tax - Revenue'),
-            ('I', 'Income'),
-            ('N', 'No activity / Zero result'),
-            ('V', 'Current account tax - Returns'),
-            ('U', 'Direct incomes in account'),
-            ('X', 'Return by trasnfer to foreign account'),
-            ], 'Declaration Type', required=True, sort=False, states=_STATES,
-        depends=_DEPENDS)
-    regime_type = fields.Selection([
-            # ('1', 'Tribute exclusively on simplificated regime'),
-            # ('2', 'Tribute on both simplified and general regime'),
-            ('3', 'Tribute exclusively on general regime'),
-            ], 'Tribute type', required=True, sort=False, states=_STATES,
-        depends=_DEPENDS)
+            ], 'Period', required=True, sort=False, states={
+                'readonly': Eval('state').in_(['done', 'calculated']),
+                }, depends=_DEPENDS)
+    passive_subject_foral_administration = fields.Selection([
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Passive Subject on a Foral Administration', help="Passive "
+        "Subject that tribute exclusively on a Foral Administration with "
+        "an import TAX paid by Aduana pending entry.")
+    monthly_return_subscription = fields.Boolean('Montly Return Subscription')
     joint_liquidation = fields.Boolean('Is joint liquidation')
     recc = fields.Boolean('Special Cash Criteria')
     recc_receiver = fields.Boolean('Special Cash Criteria Receiver')
     special_prorate = fields.Boolean('Special prorate')
     special_prorate_revocation = fields.Boolean('Special prorate revocation')
-    accrued_vat_base_0 = fields.Numeric('Accrued Vat Base 0', digits=(16, 2))
+    auto_bankruptcy_date = fields.Date('Auto Bankruptcy Date')
+    auto_bankruptcy_declaration = fields.Selection([
+            (' ', 'No'),
+            ('1', 'Before Bankruptcy Proceeding'),
+            ('2', 'After Bankruptcy Proceeding'),
+            ], 'Auto Bankruptcy Declaration', required=True)
+    passive_subject_voluntarily_sii = fields.Selection([
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Passive Subject voluntarily opted for the SII')
+    exonerated_mod390 = fields.Selection([
+            ('0', ''),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Exonerated Model 390', states={
+                'readonly': ~Eval('period').in_(['12', '4T'])
+            }, help="Exclusively to fill in the last period exonerated from "
+            "the Annual Declaration-VAT summary. (Exempt from presenting the "
+            "model 390 and with volume of operations zero).")
+    annual_operation_volume = fields.Selection([
+            ('0', ''),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Exist operations annual volume (art. 121 LIVA)', states={
+                'readonly': Eval('exonerated_mod390') != '1',
+                'required': Eval('exonerated_mod390') == '1',
+                }, help="Exclusively to fill in the last "
+            "period exonerated from the Annual Declaration-VAT summary. "
+            "(Exempt from presenting the model 390 and with volume of "
+            "operations zero).")
+    accrued_vat_base_0 = fields.Numeric('Accrued Vat Base 0', digits=(15, 2))
     accrued_vat_percent_0 = fields.Numeric('Accrued Vat Percent 0',
-        digits=(16, 2))
-    accrued_vat_tax_0 = fields.Numeric('Accrued Vat Tax 0', digits=(16, 2))
-    accrued_vat_base_1 = fields.Numeric('Accrued Vat Base 1', digits=(16, 2))
+        digits=(15, 2))
+    accrued_vat_tax_0 = fields.Numeric('Accrued Vat Tax 0', digits=(15, 2))
+    accrued_vat_base_1 = fields.Numeric('Accrued Vat Base 1', digits=(15, 2))
     accrued_vat_percent_1 = fields.Numeric('Accrued Vat Percent 1',
-        digits=(16, 2))
-    accrued_vat_tax_1 = fields.Numeric('Accrued Vat Tax 1', digits=(16, 2))
-    accrued_vat_base_2 = fields.Numeric('Accrued Vat Base 2', digits=(16, 2))
-    accrued_vat_percent_2 = fields.Numeric('Accrued Vat Percent 2',
-        digits=(16, 2))
-    accrued_vat_tax_2 = fields.Numeric('Accrued Vat Tax 2', digits=(16, 2))
-    accrued_vat_base_3 = fields.Numeric('Accrued Vat Base 3', digits=(16, 2))
-    accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
-        digits=(16, 2))
-    accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(16, 2))
-    accrued_vat_base_4 = fields.Numeric('Accrued Vat Base 4', digits=(16, 2))
+        digits=(15, 2))
+    accrued_vat_tax_1 = fields.Numeric('Accrued Vat Tax 1', digits=(15, 2))
+    accrued_vat_base_4 = fields.Numeric('Accrued Vat Base 4', digits=(15, 2))
     accrued_vat_percent_4 = fields.Numeric('Accrued Vat Percent 4',
-        digits=(16, 2))
-    accrued_vat_tax_4 = fields.Numeric('Accrued Vat Tax 4', digits=(16, 2))
-    accrued_vat_base_modification = fields.Numeric('Accrued Vat Base '
-        'Modification', digits=(16, 2))
-    accrued_vat_tax_modification = fields.Numeric('Accrued Vat Tax '
-        'Modification', digits=(16, 2))
-    accrued_re_base_1 = fields.Numeric('Accrued Re Base 1', digits=(16, 2))
-    accrued_re_percent_1 = fields.Numeric('Accrued Re Percent 1',
-        digits=(16, 2))
-    accrued_re_tax_1 = fields.Numeric('Accrued Re Tax 1', digits=(16, 2))
-    accrued_re_base_2 = fields.Numeric('Accrued Re Base 2', digits=(16, 2))
-    accrued_re_percent_2 = fields.Numeric('Accrued Re Percent 2',
-        digits=(16, 2))
-    accrued_re_tax_2 = fields.Numeric('Accrued Re Tax 2', digits=(16, 2))
-    accrued_re_base_3 = fields.Numeric('Accrued Re Base 3', digits=(16, 2))
-    accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
-        digits=(16, 2))
-    accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(16, 2))
-    accrued_re_base_4 = fields.Numeric('Accrued Re Base 4', digits=(16, 2))
-    accrued_re_percent_4 = fields.Numeric('Accrued Re Percent 4',
-        digits=(16, 2))
-    accrued_re_tax_4 = fields.Numeric('Accrued Re Tax 4', digits=(16, 2))
-    accrued_re_base_modification = fields.Numeric('Accrued Re Base '
-        'Modification', digits=(16, 2))
-    accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
-        'Modification', digits=(16, 2))
+        digits=(15, 2))
+    accrued_vat_tax_4 = fields.Numeric('Accrued Vat Tax 4', digits=(15, 2))
+    accrued_vat_base_2 = fields.Numeric('Accrued Vat Base 2', digits=(15, 2))
+    accrued_vat_percent_2 = fields.Numeric('Accrued Vat Percent 2',
+        digits=(15, 2))
+    accrued_vat_tax_2 = fields.Numeric('Accrued Vat Tax 2', digits=(15, 2))
+    accrued_vat_base_3 = fields.Numeric('Accrued Vat Base 3', digits=(15, 2))
+    accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
+        digits=(15, 2))
+    accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(15, 2))
     intracommunity_adquisitions_base = fields.Numeric(
-        'Intracommunity Adquisitions Base', digits=(16, 2))
+        'Intracommunity Adquisitions Base', digits=(15, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
-        'Intracommunity Adquisitions Tax', digits=(16, 2))
+        'Intracommunity Adquisitions Tax', digits=(15, 2))
     other_passive_subject_base = fields.Numeric(
-        'Other Passive Subject Adquisitions Base', digits=(16, 2))
+        'Other Passive Subject Adquisitions Base', digits=(15, 2))
     other_passive_subject_tax = fields.Numeric(
-        'Other Passive Subject Adquisitions Tax', digits=(16, 2))
+        'Other Passive Subject Adquisitions Tax', digits=(15, 2))
+    accrued_vat_base_modification = fields.Numeric('Accrued Vat Base '
+        'Modification', digits=(15, 2))
+    accrued_vat_tax_modification = fields.Numeric('Accrued Vat Tax '
+        'Modification', digits=(15, 2))
+    accrued_re_base_4 = fields.Numeric('Accrued Re Base 4', digits=(15, 2))
+    accrued_re_percent_4 = fields.Numeric('Accrued Re Percent 4',
+        digits=(15, 2))
+    accrued_re_tax_4 = fields.Numeric('Accrued Re Tax 4', digits=(15, 2))
+    accrued_re_base_1 = fields.Numeric('Accrued Re Base 1', digits=(15, 2))
+    accrued_re_percent_1 = fields.Numeric('Accrued Re Percent 1',
+        digits=(15, 2))
+    accrued_re_tax_1 = fields.Numeric('Accrued Re Tax 1', digits=(15, 2))
+    accrued_re_base_2 = fields.Numeric('Accrued Re Base 2', digits=(15, 2))
+    accrued_re_percent_2 = fields.Numeric('Accrued Re Percent 2',
+        digits=(15, 2))
+    accrued_re_tax_2 = fields.Numeric('Accrued Re Tax 2', digits=(15, 2))
+    accrued_re_base_3 = fields.Numeric('Accrued Re Base 3', digits=(15, 2))
+    accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
+        digits=(15, 2))
+    accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(15, 2))
+    accrued_re_base_modification = fields.Numeric('Accrued Re Base '
+        'Modification', digits=(15, 2))
+    accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
+        'Modification', digits=(15, 2))
     accrued_total_tax = fields.Function(fields.Numeric('Accrued Total Tax',
-            digits=(16, 2)), 'get_accrued_total_tax')
+            digits=(15, 2)), 'get_accrued_total_tax')
     deductible_current_domestic_operations_base = fields.Numeric(
-        'Deductible Current Domestic Operations Base', digits=(16, 2))
+        'Deductible Current Domestic Operations Base', digits=(15, 2))
     deductible_current_domestic_operations_tax = fields.Numeric(
-        'Deductible Current Domestic Operations Tax', digits=(16, 2))
+        'Deductible Current Domestic Operations Tax', digits=(15, 2))
     deductible_investment_domestic_operations_base = fields.Numeric(
-        'Deductible Investment Domestic Operations Base', digits=(16, 2))
+        'Deductible Investment Domestic Operations Base', digits=(15, 2))
     deductible_investment_domestic_operations_tax = fields.Numeric(
-        'Deductible Investment Domestic Operations Tax', digits=(16, 2))
+        'Deductible Investment Domestic Operations Tax', digits=(15, 2))
     deductible_current_import_operations_base = fields.Numeric(
-        'Deductible Current Import Operations Base', digits=(16, 2))
+        'Deductible Current Import Operations Base', digits=(15, 2))
     deductible_current_import_operations_tax = fields.Numeric(
-        'Deductible Current Import Operations Tax', digits=(16, 2))
+        'Deductible Current Import Operations Tax', digits=(15, 2))
     deductible_investment_import_operations_base = fields.Numeric(
-        'Deductible Investment Import Operations Base', digits=(16, 2))
+        'Deductible Investment Import Operations Base', digits=(15, 2))
     deductible_investment_import_operations_tax = fields.Numeric(
-        'Deductible Investment Import Operations Tax', digits=(16, 2))
+        'Deductible Investment Import Operations Tax', digits=(15, 2))
     deductible_current_intracommunity_operations_base = fields.Numeric(
-        'Deductible Current Intracommunity Operations Base', digits=(16, 2))
+        'Deductible Current Intracommunity Operations Base', digits=(15, 2))
     deductible_current_intracommunity_operations_tax = fields.Numeric(
-        'Deductible Current Intracommunity Operations Tax', digits=(16, 2))
+        'Deductible Current Intracommunity Operations Tax', digits=(15, 2))
     deductible_investment_intracommunity_operations_base = fields.Numeric(
-        'Deductible Investment Intracommunity Operations Base', digits=(16, 2))
+        'Deductible Investment Intracommunity Operations Base', digits=(15, 2))
     deductible_investment_intracommunity_operations_tax = fields.Numeric(
-        'Deductible Investment Intracommunity Operations Tax', digits=(16, 2))
+        'Deductible Investment Intracommunity Operations Tax', digits=(15, 2))
     deductible_regularization_base = fields.Numeric(
-        'Deductible Regularization Base', digits=(16, 2))
+        'Deductible Regularization Base', digits=(15, 2))
     deductible_regularization_tax = fields.Numeric(
-        'Deductible Regularization Tax', digits=(16, 2))
+        'Deductible Regularization Tax', digits=(15, 2))
     deductible_compensations = fields.Numeric('Deductible Compensations',
-        digits=(16, 2))
+        digits=(15, 2))
     deductible_investment_regularization = fields.Numeric(
-        'Deductible Investment Regularization', digits=(16, 2))
+        'Deductible Investment Regularization', digits=(15, 2))
     deductible_pro_rata_regularization = fields.Numeric(
-        'Deductible Pro Rata Regularization', digits=(16, 2))
+        'Deductible Pro Rata Regularization', digits=(15, 2))
     deductible_total = fields.Function(fields.Numeric('Deductible Total',
-            digits=(16, 2)), 'get_deductible_total')
-    result_tax_regularitzation = fields.Numeric(
-        'Tax Regularization art. 80.cinco.50a LIVA', digits=(16, 2),
-        help="Only fill if you have done the 952 model. To Fill with the tax "
-        "to recover.")
+            digits=(15, 2)), 'get_deductible_total')
     general_regime_result = fields.Function(fields.Numeric(
             'General Regime Result',
-            digits=(16, 2)), 'get_general_regime_result')
+            digits=(15, 2)), 'get_general_regime_result')
+
+    # Page 03
+    intracommunity_deliveries = fields.Numeric(
+        'Intracommunity Deliveries', digits=(15, 2))
+    exports = fields.Numeric('Exports', digits=(15, 2))
+    not_subject_localitzation_rules = fields.Numeric("Not Subject To "
+        "Localitzation Rules (Except For Those Included in Box 123)",
+        digits=(15, 2))
+    subject_operations_w_reverse_charge = fields.Numeric(
+        "Subject Operations With Reverse Charge", digits=(15, 2))
+    oss_not_subject_operations = fields.Numeric("OSS, Not Subject Operations",
+        digits=(15, 2))
+    oss_subject_operations = fields.Numeric("OSS, Subject Operations",
+        digits=(15, 2))
+    recc_deliveries_base = fields.Numeric(
+        'Special Cash Criteria Deliveries Base', digits=(15, 2))
+    recc_deliveries_tax = fields.Numeric(
+        'Special Cash Criteria Deliveries Tax', digits=(15, 2))
+    recc_adquisitions_base = fields.Numeric(
+        'Special Cash Criteria Asquistions Base', digits=(15, 2))
+    recc_adquisitions_tax = fields.Numeric(
+        'Special Cash Criteria Adquistions Tax', digits=(15, 2))
+    result_tax_regularitzation = fields.Numeric(
+        'Tax Regularization art. 80.cinco.50a LIVA', digits=(15, 2),
+        help="Only fill if you have done the 952 model. To Fill with the tax "
+        "to recover.")
+    sum_results = fields.Function(fields.Numeric(
+            'Sum of Results', digits=(15, 2)), 'get_sum_results')
     state_administration_percent = fields.Numeric(
-        'State Administration Percent', digits=(16, 2))
+        'State Administration Percent', digits=(15, 2))
     state_administration_amount = fields.Function(
-        fields.Numeric('State Administration Amount', digits=(16, 2)),
+        fields.Numeric('State Administration Amount', digits=(15, 2)),
         'get_state_administration_amount')
+    aduana_tax_pending = fields.Numeric(
+        'Aduana Tax Pending', digits=(15, 2),
+        help="Import VAT paid by Aduana pending entry")
     previous_report = fields.Many2One('aeat.303.report', 'Previous Report',
         states={
             'readonly': Eval('state') == 'done',
             }, depends=['state'])
     previous_period_pending_amount_to_compensate = fields.Numeric(
-        'Previous Period Pending Amount To Compensate', digits=(16, 2),
+        'Previous Period Pending Amount To Compensate', digits=(15, 2),
         states={
             'readonly': Bool(Eval('previous_report')),
             }, depends=['previous_report'])
     previous_period_amount_to_compensate = fields.Numeric(
-        'Previous Period Amount To Compensate', digits=(16, 2))
+        'Previous Period Amount To Compensate', digits=(15, 2))
     result_previous_period_amount_to_compensate = fields.Function(
         fields.Numeric('Result Previous Period Amount To Compensate',
-            digits=(16, 2)), 'get_result_previous_period_amount_to_compensate')
-    intracommunity_deliveries = fields.Numeric(
-        'Intracommunity Deliveries', digits=(16, 2))
-    exports = fields.Numeric('Exports', digits=(16, 2))
-    not_subject_localitzation_rules = fields.Numeric("Not Subject To "
-        "Localitzation Rules (Except For Those Included in Box 123)",
-        digits=(16, 2))
-    subject_operations_w_reverse_charge = fields.Numeric(
-        "Subject Operations With Reverse Charge", digits=(16, 2))
-    oss_not_subject_operations = fields.Numeric("OSS, Not Subject Operations",
-        digits=(16, 2))
-    oss_subject_operations = fields.Numeric("OSS, Subject Operations",
-        digits=(16, 2))
-    sum_results = fields.Function(fields.Numeric(
-            'Sum of Results', digits=(16, 2)), 'get_sum_results')
-    aduana_tax_pending = fields.Numeric(
-        'Aduana Tax Pending', digits=(16, 2),
-        help="Import VAT paid by Aduana pending entry")
+            digits=(15, 2)), 'get_result_previous_period_amount_to_compensate')
     joint_taxation_state_provincial_councils = fields.Numeric(
-        'Joint Taxation State Provincial Councils', digits=(16, 2))
-    result = fields.Function(fields.Numeric('Result', digits=(16, 2)),
+        'Joint Taxation State Provincial Councils', digits=(15, 2))
+    result = fields.Function(fields.Numeric('Result', digits=(15, 2)),
         'get_result')
-    before_result = fields.Numeric('Before Result', digits=(16, 2))
-    to_deduce = fields.Numeric('To Deduce', digits=(16, 2))
+    before_result = fields.Numeric('Before Result', digits=(15, 2))
+    to_deduce = fields.Numeric('To Deduce', digits=(15, 2))
     liquidation_result = fields.Function(fields.Numeric('Liquidation Result',
-        digits=(16, 2)), 'get_liquidation_result')
-    amount_to_compensate = fields.Numeric('Amount To Compensate',
-        digits=(16, 2))
-    recc_deliveries_base = fields.Numeric(
-        'Special Cash Criteria Deliveries Base', digits=(16, 2))
-    recc_deliveries_tax = fields.Numeric(
-        'Special Cash Criteria Deliveries Tax', digits=(16, 2))
-    recc_adquisitions_base = fields.Numeric(
-        'Special Cash Criteria Asquistions Base', digits=(16, 2))
-    recc_adquisitions_tax = fields.Numeric(
-        'Special Cash Criteria Adquistions Tax', digits=(16, 2))
+        digits=(15, 2)), 'get_liquidation_result')
+    without_activity = fields.Boolean('Without Activity')
+    complementary_declaration = fields.Boolean(
+        'Complementary Declaration')
+    previous_declaration_receipt = fields.Char(
+        'Previous Declaration Receipt', size=13,
+        states={
+            'required': Bool(Eval('complementary_declaration')),
+            },
+        depends=['complementary_declaration'])
+
+    # Page 04
+    special_info_key_main = fields.Char('Main Activity Code',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_main = fields.Char('Main IAE Code',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_key_others_1 = fields.Char('Activity Code (Other 1)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_others_1 = fields.Char('IAE Code (Other 1)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_key_others_2 = fields.Char('Activity Code (Other 2)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_others_2 = fields.Char('IAE Code (Other 2)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_key_others_3 = fields.Char('Activity Code (Other 3)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_others_3 = fields.Char('IAE Code (Other 3)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_key_others_4 = fields.Char('Activity Code (Other 4)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_others_4 = fields.Char('IAE Code (Other 4)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_key_others_5 = fields.Char('Activity Code (Other 5)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_section_iae_others_5 = fields.Char('IAE Code (Other 5)',
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_required_declare_third_party_operation = fields.Selection([
+            (' ', 'No'),
+            ('X', 'Yes'),
+            ], 'Required declare Third Party Operations',
+        help="Check if you have carried out transactions for which you are "
+        "required to submit the annual declaration of transactions with "
+        "third parties.", states=_STATES_390, depends=_DEPENDS_390)
     info_territory_alava = fields.Numeric(
-        'Taxation Information by Territory: Alava', digits=(16, 2))
+        'Taxation Information by Territory: Alava', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
     info_territory_guipuzcoa = fields.Numeric(
-        'Taxation Information by Territory: Guipuzcoa', digits=(16, 2))
+        'Taxation Information by Territory: Guipuzcoa', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
     info_territory_vizcaya = fields.Numeric(
-        'Taxation Information by Territory: Vizcaya', digits=(16, 2))
+        'Taxation Information by Territory: Vizcaya', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
     info_territory_navarra = fields.Numeric(
-        'Taxation Information by Territory: Navarra', digits=(16, 2))
-    special_info_exempt_op_2bdeduced = fields.Numeric(
-        'Exports and Other Exempt Oprations to be Deduce', digits=(16, 2))
-    special_info_farming_cattleraising_fishing = fields.Numeric(
-        'Especial Regime of Farming, Cattle rasing and Fishing',
-        digits=(16, 2))
-    special_info_passive_subject_re = fields.Numeric(
-        'Passive Subject on Equivalence Regime', digits=(16, 2))
-    special_info_art_antiques_collectibles = fields.Numeric(
-        'Special Regime Operations on Art, Antiques and Collectibles',
-        digits=(16, 2))
-    special_info_travel_agency = fields.Numeric(
-        'Special Regime Operations on Travel Agency', digits=(16, 2))
-    special_info_delivery_investment_domestic_operations = fields.Numeric(
-        'Delivery of Investment Domestic Operations', digits=(16, 2))
+        'Taxation Information by Territory: Navarra', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
     information_taxation_reason_territory = fields.Numeric(
         'Information on taxation by reason of territorya: Commo territory',
-        digits=(3, 2))
-    without_activity = fields.Boolean('Without Activity')
+        digits=(3, 2), states=_STATES_390, depends=_DEPENDS_390)
+    special_info_rg_operations = fields.Numeric(
+        'Operations in General Regime', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_recc = fields.Numeric(
+        'Operations Especial Regime Cash Criteria', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_intracommunity_deliveries_2bdeduced = fields.Numeric(
+        'Intracommunity Delivery of Goods and Services', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_exempt_op_2bdeduced = fields.Numeric(
+        'Exports and Other Exempt Oprations to be Deduce', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_exempt_op_wo_permission_2bdeduced = fields.Numeric(
+        'Exempt Oprations without deduction right', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_w_passive_subject = fields.Numeric(
+        'Not Subjected Operations', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    annual_subject_operations_w_reverse_charge = fields.Numeric(
+        'Subjected Operations With Reverse Charge', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    annual_oss_not_subject_operations = fields.Numeric(
+        'Not Subjected Operations Special Regime Unic Window', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    annual_oss_subject_operations = fields.Numeric(
+        'Subjected Operations Special Regime Unic Window', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    annual_intragroup_transaction = fields.Numeric('Intragroup Transactions',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    special_info_operations_rs = fields.Numeric('Simplified Regime Operations',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    special_info_farming_cattleraising_fishing = fields.Numeric(
+        'Especial Regime of Farming, Cattle rasing and Fishing',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    special_info_passive_subject_re = fields.Numeric(
+        'Passive Subject on Equivalence Regime', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_art_antiques_collectibles = fields.Numeric(
+        'Special Regime Operations on Art, Antiques and Collectibles',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    special_info_travel_agency = fields.Numeric(
+        'Special Regime Operations on Travel Agency', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_financial_op_not_usual = fields.Numeric(
+        'Operations Not Usual', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_delivery_investment_domestic_operations = fields.Numeric(
+        'Delivery of Investment Domestic Operations', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    special_info_total = fields.Function(fields.Numeric(
+            'Total Operations Volume', digits=(15, 2),
+            states=_STATES_390, depends=_DEPENDS_390),
+        'get_total_operations_volume')
+
+    # Page 05
+    additional_page_indicator = fields.Selection([
+            (' ', 'No'),
+            ('C', 'Yes'),
+            ], 'Complementari Page Indicator',
+        states=_STATES_390, depends=_DEPENDS_390)
+    cnae1 = fields.Char('CNAE 1', states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount1 = fields.Numeric('Operations Amount 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount_w_deduction1 = fields.Numeric(
+        'Operations Amount With Deduction 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_type1 = fields.Selection([
+            ('G', 'G'),
+            ('E', 'E'),
+            (' ', 'None'),
+            ], 'Prorrata Type 1', states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_percent1 = fields.Numeric(
+        'Operations Amount With Deduction 1', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    cnae2 = fields.Char('CNAE 2', states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount2 = fields.Numeric('Operations Amount 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount_w_deduction2 = fields.Numeric(
+        'Operations Amount With Deduction 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_type2 = fields.Selection([
+            ('G', 'G'),
+            ('E', 'E'),
+            (' ', 'None'),
+            ], 'Prorrata Type 2', states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_percent2 = fields.Numeric(
+        'Operations Amount With Deduction 2', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    cnae3 = fields.Char('CNAE 3', states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount3 = fields.Numeric('Operations Amount 3', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount_w_deduction3 = fields.Numeric(
+        'Operations Amount With Deduction 3', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_type3 = fields.Selection([
+            ('G', 'G'),
+            ('E', 'E'),
+            (' ', 'None'),
+            ], 'Prorrata Type 3', states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_percent3 = fields.Numeric(
+        'Operations Amount With Deduction 3', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    cnae4 = fields.Char('CNAE 4', states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount4 = fields.Numeric('Operations Amount 4', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount_w_deduction4 = fields.Numeric(
+        'Operations Amount With Deduction 4', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_type4 = fields.Selection([
+            ('G', 'G'),
+            ('E', 'E'),
+            (' ', 'None'),
+            ], 'Prorrata Type 4', states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_percent4 = fields.Numeric(
+        'Operations Amount With Deduction 4', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    cnae5 = fields.Char('CNAE 5', states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount5 = fields.Numeric('Operations Amount 5', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    operations_amount_w_deduction5 = fields.Numeric(
+        'Operations Amount With Deduction 5', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_type5 = fields.Selection([
+            ('G', 'G'),
+            ('E', 'E'),
+            (' ', 'None'),
+            ], 'Prorrata Type 5', states=_STATES_390, depends=_DEPENDS_390)
+    prorrata_percent5 = fields.Numeric(
+        'Operations Amount With Deduction 5', digits=(3, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_domestic_operations_base1 = fields.Numeric(
+        'Deductible Current Domestic Operations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_domestic_operations_tax1 = fields.Numeric(
+        'Deductible Current Domestic Operations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_domestic_operations_base1 = fields.Numeric(
+        'Deductible Investment Domestic Operations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_domestic_operations_tax1 = fields.Numeric(
+        'Deductible Investment Domestic Operations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_import_operations_base1 = fields.Numeric(
+        'Deductible Current Import Operations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_import_operations_tax1 = fields.Numeric(
+        'Deductible Current Import Operations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_import_operations_base1 = fields.Numeric(
+        'Deductible Investment Import Operations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_import_operations_tax1 = fields.Numeric(
+        'Deductible Investment Import Operations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_intracommunity_operations_base1 = fields.Numeric(
+        'Deductible Current Intracommunity Operations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_intracommunity_operations_tax1 = fields.Numeric(
+        'Deductible Current Intracommunity Operations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_intracommunity_operations_base1 = fields.Numeric(
+        'Deductible Investment Intracommunity Operations Base 1',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_intracommunity_operations_tax1 = fields.Numeric(
+        'Deductible Investment Intracommunity Operations Tax 1',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    deductible_compensations_base1 = fields.Numeric(
+        'Deductible Compensations Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_compensations_tax1 = fields.Numeric(
+        'Deductible Compensations Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_regularization_base1 = fields.Numeric(
+        'Deductible Regularization Base 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_regularization_tax1 = fields.Numeric(
+        'Deductible Regularization Tax 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_regularization1 = fields.Numeric(
+        'Deductible Investment Regularization 1', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_total1 = fields.Function(fields.Numeric(
+            'Total Deductible 1', digits=(15, 2),
+            states=_STATES_390, depends=_DEPENDS_390),
+        'get_deductible_total1')
+    deductible_current_domestic_operations_base2 = fields.Numeric(
+        'Deductible Current Domestic Operations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_domestic_operations_tax2 = fields.Numeric(
+        'Deductible Current Domestic Operations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_domestic_operations_base2 = fields.Numeric(
+        'Deductible Investment Domestic Operations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_domestic_operations_tax2 = fields.Numeric(
+        'Deductible Investment Domestic Operations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_import_operations_base2 = fields.Numeric(
+        'Deductible Current Import Operations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_import_operations_tax2 = fields.Numeric(
+        'Deductible Current Import Operations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_import_operations_base2 = fields.Numeric(
+        'Deductible Investment Import Operations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_import_operations_tax2 = fields.Numeric(
+        'Deductible Investment Import Operations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_intracommunity_operations_base2 = fields.Numeric(
+        'Deductible Current Intracommunity Operations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_current_intracommunity_operations_tax2 = fields.Numeric(
+        'Deductible Current Intracommunity Operations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_intracommunity_operations_base2 = fields.Numeric(
+        'Deductible Investment Intracommunity Operations Base 2',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_intracommunity_operations_tax2 = fields.Numeric(
+        'Deductible Investment Intracommunity Operations Tax 2',
+        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+    deductible_compensations_base2 = fields.Numeric(
+        'Deductible Compensations Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_compensations_tax2 = fields.Numeric(
+        'Deductible Compensations Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_regularization_base2 = fields.Numeric(
+        'Deductible Regularization Base 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_regularization_tax2 = fields.Numeric(
+        'Deductible Regularization Tax 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_investment_regularization2 = fields.Numeric(
+        'Deductible Investment Regularization 2', digits=(15, 2),
+        states=_STATES_390, depends=_DEPENDS_390)
+    deductible_total2 = fields.Function(fields.Numeric(
+            'Total Deductible 2', digits=(15, 2),
+            states=_STATES_390, depends=_DEPENDS_390),
+        'get_deductible_total2')
+
+    # Page DID
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party', context={
                 'company': Eval('company'),
@@ -518,58 +848,15 @@ class Report(Workflow, ModelSQL, ModelView):
         states={
             'invisible': ~Eval('type').in_(['D', 'X']),
             })
-    exonerated_mod390 = fields.Selection([
-            ('0', ''),
-            ('1', 'Yes'),
-            ('2', 'No'),
-            ], 'Exonerated Model 390', help="Exclusively to fill in the last "
-            "period exonerated from the Annual Declaration-VAT summary. "
-            "(Exempt from presenting the model 390 and with volume of "
-            "operations zero).")
-    annual_operation_volume = fields.Selection([
-            ('0', ''),
-            ('1', 'Yes'),
-            ('2', 'No'),
-            ], 'Exist operations annual volume (art. 121 LIVA)', states={
-                'readonly': Eval('exonerated_mod390') != '1',
-                'required': Eval('exonerated_mod390') == '1',
-                }, help="Exclusively to fill in the last "
-            "period exonerated from the Annual Declaration-VAT summary. "
-            "(Exempt from presenting the model 390 and with volume of "
-            "operations zero).")
-    passive_subject_foral_administration = fields.Selection([
-            ('1', 'Yes'),
-            ('2', 'No'),
-            ], 'Passive Subject on a Foral Administration', help="Passive "
-        "Subject that tribute exclusively on a Foral Administration with "
-        "an import TAX paid by Aduana pending entry.")
-    passive_subject_voluntarily_sii = fields.Selection([
-            ('1', 'Yes'),
-            ('2', 'No'),
-            ], 'Passive Subject voluntarily opted for the SII')
-    company_vat = fields.Char('VAT')
-    company_name = fields.Char('Company Name')
-    complementary_declaration = fields.Boolean(
-        'Complementary Declaration')
-    previous_declaration_receipt = fields.Char(
-        'Previous Declaration Receipt', size=13,
-        states={
-            'required': Bool(Eval('complementary_declaration')),
-            },
-        depends=['complementary_declaration'])
-    auto_bankruptcy_declaration = fields.Selection([
-            (' ', 'No'),
-            ('1', 'Before Bankruptcy Proceeding'),
-            ('2', 'After Bankruptcy Proceeding'),
-            ], 'Auto Bankruptcy Declaration', required=True)
-    auto_bankruptcy_date = fields.Date('Auto Bankruptcy Date')
-    calculation_date = fields.DateTime('Calculation Date', readonly=True)
+
+    # Footer
     state = fields.Selection([
             ('draft', 'Draft'),
             ('calculated', 'Calculated'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled')
             ], 'State', readonly=True)
+    calculation_date = fields.DateTime('Calculation Date', readonly=True)
     file_ = fields.Binary('File', filename='filename', states={
             'invisible': Eval('state') != 'done',
             }, readonly=True)
@@ -684,10 +971,6 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_deductible_pro_rata_regularization():
-        return 0
-
-    @staticmethod
-    def default_amount_to_compensate():
         return 0
 
     @staticmethod
@@ -831,6 +1114,34 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_return_sepa_check():
         return '0'
 
+    @staticmethod
+    def default_special_info_required_declare_third_party_operation():
+        return ' '
+
+    @staticmethod
+    def default_additional_page_indicator():
+        return ' '
+
+    @staticmethod
+    def default_prorrata_type1():
+        return ' '
+
+    @staticmethod
+    def default_prorrata_type2():
+        return ' '
+
+    @staticmethod
+    def default_prorrata_type3():
+        return ' '
+
+    @staticmethod
+    def default_prorrata_type4():
+        return ' '
+
+    @staticmethod
+    def default_prorrata_type5():
+        return ' '
+
     def pre_validate(self):
         super().pre_validate()
         self.check_year_digits()
@@ -863,8 +1174,17 @@ class Report(Workflow, ModelSQL, ModelView):
     def on_change_with_exonerated_mod390(self, name=None):
         if self.period in ('4T', '12') and self.exonerated_mod390 == '0':
             return '2'
-        else:
+        elif self.period in ('4T', '12'):
             return self.exonerated_mod390
+        else:
+            return '0'
+
+    @fields.depends('annual_operation_volume', 'exonerated_mod390')
+    def on_change_with_annual_operation_volume(self, name=None):
+        if self.exonerated_mod390 == '1':
+            return self.annual_operation_volume
+        else:
+            return '0'
 
     @fields.depends('state_administration_amount',
         'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
@@ -1004,8 +1324,34 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.joint_taxation_state_provincial_councils or _Z))
 
     def get_liquidation_result(self, name):
-        return (self.result or _Z - self.to_deduce or _Z
-            + self.before_result or _Z)
+        return ((self.result or _Z) - (self.to_deduce or _Z)
+            + (self.before_result or _Z))
+
+    def get_total_operations_volume(self, name):
+        return ((self.special_info_rg_operations or _Z)
+            + (self.special_info_recc or _Z)
+            + (self.special_info_intracommunity_deliveries_2bdeduced or _Z)
+            + (self.special_info_exempt_op_2bdeduced or _Z)
+            + (self.special_info_exempt_op_wo_permission_2bdeduced or _Z)
+            + (self.special_info_w_passive_subject or _Z)
+            + (self.annual_subject_operations_w_reverse_charge or _Z)
+            + (self.annual_oss_not_subject_operations or _Z)
+            + (self.annual_oss_subject_operations or _Z)
+            + (self.annual_intragroup_transaction or _Z)
+            + (self.special_info_operations_rs or _Z)
+            + (self.special_info_farming_cattleraising_fishing or _Z)
+            + (self.special_info_passive_subject_re or _Z)
+            + (self.special_info_art_antiques_collectibles or _Z)
+            + (self.special_info_travel_agency or _Z)
+            - (self.special_info_financial_op_not_usual or _Z)
+            - (self.special_info_delivery_investment_domestic_operations
+                    or _Z))
+
+    def get_deductible_total1(self, name):
+        return _Z
+
+    def get_deductible_total2(self, name):
+        return _Z
 
     def get_filename(self, name):
         return 'aeat303-%s-%s.txt' % (
@@ -1020,6 +1366,7 @@ class Report(Workflow, ModelSQL, ModelView):
             report.check_sepa_check()
             report.check_exonerated_mod390()
             report.check_annual_operation_volume()
+            report.check_prorrata_percent()
 
     def check_euro(self):
         if self.currency.code != 'EUR':
@@ -1065,6 +1412,17 @@ class Report(Workflow, ModelSQL, ModelView):
                     'aeat_303.msg_invalid_annual_operation_volume',
                     report=self))
 
+    def check_prorrata_percent(self):
+        if ((self.prorrata_percent1 or _Z) > Decimal('100.00')
+                or (self.prorrata_percent2 or _Z) > Decimal('100.00')
+                or (self.prorrata_percent3 or _Z) > Decimal('100.00')
+                or (self.prorrata_percent4 or _Z) > Decimal('100.00')
+                or (self.prorrata_percent5 or _Z) > Decimal('100.00')
+                ):
+            raise UserError(gettext(
+                    'aeat_303.msg_invalid_prorrata_percent',
+                    report=self))
+
     @classmethod
     @ModelView.button
     @Workflow.transition('calculated')
@@ -1073,6 +1431,21 @@ class Report(Workflow, ModelSQL, ModelView):
         Mapping = pool.get('aeat.303.mapping')
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
+
+        mapping = {}
+        mapping_exonerated390 = {}
+        fixed = {}
+        for mapp in Mapping.search([('type_', '=', 'code')]):
+            for code in mapp.code:
+                mapping[code.id] = mapp.aeat303_field.name
+        for mapp in Mapping.search([('type_', '=', 'exonerated390')]):
+            for code in mapp.code:
+                mapping_exonerated390[code.id] = mapp.aeat303_field.name
+        for mapp in Mapping.search([('type_', '=', 'numeric')]):
+            fixed[mapp.aeat303_field.name] = mapp.number
+
+        if len(fixed) == 0:
+            raise UserError(gettext('aeat_303.msg_no_config'))
 
         for report in reports:
             mapping = {}
@@ -1113,6 +1486,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, value)
             for field in mapping.values():
                 setattr(report, field, Decimal('0.0'))
+            for field in mapping_exonerated390.values():
+                setattr(report, field, Decimal('0.0'))
 
             # For the value of the field accrued_re_percent_1 we have to fill
             # 3 differents Recargos Equivalencia.
@@ -1136,6 +1511,19 @@ class Report(Workflow, ModelSQL, ModelView):
                                 accrued_re_base_1[key] += amount
             report.accrued_re_percent_1 = max(accrued_re_base_1,
                 key=accrued_re_base_1.get)
+
+            if report.period in ('12', '4T'):
+                periods = [p.id for p in Period.search([
+                        ('start_date', '>=', datetime.date(year, 1, 1)),
+                        ('end_date', '<=', datetime.date(year, end_month,
+                                lday)),
+                        ('company', '=', report.company),
+                        ])]
+                with Transaction().set_context(periods=periods):
+                    for tax in TaxCode.browse(mapping_exonerated390.keys()):
+                        value = getattr(report, mapping_exonerated390[tax.id])
+                        amount = value + tax.amount
+                        setattr(report, mapping_exonerated390[tax.id], amount)
 
             report.save()
 
@@ -1167,9 +1555,9 @@ class Report(Workflow, ModelSQL, ModelView):
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
-        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
-        # annual_additional_record = Record(
-        #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
+        annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
+        annual_additional_record = Record(
+           aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
         bank_data_record = Record(aeat303.BANK_DATA_RECORD)
         columns = [x for x in self.__class__._fields if x not in
             ('report', 'bank_account')]
@@ -1187,11 +1575,11 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(general_record, column, value)
             # If period is diffenret of 12/4T the fourth page will be without
             #   content.
-            # if self.period in ('12', '4T'):
-            #     if column in annual_additional_record._fields:
-            #         setattr(annual_additional_record, column, value)
-            #     if column in annual_resume_record._fields:
-            #         setattr(annual_resume_record, column, value)
+            if self.period in ('12', '4T'):
+                if column in annual_resume_record._fields:
+                    setattr(annual_resume_record, column, value)
+                if column in annual_additional_record._fields:
+                    setattr(annual_additional_record, column, value)
             if column in bank_data_record._fields:
                 setattr(bank_data_record, column, value)
             if column in footer._fields:
@@ -1200,12 +1588,11 @@ class Report(Workflow, ModelSQL, ModelView):
         bank_data_record.bank_account = next((n.number_compact
                 for n in self.bank_account.numbers
                 if n.type == 'iban'), '') if self.bank_account else ''
-        # if self.period in ('12', '4T'):
-        #     records = [header, record, general_record, annual_resume_record,
-        #         annual_additional_record, bank_data_record]
-        # else:
-        #     records = [header, record, general_record, bank_data_record]
-        records = [header, record, general_record, bank_data_record]
+        if self.period in ('12', '4T'):
+            records = [header, record, general_record, annual_resume_record,
+                annual_additional_record, bank_data_record]
+        else:
+            records = [header, record, general_record, bank_data_record]
         records.append(footer)
         try:
             data = retrofix_write(records, separator='')
