@@ -55,15 +55,35 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_09" />
             <field name="code" ref="account_es.iva_dev_09_21" />
         </record>
-        <!-- [10] - Adquisiciones intracomunitarias. Base Imponible -->
+        <!-- [10] - Adquisiciones intracomunitarias [Bienes corrientes]. Base Imponible -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val1">
             <field name="mapping" ref="aeat_303_mapping_code_19" />
-            <field name="code" ref="account_es.iva_dev_19" />
+            <field name="code" ref="account_es.iva_dev_ai_bc_base" />
         </record>
-        <!-- [11] - Adquisiciones intracomunitarias. Cuota -->
+        <!-- [10] - Adquisiciones intracomunitarias [Bienes inversión]. Base Imponible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_19" />
+            <field name="code" ref="account_es.iva_dev_ai_bi_base" />
+        </record>
+        <!-- [10] - Adquisiciones intracomunitarias [Servicios]. Base Imponible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_19_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_19" />
+            <field name="code" ref="account_es.iva_dev_ai_serv_base" />
+        </record>
+        <!-- [11] - Adquisiciones intracomunitarias [Bienes corrientes]. Cuota -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val1">
             <field name="mapping" ref="aeat_303_mapping_code_20" />
-            <field name="code" ref="account_es.iva_dev_20" />
+            <field name="code" ref="account_es.iva_dev_ai_bc_cuota" />
+        </record>
+        <!-- [11] - Adquisiciones intracomunitarias [Bienes inversión]. Cuota -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_20" />
+            <field name="code" ref="account_es.iva_dev_ai_bi_cuota" />
+        </record>
+        <!-- [11] - Adquisiciones intracomunitarias [Servicios]. Cuota -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_20_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_20" />
+            <field name="code" ref="account_es.iva_dev_ai_serv_cuota" />
         </record>
         <!-- [12] - Inversión del sujeto pasivo compras. Base Devengado -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_45_val1">
@@ -85,7 +105,16 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_46" />
             <field name="code" ref="account_es.cuotar_ispc_bi" />
         </record>
-        <!-- TODO: 14 and 15 for refund -->
+        <!-- [14] - Modificacion Base Devengado -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_49_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_49" />
+            <field name="code" ref="account_es.iva_dev_modification_base" />
+        </record>
+        <!-- [15] - Modificacion Cuota Devengado -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_50_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_50" />
+            <field name="code" ref="account_es.iva_dev_modification_cuota" />
+        </record>
         <!-- [156] - Recargo Equivalencia Base Imponible 1.75% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_re_base_05_val1">
             <field name="mapping" ref="aeat_303_mapping_re_base_05" />
@@ -146,6 +175,16 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_18" />
             <field name="code" ref="account_es.iva_dev_18_52" />
         </record>
+        <!-- [25] - Modificacion Recargo Equivalencia Base Imponible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_53_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_53" />
+            <field name="code" ref="account_es.iva_dev_re_modification_base" />
+        </record>
+        <!-- [26] - Recargo Equivalencia. Cuota -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_54_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_54" />
+            <field name="code" ref="account_es.iva_dev_re_modification_cuota" />
+        </record>
 
         <!-- Deducible -->
         <!-- [28] - Base operaciones interiores corrientes -->
@@ -163,10 +202,20 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.bases_ispc_bi" />
         </record>
-        <!-- [28] - Adquisiciones intracomunitarias [Servicios] (Base Deducible) -->
+        <!-- [28] - Adquisiciones intracomunitarias 4% [Servicios] (Base Deducible) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val4">
             <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_base" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_4" />
+        </record>
+        <!-- [28] - Adquisiciones intracomunitarias 10% [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_22" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_10" />
+        </record>
+        <!-- [28] - Adquisiciones intracomunitarias 21% [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_22" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_21" />
         </record>
         <!-- [29] - Cuotas soportadas operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1">
@@ -183,72 +232,191 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.cuotas_ispc_bi" />
         </record>
-        <!-- [29] - Adquisiciones intracomunitarias [Servicios] (Cuota Deducible) -->
+        <!-- [29] - Adquisiciones intracomunitarias 4% [Servicios] (Cuota Deducible) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val4">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_cuota" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_4" />
         </record>
-        <!-- [30] - Base operaciones interiores bienes inversión -->
+        <!-- [29] - Adquisiciones intracomunitarias 10% [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_23" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_10" />
+        </record>
+        <!-- [29] - Adquisiciones intracomunitarias 21% [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_23" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_21" />
+        </record>
+        <!-- [30] - Base operaciones interiores bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1">
             <field name="mapping" ref="aeat_303_mapping_code_24" />
-            <field name="code" ref="account_es.iva_ded_24" />
+            <field name="code" ref="account_es.iva_ded_24_4" />
         </record>
-        <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión -->
+        <!-- [30] - Base operaciones interiores bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_24" />
+            <field name="code" ref="account_es.iva_ded_24_10" />
+        </record>
+        <!-- [30] - Base operaciones interiores bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_24" />
+            <field name="code" ref="account_es.iva_ded_24_21" />
+        </record>
+        <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val1">
             <field name="mapping" ref="aeat_303_mapping_code_25" />
-            <field name="code" ref="account_es.iva_ded_25" />
+            <field name="code" ref="account_es.iva_ded_25_4" />
         </record>
-        <!-- [32] - Base importaciones bienes corrientes -->
+        <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_25" />
+            <field name="code" ref="account_es.iva_ded_25_10" />
+        </record>
+        <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_25" />
+            <field name="code" ref="account_es.iva_ded_25_21" />
+        </record>
+        <!-- [32] - Base importaciones bienes corrientes Exento -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1">
             <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26" />
+            <field name="code" ref="account_es.iva_ded_26_0" />
         </record>
-        <!-- [33] -Cuotas devengadas importaciones bienes corrientes -->
+        <!-- [32] - Base importaciones bienes corrientes 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_26" />
+            <field name="code" ref="account_es.iva_ded_26_4" />
+        </record>
+        <!-- [32] - Base importaciones bienes corrientes 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_26" />
+            <field name="code" ref="account_es.iva_ded_26_10" />
+        </record>
+        <!-- [32] - Base importaciones bienes corrientes 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_26" />
+            <field name="code" ref="account_es.iva_ded_26_21" />
+        </record>
+        <!-- [33] - Cuotas devengadas importaciones bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val1">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
-            <field name="code" ref="account_es.iva_ded_27" />
+            <field name="code" ref="account_es.iva_ded_27_4" />
         </record>
-        <!-- [34] - Base importaciones bienes inversión -->
+        <!-- [33] - Cuotas devengadas importaciones bienes corrientes 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_27" />
+            <field name="code" ref="account_es.iva_ded_27_10" />
+        </record>
+        <!-- [33] - Cuotas devengadas importaciones bienes corrientes 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_27" />
+            <field name="code" ref="account_es.iva_ded_27_21" />
+        </record>
+        <!-- [34] - Base importaciones bienes inversión Exento -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1">
             <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28" />
+            <field name="code" ref="account_es.iva_ded_28_0" />
         </record>
-        <!-- [35] -Cuotas devengadas importaciones bienes inversión -->
+        <!-- [34] - Base importaciones bienes inversión 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_28" />
+            <field name="code" ref="account_es.iva_ded_28_4" />
+        </record>
+        <!-- [34] - Base importaciones bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_28" />
+            <field name="code" ref="account_es.iva_ded_28_10" />
+        </record>
+        <!-- [34] - Base importaciones bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_28" />
+            <field name="code" ref="account_es.iva_ded_28_21" />
+        </record>
+        <!-- [35] -Cuotas devengadas importaciones bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val1">
             <field name="mapping" ref="aeat_303_mapping_code_29" />
-            <field name="code" ref="account_es.iva_ded_29" />
+            <field name="code" ref="account_es.iva_ded_29_4" />
         </record>
-        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes -->
+        <!-- [35] -Cuotas devengadas importaciones bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_29" />
+            <field name="code" ref="account_es.iva_ded_29_10" />
+        </record>
+        <!-- [35] -Cuotas devengadas importaciones bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_29_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_29" />
+            <field name="code" ref="account_es.iva_ded_29_21" />
+        </record>
+        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val1">
             <field name="mapping" ref="aeat_303_mapping_code_30" />
-            <field name="code" ref="account_es.iva_ded_30" />
+            <field name="code" ref="account_es.iva_ded_30_4" />
         </record>
-        <!-- [36] - Base adquisiciones intracomunitarias servicios -->
+        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes 10% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val2">
             <field name="mapping" ref="aeat_303_mapping_code_30" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_base" />
+            <field name="code" ref="account_es.iva_ded_30_10" />
         </record>
-        <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes -->
+        <!-- [36] - Base adquisiciones intracomunitarias bienes corrientes 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_30_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_30" />
+            <field name="code" ref="account_es.iva_ded_30_21" />
+        </record>
+        <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
-            <field name="code" ref="account_es.iva_ded_31" />
+            <field name="code" ref="account_es.iva_ded_31_4" />
         </record>
-        <!-- [37] - Cuota adquisiciones intracomunitarias servicios -->
+        <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes 10% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val2">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_cuota" />
+            <field name="code" ref="account_es.iva_ded_31_10" />
         </record>
-        <!-- [38] - Base adquisiciones intracomunitarias bienes inversión -->
+        <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_31" />
+            <field name="code" ref="account_es.iva_ded_31_21" />
+        </record>
+        <!-- [38] - Base adquisiciones intracomunitarias bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1">
             <field name="mapping" ref="aeat_303_mapping_code_32" />
-            <field name="code" ref="account_es.iva_ded_32" />
+            <field name="code" ref="account_es.iva_ded_32_4" />
         </record>
-        <!-- [39] - En adquisiciones intracomunitarias bienes inversión -->
+        <!-- [38] - Base adquisiciones intracomunitarias bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_32" />
+            <field name="code" ref="account_es.iva_ded_32_10" />
+        </record>
+        <!-- [38] - Base adquisiciones intracomunitarias bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_32" />
+            <field name="code" ref="account_es.iva_ded_32_21" />
+        </record>
+        <!-- [39] - En adquisiciones intracomunitarias bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val1">
             <field name="mapping" ref="aeat_303_mapping_code_33" />
-            <field name="code" ref="account_es.iva_ded_33" />
+            <field name="code" ref="account_es.iva_ded_33_4" />
         </record>
-        <!-- TODO: 40 and 41 for refund -->
+        <!-- [39] - En adquisiciones intracomunitarias bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_33" />
+            <field name="code" ref="account_es.iva_ded_33_10" />
+        </record>
+        <!-- [39] - En adquisiciones intracomunitarias bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_33_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_33" />
+            <field name="code" ref="account_es.iva_ded_33_21" />
+        </record>
+        <!-- [40] - Rectificaciones de deducciones Base Devengado -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_51_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_51" />
+            <field name="code" ref="account_es.iva_ded_rectification_base" />
+        </record>
+        <!-- [41] - Rectificaciones de deducciones Cuota Devengado -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_52_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_52" />
+            <field name="code" ref="account_es.iva_ded_rectification_cuota" />
+        </record>
         <!-- [42] - Cuotas soportadas regimen especial agricultura ganaderia y pesca -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_ded_compensations_val1">
             <field name="mapping" ref="aeat_303_mapping_ded_compensations" />
@@ -279,5 +447,23 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_44" />
             <field name="code" ref="account_es.base_extra_44" />
         </record>
+
+        <!-- [80] Last period, exonerated 390 - Opeartions in General Regime -->
+        <!-- [81] Last period, exonerated 390 - Special Cash Criteria -->
+        <!-- [93] Last period, exonerated 390 - Intracommunity deliveries of goods and services -->
+        <!-- [94] Last period, exonerated 390 - Exports and other exempt transactions with right to deduction -->
+        <!-- [83] Last period, exonerated 390 - Exempt Oprations without deduction right -->
+        <!-- [84] Last period, exonerated 390 - Not Subjected Operations -->
+        <!-- [125] Last period, exonerated 390 - Subjected Operations With Reverse Charge -->
+        <!-- [126] Last period, exonerated 390 - Not Subjected Operations Special Regime Unic Window -->
+        <!-- [127] Last period, exonerated 390 - Subjected Operations Special Regime Unic Window -->
+        <!-- [128] Last period, exonerated 390 - Intragroup Transactions -->
+        <!-- [86] Last period, exonerated 390 - Simplified Regime Operations -->
+        <!-- [95] Last period, exonerated 390 - Especial Regime of Farming, Cattle rasing and Fishing -->
+        <!-- [96] Last period, exonerated 390 - Passive Subject on Equivalence Regime -->
+        <!-- [97] Last period, exonerated 390 - Special Regime Operations on Art, Antiques and Collectibles -->
+        <!-- [98] Last period, exonerated 390 - Special Regime Operations on Travel Agency -->
+        <!-- [79] Last period, exonerated 390 - Operations Not Usual -->
+        <!-- [99] Last period, exonerated 390 - Delivery of Investment Domestic Operations -->
     </data>
 </tryton>

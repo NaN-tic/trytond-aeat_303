@@ -154,21 +154,17 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','other_passive_subject_tax')]"/>
         </record>
         <!-- [14] -->
-        <!-- Temporally not used
-        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_48">
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_49">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_base_modification')]"/>
         </record>
-        -->
         <!-- [15] -->
-        <!-- Temporally not used
-        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_49">
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_50">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_vat_tax_modification')]"/>
         </record>
-        -->
         <!-- [156] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_re_base_05">
             <field name="type_">code</field>
@@ -216,6 +212,18 @@ contains the full copyright notices and license terms. -->
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','accrued_re_tax_3')]"/>
+        </record>
+        <!-- [25] -->
+	<record model="aeat.303.template.mapping" id="aeat_303_mapping_code_53">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_base_modification')]"/>
+        </record>
+        <!-- [26] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_54">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','accrued_re_tax_modification')]"/>
         </record>
         <!-- [28] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_22">
@@ -290,21 +298,17 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','deductible_investment_intracommunity_operations_tax')]"/>
         </record>
         <!-- [40] -->
-        <!-- Temporally not used
-        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_50">
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','deductible_regularization_base')]"/>
         </record>
-        -->
         <!-- [41] -->
-        <!-- Temporally not used
-        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_51">
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_52">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','deductible_regularization_tax')]"/>
         </record>
-        -->
         <!-- [42] -->
         <record model="aeat.303.template.mapping"
                 id="aeat_303_mapping_ded_compensations">
@@ -337,11 +341,88 @@ contains the full copyright notices and license terms. -->
                 search="[('name', '=','subject_operations_w_reverse_charge')]"/>
         </record>
         <!-- [77] -->
-        <!-- <record model="aeat.303.template.mapping"
-                id="aeat_303_mapping_code_77">
+        <!-- <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_77">
             <field name="type_">code</field>
             <field name="aeat303_field"
                 search="[('name', '=','aduana_tax_pending')]"/>
         </record> -->
+
+        <!-- [80] -->
+        <!-- [81] -->
+        <!-- [93] -->
+        <!-- [94] -->
+        <!-- [83] -->
+        <!-- [84] -->
+        <!-- [125] -->
+        <!-- [126] -->
+        <!-- [127] -->
+        <!-- [128] -->
+        <!-- [86] -->
+        <!-- [95] -->
+        <!-- [96] -->
+        <!-- [97] -->
+        <!-- [98] -->
+        <!-- [79] -->
+        <!-- [99] -->
+
+        <!-- [500] -->
+        <!-- [501] -->
+        <!-- [502] -->
+        <!-- [503] -->
+        <!-- [504] -->
+        <!-- [505] -->
+        <!-- [506] -->
+        <!-- [507] -->
+        <!-- [508] -->
+        <!-- [509] -->
+        <!-- [500] -->
+        <!-- [511] -->
+        <!-- [512] -->
+        <!-- [513] -->
+        <!-- [514] -->
+        <!-- [515] -->
+        <!-- [516] -->
+        <!-- [517] -->
+        <!-- [518] -->
+        <!-- [519] -->
+        <!-- [510] -->
+        <!-- [521] -->
+        <!-- [522] -->
+        <!-- [523] -->
+        <!-- [524] -->
+        <!-- [700] -->
+        <!-- [701] -->
+        <!-- [702] -->
+        <!-- [703] -->
+        <!-- [704] -->
+        <!-- [705] -->
+        <!-- [706] -->
+        <!-- [707] -->
+        <!-- [708] -->
+        <!-- [709] -->
+        <!-- [710] -->
+        <!-- [711] -->
+        <!-- [712] -->
+        <!-- [713] -->
+        <!-- [714] -->
+        <!-- [715] -->
+        <!-- [716] -->
+        <!-- [718] -->
+        <!-- [719] -->
+        <!-- [720] -->
+        <!-- [721] -->
+        <!-- [722] -->
+        <!-- [723] -->
+        <!-- [724] -->
+        <!-- [725] -->
+        <!-- [726] -->
+        <!-- [727] -->
+        <!-- [728] -->
+        <!-- [729] -->
+        <!-- [730] -->
+        <!-- [731] -->
+        <!-- [732] -->
+        <!-- [733] -->
+        <!-- [734] -->
     </data>
 </tryton>
