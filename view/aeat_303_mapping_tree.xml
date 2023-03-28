@@ -4,6 +4,6 @@ contains the full copyright notices and license terms. -->
 <tree>
     <field name="aeat303_field" />
     <field name="type_" />
-    <field name="code" />
+    <field name="code_by_companies" />
     <field name="number" />
 </tree>
