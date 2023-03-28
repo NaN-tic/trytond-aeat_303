@@ -6,7 +6,7 @@ contains the full copyright notices and license terms. -->
     <field name="aeat303_field" />
     <label name="type_" />
     <field name="type_" />
-    <field name="code" colspan="4" view_ids="account.tax_code_view_list" />
+    <field name="code_by_companies" colspan="4" view_ids="account.tax_code_view_list" />
     <label name="number" />
     <field name="number" />
 </form>

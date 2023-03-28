@@ -155,7 +155,9 @@ class UpdateChart(metaclass=PoolMeta):
         pool = Pool()
         MappingTemplate = pool.get('aeat.303.template.mapping')
         Mapping = pool.get('aeat.303.mapping')
+
         ret = super(UpdateChart, self).transition_update()
+
         # Update current values
         ids = []
         company = self.start.account.company.id
@@ -178,6 +180,7 @@ class UpdateChart(metaclass=PoolMeta):
                 to_create.append(vals)
         if to_create:
             Mapping.create(to_create)
+
         return ret
 
 
@@ -233,6 +236,12 @@ class TaxCodeMapping(ModelSQL, ModelView):
             'required': Eval('type_') != 'numeric',
             'invisible': Eval('type_') == 'numeric',
         }, depends=['type_'])
+    code_by_companies = fields.Function(
+        fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
+        'code', 'Tax Code', states={
+            'required': Eval('type_') != 'numeric',
+            'invisible': Eval('type_') == 'numeric',
+        }, depends=['type_']), 'get_code_by_companies')
     number = fields.Numeric('Number',
         states={
             'required': Eval('type_') == 'numeric',
@@ -257,6 +266,18 @@ class TaxCodeMapping(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company') or None
+
+    @classmethod
+    def get_code_by_companies(cls, records, name):
+        user_company = Transaction().context.get('company')
+        res = dict((x.id, None) for x in records)
+        for record in records:
+            code_ids = []
+            for code in record.code:
+                if not code.company or code.company.id == user_company:
+                    code_ids.append(code.id)
+            res[record.id] = code_ids
+        return res
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -830,23 +851,23 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'Sepa Check On Return')
     swift_bank = fields.Char('Swift',
         states={
-            'invisible': ~Eval('type').in_(['D', 'X']),
+            'invisible': Eval('type') != 'X',
             })
     return_bank_name = fields.Char('Bank Name',
         states={
-            'invisible': ~Eval('type').in_(['D', 'X']),
+            'invisible': Eval('type') != 'X',
             })
     return_bank_address = fields.Char('Bank Address',
         states={
-            'invisible': ~Eval('type').in_(['D', 'X']),
+            'invisible': Eval('type') != 'X',
             })
     return_bank_city = fields.Char('Bank City',
         states={
-            'invisible': ~Eval('type').in_(['D', 'X']),
+            'invisible': Eval('type') != 'X',
             })
     return_bank_country_code = fields.Char('Bank Country Code',
         states={
-            'invisible': ~Eval('type').in_(['D', 'X']),
+            'invisible': Eval('type') != 'X',
             })
 
     # Footer
@@ -1189,8 +1210,8 @@ class Report(Workflow, ModelSQL, ModelView):
     @fields.depends('state_administration_amount',
         'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
     def set_previous_period_amount_to_compensate(self):
-        result = ((self.state_administration_amount or _Z) +
-            (self.aduana_tax_pending or _Z))
+        result = ((self.state_administration_amount or _Z)
+            + (self.aduana_tax_pending or _Z))
         if (result > 0 and (self.previous_period_pending_amount_to_compensate
                     or self.previous_period_pending_amount_to_compensate != _Z
                     )):
@@ -1237,7 +1258,7 @@ class Report(Workflow, ModelSQL, ModelView):
     def set_bank_account_information(self):
         if (self.bank_account and self.type and any(n.type == 'iban'
                     for n in self.bank_account.numbers)
-                and self.type in ('D', 'X')):
+                and self.type in ('X')):
             self.swift_bank = (self.bank_account.bank
                 and self.bank_account.bank.bic or '')
             self.return_bank_name = (self.bank_account.bank
@@ -1257,6 +1278,12 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.bank_account.bank.party.addresses[0].country
                 and self.bank_account.bank.party.addresses[0].
                     country.code or '')
+        else:
+            self.swift_bank = ''
+            self.return_bank_name = ''
+            self.return_bank_address = ''
+            self.return_bank_city = ''
+            self.return_bank_country_code = ''
 
     @fields.depends(methods=['set_bank_account_information'])
     def on_change_bank_account(self):
@@ -1273,40 +1300,40 @@ class Report(Workflow, ModelSQL, ModelView):
         return (self.accrued_total_tax or _Z) - (self.deductible_total or _Z)
 
     def get_accrued_total_tax(self, name):
-        return ((self.accrued_vat_tax_0 or _Z) +
-            (self.accrued_vat_tax_1 or _Z) +
-            (self.accrued_vat_tax_4 or _Z) +
-            (self.accrued_vat_tax_2 or _Z) +
-            (self.accrued_vat_tax_3 or _Z) +
-            (self.intracommunity_adquisitions_tax or _Z) +
-            (self.other_passive_subject_tax or _Z) +
-            (self.accrued_vat_tax_modification or _Z) +
-            (self.accrued_re_tax_4 or _Z) +
-            (self.accrued_re_tax_1 or _Z) +
-            (self.accrued_re_tax_2 or _Z) +
-            (self.accrued_re_tax_3 or _Z) +
-            (self.accrued_re_tax_modification or _Z)
+        return ((self.accrued_vat_tax_0 or _Z)
+            + (self.accrued_vat_tax_1 or _Z)
+            + (self.accrued_vat_tax_4 or _Z)
+            + (self.accrued_vat_tax_2 or _Z)
+            + (self.accrued_vat_tax_3 or _Z)
+            + (self.intracommunity_adquisitions_tax or _Z)
+            + (self.other_passive_subject_tax or _Z)
+            + (self.accrued_vat_tax_modification or _Z)
+            + (self.accrued_re_tax_4 or _Z)
+            + (self.accrued_re_tax_1 or _Z)
+            + (self.accrued_re_tax_2 or _Z)
+            + (self.accrued_re_tax_3 or _Z)
+            + (self.accrued_re_tax_modification or _Z)
                 )
 
     def get_deductible_total(self, name):
-        return ((self.deductible_current_domestic_operations_tax or _Z) +
-            (self.deductible_investment_domestic_operations_tax or _Z) +
-            (self.deductible_current_import_operations_tax or _Z) +
-            (self.deductible_investment_import_operations_tax or _Z) +
-            (self.deductible_current_intracommunity_operations_tax or _Z) +
-            (self.deductible_investment_intracommunity_operations_tax or _Z) +
-            (self.deductible_regularization_tax or _Z) +
-            (self.deductible_compensations or _Z) +
-            (self.deductible_investment_regularization or _Z) +
-            (self.deductible_pro_rata_regularization or _Z)
+        return ((self.deductible_current_domestic_operations_tax or _Z)
+            + (self.deductible_investment_domestic_operations_tax or _Z)
+            + (self.deductible_current_import_operations_tax or _Z)
+            + (self.deductible_investment_import_operations_tax or _Z)
+            + (self.deductible_current_intracommunity_operations_tax or _Z)
+            + (self.deductible_investment_intracommunity_operations_tax or _Z)
+            + (self.deductible_regularization_tax or _Z)
+            + (self.deductible_compensations or _Z)
+            + (self.deductible_investment_regularization or _Z)
+            + (self.deductible_pro_rata_regularization or _Z)
                 )
 
     def get_sum_results(self, name):
         # Here have to sum the box 46 + 58 + 76. The 58 is only for There
         #  Regime Simplified. By the moment this type are not supported so
         #  only sum 46 + 76.
-        return ((self.general_regime_result or _Z) +
-            (self.result_tax_regularitzation or _Z))
+        return ((self.general_regime_result or _Z)
+            + (self.result_tax_regularitzation or _Z))
 
     def get_state_administration_amount(self, name):
         return (self.general_regime_result
@@ -1383,9 +1410,9 @@ class Report(Workflow, ModelSQL, ModelView):
             raise UserError(gettext('aeat_303.msg_invalid_compensate'))
 
     def check_type(self):
-        if (self.type and self.period and self.type == 'X' and
-                self.period not in ('3T', '4T', '07', '08', '09', '10', '11',
-                    '12')):
+        if (self.type and self.period and self.type == 'X'
+                and self.period not in ('3T', '4T', '07', '08', '09', '10',
+                    '11', '12')):
             raise UserError(gettext('aeat_303.msg_invalid_type_period',
                     report=self))
 
@@ -1397,17 +1424,18 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_exonerated_mod390(self):
         if ((self.period not in ('12', '4T') and self.exonerated_mod390 != '0')
-                or (self.period in ('12', '4T') and self.exonerated_mod390 ==
-                    '0')):
+                or (self.period in ('12', '4T')
+                and self.exonerated_mod390 == '0')):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_exonerated_mod390',
                     report=self))
 
     def check_annual_operation_volume(self):
-        if ((self.period not in ('12', '4T') and
-                    self.annual_operation_volume != '0')
-                or (self.period in ('12', '4T') and self.exonerated_mod390 ==
-                    '1' and self.annual_operation_volume == '0')):
+        if ((self.period not in ('12', '4T')
+                    and self.annual_operation_volume != '0')
+                or (self.period in ('12', '4T')
+                and self.exonerated_mod390 == '1'
+                and self.annual_operation_volume == '0')):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_annual_operation_volume',
                     report=self))
@@ -1432,30 +1460,22 @@ class Report(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
 
-        mapping = {}
-        mapping_exonerated390 = {}
-        fixed = {}
-        for mapp in Mapping.search([('type_', '=', 'code')]):
-            for code in mapp.code:
-                mapping[code.id] = mapp.aeat303_field.name
-        for mapp in Mapping.search([('type_', '=', 'exonerated390')]):
-            for code in mapp.code:
-                mapping_exonerated390[code.id] = mapp.aeat303_field.name
-        for mapp in Mapping.search([('type_', '=', 'numeric')]):
-            fixed[mapp.aeat303_field.name] = mapp.number
-
-        if len(fixed) == 0:
-            raise UserError(gettext('aeat_303.msg_no_config'))
-
         for report in reports:
             mapping = {}
+            mapping_exonerated390 = {}
             fixed = {}
             for mapp in Mapping.search([
                     ('type_', '=', 'code'),
                     ('company', '=', report.company),
                     ]):
-                for code in mapp.code:
+                for code in mapp.code_by_companies:
                     mapping[code.id] = mapp.aeat303_field.name
+            for mapp in Mapping.search([
+                    ('type_', '=', 'exonerated390'),
+                    ('company', '=', report.company),
+                    ]):
+                for code in mapp.code_by_companies:
+                    mapping_exonerated390[code.id] = mapp.aeat303_field.name
             for mapp in Mapping.search([
                     ('type_', '=', 'numeric'),
                     ('company', '=', report.company),
@@ -1508,7 +1528,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     if mapping[tax.id] == 'accrued_re_base_1':
                         for key in accrued_re_base_1.keys():
                             if key in tax.code:
-                                accrued_re_base_1[key] += amount
+                                accrued_re_base_1[key] += tax.amount
             report.accrued_re_percent_1 = max(accrued_re_base_1,
                 key=accrued_re_base_1.get)
 
