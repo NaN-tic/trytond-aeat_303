@@ -277,11 +277,6 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_25" />
             <field name="code" ref="account_es.iva_ded_25_21" />
         </record>
-        <!-- [32] - Base importaciones bienes corrientes Exento -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_26" />
-            <field name="code" ref="account_es.iva_ded_26_0" />
-        </record>
         <!-- [32] - Base importaciones bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2">
             <field name="mapping" ref="aeat_303_mapping_code_26" />
@@ -311,11 +306,6 @@ contains the full copyright notices and license terms. -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_27_val3">
             <field name="mapping" ref="aeat_303_mapping_code_27" />
             <field name="code" ref="account_es.iva_ded_27_21" />
-        </record>
-        <!-- [34] - Base importaciones bienes inversión Exento -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val1">
-            <field name="mapping" ref="aeat_303_mapping_code_28" />
-            <field name="code" ref="account_es.iva_ded_28_0" />
         </record>
         <!-- [34] - Base importaciones bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_28_val2">
