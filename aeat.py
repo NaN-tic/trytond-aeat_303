@@ -848,7 +848,10 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Spain account'),
             ('2', 'SEPA European Union'),
             ('3', 'Other countries'),
-            ], 'Sepa Check On Return')
+            ], 'Sepa Check On Return',
+        states={
+            'invisible': Eval('type') != 'X',
+            })
     swift_bank = fields.Char('Swift',
         states={
             'invisible': Eval('type') != 'X',
@@ -1279,6 +1282,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.bank_account.bank.party.addresses[0].
                     country.code or '')
         else:
+            self.return_sepa_check = 0
             self.swift_bank = ''
             self.return_bank_name = ''
             self.return_bank_address = ''
