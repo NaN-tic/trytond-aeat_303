@@ -1282,7 +1282,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.bank_account.bank.party.addresses[0].
                     country.code or '')
         else:
-            self.return_sepa_check = 0
+            self.return_sepa_check = '0'
             self.swift_bank = ''
             self.return_bank_name = ''
             self.return_bank_address = ''
