@@ -202,21 +202,6 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.bases_ispc_bi" />
         </record>
-        <!-- [28] - Adquisiciones intracomunitarias 4% [Servicios] (Base Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_base_4" />
-        </record>
-        <!-- [28] - Adquisiciones intracomunitarias 10% [Servicios] (Base Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_base_10" />
-        </record>
-        <!-- [28] - Adquisiciones intracomunitarias 21% [Servicios] (Base Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_base_21" />
-        </record>
         <!-- [29] - Cuotas soportadas operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
@@ -231,21 +216,6 @@ contains the full copyright notices and license terms. -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val3">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.cuotas_ispc_bi" />
-        </record>
-        <!-- [29] - Adquisiciones intracomunitarias 4% [Servicios] (Cuota Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val4">
-            <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_4" />
-        </record>
-        <!-- [29] - Adquisiciones intracomunitarias 10% [Servicios] (Cuota Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val5">
-            <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_10" />
-        </record>
-        <!-- [29] - Adquisiciones intracomunitarias 21% [Servicios] (Cuota Deducible) -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val6">
-            <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_21" />
         </record>
         <!-- [30] - Base operaciones interiores bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1">
@@ -362,6 +332,21 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_30" />
             <field name="code" ref="account_es.iva_ded_30_21" />
         </record>
+        <!-- [36] - Adquisiciones intracomunitarias 4% [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_30" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_4" />
+        </record>
+        <!-- [36] - Adquisiciones intracomunitarias 10% [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_30" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_10" />
+        </record>
+        <!-- [36] - Adquisiciones intracomunitarias 21% [Servicios] (Base Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_30" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_base_21" />
+        </record>
         <!-- [37] - Cuota adquisiciones intracomunitarias bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val1">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
@@ -376,6 +361,21 @@ contains the full copyright notices and license terms. -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_31_val3">
             <field name="mapping" ref="aeat_303_mapping_code_31" />
             <field name="code" ref="account_es.iva_ded_31_21" />
+        </record>
+        <!-- [37] - Adquisiciones intracomunitarias 4% [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_31" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_4" />
+        </record>
+        <!-- [37] - Adquisiciones intracomunitarias 10% [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_31" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_10" />
+        </record>
+        <!-- [37] - Adquisiciones intracomunitarias 21% [Servicios] (Cuota Deducible) -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_31" />
+            <field name="code" ref="account_es.iva_ded_ai_serv_cuota_21" />
         </record>
         <!-- [38] - Base adquisiciones intracomunitarias bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_32_val1">
