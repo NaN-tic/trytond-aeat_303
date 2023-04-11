@@ -1000,7 +1000,7 @@ msgstr "Importaciones de bienes corrientes [32][33]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Intracommunity Operations"
-msgstr "Adquisiciones intracomunitarias de bienes corrientes [36][37]"
+msgstr "Adquisiciones intracomunitarias de bienes y servicios corrientes [36][37]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Deductible VAT"

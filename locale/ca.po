@@ -993,7 +993,7 @@ msgstr "Importacions de béns corrents [32][33]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Current Intracommunity Operations"
-msgstr "Adquisicions intracomunitàries de béns corrents [36][37]"
+msgstr "Adquisicions intracomunitàries de béns i serveis corrents [36][37]"
 
 msgctxt "view:aeat.303.report:"
 msgid "Deductible VAT"
