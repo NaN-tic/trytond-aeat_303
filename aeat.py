@@ -9,11 +9,12 @@ from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, If
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from trytond.transaction import Transaction
-from sql import Literal
+from trytond.tools import reduce_ids
+from sql import Literal, Null
 from sql.functions import Extract
 
 
@@ -217,6 +218,37 @@ class TaxCodeRelation(ModelSQL):
     code = fields.Many2One('account.tax.code', 'Tax Code', required=True,
         select=True)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('code')
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Mapping = pool.get('aeat.303.mapping')
+        TaxCode = pool.get('account.tax.code')
+        sql_table = cls.__table__()
+        mapping = Mapping.__table__()
+        tax_code = TaxCode.__table__()
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module_name)
+
+        cursor.execute(*sql_table.join(
+            mapping, condition=(mapping.id == sql_table.mapping)
+            ).join(tax_code, condition=(tax_code.id == sql_table.code)
+            ).select(
+                sql_table.id,
+                where=((mapping.company != Null)
+                    & (tax_code.company != mapping.company)))
+        )
+        to_del = [r[0] for r in cursor.fetchall()]
+        if to_del:
+            # remove tax codes of wrong companies
+            cursor.execute(*sql_table.delete(
+                where=reduce_ids(sql_table.id, to_del)))
+
 
 class TaxCodeMapping(ModelSQL, ModelView):
     '''
@@ -225,7 +257,10 @@ class TaxCodeMapping(ModelSQL, ModelView):
     __name__ = 'aeat.303.mapping'
 
     company = fields.Many2One('company.company', 'Company',
-        ondelete="RESTRICT")
+        ondelete="RESTRICT", states={
+            'readonly': Bool(Eval('code'))
+        },
+        depends=['code'])
     aeat303_field = fields.Many2One('ir.model.field', 'Field',
         domain=[('module', '=', 'aeat_303')], required=True)
     type_ = fields.Selection([
@@ -234,16 +269,15 @@ class TaxCodeMapping(ModelSQL, ModelView):
             ('numeric', 'Numeric')
             ], 'Type', required=True)
     code = fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
-        'code', 'Tax Code', states={
+        'code', 'Tax Code',
+        domain=[If(Bool(Eval('company')),
+            ('company', '=', Eval('company')),
+            ())
+        ],
+        states={
             'required': Eval('type_') != 'numeric',
             'invisible': Eval('type_') == 'numeric',
-        }, depends=['type_'])
-    code_by_companies = fields.Function(
-        fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
-        'code', 'Tax Code', states={
-            'required': Eval('type_') != 'numeric',
-            'invisible': Eval('type_') == 'numeric',
-        }, depends=['type_']), 'get_code_by_companies')
+        }, depends=['type_', 'company'])
     number = fields.Numeric('Number',
         states={
             'required': Eval('type_') == 'numeric',
@@ -269,17 +303,8 @@ class TaxCodeMapping(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company') or None
 
-    @classmethod
-    def get_code_by_companies(cls, records, name):
-        user_company = Transaction().context.get('company')
-        res = dict((x.id, None) for x in records)
-        for record in records:
-            code_ids = []
-            for code in record.code:
-                if not code.company or code.company.id == user_company:
-                    code_ids.append(code.id)
-            res[record.id] = code_ids
-        return res
+    def get_company_code(self, company):
+        return [c for c in self.code if c.company == company] or []
 
 
 class Report(Workflow, ModelSQL, ModelView):
@@ -1468,19 +1493,19 @@ class Report(Workflow, ModelSQL, ModelView):
             fixed = {}
             for mapp in Mapping.search([
                     ('type_', '=', 'code'),
-                    ('company', '=', report.company),
-                    ]):
-                for code in mapp.code_by_companies:
+                    ('company', 'in', [report.company, None]),
+                     ]):
+                for code in mapp.get_company_code(report.company):
                     mapping[code.id] = mapp.aeat303_field.name
             for mapp in Mapping.search([
                     ('type_', '=', 'exonerated390'),
-                    ('company', '=', report.company),
-                    ]):
-                for code in mapp.code_by_companies:
+                    ('company', 'in', [report.company, None]),
+                     ]):
+                for code in mapp.get_company_code(report.company):
                     mapping_exonerated390[code.id] = mapp.aeat303_field.name
             for mapp in Mapping.search([
                     ('type_', '=', 'numeric'),
-                    ('company', '=', report.company),
+                    ('company', 'in', [report.company, None]),
                     ]):
                 fixed[mapp.aeat303_field.name] = mapp.number
 

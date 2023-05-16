@@ -2,8 +2,9 @@
 <!--The COPYRIGHT file at the top level of this repository
 contains the full copyright notices and license terms. -->
 <tree>
+    <field name="company"/>
     <field name="aeat303_field" />
     <field name="type_" />
-    <field name="code_by_companies" />
+    <field name="code" />
     <field name="number" />
 </tree>
