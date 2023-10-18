@@ -1284,7 +1284,14 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.bank_account.bank.party.addresses[0].
                     country.code or '')
         else:
-            self.return_sepa_check = '0'
+            if (self.bank_account and self.type and self.bank_account
+                    and any(n.type == 'iban'
+                        for n in self.bank_account.numbers)
+                    and self.type in ('D')
+                    and self.bank_account.numbers[0].number.startswith('ES')):
+                self.return_sepa_check = '1'
+            else:
+                self.return_sepa_check = '0'
             self.swift_bank = ''
             self.return_bank_name = ''
             self.return_bank_address = ''
