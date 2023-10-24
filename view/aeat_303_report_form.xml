@@ -469,6 +469,18 @@ contains the full copyright notices and license terms. -->
     </notebook>
 
     <separator id="303footer" colspan="6"/>
+    <group id="psot_and_close" colspan="6" col="8">
+        <label name="account_move_tax"/>
+        <field name="account_move_tax"/>
+        <label name="post_and_close"/>
+        <field name="post_and_close"/>
+        <label name="account_move_tax_account"/>
+        <field name="account_move_tax_account"/>
+        <label name="account_move_tax_journal"/>
+        <field name="account_move_tax_journal"/>
+        <label name="account_move_tax_description"/>
+        <field name="account_move_tax_description" colspan="7"/>
+    </group>
     <group id="state" colspan="3" col="6">
         <label name="state"/>
         <field name="state"/>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license types. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <separator id="aeat_303" string="AEAT 303" colspan="4"/>
+        <label name="aeat303_post_and_close"/>
+        <field name="aeat303_post_and_close"/>
+        <label name="aeat303_account_move_tax_account"/>
+        <field name="aeat303_account_move_tax_account"/>
+        <label name="aeat303_account_move_tax_journal"/>
+        <field name="aeat303_account_move_tax_journal"/>
+        <newline/>
+    </xpath>
+</data>

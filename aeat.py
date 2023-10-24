@@ -887,6 +887,44 @@ class Report(Workflow, ModelSQL, ModelView):
     filename = fields.Function(fields.Char("File Name"),
         'get_filename')
 
+    # Create the account move tax. And check if need to post it and close
+    # the period.
+    account_move_tax = fields.Many2One('account.move', 'Move', readonly=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
+    post_and_close = fields.Boolean("Post and Close",
+        help='If checked the account move will be posted and the correspondign'
+        ' period or periods will be closed.')
+    account_move_tax_account = fields.Many2One(
+        'account.account', "Account for Account Move Tax",
+        domain=[
+            ('party_required', '=', False),
+            ('company', '=', Eval('company', -1)),
+            ('type', '!=', None),
+            ('type.expense', '=', False),
+            ('type.revenue', '=', False),
+            ('type.debt', '=', False),
+            ],
+        states={
+            'required': Bool(Eval('post_and_close')),
+            },
+        help='Account used for the counterpart in the creation of the account'
+        ' move tax when generate the 303 model.')
+    account_move_tax_journal = fields.Many2One(
+            'account.journal', "Journal for Account Move Tax",
+            states={
+                'required': Bool(Eval('post_and_close')),
+                },
+            help='Journal used for the counterpart in the creation of the '
+            'account move tax when generate the 303 model.')
+    account_move_tax_description = fields.Char('Description',
+        states={
+            'invisible': ~Bool(Eval('post_and_close')),
+            },
+        help='Optionaly you can add information to the account move tax if it'
+        ' is created automatically.')
+
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
@@ -1165,6 +1203,32 @@ class Report(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_prorrata_type5():
         return ' '
+
+    @classmethod
+    def default_post_and_close(cls):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
+        return config.aeat303_post_and_close or False
+
+    @classmethod
+    def default_account_move_tax_account(cls):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
+        return (config.aeat303_account_move_tax_account.id
+            if config.aeat303_account_move_tax_account else None)
+
+    @classmethod
+    def default_account_move_tax_journal(cls):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
+        return (config.aeat303_account_move_tax_journal.id
+            if config.aeat303_account_move_tax_journal else None)
 
     def pre_validate(self):
         super().pre_validate()
@@ -1496,22 +1560,8 @@ class Report(Workflow, ModelSQL, ModelView):
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
 
-            period = report.period
-            if 'T' in period:
-                period = period[0]
-                start_month = (int(period) - 1) * 3 + 1
-                end_month = start_month + 2
-            else:
-                start_month = int(period)
-                end_month = start_month
-
             year = report.year
-            lday = calendar.monthrange(year, end_month)[1]
-            periods = [p.id for p in Period.search([
-                    ('start_date', '>=', datetime.date(year, start_month, 1)),
-                    ('end_date', '<=', datetime.date(year, end_month, lday)),
-                    ('company', '=', report.company),
-                    ])]
+            periods = report.get_periods()
 
             for field, value in fixed.items():
                 setattr(report, field, value)
@@ -1546,8 +1596,7 @@ class Report(Workflow, ModelSQL, ModelView):
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
                         ('start_date', '>=', datetime.date(year, 1, 1)),
-                        ('end_date', '<=', datetime.date(year, end_month,
-                                lday)),
+                        ('end_date', '<=', datetime.date(year, 12, 31)),
                         ('company', '=', report.company),
                         ])]
                 with Transaction().set_context(periods=periods):
@@ -1566,14 +1615,48 @@ class Report(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def process(cls, reports):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
         for report in reports:
             report.create_file()
+            report.create_account_move_tax()
+            # Means that we have to post the account_move created and close the
+            # period or periods related.
+            if report.post_and_close:
+                periods = report.get_periods()
+                Move.post([report.account_move_tax])
+                Period.close(Period.browse(periods))
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, reports):
-        pass
+        pool = Pool()
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
+
+        for report in reports:
+            move = report.account_move_tax
+            if not move:
+                continue
+            if move.state == 'draft':
+                Move.delete([move])
+                continue
+            for line in move.lines:
+                if line.reconciliation is not None:
+                    raise UserError(
+                        gettext('aeat_303.msg_not_possible_cancel',
+                            report=report.id))
+            cancel_move = move.cancel()
+            cancel_move.origin = report
+            Move.post([cancel_move])
+            lines = [l for m in [move, cancel_move]
+                for l in m.lines if l.account.reconcile]
+            if lines:
+                MoveLine.reconcile(lines)
+            report.account_move_tax = None
 
     @classmethod
     @ModelView.button
@@ -1634,3 +1717,148 @@ class Report(Workflow, ModelSQL, ModelView):
             data = data.encode('iso-8859-1')
         self.file_ = self.__class__.file_.cast(data)
         self.save()
+
+    def create_account_move_tax(self):
+        pool = Pool()
+        Mapping = pool.get('aeat.303.mapping')
+        TaxCode = pool.get('account.tax.code')
+        Tax = pool.get('account.tax')
+        TaxLine = pool.get('account.tax.line')
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
+
+        # If this to fields are not setted, means not required to create
+        # the AEAT303 account move.
+        if (not self.account_move_tax_account
+                or not self.account_move_tax_journal):
+            return
+
+        codes = []
+        # Get all the codes from AEAT303 Mapping table.
+        for mapp in Mapping.search([
+                ('type_', '=', 'code'),
+                ('company', '=', self.company),
+                ]):
+            codes.extend((x.id for x in mapp.code_by_companies))
+        if not codes:
+            return
+
+        periods = self.get_periods()
+        with Transaction().set_context(periods=periods):
+            codes = TaxCode.browse(codes)
+            mapp_code_lines = {}
+            for code in codes:
+                if not code.amount:
+                    continue
+
+                # To create the AEAT303 account move need the last level of a
+                # code tree, so search all the child of the code and us only
+                # the child without childs, last level.
+                children = []
+                childs = TaxCode.search([
+                        ('parent', 'child_of', [code]),
+                        ])
+                if len(childs) == 1:
+                    children = childs
+                else:
+                    for child in childs:
+                        if not child.childs and child.amount:
+                            children.append(child)
+                # Only create the domain for the tax codes that are "Tax",
+                # not "Base".
+                # With that doamin, get the related account tax lines, to get
+                # the related account move, so could be done the counterpart
+                # account move.
+                for child in children:
+                    if not child.lines:
+                        continue
+                    domain = [['OR'] + [x._line_domain for x in child.lines
+                        if x.amount == 'tax']]
+                    if domain == [['OR']]:
+                        continue
+                    #domain += Tax._amount_domain()
+                    domain.extend(Tax._amount_domain())
+                    tax_lines = TaxLine.search(domain)
+                    mapp_code_lines[child] = [x.move_line for x in tax_lines]
+            if not mapp_code_lines:
+                return
+
+            # Create the AET303 move with the move lines obtained fron tax
+            # code.
+            move = Move()
+            move.journal = self.account_move_tax_journal
+            move.period = periods[-1]
+            move.date = move.period.end_date
+            move.origin = self
+            move.state = 'draft'
+            move.description = self.account_move_tax_description
+            move.save()
+
+            balance = 0
+            move_lines = {}
+            for code, lines in mapp_code_lines.items():
+                for line in lines:
+                    key = (code, line.account)
+                    if key in move_lines:
+                        move_lines[key].debit += line.debit
+                        move_lines[key].credit += line.credit
+                    else:
+                        move_line = MoveLine()
+                        move_line.move = move
+                        move_line.account = line.account
+                        move_line.debit = line.debit
+                        move_line.credit = line.credit
+                        move_line.description = code.name
+                        # TODO: Control if analytic exist
+                        move_lines[key] = move_line
+                    balance += (line.debit - line.credit)
+        counterpart_line = MoveLine()
+        counterpart_line.move = move
+        counterpart_line.account = self.account_move_tax_account
+        if balance >= 0:
+            counterpart_line.credit = balance
+            counterpart_line.debit = _Z
+        else:
+            counterpart_line.debit = -balance
+            counterpart_line.credit = _Z
+        counterpart_line.description = self.account_move_tax_description
+        # Ensure that all the moves are setted only the debit or credit,
+        # not both either 0 on both.
+        lines = []
+        for key, line in move_lines.items():
+            if line.debit and line.credit:
+                balance = line.debit - line.credit
+                if balance == _Z:
+                    continue
+                elif balance >= _Z:
+                    line.debit = balance
+                    line.credit = _Z
+                else:
+                    line.credit = -balance
+                    line.debit = _Z
+            lines.append(line)
+        # TODO: Control if analytic exist and it's required for some accounts
+        MoveLine.save(lines + [counterpart_line])
+        self.account_move_tax = move
+        self.save()
+
+    def get_periods(self):
+        pool = Pool()
+        Period = pool.get('account.period')
+
+        period = self.period
+        if 'T' in period:
+            period = period[0]
+            start_month = (int(period) - 1) * 3 + 1
+            end_month = start_month + 2
+        else:
+            start_month = int(period)
+            end_month = start_month
+        year = self.year
+        lday = calendar.monthrange(year, end_month)[1]
+        periods = [p.id for p in Period.search([
+                ('start_date', '>=', datetime.date(year, start_month, 1)),
+                ('end_date', '<=', datetime.date(year, end_month, lday)),
+                ('company', '=', self.company),
+                ])]
+        return periods
