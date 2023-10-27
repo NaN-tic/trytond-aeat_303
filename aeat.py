@@ -1794,7 +1794,6 @@ class Report(Workflow, ModelSQL, ModelView):
             move.description = self.account_move_tax_description
             move.save()
 
-            balance = 0
             move_lines = {}
             for code, lines in mapp_code_lines.items():
                 for line in lines:
@@ -1811,15 +1810,14 @@ class Report(Workflow, ModelSQL, ModelView):
                         move_line.description = code.name
                         # TODO: Control if analytic exist
                         move_lines[key] = move_line
-                    balance += (line.debit - line.credit)
         counterpart_line = MoveLine()
         counterpart_line.move = move
         counterpart_line.account = self.account_move_tax_account
-        if balance >= 0:
-            counterpart_line.credit = balance
+        if self.liquidation_result >= 0:
+            counterpart_line.credit = self.liquidation_result
             counterpart_line.debit = _Z
         else:
-            counterpart_line.debit = -balance
+            counterpart_line.debit = -1 * self.liquidation_result
             counterpart_line.credit = _Z
         counterpart_line.description = self.account_move_tax_description
         # Ensure that all the moves are setted only the debit or credit,
