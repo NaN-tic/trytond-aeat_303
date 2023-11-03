@@ -8,10 +8,10 @@ from trytond.modules.company.model import CompanyValueMixin
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
-    aeat303_account_move_tax_account = fields.MultiValue(fields.Many2One(
-            'account.account', "Account for Account Move Tax",
+    aeat303_move_account = fields.MultiValue(fields.Many2One(
+            'account.account', "Account for Move",
             domain=[
-                ('closed', '!=', True),
+                ('closed', '=', False),
                 ('party_required', '=', False),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ('type', '!=', None),
@@ -23,24 +23,23 @@ class Configuration(metaclass=PoolMeta):
                 'required': Bool(Eval('aeat303_post_and_close')),
                 },
             help='Account used for the counterpart in the creation of the '
-            'account move tax when generate the 303 model.'))
-    aeat303_account_move_tax_journal = fields.MultiValue(fields.Many2One(
-            'account.journal', "Journal for Account Move Tax",
+            'account move when generate the 303 model.'))
+    aeat303_move_journal = fields.MultiValue(fields.Many2One(
+            'account.journal', "Journal for Move",
             states={
                 'required': Bool(Eval('aeat303_post_and_close')),
                 },
             help='Journal used for the counterpart in the creation of the '
-            'account move tax when generate the 303 model.'))
+            'account move when generate the 303 model.'))
     aeat303_post_and_close = fields.MultiValue(
         fields.Boolean("Post and Close",
-        help='If checked the account move will be posted and the correspondign'
+        help='If checked the account move will be posted and the corresponding'
         ' period or periods will be closed.'))
 
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
-        if field in {'aeat303_account_move_tax_account',
-                'aeat303_account_move_tax_journal',
+        if field in {'aeat303_move_account', 'aeat303_move_journal',
                 'aeat303_post_and_close'}:
             return pool.get('account.configuration.aeat303')
         return super().multivalue_model(field)
@@ -54,8 +53,8 @@ class Configuration(metaclass=PoolMeta):
 class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     "AEAT 303 Account Configuration"
     __name__ = 'account.configuration.aeat303'
-    aeat303_account_move_tax_account = fields.Many2One(
-        'account.account', "Account for Account Move Tax",
+    aeat303_move_account = fields.Many2One(
+        'account.account', "Account for Move",
         domain=[
             ('party_required', '=', False),
             ('company', '=', Eval('company', -1)),
@@ -68,16 +67,16 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
             'required': Bool(Eval('aeat303_post_and_close')),
             },
         help='Account used for the counterpart in the creation of the account'
-        ' move tax when generate the 303 model.')
-    aeat303_account_move_tax_journal = fields.Many2One(
-            'account.journal', "Journal for Account Move Tax",
+        ' move when generate the 303 model.')
+    aeat303_move_journal = fields.Many2One(
+            'account.journal', "Journal for Move",
             states={
                 'required': Bool(Eval('aeat303_post_and_close')),
                 },
             help='Journal used for the counterpart in the creation of the '
-            'account move tax when generate the 303 model.')
+            'account move when generate the 303 model.')
     aeat303_post_and_close = fields.Boolean("Post and Close",
-        help='If checked the account move will be posted and the correspondign'
+        help='If checked the account move will be posted and the corresponding'
         ' period or periods will be closed.')
 
     @staticmethod

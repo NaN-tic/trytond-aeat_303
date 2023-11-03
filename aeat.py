@@ -887,17 +887,17 @@ class Report(Workflow, ModelSQL, ModelView):
     filename = fields.Function(fields.Char("File Name"),
         'get_filename')
 
-    # Create the account move tax. And check if need to post it and close
+    # Create the account move. And check if need to post it and close
     # the period.
-    account_move_tax = fields.Many2One('account.move', 'Move', readonly=True,
+    move = fields.Many2One('account.move', 'Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
     post_and_close = fields.Boolean("Post and Close",
-        help='If checked the account move will be posted and the correspondign'
+        help='If checked the account move will be posted and the corresponding'
         ' period or periods will be closed.')
-    account_move_tax_account = fields.Many2One(
-        'account.account', "Account for Account Move Tax",
+    move_account = fields.Many2One(
+        'account.account', "Account for Move",
         domain=[
             ('party_required', '=', False),
             ('company', '=', Eval('company', -1)),
@@ -910,20 +910,20 @@ class Report(Workflow, ModelSQL, ModelView):
             'required': Bool(Eval('post_and_close')),
             },
         help='Account used for the counterpart in the creation of the account'
-        ' move tax when generate the 303 model.')
-    account_move_tax_journal = fields.Many2One(
-            'account.journal', "Journal for Account Move Tax",
+        ' move when generate the 303 model.')
+    move_journal = fields.Many2One(
+            'account.journal', "Journal for Move",
             states={
                 'required': Bool(Eval('post_and_close')),
                 },
             help='Journal used for the counterpart in the creation of the '
-            'account move tax when generate the 303 model.')
-    account_move_tax_description = fields.Char('Description',
+            'account move when generate the 303 model.')
+    move_description = fields.Char('Description for Move',
         states={
             'invisible': ~Bool(Eval('post_and_close')),
             },
-        help='Optionaly you can add information to the account move tax if it'
-        ' is created automatically.')
+        help='Optionaly you can add information to the account move if it is'
+        ' created automatically.')
 
     @classmethod
     def __setup__(cls):
@@ -1213,22 +1213,22 @@ class Report(Workflow, ModelSQL, ModelView):
         return config.aeat303_post_and_close or False
 
     @classmethod
-    def default_account_move_tax_account(cls):
+    def default_move_account(cls):
         pool = Pool()
         Configuration = pool.get('account.configuration')
 
         config = Configuration(1)
-        return (config.aeat303_account_move_tax_account.id
-            if config.aeat303_account_move_tax_account else None)
+        return (config.aeat303_move_account.id
+            if config.aeat303_move_account else None)
 
     @classmethod
-    def default_account_move_tax_journal(cls):
+    def default_move_journal(cls):
         pool = Pool()
         Configuration = pool.get('account.configuration')
 
         config = Configuration(1)
-        return (config.aeat303_account_move_tax_journal.id
-            if config.aeat303_account_move_tax_journal else None)
+        return (config.aeat303_move_journal.id
+            if config.aeat303_move_journal else None)
 
     def pre_validate(self):
         super().pre_validate()
@@ -1621,12 +1621,12 @@ class Report(Workflow, ModelSQL, ModelView):
 
         for report in reports:
             report.create_file()
-            report.create_account_move_tax()
-            # Means that we have to post the account_move created and close the
+            report.create_move()
+            # Means that we have to post the move created and close the
             # period or periods related.
             if report.post_and_close:
                 periods = report.get_periods()
-                Move.post([report.account_move_tax])
+                Move.post([report.move])
                 Period.close(Period.browse(periods))
 
     @classmethod
@@ -1638,7 +1638,7 @@ class Report(Workflow, ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
 
         for report in reports:
-            move = report.account_move_tax
+            move = report.move
             if not move:
                 continue
             if move.state == 'draft':
@@ -1656,7 +1656,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 for l in m.lines if l.account.reconcile]
             if lines:
                 MoveLine.reconcile(lines)
-            report.account_move_tax = None
+            report.move = None
 
     @classmethod
     @ModelView.button
@@ -1718,7 +1718,7 @@ class Report(Workflow, ModelSQL, ModelView):
         self.file_ = self.__class__.file_.cast(data)
         self.save()
 
-    def create_account_move_tax(self):
+    def create_move(self):
         pool = Pool()
         Mapping = pool.get('aeat.303.mapping')
         TaxCode = pool.get('account.tax.code')
@@ -1727,10 +1727,9 @@ class Report(Workflow, ModelSQL, ModelView):
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
 
-        # If this to fields are not setted, means not required to create
-        # the AEAT303 account move.
-        if (not self.account_move_tax_account
-                or not self.account_move_tax_journal):
+        # If this two fields are not set, means not required to create
+        # the AEAT303 move.
+        if (not self.move_account or not self.move_journal):
             return
 
         codes = []
@@ -1745,9 +1744,8 @@ class Report(Workflow, ModelSQL, ModelView):
 
         periods = self.get_periods()
         with Transaction().set_context(periods=periods):
-            codes = TaxCode.browse(codes)
             mapp_code_lines = {}
-            for code in codes:
+            for code in TaxCode.browse(codes):
                 if not code.amount:
                     continue
 
@@ -1786,12 +1784,12 @@ class Report(Workflow, ModelSQL, ModelView):
             # Create the AET303 move with the move lines obtained fron tax
             # code.
             move = Move()
-            move.journal = self.account_move_tax_journal
+            move.journal = self.move_journal
             move.period = periods[-1]
             move.date = move.period.end_date
             move.origin = self
             move.state = 'draft'
-            move.description = self.account_move_tax_description
+            move.description = self.move_description
             move.save()
 
             move_lines = {}
@@ -1812,15 +1810,15 @@ class Report(Workflow, ModelSQL, ModelView):
                         move_lines[key] = move_line
         counterpart_line = MoveLine()
         counterpart_line.move = move
-        counterpart_line.account = self.account_move_tax_account
+        counterpart_line.account = self.move_account
         if self.liquidation_result >= 0:
-            counterpart_line.credit = self.liquidation_result
-            counterpart_line.debit = _Z
-        else:
-            counterpart_line.debit = -1 * self.liquidation_result
+            counterpart_line.debit = self.liquidation_result
             counterpart_line.credit = _Z
-        counterpart_line.description = self.account_move_tax_description
-        # Ensure that all the moves are setted only the debit or credit,
+        else:
+            counterpart_line.credit = -1 * self.liquidation_result
+            counterpart_line.debit = _Z
+        counterpart_line.description = self.move_description
+        # Ensure that all the moves are set only the debit or credit,
         # not both either 0 on both.
         lines = []
         for key, line in move_lines.items():
@@ -1835,9 +1833,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     line.credit = -balance
                     line.debit = _Z
             lines.append(line)
-        # TODO: Control if analytic exist and it's required for some accounts
         MoveLine.save(lines + [counterpart_line])
-        self.account_move_tax = move
+        self.move = move
         self.save()
 
     def get_periods(self):

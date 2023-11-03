@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import aeat, account, configuration
+from . import aeat
+from . import account
+from . import configuration
 
 
 def register():
