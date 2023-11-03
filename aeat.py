@@ -916,6 +916,9 @@ class Report(Workflow, ModelSQL, ModelView):
             states={
                 'required': Bool(Eval('post_and_close')),
                 },
+            context={
+                'company': Eval('company', -1),
+                },
             help='Journal used for the counterpart in the creation of the '
             'account move when generate the 303 model.')
     move_description = fields.Char('Description for Move',

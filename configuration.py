@@ -73,6 +73,9 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
             states={
                 'required': Bool(Eval('aeat303_post_and_close')),
                 },
+            context={
+                'company': Eval('company', -1),
+                },
             help='Journal used for the counterpart in the creation of the '
             'account move when generate the 303 model.')
     aeat303_post_and_close = fields.Boolean("Post and Close",
