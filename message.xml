@@ -36,5 +36,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_prorrata_percent">
             <field name="text">One of the Prorrata percent added in then 5th page is greater than 100, and thats not correct. (Report ID: %(report)s)</field>
         </record>
+        <record model="ir.message" id="msg_not_possible_cancel">
+            <field name="text">The AEAT 303 report (ID: %(report)s) cannot be possible cancelled because its account move is reconciled.</field>
+        </record>
     </data>
 </tryton>
