@@ -17,10 +17,6 @@ from sql import Literal
 from sql.functions import Extract
 
 
-__all__ = ['Report', 'TemplateTaxCodeMapping', 'TemplateTaxCodeRelation',
-    'TaxCodeMapping', 'TaxCodeRelation', 'CreateChart',
-    'UpdateChart']
-
 _STATES = {
     'readonly': Eval('state') == 'done',
     }
@@ -36,29 +32,13 @@ _DEPENDS_390 = ['exonerated_mod390']
 _Z = Decimal("0.0")
 
 
-def remove_accents(unicode_string):
-    str_ = str if sys.version_info < (3, 0) else bytes
-    unicode_ = str if sys.version_info < (3, 0) else str
-    if isinstance(unicode_string, str_):
-        unicode_string_bak = unicode_string
-        try:
-            unicode_string = unicode_string_bak.decode('iso-8859-1')
-        except UnicodeDecodeError:
-            try:
-                unicode_string = unicode_string_bak.decode('utf-8')
-            except UnicodeDecodeError:
-                return unicode_string_bak
-
-    if not isinstance(unicode_string, unicode_):
-        return unicode_string
-
-    unicode_string_nfd = ''.join(
-        (c for c in unicodedata.normalize('NFD', unicode_string)
-            if (unicodedata.category(c) != 'Mn'
+def remove_accents(text):
+    return ''.join(c for c in unicodedata.normalize('NFD', text)
+        if (unicodedata.category(c) != 'Mn'
                 or c in ('\\u0327', '\\u0303'))  # Avoids normalize ç and ñ
-            ))
+        )
     # It converts nfd to nfc to allow unicode.decode()
-    return unicodedata.normalize('NFC', unicode_string_nfd)
+    #return unicodedata.normalize('NFC', unicode_string_nfd)
 
 
 class TemplateTaxCodeRelation(ModelSQL):
@@ -315,7 +295,12 @@ class Report(Workflow, ModelSQL, ModelView):
             ('X', 'Return by trasnfer to foreign account'),
             ], 'Declaration Type', required=True, sort=False, states=_STATES,
         depends=_DEPENDS)
-    year = fields.Integer("Year", required=True, states={
+    year = fields.Integer("Year", required=True,
+        domain=[
+            ('year', '>=', 1000),
+            ('year', '<=', 9999)
+            ],
+        states={
             'readonly': Eval('state').in_(['done', 'calculated']),
             }, depends=_DEPENDS)
     period = fields.Selection([
@@ -1232,17 +1217,6 @@ class Report(Workflow, ModelSQL, ModelView):
         config = Configuration(1)
         return (config.aeat303_move_journal.id
             if config.aeat303_move_journal else None)
-
-    def pre_validate(self):
-        super().pre_validate()
-        self.check_year_digits()
-
-    @fields.depends('year')
-    def check_year_digits(self):
-        if self.year and len(str(self.year)) != 4:
-            raise UserError(
-                gettext('aeat_303.msg_invalid_year',
-                    year=self.year))
 
     @fields.depends('company')
     def on_change_with_company_party(self, name=None):
