@@ -817,7 +817,7 @@ class Report(Workflow, ModelSQL, ModelView):
     # Page DID
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party', context={
-                'company': Eval('company'),
+                'company': Eval('company', -1),
             },
             depends=['company']),
         'on_change_with_company_party')
