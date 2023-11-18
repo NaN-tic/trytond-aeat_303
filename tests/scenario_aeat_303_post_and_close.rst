@@ -242,4 +242,4 @@ Test report is generated correctly::
     >>> report2.move.state
     'posted'
     >>> report2.move.period.state
-    'close'
+    'closed'
