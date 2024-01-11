@@ -21,13 +21,9 @@ _STATES = {
     'readonly': Eval('state') == 'done',
     }
 
-_DEPENDS = ['state']
-
 _STATES_390 = {
     'invisible': Eval('exonerated_mod390') != '1',
     }
-
-_DEPENDS_390 = ['exonerated_mod390']
 
 _Z = Decimal("0.0")
 
@@ -69,13 +65,12 @@ class TemplateTaxCodeMapping(ModelSQL):
     code = fields.Many2Many('aeat.303.mapping-account.tax.code.template',
         'mapping', 'code', 'Tax Code Template', states={
             'invisible': Eval('type_') == 'numeric',
-        }, depends=['type_'])
+        })
     number = fields.Numeric('Number',
         states={
             'required': Eval('type_') == 'numeric',
             'invisible': Eval('type_') != 'numeric',
-            },
-        depends=['type_'])
+            })
 
     @classmethod
     def __setup__(cls):
@@ -215,19 +210,18 @@ class TaxCodeMapping(ModelSQL, ModelView):
         'code', 'Tax Code', states={
             'required': Eval('type_') != 'numeric',
             'invisible': Eval('type_') == 'numeric',
-        }, depends=['type_'])
+        })
     code_by_companies = fields.Function(
         fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
         'code', 'Tax Code', states={
             'required': Eval('type_') != 'numeric',
             'invisible': Eval('type_') == 'numeric',
-        }, depends=['type_']), 'get_code_by_companies')
+        }), 'get_code_by_companies')
     number = fields.Numeric('Number',
         states={
             'required': Eval('type_') == 'numeric',
             'invisible': Eval('type_') != 'numeric',
-            },
-        depends=['type_'])
+            })
     template = fields.Many2One('aeat.303.template.mapping', 'Template')
 
     @classmethod
@@ -270,14 +264,14 @@ class Report(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Eval('state').in_(['done', 'calculated']),
-            }, depends=['state'])
+            })
     regime_type = fields.Selection([
             # ('1', 'Tribute exclusively on simplificated regime'),
             # ('2', 'Tribute on both simplified and general regime'),
             ('3', 'Tribute exclusively on general regime'),
             ], 'Tribute type', required=True, sort=False, states={
                 'readonly': Eval('state').in_(['done', 'calculated']),
-                }, depends=_DEPENDS)
+                })
     company_vat = fields.Char('VAT')
     company_name = fields.Char('Company Name')
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -293,8 +287,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('V', 'Current account tax - Returns'),
             ('U', 'Direct incomes in account'),
             ('X', 'Return by trasnfer to foreign account'),
-            ], 'Declaration Type', required=True, sort=False, states=_STATES,
-        depends=_DEPENDS)
+            ], 'Declaration Type', required=True, sort=False, states=_STATES)
     year = fields.Integer("Year", required=True,
         domain=[
             ('year', '>=', 1000),
@@ -302,7 +295,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state').in_(['done', 'calculated']),
-            }, depends=_DEPENDS)
+            })
     period = fields.Selection([
             ('1T', 'First quarter'),
             ('2T', 'Second quarter'),
@@ -322,7 +315,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('12', 'December'),
             ], 'Period', required=True, sort=False, states={
                 'readonly': Eval('state').in_(['done', 'calculated']),
-                }, depends=_DEPENDS)
+                })
     passive_subject_foral_administration = fields.Selection([
             ('1', 'Yes'),
             ('2', 'No'),
@@ -497,12 +490,12 @@ class Report(Workflow, ModelSQL, ModelView):
     previous_report = fields.Many2One('aeat.303.report', 'Previous Report',
         states={
             'readonly': Eval('state') == 'done',
-            }, depends=['state'])
+            })
     previous_period_pending_amount_to_compensate = fields.Numeric(
         'Previous Period Pending Amount To Compensate', digits=(15, 2),
         states={
             'readonly': Bool(Eval('previous_report')),
-            }, depends=['previous_report'])
+            })
     previous_period_amount_to_compensate = fields.Numeric(
         'Previous Period Amount To Compensate', digits=(15, 2))
     result_previous_period_amount_to_compensate = fields.Function(
@@ -523,108 +516,107 @@ class Report(Workflow, ModelSQL, ModelView):
         'Previous Declaration Receipt', size=13,
         states={
             'required': Bool(Eval('complementary_declaration')),
-            },
-        depends=['complementary_declaration'])
+            })
 
     # Page 04
     special_info_key_main = fields.Char('Main Activity Code',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_main = fields.Char('Main IAE Code',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_key_others_1 = fields.Char('Activity Code (Other 1)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_others_1 = fields.Char('IAE Code (Other 1)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_key_others_2 = fields.Char('Activity Code (Other 2)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_others_2 = fields.Char('IAE Code (Other 2)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_key_others_3 = fields.Char('Activity Code (Other 3)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_others_3 = fields.Char('IAE Code (Other 3)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_key_others_4 = fields.Char('Activity Code (Other 4)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_others_4 = fields.Char('IAE Code (Other 4)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_key_others_5 = fields.Char('Activity Code (Other 5)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_section_iae_others_5 = fields.Char('IAE Code (Other 5)',
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_required_declare_third_party_operation = fields.Selection([
             (' ', 'No'),
             ('X', 'Yes'),
             ], 'Required declare Third Party Operations',
         help="Check if you have carried out transactions for which you are "
         "required to submit the annual declaration of transactions with "
-        "third parties.", states=_STATES_390, depends=_DEPENDS_390)
+        "third parties.", states=_STATES_390)
     info_territory_alava = fields.Numeric(
         'Taxation Information by Territory: Alava', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     info_territory_guipuzcoa = fields.Numeric(
         'Taxation Information by Territory: Guipuzcoa', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     info_territory_vizcaya = fields.Numeric(
         'Taxation Information by Territory: Vizcaya', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     info_territory_navarra = fields.Numeric(
         'Taxation Information by Territory: Navarra', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     information_taxation_reason_territory = fields.Numeric(
         'Information on taxation by reason of territorya: Commo territory',
-        digits=(3, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(3, 2), states=_STATES_390)
     special_info_rg_operations = fields.Numeric(
         'Operations in General Regime', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_recc = fields.Numeric(
         'Operations Especial Regime Cash Criteria', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_intracommunity_deliveries_2bdeduced = fields.Numeric(
         'Intracommunity Delivery of Goods and Services', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_exempt_op_2bdeduced = fields.Numeric(
         'Exports and Other Exempt Oprations to be Deduce', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_exempt_op_wo_permission_2bdeduced = fields.Numeric(
         'Exempt Oprations without deduction right', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_w_passive_subject = fields.Numeric(
         'Not Subjected Operations', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     annual_subject_operations_w_reverse_charge = fields.Numeric(
         'Subjected Operations With Reverse Charge', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     annual_oss_not_subject_operations = fields.Numeric(
         'Not Subjected Operations Special Regime Unic Window', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     annual_oss_subject_operations = fields.Numeric(
         'Subjected Operations Special Regime Unic Window', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     annual_intragroup_transaction = fields.Numeric('Intragroup Transactions',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     special_info_operations_rs = fields.Numeric('Simplified Regime Operations',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     special_info_farming_cattleraising_fishing = fields.Numeric(
         'Especial Regime of Farming, Cattle rasing and Fishing',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     special_info_passive_subject_re = fields.Numeric(
         'Passive Subject on Equivalence Regime', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_art_antiques_collectibles = fields.Numeric(
         'Special Regime Operations on Art, Antiques and Collectibles',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     special_info_travel_agency = fields.Numeric(
         'Special Regime Operations on Travel Agency', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_financial_op_not_usual = fields.Numeric(
         'Operations Not Usual', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_delivery_investment_domestic_operations = fields.Numeric(
         'Delivery of Investment Domestic Operations', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     special_info_total = fields.Function(fields.Numeric(
             'Total Operations Volume', digits=(15, 2),
-            states=_STATES_390, depends=_DEPENDS_390),
+            states=_STATES_390),
         'get_total_operations_volume')
 
     # Page 05
@@ -632,186 +624,186 @@ class Report(Workflow, ModelSQL, ModelView):
             (' ', 'No'),
             ('C', 'Yes'),
             ], 'Complementari Page Indicator',
-        states=_STATES_390, depends=_DEPENDS_390)
-    cnae1 = fields.Char('CNAE 1', states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
+    cnae1 = fields.Char('CNAE 1', states=_STATES_390)
     operations_amount1 = fields.Numeric('Operations Amount 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     operations_amount_w_deduction1 = fields.Numeric(
         'Operations Amount With Deduction 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     prorrata_type1 = fields.Selection([
             ('G', 'G'),
             ('E', 'E'),
             (' ', 'None'),
-            ], 'Prorrata Type 1', states=_STATES_390, depends=_DEPENDS_390)
+            ], 'Prorrata Type 1', states=_STATES_390)
     prorrata_percent1 = fields.Numeric(
         'Operations Amount With Deduction 1', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
-    cnae2 = fields.Char('CNAE 2', states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
+    cnae2 = fields.Char('CNAE 2', states=_STATES_390)
     operations_amount2 = fields.Numeric('Operations Amount 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     operations_amount_w_deduction2 = fields.Numeric(
         'Operations Amount With Deduction 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     prorrata_type2 = fields.Selection([
             ('G', 'G'),
             ('E', 'E'),
             (' ', 'None'),
-            ], 'Prorrata Type 2', states=_STATES_390, depends=_DEPENDS_390)
+            ], 'Prorrata Type 2', states=_STATES_390)
     prorrata_percent2 = fields.Numeric(
         'Operations Amount With Deduction 2', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
-    cnae3 = fields.Char('CNAE 3', states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
+    cnae3 = fields.Char('CNAE 3', states=_STATES_390)
     operations_amount3 = fields.Numeric('Operations Amount 3', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     operations_amount_w_deduction3 = fields.Numeric(
         'Operations Amount With Deduction 3', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     prorrata_type3 = fields.Selection([
             ('G', 'G'),
             ('E', 'E'),
             (' ', 'None'),
-            ], 'Prorrata Type 3', states=_STATES_390, depends=_DEPENDS_390)
+            ], 'Prorrata Type 3', states=_STATES_390)
     prorrata_percent3 = fields.Numeric(
         'Operations Amount With Deduction 3', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
-    cnae4 = fields.Char('CNAE 4', states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
+    cnae4 = fields.Char('CNAE 4', states=_STATES_390)
     operations_amount4 = fields.Numeric('Operations Amount 4', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     operations_amount_w_deduction4 = fields.Numeric(
         'Operations Amount With Deduction 4', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     prorrata_type4 = fields.Selection([
             ('G', 'G'),
             ('E', 'E'),
             (' ', 'None'),
-            ], 'Prorrata Type 4', states=_STATES_390, depends=_DEPENDS_390)
+            ], 'Prorrata Type 4', states=_STATES_390)
     prorrata_percent4 = fields.Numeric(
         'Operations Amount With Deduction 4', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
-    cnae5 = fields.Char('CNAE 5', states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
+    cnae5 = fields.Char('CNAE 5', states=_STATES_390)
     operations_amount5 = fields.Numeric('Operations Amount 5', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     operations_amount_w_deduction5 = fields.Numeric(
         'Operations Amount With Deduction 5', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     prorrata_type5 = fields.Selection([
             ('G', 'G'),
             ('E', 'E'),
             (' ', 'None'),
-            ], 'Prorrata Type 5', states=_STATES_390, depends=_DEPENDS_390)
+            ], 'Prorrata Type 5', states=_STATES_390)
     prorrata_percent5 = fields.Numeric(
         'Operations Amount With Deduction 5', digits=(3, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_domestic_operations_base1 = fields.Numeric(
         'Deductible Current Domestic Operations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_domestic_operations_tax1 = fields.Numeric(
         'Deductible Current Domestic Operations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_domestic_operations_base1 = fields.Numeric(
         'Deductible Investment Domestic Operations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_domestic_operations_tax1 = fields.Numeric(
         'Deductible Investment Domestic Operations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_import_operations_base1 = fields.Numeric(
         'Deductible Current Import Operations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_import_operations_tax1 = fields.Numeric(
         'Deductible Current Import Operations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_import_operations_base1 = fields.Numeric(
         'Deductible Investment Import Operations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_import_operations_tax1 = fields.Numeric(
         'Deductible Investment Import Operations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_intracommunity_operations_base1 = fields.Numeric(
         'Deductible Current Intracommunity Operations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_intracommunity_operations_tax1 = fields.Numeric(
         'Deductible Current Intracommunity Operations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_intracommunity_operations_base1 = fields.Numeric(
         'Deductible Investment Intracommunity Operations Base 1',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     deductible_investment_intracommunity_operations_tax1 = fields.Numeric(
         'Deductible Investment Intracommunity Operations Tax 1',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     deductible_compensations_base1 = fields.Numeric(
         'Deductible Compensations Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_compensations_tax1 = fields.Numeric(
         'Deductible Compensations Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_regularization_base1 = fields.Numeric(
         'Deductible Regularization Base 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_regularization_tax1 = fields.Numeric(
         'Deductible Regularization Tax 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_regularization1 = fields.Numeric(
         'Deductible Investment Regularization 1', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_total1 = fields.Function(fields.Numeric(
             'Total Deductible 1', digits=(15, 2),
-            states=_STATES_390, depends=_DEPENDS_390),
+            states=_STATES_390),
         'get_deductible_total1')
     deductible_current_domestic_operations_base2 = fields.Numeric(
         'Deductible Current Domestic Operations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_domestic_operations_tax2 = fields.Numeric(
         'Deductible Current Domestic Operations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_domestic_operations_base2 = fields.Numeric(
         'Deductible Investment Domestic Operations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_domestic_operations_tax2 = fields.Numeric(
         'Deductible Investment Domestic Operations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_import_operations_base2 = fields.Numeric(
         'Deductible Current Import Operations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_import_operations_tax2 = fields.Numeric(
         'Deductible Current Import Operations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_import_operations_base2 = fields.Numeric(
         'Deductible Investment Import Operations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_import_operations_tax2 = fields.Numeric(
         'Deductible Investment Import Operations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_intracommunity_operations_base2 = fields.Numeric(
         'Deductible Current Intracommunity Operations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_current_intracommunity_operations_tax2 = fields.Numeric(
         'Deductible Current Intracommunity Operations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_intracommunity_operations_base2 = fields.Numeric(
         'Deductible Investment Intracommunity Operations Base 2',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     deductible_investment_intracommunity_operations_tax2 = fields.Numeric(
         'Deductible Investment Intracommunity Operations Tax 2',
-        digits=(15, 2), states=_STATES_390, depends=_DEPENDS_390)
+        digits=(15, 2), states=_STATES_390)
     deductible_compensations_base2 = fields.Numeric(
         'Deductible Compensations Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_compensations_tax2 = fields.Numeric(
         'Deductible Compensations Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_regularization_base2 = fields.Numeric(
         'Deductible Regularization Base 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_regularization_tax2 = fields.Numeric(
         'Deductible Regularization Tax 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_investment_regularization2 = fields.Numeric(
         'Deductible Investment Regularization 2', digits=(15, 2),
-        states=_STATES_390, depends=_DEPENDS_390)
+        states=_STATES_390)
     deductible_total2 = fields.Function(fields.Numeric(
             'Total Deductible 2', digits=(15, 2),
-            states=_STATES_390, depends=_DEPENDS_390),
+            states=_STATES_390),
         'get_deductible_total2')
 
     # Page DID
@@ -826,8 +818,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('owners', '=', Eval('company_party')),
         ], states={
             'required': Eval('type').in_(['U', 'D', 'X']),
-            },
-        depends=['company_party', 'type'])
+            })
     return_sepa_check = fields.Selection([
             ('0', 'Empty'),
             ('1', 'Spain account'),
