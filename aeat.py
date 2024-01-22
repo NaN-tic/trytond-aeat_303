@@ -1595,13 +1595,13 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(record, column, value)
             if column in general_record._fields:
                 setattr(general_record, column, value)
-            # If period is diffenret of 12/4T the fourth page will be without
+            # If period is diffenret of 12/4T the 4 and 5 page will be without
             #   content.
-            if self.period in ('12', '4T'):
-                if column in annual_resume_record._fields:
-                    setattr(annual_resume_record, column, value)
-                if column in annual_additional_record._fields:
-                    setattr(annual_additional_record, column, value)
+            ## if self.period in ('12', '4T'):
+            ##     if column in annual_resume_record._fields:
+            ##         setattr(annual_resume_record, column, value)
+            ##     if column in annual_additional_record._fields:
+            ##         setattr(annual_additional_record, column, value)
             if column in bank_data_record._fields:
                 setattr(bank_data_record, column, value)
             if column in footer._fields:
@@ -1610,11 +1610,12 @@ class Report(Workflow, ModelSQL, ModelView):
         bank_data_record.bank_account = next((n.number_compact
                 for n in self.bank_account.numbers
                 if n.type == 'iban'), '') if self.bank_account else ''
-        if self.period in ('12', '4T'):
-            records = [header, record, general_record, annual_resume_record,
-                annual_additional_record, bank_data_record]
-        else:
-            records = [header, record, general_record, bank_data_record]
+        ## if self.period in ('12', '4T'):
+        ##     records = [header, record, general_record, annual_resume_record,
+        ##         annual_additional_record, bank_data_record]
+        ## else:
+        ##     records = [header, record, general_record, bank_data_record]
+        records = [header, record, general_record, bank_data_record]
         records.append(footer)
         try:
             data = retrofix_write(records, separator='')
