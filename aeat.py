@@ -3,7 +3,6 @@ from decimal import Decimal
 import datetime
 import calendar
 import unicodedata
-import sys
 
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
@@ -1833,5 +1832,5 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('start_date', '>=', datetime.date(year, start_month, 1)),
                 ('end_date', '<=', datetime.date(year, end_month, lday)),
                 ('company', '=', self.company),
-                ])]
+                ], order=[('end_date', 'ASC')])]
         return periods
