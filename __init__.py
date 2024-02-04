@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import aeat
 from . import account
 from . import configuration
+from . import statement
 
 
 def register():
@@ -18,6 +19,10 @@ def register():
         aeat.TaxCodeRelation,
         account.Move,
         module='aeat_303', type_='model')
+    Pool.register(
+        statement.Origin,
+        module='aeat_303', type_='model',
+        depends=['account_statement_enable_banking'])
     Pool.register(
         aeat.CreateChart,
         aeat.UpdateChart,
