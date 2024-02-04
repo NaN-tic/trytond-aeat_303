@@ -1711,6 +1711,7 @@ class Report(Workflow, ModelSQL, ModelView):
             return
 
         periods = self.get_periods()
+        description = self.move_description or 'AEAT 303'
         with Transaction().set_context(periods=periods):
             mapp_code_lines = {}
             for code in TaxCode.browse(codes):
@@ -1757,7 +1758,7 @@ class Report(Workflow, ModelSQL, ModelView):
             move.date = move.period.end_date
             move.origin = self
             move.state = 'draft'
-            move.description = self.move_description
+            move.description = description
             move.save()
 
             move_lines = {}
@@ -1765,14 +1766,14 @@ class Report(Workflow, ModelSQL, ModelView):
                 for line in lines:
                     key = (code, line.account)
                     if key in move_lines:
-                        move_lines[key].debit += line.debit
-                        move_lines[key].credit += line.credit
+                        move_lines[key].credit += line.debit
+                        move_lines[key].debit += line.credit
                     else:
                         move_line = MoveLine()
                         move_line.move = move
                         move_line.account = line.account
-                        move_line.debit = line.debit
-                        move_line.credit = line.credit
+                        move_line.credit = line.debit
+                        move_line.debit = line.credit
                         move_line.description = code.name
                         # TODO: Control if analytic exist
                         move_lines[key] = move_line
@@ -1780,12 +1781,12 @@ class Report(Workflow, ModelSQL, ModelView):
         counterpart_line.move = move
         counterpart_line.account = self.move_account
         if self.liquidation_result >= 0:
-            counterpart_line.debit = self.liquidation_result
-            counterpart_line.credit = _Z
-        else:
-            counterpart_line.credit = -1 * self.liquidation_result
+            counterpart_line.credit = self.liquidation_result
             counterpart_line.debit = _Z
-        counterpart_line.description = self.move_description
+        else:
+            counterpart_line.debit = -1 * self.liquidation_result
+            counterpart_line.credit = _Z
+        counterpart_line.description = description
         # Ensure that all the moves are set only the debit or credit,
         # not both either 0 on both.
         lines = []
@@ -1823,5 +1824,6 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('start_date', '>=', datetime.date(year, start_month, 1)),
                 ('end_date', '<=', datetime.date(year, end_month, lday)),
                 ('company', '=', self.company),
+                ('type', '=', 'standard'),
                 ], order=[('end_date', 'ASC')])]
         return periods
