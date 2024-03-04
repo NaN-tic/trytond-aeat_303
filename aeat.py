@@ -60,6 +60,12 @@ def remove_accents(unicode_string):
     # It converts nfd to nfc to allow unicode.decode()
     return unicodedata.normalize('NFC', unicode_string_nfd)
 
+def encode_iso8859(value):
+    try:
+        return value.encode('iso-8859-1')
+    except UnicodeEncodeError:
+        raise UserError( gettext('aeat_303.msg_invalid_encode'))
+
 
 class TemplateTaxCodeRelation(ModelSQL):
     '''
@@ -1634,6 +1640,6 @@ class Report(Workflow, ModelSQL, ModelView):
             raise UserError(str(e))
         data = remove_accents(data).upper()
         if isinstance(data, str):
-            data = data.encode('iso-8859-1')
+            data = encode_iso8859(data)
         self.file_ = self.__class__.file_.cast(data)
         self.save()

@@ -686,6 +686,10 @@ msgctxt "model:ir.message,text:msg_invalid_currency"
 msgid "Currency in AEAT 303 report \"%(name)s\" must be Euro."
 msgstr "La moneda del informe AEAT 303 \"%(name)s\" debe ser euro."
 
+msgctxt "model:ir.message,text:msg_invalid_encode"
+msgid "Error. Codec can't encode character file."
+msgstr "Error. El códec no puede codificar el archivo de carácteres."
+
 msgctxt "model:ir.message,text:msg_invalid_exonerated_mod390"
 msgid ""
 "The Exonerated Model 390 field could be 'YES' or 'NO' only for periods '12' "

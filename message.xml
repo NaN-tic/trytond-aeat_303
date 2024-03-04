@@ -36,5 +36,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_prorrata_percent">
             <field name="text">One of the Prorrata percent added in then 5th page is greater than 100, and thats not correct. (Report ID: %(report)s)</field>
         </record>
+        <record model="ir.message" id="msg_invalid_encode">
+            <field name="text">Error. Codec can't encode character file.</field>
+        </record>
     </data>
 </tryton>
