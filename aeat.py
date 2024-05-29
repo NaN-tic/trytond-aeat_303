@@ -1533,9 +1533,9 @@ class Report(Workflow, ModelSQL, ModelView):
             for field, value in fixed.items():
                 setattr(report, field, value)
             for field in mapping.values():
-                setattr(report, field, Decimal('0.0'))
+                setattr(report, field, Decimal(0))
             for field in mapping_exonerated390.values():
-                setattr(report, field, Decimal('0.0'))
+                setattr(report, field, Decimal(0))
 
             # For the value of the field accrued_re_percent_1 we have to fill
             # 3 differents Recargos Equivalencia.
