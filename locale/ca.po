@@ -294,7 +294,7 @@ msgstr "Declaració complementària discrepancia administrativa"
 
 msgctxt "field:aeat.303.report,complementary_declaration_amount:"
 msgid "Complementary Declaration Amount"
-msgstr "Declaració complementària total"
+msgstr "Declaració complementària total [111]"
 
 msgctxt "field:aeat.303.report,complementary_declaration_modify_direct_debit:"
 msgid "Complementary Declaration Modify Direct Debit"
@@ -302,7 +302,7 @@ msgstr "Declaració complementària modificar domiciliació efectuada"
 
 msgctxt "field:aeat.303.report,complementary_declaration_other_adjustements:"
 msgid "Complementary Declaration Other Adjustements"
-msgstr "Declaració complementària altres ajustaments"
+msgstr "Declaració complementària altres ajustaments [108]"
 
 msgctxt "field:aeat.303.report,complementary_declaration_rectification:"
 msgid "Complementary Declaration Rectification"
