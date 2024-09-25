@@ -402,6 +402,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(15, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(15, 2))
+    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2))
+    accrued_vat_percent_5 = fields.Numeric('Accrued Vat Percent 5',
+        digits=(15, 2))
+    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2))
     intracommunity_adquisitions_base = fields.Numeric(
         'Intracommunity Adquisitions Base', digits=(15, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
@@ -430,6 +434,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(15, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(15, 2))
+    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2))
+    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2))
+    accrued_re_percent_5 = fields.Numeric('Accrued Re Percent 5',
+        digits=(15, 2))
     accrued_re_base_modification = fields.Numeric('Accrued Re Base '
         'Modification', digits=(15, 2))
     accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
@@ -536,6 +544,16 @@ class Report(Workflow, ModelSQL, ModelView):
     without_activity = fields.Boolean('Without Activity')
     complementary_declaration = fields.Boolean(
         'Complementary Declaration')
+    complementary_declaration_modify_direct_debit = fields.Boolean(
+        'Complementary Declaration Modify Direct Debit')
+    complementary_declaration_other_adjustements = fields.Numeric(
+        'Complementary Declaration Other Adjustements', digits=(15, 2))
+    complementary_declaration_amount = fields.Numeric(
+        'Complementary Declaration Amount', digits=(15, 2))
+    complementary_declaration_rectification = fields.Boolean(
+        'Complementary Declaration Rectification')
+    complementary_declaration_administrative_discrepancy = fields.Boolean(
+        'Complementary Declaration Administrative Discrepancy')
     previous_declaration_receipt = fields.Char(
         'Previous Declaration Receipt', size=13,
         states={
@@ -1318,6 +1336,7 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.accrued_vat_tax_4 or _Z)
             + (self.accrued_vat_tax_2 or _Z)
             + (self.accrued_vat_tax_3 or _Z)
+            + (self.accrued_vat_tax_5 or _Z)
             + (self.intracommunity_adquisitions_tax or _Z)
             + (self.other_passive_subject_tax or _Z)
             + (self.accrued_vat_tax_modification or _Z)
@@ -1325,6 +1344,7 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.accrued_re_tax_1 or _Z)
             + (self.accrued_re_tax_2 or _Z)
             + (self.accrued_re_tax_3 or _Z)
+            + (self.accrued_re_tax_5 or _Z)
             + (self.accrued_re_tax_modification or _Z)
                 )
 
@@ -1361,7 +1381,8 @@ class Report(Workflow, ModelSQL, ModelView):
         return ((self.state_administration_amount or _Z)
             + (self.aduana_tax_pending or _Z)
             - (self.previous_period_amount_to_compensate or _Z)
-            + (self.joint_taxation_state_provincial_councils or _Z))
+            + (self.joint_taxation_state_provincial_councils or _Z)
+            + (self.complementary_declaration_other_adjustements or _Z))
 
     def get_liquidation_result(self, name):
         return ((self.result or _Z) - (self.to_deduce or _Z)
