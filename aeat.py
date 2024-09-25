@@ -860,7 +860,7 @@ class Report(Workflow, ModelSQL, ModelView):
         domain=[
             ('owners', '=', Eval('company_party')),
         ], states={
-            'required': Eval('type').in_(['U', 'D', 'X']),
+            'required': Eval('type').in_(['U', 'D', 'X']) or Bool(Eval('complementary_declaration_amount')),
             },
         depends=['company_party', 'type'])
     return_sepa_check = fields.Selection([
@@ -871,6 +871,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'Sepa Check On Return',
         states={
             'invisible': Eval('type') != 'X',
+            'required': Bool(Eval('complementary_declaration_amount')),
             })
     swift_bank = fields.Char('Swift',
         states={
@@ -879,6 +880,7 @@ class Report(Workflow, ModelSQL, ModelView):
     return_bank_name = fields.Char('Bank Name',
         states={
             'invisible': Eval('type') != 'X',
+            'required': Bool(Eval('complementary_declaration_amount')),
             })
     return_bank_address = fields.Char('Bank Address',
         states={
