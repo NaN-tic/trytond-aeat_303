@@ -402,10 +402,13 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(15, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(15, 2))
-    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2))
+    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
     accrued_vat_percent_5 = fields.Numeric('Accrued Vat Percent 5',
-        digits=(15, 2))
-    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2))
+        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
+        depends=['apply_old_tax'])
+    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
     intracommunity_adquisitions_base = fields.Numeric(
         'Intracommunity Adquisitions Base', digits=(15, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
@@ -434,10 +437,13 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(15, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(15, 2))
-    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2))
-    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2))
+    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
     accrued_re_percent_5 = fields.Numeric('Accrued Re Percent 5',
-        digits=(15, 2))
+        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
+        depends=['apply_old_tax'])
     accrued_re_base_modification = fields.Numeric('Accrued Re Base '
         'Modification', digits=(15, 2))
     accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
@@ -908,6 +914,18 @@ class Report(Workflow, ModelSQL, ModelView):
             }, readonly=True)
     filename = fields.Function(fields.Char("File Name"),
         'get_filename')
+
+    #extras
+    apply_old_tax = fields.Function(fields.Boolean('Apply Old Tax'),
+        'get_apply_old_tax')
+
+    def get_apply_old_tax(self, name):
+        if self.year < 2024:
+            return True
+        if self.year <= 2024 and self.period in ['1T', '2T', '3T']:
+            return True
+        if self.year <= 2024 and int(self.period) <= 9:
+            return True
 
     @classmethod
     def __setup__(cls):
@@ -1520,6 +1538,10 @@ class Report(Workflow, ModelSQL, ModelView):
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
+
+            if report.apply_old_tax:
+                fixed['accrued_vat_percent_4'] = Decimal('5.0')
+                fixed['accrued_re_percent_1'] = Decimal('0.5')
 
             period = report.period
             if 'T' in period:
