@@ -919,14 +919,6 @@ class Report(Workflow, ModelSQL, ModelView):
     apply_old_tax = fields.Function(fields.Boolean('Apply Old Tax'),
         'get_apply_old_tax')
 
-    def get_apply_old_tax(self, name):
-        if self.year < 2024:
-            return True
-        if self.year <= 2024 and self.period in ['1T', '2T', '3T']:
-            return True
-        if self.year <= 2024 and int(self.period) <= 9:
-            return True
-
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
@@ -1205,6 +1197,13 @@ class Report(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_prorrata_type5():
         return ' '
+
+    def get_apply_old_tax(self, name):
+        if (self.year < 2024
+            or (self.year == 2024
+                and self.period not in ('4T', '10', '11', '12'))):
+            return True
+        return False
 
     def pre_validate(self):
         super().pre_validate()
@@ -1539,10 +1538,6 @@ class Report(Workflow, ModelSQL, ModelView):
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
 
-            if report.apply_old_tax:
-                fixed['accrued_vat_percent_4'] = Decimal('5.0')
-                fixed['accrued_re_percent_1'] = Decimal('0.5')
-
             period = report.period
             if 'T' in period:
                 period = period[0]
@@ -1573,22 +1568,41 @@ class Report(Workflow, ModelSQL, ModelView):
             # max amount of the 3 possibles.
             #
             # https://sede.agenciatributaria.gob.es/Sede/Nota_informativa_sobre_los_nuevos_tipos_de_recargo_de_equivalencia__en_el_IVA.html
-            accrued_re_base_1 = {
-                '0.0': 0,
-                '0.5': 0,
-                '0.62': 0,
-                }
-            with Transaction().set_context(periods=periods):
-                for tax in TaxCode.browse(mapping.keys()):
-                    value = getattr(report, mapping[tax.id])
-                    amount = value + tax.amount
-                    setattr(report, mapping[tax.id], amount)
-                    if mapping[tax.id] == 'accrued_re_base_1':
-                        for key in accrued_re_base_1.keys():
-                            if key in tax.code:
-                                accrued_re_base_1[key] += tax.amount
-            report.accrued_re_percent_1 = max(accrued_re_base_1,
-                key=accrued_re_base_1.get)
+            if report.apply_old_tax:
+                fixed['accrued_vat_percent_4'] = Decimal('5.0')
+
+                accrued_re_base_1 = {
+                    '0.0': 0,
+                    '0.5': 0,
+                    '0.62': 0,
+                    }
+                with Transaction().set_context(periods=periods):
+                    for tax in TaxCode.browse(mapping.keys()):
+                        value = getattr(report, mapping[tax.id])
+                        amount = value + tax.amount
+                        setattr(report, mapping[tax.id], amount)
+                        if mapping[tax.id] == 'accrued_re_base_1':
+                            for key in accrued_re_base_1.keys():
+                                if key in tax.code:
+                                    accrued_re_base_1[key] += tax.amount
+                report.accrued_re_percent_1 = max(accrued_re_base_1,
+                    key=accrued_re_base_1.get)
+            else:
+                accrued_re_base_5 = {
+                    '0.26': 0,
+                    '0.5': 0,
+                    }
+                with Transaction().set_context(periods=periods):
+                    for tax in TaxCode.browse(mapping.keys()):
+                        value = getattr(report, mapping[tax.id])
+                        amount = value + tax.amount
+                        setattr(report, mapping[tax.id], amount)
+                        if mapping[tax.id] == 'accrued_re_base_5':
+                            for key in accrued_re_base_5.keys():
+                                if key in tax.code:
+                                    accrued_re_base_5[key] += tax.amount
+                report.accrued_re_percent_5 = max(accrued_re_base_5,
+                    key=accrued_re_base_5.get)
 
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
@@ -1598,10 +1612,14 @@ class Report(Workflow, ModelSQL, ModelView):
                         ('company', '=', report.company),
                         ])]
                 with Transaction().set_context(periods=periods):
-                    for tax in TaxCode.browse(mapping_exonerated390.keys()):
-                        value = getattr(report, mapping_exonerated390[tax.id])
+                    for tax in TaxCode.browse(
+                            mapping_exonerated390.keys()):
+                        value = getattr(
+                            report, mapping_exonerated390[tax.id])
                         amount = value + tax.amount
-                        setattr(report, mapping_exonerated390[tax.id], amount)
+                        setattr(report, mapping_exonerated390[tax.id],
+                            amount)
+
 
             report.save()
 
