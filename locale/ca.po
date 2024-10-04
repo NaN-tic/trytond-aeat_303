@@ -1201,7 +1201,7 @@ msgid ""
 "One of the Prorrata percent added in then 5th page is greater than 100, and "
 "thats not correct. (Report ID: %(report)s)"
 msgstr ""
-"Un dels camps % Prorrata de la pàgina 5 es major de 100 i això no és permès."
+"Un dels camps percentatge Prorrata de la pàgina 5 es major de 100 i això no és permès."
 " (Informe ID: %(report)s)"
 
 msgctxt "model:ir.message,text:msg_invalid_return_sepa_check"
