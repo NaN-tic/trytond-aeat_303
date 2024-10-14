@@ -1555,12 +1555,6 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('company', '=', report.company),
                     ])]
 
-            for field, value in fixed.items():
-                setattr(report, field, value)
-            for field in mapping.values():
-                setattr(report, field, Decimal('0.0'))
-            for field in mapping_exonerated390.values():
-                setattr(report, field, Decimal('0.0'))
 
             # For the value of the field accrued_re_percent_1 we have to fill
             # 3 differents Recargos Equivalencia.
@@ -1595,7 +1589,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 with Transaction().set_context(periods=periods):
                     for tax in TaxCode.browse(mapping.keys()):
                         value = getattr(report, mapping[tax.id])
-                        amount = value + tax.amount
+                        amount = (value or 0) + tax.amount
                         setattr(report, mapping[tax.id], amount)
                         if mapping[tax.id] == 'accrued_re_base_5':
                             for key in accrued_re_base_5.keys():
@@ -1616,11 +1610,16 @@ class Report(Workflow, ModelSQL, ModelView):
                             mapping_exonerated390.keys()):
                         value = getattr(
                             report, mapping_exonerated390[tax.id])
-                        amount = value + tax.amount
+                        amount = (value or 0) + tax.amount
                         setattr(report, mapping_exonerated390[tax.id],
                             amount)
 
-
+            for field, value in fixed.items():
+                setattr(report, field, value)
+            for field in mapping.values():
+                setattr(report, field, Decimal('0.0'))
+            for field in mapping_exonerated390.values():
+                setattr(report, field, Decimal('0.0'))
             report.save()
 
         cls.write(reports, {
