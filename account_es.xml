@@ -153,7 +153,7 @@ contains the full copyright notices and license terms. -->
         <!-- [18] - Recargo Equivalencia. Cuota 1%-->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_12_val1">
             <field name="mapping" ref="aeat_303_mapping_code_12" />
-            <field name="code" ref="account_es.iva_dev_16_1" />
+            <field name="code" ref="account_es.iva_dev_18_1" />
         </record>
         <!-- [19] - Recargo Equivalencia Base Imponible 1.4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_13_val1">
@@ -190,12 +190,12 @@ contains the full copyright notices and license terms. -->
         <!-- [170] - Recargo Equivalencia Base Imponible 0.26% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_re_tax_02_val1">
             <field name="mapping" ref="aeat_303_mapping_re_tax_02" />
-            <field name="code" ref="account_es.iva_dev_16_26" />
+            <field name="code" ref="account_es.iva_dev_18_26" />
         </record>
         <!-- [170] - Recargo Equivalencia Base Imponible 0.5% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_re_tax_02_val2">
             <field name="mapping" ref="aeat_303_mapping_re_tax_02" />
-            <field name="code" ref="account_es.iva_dev_re_05_base" />
+            <field name="code" ref="account_es.iva_dev_re_05_cuota" />
         </record>
 
         <!-- [25] - Modificacion Recargo Equivalencia Base Imponible -->

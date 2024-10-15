@@ -1521,7 +1521,9 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('type_', '=', 'code'),
                     ('company', '=', report.company),
                     ]):
+                print(mapp.code_by_companies, mapp.aeat303_field.name)
                 for code in mapp.code_by_companies:
+                    print(code.id)
                     mapping[code.id] = mapp.aeat303_field.name
             for mapp in Mapping.search([
                     ('type_', '=', 'exonerated390'),
@@ -1537,7 +1539,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
-
+            print(mapping)
             period = report.period
             if 'T' in period:
                 period = period[0]
@@ -1573,7 +1575,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 with Transaction().set_context(periods=periods):
                     for tax in TaxCode.browse(mapping.keys()):
                         value = getattr(report, mapping[tax.id])
-                        amount = value + tax.amount
+                        amount = (value or 0) + tax.amount
                         setattr(report, mapping[tax.id], amount)
                         if mapping[tax.id] == 'accrued_re_base_1':
                             for key in accrued_re_base_1.keys():
@@ -1620,6 +1622,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, Decimal('0.0'))
             for field in mapping_exonerated390.values():
                 setattr(report, field, Decimal('0.0'))
+            # setattr(report, 'accrued_re_base_5', Decimal('0.0'))
             report.save()
 
         cls.write(reports, {
