@@ -1521,9 +1521,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('type_', '=', 'code'),
                     ('company', '=', report.company),
                     ]):
-                print(mapp.code_by_companies, mapp.aeat303_field.name)
                 for code in mapp.code_by_companies:
-                    print(code.id)
                     mapping[code.id] = mapp.aeat303_field.name
             for mapp in Mapping.search([
                     ('type_', '=', 'exonerated390'),
@@ -1539,7 +1537,6 @@ class Report(Workflow, ModelSQL, ModelView):
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
-            print(mapping)
             period = report.period
             if 'T' in period:
                 period = period[0]
