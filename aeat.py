@@ -1568,7 +1568,6 @@ class Report(Workflow, ModelSQL, ModelView):
             #
             # https://sede.agenciatributaria.gob.es/Sede/Nota_informativa_sobre_los_nuevos_tipos_de_recargo_de_equivalencia__en_el_IVA.html
             if report.apply_old_tax:
-                fixed['accrued_vat_percent_4'] = Decimal('5.0')
 
                 accrued_re_base_1 = {
                     '0.0': 0,
@@ -1586,6 +1585,7 @@ class Report(Workflow, ModelSQL, ModelView):
                                     accrued_re_base_1[key] += tax.amount
                 report.accrued_re_percent_1 = max(accrued_re_base_1,
                     key=accrued_re_base_1.get)
+                report.accrued_vat_percent_4 = Decimal('5.0')
             else:
                 accrued_re_base_5 = {
                     '0.26': 0,
