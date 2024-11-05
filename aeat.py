@@ -1602,28 +1602,23 @@ class Report(Workflow, ModelSQL, ModelView):
     def cancel(cls, reports):
         pool = Pool()
         Move = pool.get('account.move')
-        MoveLine = pool.get('account.move.line')
 
+        to_update = []
         for report in reports:
             move = report.move
             if not move:
-                continue
-            if move.state == 'draft':
-                Move.delete([move])
                 continue
             for line in move.lines:
                 if line.reconciliation is not None:
                     raise UserError(
                         gettext('aeat_303.msg_not_possible_cancel',
                             report=report.id))
-            cancel_move = move.cancel()
-            cancel_move.origin = report
-            Move.post([cancel_move])
-            lines = [l for m in [move, cancel_move]
-                for l in m.lines if l.account.reconcile]
-            if lines:
-                MoveLine.reconcile(lines)
-            report.move = None
+            to_update.append(report)
+        if to_update:
+            moves = [x.move for x in to_update]
+            Move.draft(moves)
+            Move.delete(moves)
+            cls.write(to_update, {'move': None,})
 
     @classmethod
     @ModelView.button
