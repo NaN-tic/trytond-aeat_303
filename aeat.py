@@ -402,6 +402,13 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(15, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(15, 2))
+    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_vat_percent_5 = fields.Numeric('Accrued Vat Percent 5',
+        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
+        depends=['apply_old_tax'])
+    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
     intracommunity_adquisitions_base = fields.Numeric(
         'Intracommunity Adquisitions Base', digits=(15, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
@@ -430,6 +437,13 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(15, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(15, 2))
+    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2),
+        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_re_percent_5 = fields.Numeric('Accrued Re Percent 5',
+        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
+        depends=['apply_old_tax'])
     accrued_re_base_modification = fields.Numeric('Accrued Re Base '
         'Modification', digits=(15, 2))
     accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
@@ -536,6 +550,16 @@ class Report(Workflow, ModelSQL, ModelView):
     without_activity = fields.Boolean('Without Activity')
     complementary_declaration = fields.Boolean(
         'Complementary Declaration')
+    complementary_declaration_modify_direct_debit = fields.Boolean(
+        'Complementary Declaration Modify Direct Debit')
+    complementary_declaration_other_adjustements = fields.Numeric(
+        'Complementary Declaration Other Adjustements', digits=(15, 2))
+    complementary_declaration_amount = fields.Numeric(
+        'Complementary Declaration Amount', digits=(15, 2))
+    complementary_declaration_rectification = fields.Boolean(
+        'Complementary Declaration Rectification')
+    complementary_declaration_administrative_discrepancy = fields.Boolean(
+        'Complementary Declaration Administrative Discrepancy')
     previous_declaration_receipt = fields.Char(
         'Previous Declaration Receipt', size=13,
         states={
@@ -842,7 +866,7 @@ class Report(Workflow, ModelSQL, ModelView):
         domain=[
             ('owners', '=', Eval('company_party')),
         ], states={
-            'required': Eval('type').in_(['U', 'D', 'X']),
+            'required': Eval('type').in_(['U', 'D', 'X']) or Bool(Eval('complementary_declaration_amount')),
             },
         depends=['company_party', 'type'])
     return_sepa_check = fields.Selection([
@@ -853,6 +877,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ], 'Sepa Check On Return',
         states={
             'invisible': Eval('type') != 'X',
+            'required': Bool(Eval('complementary_declaration_amount')),
             })
     swift_bank = fields.Char('Swift',
         states={
@@ -861,6 +886,7 @@ class Report(Workflow, ModelSQL, ModelView):
     return_bank_name = fields.Char('Bank Name',
         states={
             'invisible': Eval('type') != 'X',
+            'required': Bool(Eval('complementary_declaration_amount')),
             })
     return_bank_address = fields.Char('Bank Address',
         states={
@@ -888,6 +914,10 @@ class Report(Workflow, ModelSQL, ModelView):
             }, readonly=True)
     filename = fields.Function(fields.Char("File Name"),
         'get_filename')
+
+    #extras
+    apply_old_tax = fields.Function(fields.Boolean('Apply Old Tax'),
+        'get_apply_old_tax')
 
     @classmethod
     def __setup__(cls):
@@ -1168,6 +1198,13 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_prorrata_type5():
         return ' '
 
+    def get_apply_old_tax(self, name):
+        if (self.year < 2024
+            or (self.year == 2024
+                and self.period not in ('4T', '10', '11', '12'))):
+            return True
+        return False
+
     def pre_validate(self):
         super().pre_validate()
         self.check_year_digits()
@@ -1318,6 +1355,7 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.accrued_vat_tax_4 or _Z)
             + (self.accrued_vat_tax_2 or _Z)
             + (self.accrued_vat_tax_3 or _Z)
+            + (self.accrued_vat_tax_5 or _Z)
             + (self.intracommunity_adquisitions_tax or _Z)
             + (self.other_passive_subject_tax or _Z)
             + (self.accrued_vat_tax_modification or _Z)
@@ -1325,6 +1363,7 @@ class Report(Workflow, ModelSQL, ModelView):
             + (self.accrued_re_tax_1 or _Z)
             + (self.accrued_re_tax_2 or _Z)
             + (self.accrued_re_tax_3 or _Z)
+            + (self.accrued_re_tax_5 or _Z)
             + (self.accrued_re_tax_modification or _Z)
                 )
 
@@ -1361,7 +1400,8 @@ class Report(Workflow, ModelSQL, ModelView):
         return ((self.state_administration_amount or _Z)
             + (self.aduana_tax_pending or _Z)
             - (self.previous_period_amount_to_compensate or _Z)
-            + (self.joint_taxation_state_provincial_councils or _Z))
+            + (self.joint_taxation_state_provincial_councils or _Z)
+            + (self.complementary_declaration_other_adjustements or _Z))
 
     def get_liquidation_result(self, name):
         return ((self.result or _Z) - (self.to_deduce or _Z)
@@ -1497,7 +1537,6 @@ class Report(Workflow, ModelSQL, ModelView):
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
-
             period = report.period
             if 'T' in period:
                 period = period[0]
@@ -1528,22 +1567,41 @@ class Report(Workflow, ModelSQL, ModelView):
             # max amount of the 3 possibles.
             #
             # https://sede.agenciatributaria.gob.es/Sede/Nota_informativa_sobre_los_nuevos_tipos_de_recargo_de_equivalencia__en_el_IVA.html
-            accrued_re_base_1 = {
-                '0.0': 0,
-                '0.5': 0,
-                '0.62': 0,
-                }
-            with Transaction().set_context(periods=periods):
-                for tax in TaxCode.browse(mapping.keys()):
-                    value = getattr(report, mapping[tax.id])
-                    amount = value + tax.amount
-                    setattr(report, mapping[tax.id], amount)
-                    if mapping[tax.id] == 'accrued_re_base_1':
-                        for key in accrued_re_base_1.keys():
-                            if key in tax.code:
-                                accrued_re_base_1[key] += tax.amount
-            report.accrued_re_percent_1 = max(accrued_re_base_1,
-                key=accrued_re_base_1.get)
+            if report.apply_old_tax:
+
+                accrued_re_base_1 = {
+                    '0.0': 0,
+                    '0.5': 0,
+                    '0.62': 0,
+                    }
+                with Transaction().set_context(periods=periods):
+                    for tax in TaxCode.browse(mapping.keys()):
+                        value = getattr(report, mapping[tax.id])
+                        amount = (value or 0) + tax.amount
+                        setattr(report, mapping[tax.id], amount)
+                        if mapping[tax.id] == 'accrued_re_base_1':
+                            for key in accrued_re_base_1.keys():
+                                if key in tax.code:
+                                    accrued_re_base_1[key] += tax.amount
+                report.accrued_re_percent_1 = max(accrued_re_base_1,
+                    key=accrued_re_base_1.get)
+                report.accrued_vat_percent_4 = Decimal('5.0')
+            else:
+                accrued_re_base_5 = {
+                    '0.26': 0,
+                    '0.5': 0,
+                    }
+                with Transaction().set_context(periods=periods):
+                    for tax in TaxCode.browse(mapping.keys()):
+                        value = getattr(report, mapping[tax.id])
+                        amount = (value or 0) + tax.amount
+                        setattr(report, mapping[tax.id], amount)
+                        if mapping[tax.id] == 'accrued_re_base_5':
+                            for key in accrued_re_base_5.keys():
+                                if key in tax.code:
+                                    accrued_re_base_5[key] += tax.amount
+                report.accrued_re_percent_5 = max(accrued_re_base_5,
+                    key=accrued_re_base_5.get)
 
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
@@ -1553,10 +1611,13 @@ class Report(Workflow, ModelSQL, ModelView):
                         ('company', '=', report.company),
                         ])]
                 with Transaction().set_context(periods=periods):
-                    for tax in TaxCode.browse(mapping_exonerated390.keys()):
-                        value = getattr(report, mapping_exonerated390[tax.id])
-                        amount = value + tax.amount
-                        setattr(report, mapping_exonerated390[tax.id], amount)
+                    for tax in TaxCode.browse(
+                            mapping_exonerated390.keys()):
+                        value = getattr(
+                            report, mapping_exonerated390[tax.id])
+                        amount = (value or 0) + tax.amount
+                        setattr(report, mapping_exonerated390[tax.id],
+                            amount)
 
             report.save()
 
