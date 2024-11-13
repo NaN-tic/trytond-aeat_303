@@ -1229,10 +1229,6 @@ class Report(Workflow, ModelSQL, ModelView):
             return True
         return False
 
-    def pre_validate(self):
-        super().pre_validate()
-        self.check_year_digits()
-
     @classmethod
     def default_move_account(cls):
         pool = Pool()
