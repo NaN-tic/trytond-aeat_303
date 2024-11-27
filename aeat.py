@@ -1498,13 +1498,13 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.period not in ('3T', '4T', '07', '08', '09', '10',
                     '11', '12')):
             raise UserError(gettext('aeat_303.msg_invalid_type_period',
-                    report=self))
+                    report=self.rec_name))
 
     def check_sepa_check(self):
         if self.type in ('D', 'X') and self.return_sepa_check == '0':
             raise UserError(gettext(
                     'aeat_303.msg_invalid_sepa_check',
-                    report=self))
+                    report=self.rec_name))
 
     def check_exonerated_mod390(self):
         if ((self.period not in ('12', '4T') and self.exonerated_mod390 != '0')
@@ -1512,7 +1512,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.exonerated_mod390 == '0')):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_exonerated_mod390',
-                    report=self))
+                    report=self.rec_name))
 
     def check_annual_operation_volume(self):
         if ((self.period not in ('12', '4T')
@@ -1522,7 +1522,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 and self.annual_operation_volume == '0')):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_annual_operation_volume',
-                    report=self))
+                    report=self.rec_name))
 
     def check_prorrata_percent(self):
         if ((self.prorrata_percent1 or _Z) > Decimal('100.00')
@@ -1533,7 +1533,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 ):
             raise UserError(gettext(
                     'aeat_303.msg_invalid_prorrata_percent',
-                    report=self))
+                    report=self.rec_name))
 
     @classmethod
     @ModelView.button
