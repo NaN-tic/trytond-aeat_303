@@ -1595,9 +1595,9 @@ class Report(Workflow, ModelSQL, ModelView):
             if report.apply_old_tax:
 
                 accrued_re_base_1 = {
-                    '0.0': 0,
-                    '0.5': 0,
-                    '0.62': 0,
+                    '0%': 0,
+                    '0.5%': 0,
+                    '0.62%': 0,
                     }
                 with Transaction().set_context(periods=periods):
                     for tax in TaxCode.browse(mapping.keys()):
@@ -1606,15 +1606,15 @@ class Report(Workflow, ModelSQL, ModelView):
                         setattr(report, mapping[tax.id], amount)
                         if mapping[tax.id] == 'accrued_re_base_1':
                             for key in accrued_re_base_1.keys():
-                                if key in tax.code:
+                                if key in tax.name:
                                     accrued_re_base_1[key] += tax.amount
                 report.accrued_re_percent_1 = max(accrued_re_base_1,
-                    key=accrued_re_base_1.get)
+                    key=lambda k: accrued_re_base_1[k]).strip('%')
                 report.accrued_vat_percent_4 = Decimal('5.0')
             else:
                 accrued_re_base_5 = {
-                    '0.26': 0,
-                    '0.5': 0,
+                    '0.26%': 0,
+                    '0.5%': 0,
                     }
                 with Transaction().set_context(periods=periods):
                     for tax in TaxCode.browse(mapping.keys()):
@@ -1623,10 +1623,10 @@ class Report(Workflow, ModelSQL, ModelView):
                         setattr(report, mapping[tax.id], amount)
                         if mapping[tax.id] == 'accrued_re_base_5':
                             for key in accrued_re_base_5.keys():
-                                if key in tax.code:
+                                if key in tax.name:
                                     accrued_re_base_5[key] += tax.amount
                 report.accrued_re_percent_5 = max(accrued_re_base_5,
-                    key=accrued_re_base_5.get)
+                    key=lambda k: accrued_re_base_5[k]).strip('%')
 
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
