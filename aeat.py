@@ -384,13 +384,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_vat_percent_3 = fields.Numeric('Accrued Vat Percent 3',
         digits=(15, 2))
     accrued_vat_tax_3 = fields.Numeric('Accrued Vat Tax 3', digits=(15, 2))
-    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2),
-        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_vat_base_5 = fields.Numeric('Accrued Vat Base 5', digits=(15, 2))
     accrued_vat_percent_5 = fields.Numeric('Accrued Vat Percent 5',
-        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
-        depends=['apply_old_tax'])
-    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2),
-        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+        digits=(15, 2))
+    accrued_vat_tax_5 = fields.Numeric('Accrued Vat Tax 5', digits=(15, 2))
     intracommunity_adquisitions_base = fields.Numeric(
         'Intracommunity Adquisitions Base', digits=(15, 2))
     intracommunity_adquisitions_tax = fields.Numeric(
@@ -419,13 +416,10 @@ class Report(Workflow, ModelSQL, ModelView):
     accrued_re_percent_3 = fields.Numeric('Accrued Re Percent 3',
         digits=(15, 2))
     accrued_re_tax_3 = fields.Numeric('Accrued Re Tax 3', digits=(15, 2))
-    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2),
-        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
-    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2),
-        states={'readonly': Bool(Eval('apply_old_tax'))}, depends=['apply_old_tax'])
+    accrued_re_tax_5 = fields.Numeric('Accrued Re Tax 5', digits=(15, 2))
+    accrued_re_base_5 = fields.Numeric('Accrued Re Base 5', digits=(15, 2))
     accrued_re_percent_5 = fields.Numeric('Accrued Re Percent 5',
-        digits=(15, 2), states={'readonly': Bool(Eval('apply_old_tax'))},
-        depends=['apply_old_tax'])
+        digits=(15, 2))
     accrued_re_base_modification = fields.Numeric('Accrued Re Base '
         'Modification', digits=(15, 2))
     accrued_re_tax_modification = fields.Numeric('Accrued Re Tax '
@@ -938,10 +932,6 @@ class Report(Workflow, ModelSQL, ModelView):
         help='Optionaly you can add information to the account move if it is'
         ' created automatically.')
 
-    #extras
-    apply_old_tax = fields.Function(fields.Boolean('Apply Old Tax'),
-        'get_apply_old_tax')
-
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
@@ -1228,13 +1218,6 @@ class Report(Workflow, ModelSQL, ModelView):
 
         config = Configuration(1)
         return config.aeat303_post_and_close or False
-
-    def get_apply_old_tax(self, name):
-        if (self.year < 2024
-            or (self.year == 2024
-                and self.period not in ('4T', '10', '11', '12'))):
-            return True
-        return False
 
     @classmethod
     def default_move_account(cls):
@@ -1586,47 +1569,11 @@ class Report(Workflow, ModelSQL, ModelView):
             for field in mapping_exonerated390.values():
                 setattr(report, field, Decimal('0.0'))
 
-            # For the value of the field accrued_re_percent_1 we have to fill
-            # 3 differents Recargos Equivalencia.
-            # As Information note [1] say, whe have to show the value with the
-            # max amount of the 3 possibles.
-            #
-            # https://sede.agenciatributaria.gob.es/Sede/Nota_informativa_sobre_los_nuevos_tipos_de_recargo_de_equivalencia__en_el_IVA.html
-            if report.apply_old_tax:
-
-                accrued_re_base_1 = {
-                    '0%': 0,
-                    '0.5%': 0,
-                    '0.62%': 0,
-                    }
-                with Transaction().set_context(periods=periods):
-                    for tax in TaxCode.browse(mapping.keys()):
-                        value = getattr(report, mapping[tax.id])
-                        amount = (value or 0) + tax.amount
-                        setattr(report, mapping[tax.id], amount)
-                        if mapping[tax.id] == 'accrued_re_base_1':
-                            for key in accrued_re_base_1.keys():
-                                if key in tax.name:
-                                    accrued_re_base_1[key] += tax.amount
-                report.accrued_re_percent_1 = max(accrued_re_base_1,
-                    key=lambda k: accrued_re_base_1[k]).strip('%')
-                report.accrued_vat_percent_4 = Decimal('5.0')
-            else:
-                accrued_re_base_5 = {
-                    '0.26%': 0,
-                    '0.5%': 0,
-                    }
-                with Transaction().set_context(periods=periods):
-                    for tax in TaxCode.browse(mapping.keys()):
-                        value = getattr(report, mapping[tax.id])
-                        amount = (value or 0) + tax.amount
-                        setattr(report, mapping[tax.id], amount)
-                        if mapping[tax.id] == 'accrued_re_base_5':
-                            for key in accrued_re_base_5.keys():
-                                if key in tax.name:
-                                    accrued_re_base_5[key] += tax.amount
-                report.accrued_re_percent_5 = max(accrued_re_base_5,
-                    key=lambda k: accrued_re_base_5[k]).strip('%')
+            with Transaction().set_context(periods=periods):
+                for tax in TaxCode.browse(mapping.keys()):
+                    value = getattr(report, mapping[tax.id])
+                    amount = (value or 0) + tax.amount
+                    setattr(report, mapping[tax.id], amount)
 
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
