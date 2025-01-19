@@ -156,8 +156,7 @@ class Test(unittest.TestCase):
             ('group.kind', '=', 'sale'),
             ('name', '=', 'IVA 21%'),
             ('parent', '=', None),
-        ],
-                        limit=1)
+            ], limit=1)
         line.taxes.append(tax)
         self.assertEqual(line.amount, Decimal('40.00'))
         invoice.click('post')
