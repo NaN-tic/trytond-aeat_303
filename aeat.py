@@ -1527,6 +1527,9 @@ class Report(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
 
+        #These fields use to be numeric, but are now const in regards to the aeat 303 file
+        excluded_fields = ['accrued_vat_percent_4', 'accrued_vat_percent_5',
+                           'accrued_re_percent_1']
         for report in reports:
             mapping = {}
             mapping_exonerated390 = {}
@@ -1546,6 +1549,7 @@ class Report(Workflow, ModelSQL, ModelView):
             for mapp in Mapping.search([
                     ('type_', '=', 'numeric'),
                     ('company', '=', report.company),
+                    ('aeat303_field.name', 'not in', excluded_fields),
                     ]):
                 fixed[mapp.aeat303_field.name] = mapp.number
 
@@ -1642,12 +1646,17 @@ class Report(Workflow, ModelSQL, ModelView):
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
-        annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
-        annual_additional_record = Record(
-           aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
+        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
+        # annual_additional_record = Record(
+        #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
         bank_data_record = Record(aeat303.BANK_DATA_RECORD)
+
+        #These fields use to be numeric, but are now const in regards to the aeat 303 file
+        #(excluding report and bank_account, which were there already)
+        excluded_columns= ['accrued_vat_percent_4', 'accrued_vat_percent_5',
+                           'accrued_re_percent_1', 'report', 'bank_account']
         columns = [x for x in self.__class__._fields if x not in
-            ('report', 'bank_account')]
+            excluded_columns]
         for column in columns:
             value = getattr(self, column, None)
             if not value:
