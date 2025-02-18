@@ -35,7 +35,7 @@ contains the full copyright notices and license terms. -->
         <!-- [169] fix -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_number_26">
             <field name="type_">numeric</field>
-            <field name="number" eval="Decimal('0.26')" />
+            <field name="number" eval="Decimal('0.50')" />
             <field name="aeat303_field"
                 search="[('name', '=','accrued_re_percent_5')]"/>
         </record>
