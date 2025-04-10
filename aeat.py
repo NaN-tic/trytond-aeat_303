@@ -212,10 +212,7 @@ class TaxCodeMapping(ModelSQL, ModelView):
         })
     code_by_companies = fields.Function(
         fields.Many2Many('aeat.303.mapping-account.tax.code', 'mapping',
-        'code', 'Tax Code', states={
-            'required': Eval('type_') != 'numeric',
-            'invisible': Eval('type_') == 'numeric',
-        }), 'get_code_by_companies')
+        'code', 'Code by Companies'), 'get_code_by_companies')
     number = fields.Numeric('Number',
         states={
             'required': Eval('type_') == 'numeric',
