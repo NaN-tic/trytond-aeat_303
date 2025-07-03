@@ -42,7 +42,10 @@ class Configuration(metaclass=PoolMeta):
     aeat303_prorrata_percent = fields.MultiValue(fields.Integer(
         "Prorrata Percent"))
     aeat303_prorrata_account = fields.MultiValue(fields.Many2One(
-        'account.account', "Prorrata Account"))
+        'account.account', "Prorrata Account",
+        states={
+            'required': Bool(Eval('aeat303_prorrata_percent')),
+            }))
 
     @classmethod
     def __setup__(cls):
@@ -139,7 +142,10 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     aeat303_prorrata_percent = fields.Integer(
         "Prorrata Percent")
     aeat303_prorrata_account = fields.Many2One(
-        'account.account', "Prorrata Account")
+        'account.account', "Prorrata Account",
+                states={
+            'required': Bool(Eval('aeat303_prorrata_percent')),
+            })
 
     @staticmethod
     def default_aeat303_post_and_close():
