@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--The COPYRIGHT file at the top level of this repository
+contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <!-- Prorrata map template -->
+        <record model="aeat.303.prorrata.mapping.template" id="aeat_303_prorrata_mapping_deductible">
+            <field name="prorrata_field"
+                search="[('module', '=', 'aeat_303'),('name', '=', 'prorrata_deductible_amount'),('model', '=', 'aeat.303.report')]"/>
+        </record>
+        <record model="aeat.303.prorrata.mapping.template" id="aeat_303_prorrata_mapping_total">
+            <field name="prorrata_field"
+                search="[('module', '=', 'aeat_303'),('name', '=', 'prorrata_total_amount'),('model', '=', 'aeat.303.report')]"/>
+        </record>
+    </data>
+    <data depends="account_es" grouped="1">
+        <!-- Prorrata map-code deductible relation -->
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_22">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible"/>
+            <field name="code" ref="account_es.iva_ded_22"/>
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_24">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_24" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_2_base_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_2_base_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_22_4_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_22_4_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_22_5_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_22_5_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_75_base_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_75_base_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_22_10_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_22_10_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_22_21_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_22_21_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_24_4_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_24_4_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_24_10_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_24_10_rectification" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_ded_24_21_rectification">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_deductible" />
+            <field name="code" ref="account_es.iva_ded_24_21_rectification" />
+        </record>
+        <!-- Prorrata map-code total relation -->
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_no_ded_22">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_total" />
+            <field name="code" ref="account_es.iva_no_ded_22" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_base_sop_ex">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_total" />
+            <field name="code" ref="account_es.base_sop_ex" />
+        </record>
+        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_base_sop_alq_ex">
+            <field name="mapping" ref="aeat_303_prorrata_mapping_total" />
+            <field name="code" ref="account_es.base_sop_alq_ex" />
+        </record>
+    </data>
+</tryton>

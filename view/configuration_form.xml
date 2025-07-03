@@ -11,5 +11,11 @@ copyright notices and license types. -->
         <label name="aeat303_move_journal"/>
         <field name="aeat303_move_journal"/>
         <newline/>
+        <label name="aeat303_prorrata_percent"/>
+        <field name="aeat303_prorrata_percent"/>
+        <label name="aeat303_prorrata_account"/>
+        <field name="aeat303_prorrata_account"/>
+        <button name="calculate_prorrata" colspan="2"/>
+        <newline/>
     </xpath>
 </data>
