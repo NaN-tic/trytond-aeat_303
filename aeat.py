@@ -250,7 +250,7 @@ class UpdateChart(metaclass=PoolMeta):
                 vals['company'] = company
                 to_create.append(vals)
         if to_create:
-            Mapping.create(to_create)
+            MappingProrrata.create(to_create)
 
         return ret
 
