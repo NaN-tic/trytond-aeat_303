@@ -9,5 +9,12 @@
           <field name="inherit" ref="account.configuration_view_form"/>
           <field name="name">configuration_form</field>
       </record>
+
+      <!-- Prorrata Calculation -->
+      <record model="ir.model.button" id="configuration_calculate_prorrata">
+          <field name="name">calculate_prorrata</field>
+          <field name="string">Calculate General Prorrata</field>
+          <field name="model">account.configuration</field>
+      </record>
   </data>
 </tryton>
