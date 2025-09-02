@@ -6,9 +6,8 @@ from trytond.pool import PoolMeta
 class Origin(metaclass=PoolMeta):
     __name__ = 'account.statement.origin'
 
-    def _search_move_line_reconciliation_domain(self, exclude_ids=None,
-            second_currency=None):
-        domain = super()._search_move_line_reconciliation_domain(exclude_ids,
+    def _search_move_line_reconciliation_domain(self, second_currency=None):
+        domain = super()._search_move_line_reconciliation_domain(
             second_currency)
         for dom in domain:
             if dom[0] == 'OR' and dom[1][0] == 'move_origin':
