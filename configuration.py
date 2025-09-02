@@ -46,6 +46,8 @@ class Configuration(metaclass=PoolMeta):
         states={
             'required': Bool(Eval('aeat303_prorrata_percent')),
             }))
+    aeat303_prorrata_fiscalyear = fields.MultiValue(fields.Many2One(
+        'account.fiscalyear', "Fiscal Year"))
 
     @classmethod
     def __setup__(cls):
@@ -70,7 +72,7 @@ class Configuration(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    def calculate_prorrata(cls, records):
+    def calculate_prorrata(cls, records, special_prorrata=False):
         pool = Pool()
         Mapping = pool.get('aeat.303.prorrata.mapping')
         TaxCode = pool.get('account.tax.code')
@@ -79,15 +81,32 @@ class Configuration(metaclass=PoolMeta):
         config = records[0]
         if not config.aeat303_prorrata_account:
             raise UserError(gettext('aeat_303.msg_prorrata_account_required'))
+        if not config.aeat303_prorrata_fiscalyear:
+            raise UserError(gettext('aeat_303.msg_prorrata_fiscalyear_required'))
 
         company =  Transaction().context.get('company')
-        year = datetime.now().year
-        periods = [p.id for p in Period.search([
-                ('start_date', '>=', date(year, 1, 1)),
-                ('end_date', '<=', date(year, 9, 30)),
-                ('company', '=', company),
-                ])]
+        if special_prorrata:
+            periods = [p.id for p in Period.search([
+                    ('start_date', '>=', start_date),
+                    ('end_date', '<=', end_date),
+                    ('company', '=', company),
+                    ])]
+        else:
+            fiscalyear = config.aeat303_prorrata_fiscalyear
+            # year = datetime.now().year
 
+            # start_date = date(year, 1, 1)
+            # if last_assessment:
+            #     end_date = date(year, 12, 31)
+            # else:
+            #     end_date = date(year, 9, 30)
+
+            # periods = [p.id for p in Period.search([
+            #         ('start_date', '>=', start_date),
+            #         ('end_date', '<=', end_date),
+            #         ('company', '=', company),
+            #         ])]
+            periods = fiscalyear.periods
         mapping = {}
         for map in Mapping.search([('company', '=', company)]):
             for code in map.code_by_companies:

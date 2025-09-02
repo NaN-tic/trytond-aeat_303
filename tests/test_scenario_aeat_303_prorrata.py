@@ -209,7 +209,7 @@ class Test(unittest.TestCase):
         report.exonerated_mod390 = '0' if report.period != '12' else '2'
         report.company_vat = '123456789'
         report.click('calculate')
-        self.assertEqual(report.deductible_current_domestic_operations_tax, Decimal('138.60')) #Box value after applying prorrata (base value - base value * prorrata)
+        self.assertEqual(report.deductible_current_domestic_operations_tax, Decimal('281.40')) #Box value after applying prorrata (base value - base value * prorrata)
         self.assertEqual(report.deductible_investment_domestic_operations_tax, Decimal('0.00')) #No operation has been made that affects this box
         self.assertEqual(report.deductible_regularization_tax, Decimal('0.00')) #No operation has been made that affects this box
         self.assertEqual(report.preprorrata_deductible_current_domestic_operations_tax, Decimal('420.00')) #Value before applying prorrata (base value)

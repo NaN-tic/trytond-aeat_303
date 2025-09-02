@@ -1779,7 +1779,8 @@ class Report(Workflow, ModelSQL, ModelView):
                                  'deductible_investment_domestic_operations_tax',
                                  'deductible_regularization_tax'
                                  ) and prorrata:
-                        setattr(report, field, report.currency.round(amount*Decimal(1-prorrata/100)))
+                        setattr(report, field, amount - report.currency.round(
+                                                amount*Decimal(1-prorrata/100)))
                         setattr(report, 'preprorrata_'+field, amount)
                     else:
                         setattr(report, field, amount)
