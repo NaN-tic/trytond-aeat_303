@@ -1,6 +1,7 @@
 import datetime
 import unittest
 from decimal import Decimal
+from dateutil.relativedelta import relativedelta
 
 from proteus import Model, Wizard
 from trytond.modules.account.tests.tools import create_fiscalyear
@@ -27,6 +28,7 @@ class Test(unittest.TestCase):
 
         # Imports
         today = datetime.date.today()
+        last_year = datetime.date.today() - relativedelta(years=1)
 
         # Install aeat_303
         activate_modules(['aeat_303', 'account_es', 'account_invoice'])
@@ -36,10 +38,13 @@ class Test(unittest.TestCase):
         _ = create_company(currency=eur)
         company = get_company()
 
-        # Create fiscal year
+        # Create fiscal years
         fiscalyear = set_fiscalyear_invoice_sequences(
-            create_fiscalyear(company))
+            create_fiscalyear(company, today=last_year))
         fiscalyear.click('create_period')
+        fiscalyear2 = set_fiscalyear_invoice_sequences(
+            create_fiscalyear(company))
+        fiscalyear2.click('create_period')
 
         # Create chart of accounts
         AccountTemplate = Model.get('account.account.template')
@@ -160,23 +165,23 @@ class Test(unittest.TestCase):
         payment_term = create_payment_term()
         payment_term.save()
 
-        # Create deductible invoice
+        # Create deductible invoice for last years prorrata
         Invoice = Model.get('account.invoice')
         invoice = Invoice()
-        invoice.invoice_date = today
+        invoice.invoice_date = last_year
         invoice.type = 'in'
         invoice.party = party
         invoice.payment_term = payment_term
         line = invoice.lines.new()
         line.product = deductible_product
-        line.quantity = 20
+        line.quantity = 90
         line.unit_price = Decimal(100)
         line.account = expense
         invoice.click('post')
 
-        # Create deductible invoice
+        # Create deductible invoice for last years prorrata
         invoice = Invoice()
-        invoice.invoice_date = today
+        invoice.invoice_date = last_year
         invoice.type = 'in'
         invoice.party = party
         invoice.payment_term = payment_term
@@ -194,9 +199,37 @@ class Test(unittest.TestCase):
             ('company', '=', company.id),
             ('code', '=', '634'),
         ], limit=1)
+        config.aeat303_prorrata_fiscalyear = fiscalyear
         config.save()
         config.click('calculate_prorrata')
-        self.assertEqual(config.aeat303_prorrata_percent, 67)
+        self.assertEqual(config.aeat303_prorrata_percent, 90)
+
+        # Create deductible invoice
+        Invoice = Model.get('account.invoice')
+        invoice = Invoice()
+        invoice.invoice_date = today
+        invoice.type = 'in'
+        invoice.party = party
+        invoice.payment_term = payment_term
+        line = invoice.lines.new()
+        line.product = deductible_product
+        line.quantity = 95
+        line.unit_price = Decimal(100)
+        line.account = expense
+        invoice.click('post')
+
+        # Create deductible invoice
+        invoice = Invoice()
+        invoice.invoice_date = today
+        invoice.type = 'in'
+        invoice.party = party
+        invoice.payment_term = payment_term
+        line = invoice.lines.new()
+        line.product = total_product
+        line.quantity = 5
+        line.unit_price = Decimal(100)
+        line.account = expense
+        invoice.click('post')
 
         # Generate 303 Report
         Report = Model.get('aeat.303.report')
@@ -209,10 +242,10 @@ class Test(unittest.TestCase):
         report.exonerated_mod390 = '0' if report.period != '12' else '2'
         report.company_vat = '123456789'
         report.click('calculate')
-        self.assertEqual(report.deductible_current_domestic_operations_tax, Decimal('281.40')) #Box value after applying prorrata (base value - base value * prorrata)
+        self.assertEqual(report.deductible_current_domestic_operations_tax, Decimal('1795.50')) #Box value after applying prorrata (base value - base value * prorrata)
         self.assertEqual(report.deductible_investment_domestic_operations_tax, Decimal('0.00')) #No operation has been made that affects this box
         self.assertEqual(report.deductible_regularization_tax, Decimal('0.00')) #No operation has been made that affects this box
-        self.assertEqual(report.preprorrata_deductible_current_domestic_operations_tax, Decimal('420.00')) #Value before applying prorrata (base value)
+        self.assertEqual(report.preprorrata_deductible_current_domestic_operations_tax, Decimal('1995.00')) #Value before applying prorrata (base value)
         self.assertEqual(report.preprorrata_deductible_investment_domestic_operations_tax, Decimal('0.00')) #Thus, there was no previous value either
         self.assertEqual(report.preprorrata_deductible_regularization_tax, Decimal('0.00')) #Thus, there was no previous value either
 

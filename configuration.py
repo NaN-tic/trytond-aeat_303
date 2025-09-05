@@ -47,7 +47,7 @@ class Configuration(metaclass=PoolMeta):
             'required': Bool(Eval('aeat303_prorrata_percent')),
             }))
     aeat303_prorrata_fiscalyear = fields.MultiValue(fields.Many2One(
-        'account.fiscalyear', "Fiscal Year"))
+        'account.fiscalyear', "Prorrata Fiscal Year"))
 
     @classmethod
     def __setup__(cls):
@@ -61,7 +61,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field in {'aeat303_move_account', 'aeat303_move_journal',
                 'aeat303_post_and_close','aeat303_prorrata_account',
-                'aeat303_prorrata_percent'}:
+                'aeat303_prorrata_percent', 'aeat303_prorrata_fiscalyear'}:
             return pool.get('account.configuration.aeat303')
         return super().multivalue_model(field)
 
@@ -72,41 +72,36 @@ class Configuration(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    def calculate_prorrata(cls, records, special_prorrata=False):
+    def calculate_prorrata(cls, records):
+        config = records[0]
+        prorrata = config._calculate_prorrata()
+        config.aeat303_prorrata_percent = prorrata
+        config.save()
+
+    def _calculate_prorrata(self, last_period=False):
         pool = Pool()
         Mapping = pool.get('aeat.303.prorrata.mapping')
         TaxCode = pool.get('account.tax.code')
         Period = pool.get('account.period')
 
-        config = records[0]
-        if not config.aeat303_prorrata_account:
+        if not self.aeat303_prorrata_account:
             raise UserError(gettext('aeat_303.msg_prorrata_account_required'))
-        if not config.aeat303_prorrata_fiscalyear:
+        if not self.aeat303_prorrata_fiscalyear:
             raise UserError(gettext('aeat_303.msg_prorrata_fiscalyear_required'))
 
         company =  Transaction().context.get('company')
-        if special_prorrata:
+
+        if last_period:
+            year = datetime.now().year
             periods = [p.id for p in Period.search([
-                    ('start_date', '>=', start_date),
-                    ('end_date', '<=', end_date),
+                    ('start_date', '>=', date(year, 1, 1)),
+                    ('end_date', '<=', date(year, 12, 31)),
                     ('company', '=', company),
                     ])]
         else:
-            fiscalyear = config.aeat303_prorrata_fiscalyear
-            # year = datetime.now().year
+            fiscalyear = self.aeat303_prorrata_fiscalyear
+            periods = [p.id for p in fiscalyear.periods]
 
-            # start_date = date(year, 1, 1)
-            # if last_assessment:
-            #     end_date = date(year, 12, 31)
-            # else:
-            #     end_date = date(year, 9, 30)
-
-            # periods = [p.id for p in Period.search([
-            #         ('start_date', '>=', start_date),
-            #         ('end_date', '<=', end_date),
-            #         ('company', '=', company),
-            #         ])]
-            periods = fiscalyear.periods
         mapping = {}
         for map in Mapping.search([('company', '=', company)]):
             for code in map.code_by_companies:
@@ -115,16 +110,18 @@ class Configuration(metaclass=PoolMeta):
         deductible_import = 0
         total_import = 0
         with Transaction().set_context(periods=periods):
-            for tax,field in zip(TaxCode.browse(mapping.keys()), mapping.values()):
+            for tax,field in zip(TaxCode.browse(mapping.keys()),
+                                 mapping.values()):
                 total_import += tax.amount
                 #Field refered in the prorrata total amount mapping
                 if field == 'prorrata_total_amount':
                     continue
                 deductible_import += tax.amount
-        prorrata = ceil((deductible_import/total_import) * 100) if total_import else 0
+        prorrata = (ceil((deductible_import/total_import) * 100)
+                    if total_import else 0)
 
-        config.aeat303_prorrata_percent = prorrata
-        config.save()
+        return prorrata
+
 
 
 class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
@@ -165,6 +162,8 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
                 states={
             'required': Bool(Eval('aeat303_prorrata_percent')),
             })
+    aeat303_prorrata_fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Prorrata Fiscal Year")
 
     @staticmethod
     def default_aeat303_post_and_close():

@@ -1729,11 +1729,18 @@ class Report(Workflow, ModelSQL, ModelView):
         TaxCode = pool.get('account.tax.code')
         Config = pool.get('account.configuration')
 
-        prorrata = Config(1).aeat303_prorrata_percent
+        config = Config(1)
+        prorrata = config.aeat303_prorrata_percent
+        prorrata_difference = 0
 
-        #These fields use to be numeric, but are now const in regards to the aeat 303 file
+        #Excluded fields use to be numeric, but are now const in regards to the aeat 303 file
         excluded_fields = ['accrued_vat_percent_4', 'accrued_vat_percent_5',
                            'accrued_re_percent_1']
+
+        deductible_fields = ['deductible_current_domestic_operations_tax',
+                             'deductible_investment_domestic_operations_tax',
+                             'deductible_regularization_tax']
+        prorrata_reg_field = 'deductible_pro_rata_regularization'
         for report in reports:
             mapping = {}
             mapping_exonerated390 = {}
@@ -1760,6 +1767,9 @@ class Report(Workflow, ModelSQL, ModelView):
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
             if prorrata:
+                if report.period in ['12', '4T']:
+                    prorrata_difference = (config._calculate_prorrata(
+                                                   last_period=True) - prorrata)
                 report.prorrata_percent_applied = prorrata
             year = report.year
             periods = report.get_periods()
@@ -1775,16 +1785,14 @@ class Report(Workflow, ModelSQL, ModelView):
                 for tax,field in zip(TaxCode.browse(mapping.keys()), mapping.values()):
                     value = getattr(report, mapping[tax.id])
                     amount = (value or 0) + tax.amount
-                    if field in ('deductible_current_domestic_operations_tax',
-                                 'deductible_investment_domestic_operations_tax',
-                                 'deductible_regularization_tax'
-                                 ) and prorrata:
+                    if field in deductible_fields and prorrata:
                         setattr(report, field, amount - report.currency.round(
                                                 amount*Decimal(1-prorrata/100)))
                         setattr(report, 'preprorrata_'+field, amount)
                     else:
                         setattr(report, field, amount)
 
+            prorrata_regularization = 0
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
                         ('start_date', '>=', datetime.date(year, 1, 1)),
@@ -1799,7 +1807,15 @@ class Report(Workflow, ModelSQL, ModelView):
                         amount = (value or 0) + tax.amount
                         setattr(report, mapping_exonerated390[tax.id],
                             amount)
-
+                    if prorrata_difference:
+                        for tax in TaxCode.browse([key for key, val in
+                                                mapping.items() if
+                                                val in deductible_fields]):
+                            prorrata_regularization += (report.currency.round(
+                                                            tax.amount *
+                                                            Decimal(prorrata_difference/100)))
+            if prorrata_regularization:
+                setattr(report, prorrata_reg_field, prorrata_regularization)
             report.save()
 
         cls.write(reports, {
