@@ -14,9 +14,13 @@ def register():
         configuration.ConfigurationAEAT303,
         aeat.Report,
         aeat.TemplateTaxCodeMapping,
+        aeat.TemplateTaxCodeProrrataMapping,
         aeat.TemplateTaxCodeRelation,
+        aeat.TemplateTaxCodePorrataRelation,
         aeat.TaxCodeMapping,
+        aeat.TaxCodeProrrataMapping,
         aeat.TaxCodeRelation,
+        aeat.TaxCodeProrrataRelation,
         account.Move,
         module='aeat_303', type_='model')
     Pool.register(
