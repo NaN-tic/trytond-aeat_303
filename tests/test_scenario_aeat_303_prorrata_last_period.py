@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
     def test(self):
 
         # Imports
-        today = datetime.date(2025, 8, 15)
+        today = datetime.date(2025, 12, 31)
         last_year = datetime.date.today() - relativedelta(years=1)
 
         # Install aeat_303
@@ -247,6 +247,7 @@ class Test(unittest.TestCase):
         self.assertEqual(report.preprorrata_deductible_current_domestic_operations_tax, Decimal('1995.00')) #Value before applying prorrata (base value)
         self.assertEqual(report.preprorrata_deductible_investment_domestic_operations_tax, Decimal('0.00')) #Thus, there was no previous value either
         self.assertEqual(report.preprorrata_deductible_regularization_tax, Decimal('0.00')) #Thus, there was no previous value either
+        self.assertEqual(report.deductible_pro_rata_regularization, Decimal('99.75')) #Prorrata regularization, as the prorrata we have been aplying (90), is different from the one calculated for the current year (95) for the last period.
 
         # Test report is generated correctly
         report.file_
