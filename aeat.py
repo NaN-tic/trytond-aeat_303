@@ -77,7 +77,7 @@ class TemplateTaxCodeMapping(ModelSQL):
         t = cls.__table__()
         cls._sql_constraints += [
             ('aeat303_field_uniq', Unique(t, t.aeat303_field),
-                'Field must be unique.')
+                'aeat_303.msg_field_must_be_unique')
             ]
 
     @staticmethod
