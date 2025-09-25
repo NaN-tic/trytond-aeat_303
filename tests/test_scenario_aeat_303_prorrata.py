@@ -26,8 +26,8 @@ class Test(unittest.TestCase):
     def test(self):
 
         # Imports
-        today = datetime.date(2025, 8, 15)
-        last_year = datetime.date.today() - relativedelta(years=1)
+        today = datetime.date.today()
+        last_year = today - relativedelta(years=1)
 
         # Install aeat_303
         activate_modules(['aeat_303', 'account_es', 'account_invoice'])
@@ -38,12 +38,12 @@ class Test(unittest.TestCase):
         company = get_company()
 
         # Create fiscal years
-        fiscalyear = set_fiscalyear_invoice_sequences(
+        last_fiscalyear = set_fiscalyear_invoice_sequences(
             create_fiscalyear(company, today=last_year))
-        fiscalyear.click('create_period')
-        fiscalyear2 = set_fiscalyear_invoice_sequences(
+        last_fiscalyear.click('create_period')
+        fiscalyear = set_fiscalyear_invoice_sequences(
             create_fiscalyear(company))
-        fiscalyear2.click('create_period')
+        fiscalyear.click('create_period')
 
         # Create chart of accounts
         AccountTemplate = Model.get('account.account.template')
@@ -198,7 +198,7 @@ class Test(unittest.TestCase):
             ('company', '=', company.id),
             ('code', '=', '634'),
         ], limit=1)
-        config.aeat303_prorrata_fiscalyear = fiscalyear
+        config.aeat303_prorrata_fiscalyear = last_fiscalyear
         config.save()
         config.click('calculate_prorrata')
         self.assertEqual(config.aeat303_prorrata_percent, 90)

@@ -8,7 +8,7 @@ from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from math import ceil
-from datetime import datetime, date
+
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
@@ -74,33 +74,30 @@ class Configuration(metaclass=PoolMeta):
     @ModelView.button
     def calculate_prorrata(cls, records):
         config = records[0]
-        prorrata = config._calculate_prorrata()
+        fiscalyear = config.aeat303_prorrata_fiscalyear
+        prorrata = config._calculate_prorrata(fiscalyear=fiscalyear)
         config.aeat303_prorrata_percent = prorrata
         config.save()
 
-    def _calculate_prorrata(self, last_period=False):
+    def _calculate_prorrata(self, fiscalyear=None):
         pool = Pool()
         Mapping = pool.get('aeat.303.prorrata.mapping')
         TaxCode = pool.get('account.tax.code')
-        Period = pool.get('account.period')
+        FiscalYear = pool.get('account.fiscalyear')
 
+        # Won't be really necessary, but with this control ensure that the
+        # account is set and that allow th create the account move correctly.
         if not self.aeat303_prorrata_account:
             raise UserError(gettext('aeat_303.msg_prorrata_account_required'))
+
+        company = Transaction().context.get('company')
+
+        if not fiscalyear:
+            fiscalyear = FiscalYear.find(company, test_state=False)
         if not self.aeat303_prorrata_fiscalyear:
-            raise UserError(gettext('aeat_303.msg_prorrata_fiscalyear_required'))
-
-        company =  Transaction().context.get('company')
-
-        if last_period:
-            year = datetime.now().year
-            periods = [p.id for p in Period.search([
-                    ('start_date', '>=', date(year, 1, 1)),
-                    ('end_date', '<=', date(year, 12, 31)),
-                    ('company', '=', company),
-                    ])]
-        else:
-            fiscalyear = self.aeat303_prorrata_fiscalyear
-            periods = [p.id for p in fiscalyear.periods]
+            self.aeat303_prorrata_fiscalyear = fiscalyear
+            self.save()
+        periods = [p.id for p in fiscalyear.periods]
 
         mapping = {}
         for map in Mapping.search([('company', '=', company)]):
@@ -121,7 +118,6 @@ class Configuration(metaclass=PoolMeta):
                     if total_import else 0)
 
         return prorrata
-
 
 
 class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
@@ -168,3 +164,4 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     @staticmethod
     def default_aeat303_post_and_close():
         return False
+

@@ -42,8 +42,5 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_prorrata_account_required">
             <field name="text">Please assign a prorrata account before calculating general prorrata</field>
         </record>
-        <record model="ir.message" id="msg_prorrata_fiscalyear_required">
-            <field name="text">Please assign a fiscal year for prorrata calculation before calculating general prorrata</field>
-        </record>
     </data>
 </tryton>

@@ -624,6 +624,7 @@ class Report(Workflow, ModelSQL, ModelView):
             'General Regime Result',
             digits=(15, 2)), 'get_general_regime_result')
     prorrata_percent_applied = fields.Integer('Prorrata Percent Applied')
+    prorrata_real_percent = fields.Integer('Prorrata Real Percent')
     preprorrata_deductible_current_domestic_operations_tax = fields.Numeric(
         'Pre-Prorrata Deductible Current Domestic Operations Tax',
         digits=(15, 2))
@@ -1728,12 +1729,14 @@ class Report(Workflow, ModelSQL, ModelView):
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
         Config = pool.get('account.configuration')
+        FiscalYear = pool.get('account.fiscalyear')
 
         config = Config(1)
         prorrata = config.aeat303_prorrata_percent
         prorrata_difference = 0
 
-        #Excluded fields use to be numeric, but are now const in regards to the aeat 303 file
+        # Excluded fields use to be numeric, but are now const in regards to
+        # the aeat 303 file
         excluded_fields = ['accrued_vat_percent_4', 'accrued_vat_percent_5',
                            'accrued_re_percent_1']
 
@@ -1766,13 +1769,19 @@ class Report(Workflow, ModelSQL, ModelView):
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
-            if prorrata:
-                if report.period in ['12', '4T']:
-                    prorrata_difference = (config._calculate_prorrata(
-                                                   last_period=True) - prorrata)
-                report.prorrata_percent_applied = prorrata
+
             year = report.year
             periods = report.get_periods()
+
+            if prorrata:
+                report.prorrata_percent_applied = prorrata
+                if report.period in ['12', '4T']:
+                    fiscalyear = FiscalYear.find(report.company,
+                        date=datetime.date(year, 12, 31), test_state=False)
+                    prorrata_real_percent = config._calculate_prorrata(
+                        fiscalyear=fiscalyear)
+                    prorrata_difference = (prorrata_real_percent - prorrata)
+                    report.prorrata_real_percent = prorrata_real_percent
 
             for field, value in fixed.items():
                 setattr(report, field, value)
@@ -1782,7 +1791,8 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, Decimal(0))
 
             with Transaction().set_context(periods=periods):
-                for tax,field in zip(TaxCode.browse(mapping.keys()), mapping.values()):
+                for tax,field in zip(
+                        TaxCode.browse(mapping.keys()), mapping.values()):
                     value = getattr(report, mapping[tax.id])
                     amount = (value or 0) + tax.amount
                     if field in deductible_fields and prorrata:
@@ -1809,11 +1819,11 @@ class Report(Workflow, ModelSQL, ModelView):
                             amount)
                     if prorrata_difference:
                         for tax in TaxCode.browse([key for key, val in
-                                                mapping.items() if
-                                                val in deductible_fields]):
+                                    mapping.items()
+                                    if val in deductible_fields]):
                             prorrata_regularization += (report.currency.round(
-                                                            tax.amount *
-                                                            Decimal(prorrata_difference/100)))
+                                    tax.amount * Decimal(
+                                        prorrata_difference/100)))
             if prorrata_regularization:
                 setattr(report, prorrata_reg_field, prorrata_regularization)
             report.save()
@@ -1833,6 +1843,7 @@ class Report(Workflow, ModelSQL, ModelView):
         for report in reports:
             report.create_file()
             report.create_move()
+            report.set_prorrata_percent_config(report.year)
             # Means that we have to post the move created and close the
             # period or periods related.
             if report.post_and_close:
@@ -1849,6 +1860,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
         to_update = []
         for report in reports:
+            report.set_prorrata_percent_config(report.year - 1)
             move = report.move
             if not move:
                 continue
@@ -2085,3 +2097,20 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('type', '=', 'standard'),
                 ], order=[('end_date', 'ASC')])]
         return periods
+
+    def set_prorrata_percent_config(self, year):
+        pool = Pool()
+        Config = pool.get('account.configuration')
+        FiscalYear = pool.get('account.fiscalyear')
+
+        config = Config(1)
+        prorrata = config.aeat303_prorrata_percent
+        if prorrata and self.period in ('12', '4T'):
+            fiscalyear = FiscalYear.find(self.company,
+                date=datetime.date(year, 12, 31),
+                test_state=False)
+            prorrata_percent = config._calculate_prorrata(
+                fiscalyear=fiscalyear)
+            config.aeat303_prorrata_percent = prorrata_percent
+            config.aeat303_prorrata_fiscalyear = fiscalyear
+            config.save()
