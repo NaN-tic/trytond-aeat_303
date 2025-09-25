@@ -36,8 +36,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_not_possible_cancel">
             <field name="text">The AEAT 303 report (ID: %(report)s) cannot be possible cancelled because its account move is reconciled.</field>
         </record>
-        <record model="ir.message" id="msg_field_must_be_unique">
-            <field name="text">AEAT 303 TemplateTaxCode Mapping: Field must be unique.</field>
+        <record model="ir.message" id="msg_template_tax_code_field_must_be_unique">
+            <field name="text">AEAT 303 Template Tax Code Mapping: Field must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_tax_code_field_must_be_unique">
+            <field name="text">AEAT 303 Tax Code Mapping: Field must be unique.</field>
         </record>
     </data>
 </tryton>
