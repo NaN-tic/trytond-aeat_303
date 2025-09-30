@@ -2,7 +2,7 @@
 <!--The COPYRIGHT file at the top level of this repository
 contains the full copyright notices and license terms. -->
 <tree>
-    <field name="company"/>
+    <field name="company" optional="1"/>
     <field name="year"/>
     <field name="period"/>
     <field name="accrued_total_tax"/>
@@ -11,6 +11,8 @@ contains the full copyright notices and license terms. -->
     <field name="liquidation_result"/>
     <field name="state"/>
     <field name="calculation_date" widget="date"/>
+    <field name="prorrata_percent_applied" optional="1"/>
+    <field name="prorrata_real_percent" optional="1"/>
     <button name="draft" tree_invisible="1"/>
     <button name="calculate" tree_invisible="1"/>
     <button name="process" tree_invisible="1"/>

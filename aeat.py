@@ -122,15 +122,90 @@ class TemplateTaxCodeMapping(ModelSQL):
         return res
 
 
+class TemplateTaxCodePorrataRelation(ModelSQL):
+    '''
+    AEAT 303 Template TaxCode Prorrata Mapping Relation
+    '''
+    __name__ = 'aeat.303.prorrata.mapping-account.tax.code.template'
+
+    mapping = fields.Many2One('aeat.303.prorrata.mapping.template', 'Mapping',
+        required=True)
+    code = fields.Many2One('account.tax.code.template', 'Tax Code Template',
+        required=True)
+
+
+class TemplateTaxCodeProrrataMapping(ModelSQL):
+    '''
+    AEAT 303 Template TaxCode Prorrata Mapping
+    '''
+    __name__ = 'aeat.303.prorrata.mapping.template'
+
+    prorrata_field = fields.Many2One('ir.model.field', 'Field',
+                                domain=[
+                                    ('module', '=', 'aeat_303'),
+                                    ('model', '=', 'aeat.303.report'),
+                                    ('name', 'in', [
+                                        'prorrata_deductible_amount',
+                                        'prorrata_total_amount'])
+                                        ],
+                                        required=True)
+    code = fields.Many2Many('aeat.303.prorrata.mapping-account.tax.code.template',
+        'mapping', 'code', 'Tax Code Template')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('prorrata_field_uniq', Unique(t, t.prorrata_field),
+                'Field must be unique.')
+            ]
+
+    def _get_mapping_value(self, mapping=None):
+        pool = Pool()
+        TaxCode = pool.get('account.tax.code')
+
+        res = {}
+        if not mapping or mapping.prorrata_field != self.prorrata_field:
+            res['prorrata_field'] = self.prorrata_field.id
+        res['code'] = []
+        old_ids = set()
+        new_ids = set()
+        if mapping and len(mapping.code) > 0:
+            old_ids = set([c.id for c in mapping.code])
+        if len(self.code) > 0:
+            new_ids = set([c.id for c in TaxCode.search([
+                            ('template', 'in', [c.id for c in self.code])
+                            ])])
+        if not mapping or mapping.template != self:
+            res['template'] = self.id
+        if old_ids or new_ids:
+            key = 'code'
+            res[key] = []
+            to_remove = old_ids - new_ids
+            if to_remove:
+                res[key].append(['remove', list(to_remove)])
+            to_add = new_ids - old_ids
+            if to_add:
+                res[key].append(['add', list(to_add)])
+            if not res[key]:
+                del res[key]
+        if not mapping and not res['code']:
+            return  # There is nothing to create as there is no mapping
+        return res
+
+
 class UpdateChart(metaclass=PoolMeta):
     __name__ = 'account.update_chart'
 
     def transition_update(self):
         pool = Pool()
         MappingTemplate = pool.get('aeat.303.template.mapping')
+        MappingProrrataTemplate = pool.get('aeat.303.prorrata.mapping.template')
         Mapping = pool.get('aeat.303.mapping')
+        MappingProrrata = pool.get('aeat.303.prorrata.mapping')
 
-        ret = super(UpdateChart, self).transition_update()
+        ret = super().transition_update()
 
         # Update current values
         ids = []
@@ -155,6 +230,28 @@ class UpdateChart(metaclass=PoolMeta):
         if to_create:
             Mapping.create(to_create)
 
+        # Update current values
+        ids = []
+        for mapping in MappingProrrata.search([
+                    ('company', 'in', [company, None]),
+                    ]):
+            if not mapping.template:
+                continue
+            vals = mapping.template._get_mapping_value(mapping=mapping)
+            if vals:
+                Mapping.write([mapping], vals)
+            ids.append(mapping.template.id)
+
+        # Create new one's
+        to_create = []
+        for template in MappingProrrataTemplate.search([('id', 'not in', ids)]):
+            vals = template._get_mapping_value()
+            if vals:
+                vals['company'] = company
+                to_create.append(vals)
+        if to_create:
+            MappingProrrata.create(to_create)
+
         return ret
 
 
@@ -164,19 +261,29 @@ class CreateChart(metaclass=PoolMeta):
     def transition_create_account(self):
         pool = Pool()
         MappingTemplate = pool.get('aeat.303.template.mapping')
+        MappingProrrataTemplate = pool.get('aeat.303.prorrata.mapping.template')
         Mapping = pool.get('aeat.303.mapping')
+        MappingProrrata = pool.get('aeat.303.prorrata.mapping')
 
         company = self.account.company.id
 
-        ret = super(CreateChart, self).transition_create_account()
+        ret = super().transition_create_account()
         to_create = []
         for template in MappingTemplate.search([]):
             vals = template._get_mapping_value()
             if vals:
                 vals['company'] = company
                 to_create.append(vals)
-
         Mapping.create(to_create)
+
+        to_create = []
+        for template in MappingProrrataTemplate.search([]):
+            vals = template._get_mapping_value()
+            if vals:
+                vals['company'] = company
+                to_create.append(vals)
+        MappingProrrata.create(to_create)
+
         return ret
 
 
@@ -232,6 +339,67 @@ class TaxCodeMapping(ModelSQL, ModelView):
     @staticmethod
     def default_type_():
         return 'code'
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company') or None
+
+    @classmethod
+    def get_code_by_companies(cls, records, name):
+        user_company = Transaction().context.get('company')
+        res = dict((x.id, None) for x in records)
+        for record in records:
+            code_ids = []
+            for code in record.code:
+                if not code.company or code.company.id == user_company:
+                    code_ids.append(code.id)
+            res[record.id] = code_ids
+        return res
+
+
+class TaxCodeProrrataRelation(ModelSQL):
+    '''
+    AEAT 303 TaxCode Prorrata Mapping Relation
+    '''
+    __name__ = 'aeat.303.prorrata.mapping-account.tax.code'
+
+    mapping = fields.Many2One('aeat.303.prorrata.mapping', 'Mapping',
+                              required=True)
+    code = fields.Many2One('account.tax.code', 'Tax Code', required=True)
+
+
+class TaxCodeProrrataMapping(ModelSQL, ModelView):
+    '''
+    AEAT 303 TaxCode Prorrata Mapping
+    '''
+    __name__ = 'aeat.303.prorrata.mapping'
+
+    company = fields.Many2One('company.company', 'Company',
+        ondelete="RESTRICT")
+    prorrata_field = fields.Many2One('ir.model.field', 'Field',
+                                domain=[
+                                    ('module', '=', 'aeat_303'),
+                                    ('model', '=', 'aeat.303.report'),
+                                    ('name', 'in', [
+                                        'prorrata_deductible_amount',
+                                        'prorrata_total_amount'])
+                                        ],
+                                        required=True)
+    code = fields.Many2Many('aeat.303.prorrata.mapping-account.tax.code', 'mapping',
+        'code', 'Tax Code', states={'required': True})
+    code_by_companies = fields.Function(
+        fields.Many2Many('aeat.303.prorrata.mapping-account.tax.code', 'mapping',
+        'code', 'Code by Companies'), 'get_code_by_companies')
+    template = fields.Many2One('aeat.303.prorrata.mapping.template', 'Template')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('prorrata_field_uniq', Unique(t, t.company, t.prorrata_field),
+                'Field must be unique.')
+            ]
 
     @staticmethod
     def default_company():
@@ -455,6 +623,30 @@ class Report(Workflow, ModelSQL, ModelView):
     general_regime_result = fields.Function(fields.Numeric(
             'General Regime Result',
             digits=(15, 2)), 'get_general_regime_result')
+    prorrata_percent_applied = fields.Integer('Prorrata Percent Applied')
+    prorrata_real_percent = fields.Integer('Prorrata Real Percent')
+    preprorrata_deductible_current_domestic_operations_tax = fields.Numeric(
+        'Pre-Prorrata Deductible Current Domestic Operations Tax',
+        digits=(15, 2))
+    preprorrata_deductible_investment_domestic_operations_tax = fields.Numeric(
+        'Pre-Prorrata Deductible Current Domestic Operations Tax',
+        digits=(15, 2))
+    preprorrata_deductible_regularization_tax = fields.Numeric(
+        'Pre-Prorrata Deductible Regularization Tax',
+        digits=(15, 2))
+
+    prorrata_deductible_amount = fields.Numeric(
+        'Prorrata Deductible Amount', digits=(15, 2),
+        states={
+            'invisible': True,
+            'readonly': True,
+            })
+    prorrata_total_amount = fields.Numeric(
+        'Prorrata Total Amount', digits=(15, 2),
+        states={
+            'invisible': True,
+            'readonly': True,
+            })
 
     # Page 03
     intracommunity_deliveries = fields.Numeric(
@@ -1515,6 +1707,19 @@ class Report(Workflow, ModelSQL, ModelView):
                     'aeat_303.msg_invalid_prorrata_percent',
                     report=self.rec_name))
 
+    def calculate_prorrata_debit(self):
+        debit = Decimal(0)
+        if self.preprorrata_deductible_current_domestic_operations_tax:
+            debit += (self.preprorrata_deductible_current_domestic_operations_tax -
+                    self.deductible_current_domestic_operations_tax)
+        if self.preprorrata_deductible_investment_domestic_operations_tax:
+            debit += (self.preprorrata_deductible_investment_domestic_operations_tax -
+                        self.deductible_investment_domestic_operations_tax)
+        if self.preprorrata_deductible_regularization_tax:
+            debit += (self.preprorrata_deductible_regularization_tax -
+                        self.deductible_regularization_tax)
+        return debit
+
     @classmethod
     @ModelView.button
     @Workflow.transition('calculated')
@@ -1523,10 +1728,22 @@ class Report(Workflow, ModelSQL, ModelView):
         Mapping = pool.get('aeat.303.mapping')
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
+        Config = pool.get('account.configuration')
+        FiscalYear = pool.get('account.fiscalyear')
 
-        #These fields use to be numeric, but are now const in regards to the aeat 303 file
+        config = Config(1)
+        prorrata = config.aeat303_prorrata_percent
+        prorrata_difference = 0
+
+        # Excluded fields use to be numeric, but are now const in regards to
+        # the aeat 303 file
         excluded_fields = ['accrued_vat_percent_4', 'accrued_vat_percent_5',
                            'accrued_re_percent_1']
+
+        deductible_fields = ['deductible_current_domestic_operations_tax',
+                             'deductible_investment_domestic_operations_tax',
+                             'deductible_regularization_tax']
+        prorrata_reg_field = 'deductible_pro_rata_regularization'
         for report in reports:
             mapping = {}
             mapping_exonerated390 = {}
@@ -1556,6 +1773,16 @@ class Report(Workflow, ModelSQL, ModelView):
             year = report.year
             periods = report.get_periods()
 
+            if prorrata:
+                report.prorrata_percent_applied = prorrata
+                if report.period in ['12', '4T']:
+                    fiscalyear = FiscalYear.find(report.company,
+                        date=datetime.date(year, 12, 31), test_state=False)
+                    prorrata_real_percent = config._calculate_prorrata(
+                        fiscalyear=fiscalyear)
+                    prorrata_difference = (prorrata_real_percent - prorrata)
+                    report.prorrata_real_percent = prorrata_real_percent
+
             for field, value in fixed.items():
                 setattr(report, field, value)
             for field in mapping.values():
@@ -1564,11 +1791,18 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, Decimal(0))
 
             with Transaction().set_context(periods=periods):
-                for tax in TaxCode.browse(mapping.keys()):
+                for tax,field in zip(
+                        TaxCode.browse(mapping.keys()), mapping.values()):
                     value = getattr(report, mapping[tax.id])
                     amount = (value or 0) + tax.amount
-                    setattr(report, mapping[tax.id], amount)
+                    if field in deductible_fields and prorrata:
+                        setattr(report, field, amount - report.currency.round(
+                                                amount*Decimal(1-prorrata/100)))
+                        setattr(report, 'preprorrata_'+field, amount)
+                    else:
+                        setattr(report, field, amount)
 
+            prorrata_regularization = 0
             if report.period in ('12', '4T'):
                 periods = [p.id for p in Period.search([
                         ('start_date', '>=', datetime.date(year, 1, 1)),
@@ -1583,7 +1817,15 @@ class Report(Workflow, ModelSQL, ModelView):
                         amount = (value or 0) + tax.amount
                         setattr(report, mapping_exonerated390[tax.id],
                             amount)
-
+                    if prorrata_difference:
+                        for tax in TaxCode.browse([key for key, val in
+                                    mapping.items()
+                                    if val in deductible_fields]):
+                            prorrata_regularization += (report.currency.round(
+                                    tax.amount * Decimal(
+                                        prorrata_difference/100)))
+            if prorrata_regularization:
+                setattr(report, prorrata_reg_field, prorrata_regularization)
             report.save()
 
         cls.write(reports, {
@@ -1601,6 +1843,7 @@ class Report(Workflow, ModelSQL, ModelView):
         for report in reports:
             report.create_file()
             report.create_move()
+            report.set_prorrata_percent_config(report.year)
             # Means that we have to post the move created and close the
             # period or periods related.
             if report.post_and_close:
@@ -1617,6 +1860,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
         to_update = []
         for report in reports:
+            report.set_prorrata_percent_config(report.year - 1)
             move = report.move
             if not move:
                 continue
@@ -1706,11 +1950,14 @@ class Report(Workflow, ModelSQL, ModelView):
         TaxLine = pool.get('account.tax.line')
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
+        Config = pool.get('account.configuration')
 
         # If this two fields are not set, means not required to create
         # the AEAT303 move.
         if (not self.move_account or not self.move_journal):
             return
+
+        prorrata_account = Config(1).aeat303_prorrata_account
 
         codes = []
         # Get all the codes from AEAT303 Mapping table.
@@ -1721,7 +1968,6 @@ class Report(Workflow, ModelSQL, ModelView):
             codes.extend((x.id for x in mapp.code_by_companies))
         if not codes:
             return
-
         periods = self.get_periods()
         description = self.move_description or 'AEAT 303'
         with Transaction().set_context(periods=periods):
@@ -1814,7 +2060,19 @@ class Report(Workflow, ModelSQL, ModelView):
                     line.credit = -balance
                     line.debit = _Z
             lines.append(line)
-        MoveLine.save(lines + [counterpart_line])
+        lines_to_save = lines + [counterpart_line]
+        debit = self.calculate_prorrata_debit()
+        if debit and prorrata_account:
+            prorrata_line = MoveLine()
+            prorrata_line.move = move
+            prorrata_line.account = prorrata_account
+            prorrata_line.debit = debit
+            prorrata_line.credit = _Z
+            prorrata_line.description = gettext(
+                'aeat_303.msg_prorrata_regularization')
+            lines_to_save.append(prorrata_line)
+
+        MoveLine.save(lines_to_save)
         self.move = move
         self.save()
 
@@ -1839,3 +2097,20 @@ class Report(Workflow, ModelSQL, ModelView):
                 ('type', '=', 'standard'),
                 ], order=[('end_date', 'ASC')])]
         return periods
+
+    def set_prorrata_percent_config(self, year):
+        pool = Pool()
+        Config = pool.get('account.configuration')
+        FiscalYear = pool.get('account.fiscalyear')
+
+        config = Config(1)
+        prorrata = config.aeat303_prorrata_percent
+        if prorrata and self.period in ('12', '4T'):
+            fiscalyear = FiscalYear.find(self.company,
+                date=datetime.date(year, 12, 31),
+                test_state=False)
+            prorrata_percent = config._calculate_prorrata(
+                fiscalyear=fiscalyear)
+            config.aeat303_prorrata_percent = prorrata_percent
+            config.aeat303_prorrata_fiscalyear = fiscalyear
+            config.save()
