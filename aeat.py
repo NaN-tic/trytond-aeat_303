@@ -1789,16 +1789,20 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(report, field, Decimal(0))
             for field in mapping_exonerated390.values():
                 setattr(report, field, Decimal(0))
+            for field in deductible_fields:
+                setattr(report, 'preprorrata_' + field, Decimal(0))
 
             with Transaction().set_context(periods=periods):
                 for tax,field in zip(
                         TaxCode.browse(mapping.keys()), mapping.values()):
-                    value = getattr(report, mapping[tax.id])
+                    value = getattr(report, field)
                     amount = (value or 0) + tax.amount
                     if field in deductible_fields and prorrata:
+                        value = getattr(report, 'preprorrata_' + field)
+                        amount = (value or 0) + tax.amount
                         setattr(report, field, amount - report.currency.round(
                                                 amount*Decimal(1-prorrata/100)))
-                        setattr(report, 'preprorrata_'+field, amount)
+                        setattr(report, 'preprorrata_' + field, amount)
                     else:
                         setattr(report, field, amount)
 
