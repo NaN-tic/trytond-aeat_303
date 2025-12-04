@@ -11,6 +11,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
+from trytond.model.exceptions import ValidationError
 from trytond.transaction import Transaction
 from sql import Literal
 from sql.functions import Extract
@@ -1653,7 +1654,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_euro(self):
         if self.currency.code != 'EUR':
-            raise UserError(gettext('aeat_303.msg_invalid_currency',
+            raise ValidationError(gettext('aeat_303.msg_invalid_currency',
                 name=self.rec_name,
                 ))
 
@@ -1663,18 +1664,18 @@ class Report(Workflow, ModelSQL, ModelView):
         if ((result <= _Z and self.previous_period_amount_to_compensate != _Z)
                 or (result > _Z and (self.previous_period_amount_to_compensate
                     or _Z) > result)):
-            raise UserError(gettext('aeat_303.msg_invalid_compensate'))
+            raise ValidationError(gettext('aeat_303.msg_invalid_compensate'))
 
     def check_type(self):
         if (self.type and self.period and self.type == 'X'
                 and self.period not in ('3T', '4T', '07', '08', '09', '10',
                     '11', '12')):
-            raise UserError(gettext('aeat_303.msg_invalid_type_period',
+            raise ValidationError(gettext('aeat_303.msg_invalid_type_period',
                     report=self.rec_name))
 
     def check_sepa_check(self):
         if self.type in ('D', 'X') and self.return_sepa_check == '0':
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                     'aeat_303.msg_invalid_sepa_check',
                     report=self.rec_name))
 
@@ -1682,7 +1683,7 @@ class Report(Workflow, ModelSQL, ModelView):
         if ((self.period not in ('12', '4T') and self.exonerated_mod390 != '0')
                 or (self.period in ('12', '4T')
                 and self.exonerated_mod390 == '0')):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                     'aeat_303.msg_invalid_exonerated_mod390',
                     report=self.rec_name))
 
@@ -1692,7 +1693,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 or (self.period in ('12', '4T')
                 and self.exonerated_mod390 == '1'
                 and self.annual_operation_volume == '0')):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                     'aeat_303.msg_invalid_annual_operation_volume',
                     report=self.rec_name))
 
@@ -1703,7 +1704,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 or (self.prorrata_percent4 or _Z) > Decimal('100.00')
                 or (self.prorrata_percent5 or _Z) > Decimal('100.00')
                 ):
-            raise UserError(gettext(
+            raise ValidationError(gettext(
                     'aeat_303.msg_invalid_prorrata_percent',
                     report=self.rec_name))
 
