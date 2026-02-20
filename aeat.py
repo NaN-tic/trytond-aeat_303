@@ -1851,7 +1851,7 @@ class Report(Workflow, ModelSQL, ModelView):
             report.set_prorrata_percent_config(report.year)
             # Means that we have to post the move created and close the
             # period or periods related.
-            if report.post_and_close:
+            if report.move and report.post_and_close:
                 periods = report.get_periods()
                 Move.post([report.move])
                 Period.close(Period.browse(periods))
