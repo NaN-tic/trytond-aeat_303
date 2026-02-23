@@ -6,6 +6,8 @@ import unicodedata
 
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
+import trytond
+from trytond.config import config
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
@@ -25,6 +27,11 @@ _STATES_390 = {
     }
 
 _Z = Decimal("0.0")
+
+VERSION = trytond.__version__
+VERSION = ''.join(VERSION.split('.')[:4])
+
+NIF = config.get('aeat', 'nif', default='B00000000'),
 
 
 def remove_accents(text):
@@ -516,12 +523,28 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Exist operations annual volume (art. 121 LIVA)', states={
-                'readonly': Eval('exonerated_mod390') != '1',
-                'required': Eval('exonerated_mod390') == '1',
-                }, help="Exclusively to fill in the last "
-            "period exonerated from the Annual Declaration-VAT summary. "
-            "(Exempt from presenting the model 390 and with volume of "
-            "operations zero).")
+            'readonly': Eval('exonerated_mod390') != '1',
+            'required': Eval('exonerated_mod390') == '1',
+            }, help="Exclusively to fill in the last period exonerated from "
+        "the Annual Declaration-VAT summary. (Exempt from presenting the "
+        "model 390 and with volume of operations zero).")
+    deduct_advance_payments = fields.Selection([
+            ('0', ''),
+            ('1', 'Yes'),
+            ('2', 'No'),
+            ], 'Deduct Advance payments (petrol, diesel, biofuel)', states={
+            'readonly': Eval('period').in_(['1T', '2T', '3T', '4T', '01']),
+            }, help="Taxable person entitled to deduct advance payments for "
+        "deliveries of petrol, diesel and biofuels after the completion of "
+        "the non-customs warehousing regime")
+    deduct_advance_payments_amount = fields.Numeric(
+        'Deduct Advance payments Amount (petrol, diesel, biofuel)', states={
+            'readonly': Eval('period').in_(['1T', '2T', '3T', '4T', '01']),
+        }, digits=(15, 2), help="Payment on account of deliveries of gasoline,"
+        " diesel and biofuels after the completion of the non-customs deposit "
+        "regime attributable to the State Administration (Sum of box 36 of "
+        "all models 319 corresponding to deliveries included in this "
+        "self-assessment)")
     accrued_vat_base_0 = fields.Numeric('Accrued Vat Base 0', digits=(15, 2))
     accrued_vat_percent_0 = fields.Numeric('Accrued Vat Percent 0',
         digits=(15, 2))
@@ -1290,6 +1313,10 @@ class Report(Workflow, ModelSQL, ModelView):
         return '0'
 
     @staticmethod
+    def default_deduct_advance_payments():
+        return '0'
+
+    @staticmethod
     def default_passive_subject_foral_administration():
         return '2'
 
@@ -1452,6 +1479,12 @@ class Report(Workflow, ModelSQL, ModelView):
         else:
             return '0'
 
+    @fields.depends('period')
+    def on_change_with_deduct_advance_payments(self, name=None):
+        if self.period in ('02', '03', '04', '05', '06', '07', '08', '09',
+                '10', '11', '12'):
+            return '2'
+
     @fields.depends('state_administration_amount',
         'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
     def set_previous_period_amount_to_compensate(self):
@@ -1608,7 +1641,8 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def get_liquidation_result(self, name):
         return ((self.result or _Z) - (self.to_deduce or _Z)
-            + (self.before_result or _Z))
+            + (self.before_result or _Z)
+            + (self.deduct_advance_payments_amount or _Z))
 
     def get_total_operations_volume(self, name):
         return ((self.special_info_rg_operations or _Z)
@@ -1895,6 +1929,10 @@ class Report(Workflow, ModelSQL, ModelView):
         # annual_additional_record = Record(
         #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
         bank_data_record = Record(aeat303.BANK_DATA_RECORD)
+
+        # Set fix values for Version and Company VAT
+        setattr(header, 'program_version', VERSION)
+        setattr(header, 'development_company_vat', NIF)
 
         #These fields use to be numeric, but are now const in regards to the aeat 303 file
         #(excluding report and bank_account, which were there already)
