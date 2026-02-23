@@ -248,6 +248,8 @@ contains the full copyright notices and license terms. -->
             <field name="before_result"/>
             <label name="to_deduce" colspan="5"/>
             <field name="to_deduce"/>
+            <label name="deduct_advance_payments_amount" colspan="5"/>
+            <field name="deduct_advance_payments_amount"/>
             <label name="liquidation_result" colspan="5"/>
             <field name="liquidation_result"/>
 
