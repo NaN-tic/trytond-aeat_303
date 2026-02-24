@@ -31,7 +31,7 @@ _Z = Decimal("0.0")
 VERSION = trytond.__version__
 VERSION = ''.join(VERSION.split('.')[:4])
 
-NIF = config.get('aeat', 'nif', default='B00000000'),
+NIF = config.get('aeat', 'nif', default='B00000000')
 
 
 def remove_accents(text):
