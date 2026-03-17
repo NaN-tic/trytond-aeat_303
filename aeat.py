@@ -1482,8 +1482,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @fields.depends('period')
     def on_change_with_deduct_advance_payments(self, name=None):
-        if self.period in ('02', '03', '04', '05', '06', '07', '08', '09',
-                '10', '11', '12'):
+        if self.period not in ('1T', '2T', '3T', '4T', '01'):
             return '2'
 
     @fields.depends('state_administration_amount',
