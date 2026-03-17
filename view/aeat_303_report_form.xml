@@ -45,6 +45,9 @@ contains the full copyright notices and license terms. -->
             <label name="annual_operation_volume"/>
             <field name="annual_operation_volume"/>
 
+            <label name="deduct_advance_payments"/>
+            <field name="deduct_advance_payments"/>
+
             <separator id="accured_vat" string="Accrued VAT" colspan="6"/>
             <label name="accrued_vat_base_0"/>
             <field name="accrued_vat_base_0"/>

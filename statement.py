@@ -8,7 +8,7 @@ class Origin(metaclass=PoolMeta):
 
     def _search_move_line_reconciliation_domain(self, second_currency=None):
         domain = super()._search_move_line_reconciliation_domain(
-            second_currency)
+            second_currency=second_currency)
         for dom in domain:
             if dom[0] == 'OR' and dom[1][0] == 'move_origin':
                 dom.append(('move_origin', 'like', 'aeat.303.report,%'))
