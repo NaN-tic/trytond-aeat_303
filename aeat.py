@@ -1470,20 +1470,19 @@ class Report(Workflow, ModelSQL, ModelView):
             return '2'
         elif self.period in ('4T', '12'):
             return self.exonerated_mod390
-        else:
-            return '0'
+        return '0'
 
     @fields.depends('annual_operation_volume', 'exonerated_mod390')
     def on_change_with_annual_operation_volume(self, name=None):
         if self.exonerated_mod390 == '1':
             return self.annual_operation_volume
-        else:
-            return '0'
+        return '0'
 
     @fields.depends('period')
     def on_change_with_deduct_advance_payments(self, name=None):
         if self.period not in ('1T', '2T', '3T', '4T', '01'):
             return '2'
+        return '0'
 
     @fields.depends('state_administration_amount',
         'aduana_tax_pending', 'previous_period_pending_amount_to_compensate')
