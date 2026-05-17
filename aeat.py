@@ -1786,7 +1786,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('company', '=', report.company),
                     ]):
                 for code in mapp.code_by_companies:
-                    mapping[code.id] = mapp.aeat303_field.name
+                    mapping.setdefault(code.id, []).append(
+                        mapp.aeat303_field.name)
             for mapp in Mapping.search([
                     ('type_', '=', 'exonerated390'),
                     ('company', '=', report.company),
@@ -1818,26 +1819,29 @@ class Report(Workflow, ModelSQL, ModelView):
 
             for field, value in fixed.items():
                 setattr(report, field, value)
-            for field in mapping.values():
-                setattr(report, field, Decimal(0))
+            for mapped_fields in mapping.values():
+                for field in mapped_fields:
+                    setattr(report, field, Decimal(0))
             for field in mapping_exonerated390.values():
                 setattr(report, field, Decimal(0))
             for field in deductible_fields:
                 setattr(report, 'preprorrata_' + field, Decimal(0))
 
             with Transaction().set_context(periods=periods):
-                for tax,field in zip(
-                        TaxCode.browse(mapping.keys()), mapping.values()):
-                    value = getattr(report, field)
-                    amount = (value or 0) + tax.amount
-                    if field in deductible_fields and prorrata:
-                        value = getattr(report, 'preprorrata_' + field)
+                code_ids = list(mapping.keys())
+                for tax, code_id in zip(TaxCode.browse(code_ids), code_ids):
+                    for field in mapping[code_id]:
+                        value = getattr(report, field)
                         amount = (value or 0) + tax.amount
-                        setattr(report, field, amount - report.currency.round(
-                                                amount*Decimal(1-prorrata/100)))
-                        setattr(report, 'preprorrata_' + field, amount)
-                    else:
-                        setattr(report, field, amount)
+                        if field in deductible_fields and prorrata:
+                            value = getattr(report, 'preprorrata_' + field)
+                            amount = (value or 0) + tax.amount
+                            setattr(report, field,
+                                amount - report.currency.round(
+                                    amount * Decimal(1 - prorrata / 100)))
+                            setattr(report, 'preprorrata_' + field, amount)
+                        else:
+                            setattr(report, field, amount)
 
             prorrata_regularization = 0
             if report.period in ('12', '4T'):
@@ -1857,7 +1861,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     if prorrata_difference:
                         for tax in TaxCode.browse([key for key, val in
                                     mapping.items()
-                                    if val in deductible_fields]):
+                                    if any(field in deductible_fields
+                                        for field in val)]):
                             prorrata_regularization += (report.currency.round(
                                     tax.amount * Decimal(
                                         prorrata_difference/100)))
@@ -2079,11 +2084,12 @@ class Report(Workflow, ModelSQL, ModelView):
         counterpart_line = MoveLine()
         counterpart_line.move = move
         counterpart_line.account = self.move_account
-        if self.liquidation_result >= 0:
-            counterpart_line.credit = self.liquidation_result
+        counterpart_amount = self.get_move_counterpart_amount()
+        if counterpart_amount >= 0:
+            counterpart_line.credit = counterpart_amount
             counterpart_line.debit = _Z
         else:
-            counterpart_line.debit = -1 * self.liquidation_result
+            counterpart_line.debit = -1 * counterpart_amount
             counterpart_line.credit = _Z
         counterpart_line.description = description
         # Ensure that all the moves are set only the debit or credit,
@@ -2116,6 +2122,9 @@ class Report(Workflow, ModelSQL, ModelView):
         MoveLine.save(lines_to_save)
         self.move = move
         self.save()
+
+    def get_move_counterpart_amount(self):
+        return self.liquidation_result
 
     def get_periods(self):
         pool = Pool()
