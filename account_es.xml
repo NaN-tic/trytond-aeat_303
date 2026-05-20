@@ -455,6 +455,10 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_47" />
             <field name="code" ref="account_es.base_extra_45" />
         </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_47_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_47" />
+            <field name="code" ref="account_es.base_no_sujeto_localizacion_servicios" />
+        </record>
         <!-- [122] - Inversión del sujeto pasivo (Clientes) -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_44_val1">
             <field name="mapping" ref="aeat_303_mapping_code_44" />
