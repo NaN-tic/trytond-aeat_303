@@ -130,13 +130,11 @@ class Configuration(metaclass=PoolMeta):
                 ])
         with Transaction().set_context(_deductible_rate=1):
             for line in non_deductible_lines:
-                vat_bases = []
                 for tax_line in line._get_taxes().values():
                     tax = Tax(tax_line.tax)
                     if tax.tax_kind == 'vat':
-                        vat_bases.append(tax_line.base)
-                if vat_bases:
-                    total_import += max(vat_bases, key=lambda base: abs(base))
+                        total_import += tax_line.base
+                        break
         prorrata = (ceil((deductible_import/total_import) * 100)
                     if total_import else 0)
 
