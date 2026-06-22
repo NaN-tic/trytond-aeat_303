@@ -128,11 +128,12 @@ class Test(unittest.TestCase):
         account_category2.customer_taxes.append(tax)
         tax, = Tax.find([
             ('group.kind', '=', 'purchase'),
-            ('name', '=', '21% IVA no Deducible'),
+            ('name', '=', 'IVA Deducible 21% (operaciones corrientes)'),
             ('parent', '=', None),
         ],
                         limit=1)
         account_category2.supplier_taxes.append(tax)
+        account_category2.supplier_taxes_deductible_rate = Decimal(0)
         account_category2.save()
 
         # Create deductible product
