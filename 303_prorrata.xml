@@ -60,10 +60,6 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_ded_24_21_rectification" />
         </record>
         <!-- Prorrata map-code total relation -->
-        <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_iva_no_ded_22">
-            <field name="mapping" ref="aeat_303_prorrata_mapping_total" />
-            <field name="code" ref="account_es.iva_no_ded_22" />
-        </record>
         <record model="aeat.303.prorrata.mapping-account.tax.code.template" id="aeat_303_prorrata_mapping_base_sop_ex">
             <field name="mapping" ref="aeat_303_prorrata_mapping_total" />
             <field name="code" ref="account_es.base_sop_ex" />

@@ -84,6 +84,8 @@ class Configuration(metaclass=PoolMeta):
         Mapping = pool.get('aeat.303.prorrata.mapping')
         TaxCode = pool.get('account.tax.code')
         FiscalYear = pool.get('account.fiscalyear')
+        InvoiceLine = pool.get('account.invoice.line')
+        Tax = pool.get('account.tax')
 
         # Won't be really necessary, but with this control ensure that the
         # account is set and that allow th create the account move correctly.
@@ -114,6 +116,25 @@ class Configuration(metaclass=PoolMeta):
                 if field == 'prorrata_total_amount':
                     continue
                 deductible_import += tax.amount
+
+        # account_es no longer uses dedicated non-deductible taxes/templates.
+        # For purchase lines with deductible rate 0, include the full VAT base
+        # in the prorrata denominator as the old iva_no_ded_22 code did.
+        non_deductible_lines = InvoiceLine.search([
+                ('invoice.company', '=', company),
+                ('invoice.state', 'in', ['posted', 'paid']),
+                ('invoice.move.period', 'in', periods),
+                ('invoice.type', '=', 'in'),
+                ('type', '=', 'line'),
+                ('taxes_deductible_rate', '=', 0),
+                ])
+        with Transaction().set_context(_deductible_rate=1):
+            for line in non_deductible_lines:
+                for tax_line in line._get_taxes().values():
+                    tax = Tax(tax_line.tax)
+                    if tax.tax_kind == 'vat':
+                        total_import += tax_line.base
+                        break
         prorrata = (ceil((deductible_import/total_import) * 100)
                     if total_import else 0)
 
@@ -164,4 +185,3 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     @staticmethod
     def default_aeat303_post_and_close():
         return False
-
