@@ -860,13 +860,6 @@ msgstr ""
 "Impuesto sobre las operaciones domésticas corrientes deducibles antes de la "
 "prorrata"
 
-msgctxt ""
-"field:aeat.303.report,preprorrata_deductible_investment_domestic_operations_tax:"
-msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
-msgstr ""
-"Impuesto sobre las operaciones de inversión domésticas corrientes deducibles"
-" antes de la prorrata"
-
 msgctxt "field:aeat.303.report,preprorrata_deductible_regularization_tax:"
 msgid "Pre-Prorrata Deductible Regularization Tax"
 msgstr "Impuesto de Regularización Deducible antes de la prorrata"
