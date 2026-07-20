@@ -7,7 +7,7 @@ import unicodedata
 from retrofix import aeat303
 from retrofix.record import Record, write as retrofix_write
 import trytond
-from trytond.config import config
+import trytond.config as config
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
