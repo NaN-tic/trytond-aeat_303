@@ -147,7 +147,7 @@ class Test(unittest.TestCase):
         ], limit=1)
 
         Invoice = Model.get('account.invoice')
-        sale_invoice = Invoice()
+        sale_invoice = Invoice(type='out')
         sale_invoice.party = party
         sale_invoice.payment_term = payment_term
         line = sale_invoice.lines.new()
