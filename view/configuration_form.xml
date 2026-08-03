@@ -11,6 +11,9 @@ copyright notices and license types. -->
         <label name="aeat303_move_journal"/>
         <field name="aeat303_move_journal"/>
         <newline/>
+        <label name="aeat303_deferred_dua_account"/>
+        <field name="aeat303_deferred_dua_account"/>
+        <newline/>
         <label name="aeat303_prorrata_account"/>
         <field name="aeat303_prorrata_account"/>
         <label name="aeat303_prorrata_fiscalyear"/>

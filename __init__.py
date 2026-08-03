@@ -4,7 +4,9 @@
 from trytond.pool import Pool
 from . import aeat
 from . import account
+from . import company
 from . import configuration
+from . import invoice
 from . import statement
 
 
@@ -12,6 +14,7 @@ def register():
     Pool.register(
         configuration.Configuration,
         configuration.ConfigurationAEAT303,
+        company.Company,
         aeat.Report,
         aeat.TemplateTaxCodeMapping,
         aeat.TemplateTaxCodeProrrataMapping,
@@ -22,6 +25,8 @@ def register():
         aeat.TaxCodeRelation,
         aeat.TaxCodeProrrataRelation,
         account.Move,
+        invoice.Invoice,
+        invoice.InvoiceTax,
         module='aeat_303', type_='model')
     Pool.register(
         statement.Origin,
