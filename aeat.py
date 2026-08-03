@@ -18,6 +18,8 @@ from trytond.transaction import Transaction
 from sql import Literal
 from sql.functions import Extract
 
+from .invoice import get_aduana_tax_pending_code_ids, is_aduana_tax_pending_tax
+
 
 _STATES = {
     'readonly': Eval('state') == 'done',
@@ -44,6 +46,19 @@ def remove_accents(text):
     #return unicodedata.normalize('NFC', unicode_string_nfd)
 
 
+def migrate_redeme_dua_model_data(cursor, model, fs_ids):
+    pool = Pool()
+    ModelData = pool.get('ir.model.data')
+    model_data = ModelData.__table__()
+
+    cursor.execute(*model_data.update(
+            columns=[model_data.module],
+            values=['aeat_303'],
+            where=((model_data.module == 'aeat_redeme')
+                & (model_data.model == model)
+                & model_data.fs_id.in_(fs_ids))))
+
+
 class TemplateTaxCodeRelation(ModelSQL):
     '''
     AEAT 303 TaxCode Mapping Codes Relation
@@ -54,6 +69,20 @@ class TemplateTaxCodeRelation(ModelSQL):
         required=True)
     code = fields.Many2One('account.tax.code.template', 'Tax Code Template',
         required=True)
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        migrate_redeme_dua_model_data(cursor,
+            'aeat.303.mapping-account.tax.code.template', [
+                'aeat_303_mapping_code_77_val1',
+                'aeat_303_mapping_code_77_val2',
+                'aeat_303_mapping_code_77_val3',
+                'aeat_303_mapping_code_77_val4',
+                'aeat_303_mapping_code_77_val5',
+                'aeat_303_mapping_code_77_val6',
+                ])
+        super().__register__(module_name)
 
 
 class TemplateTaxCodeMapping(ModelSQL):
@@ -87,6 +116,14 @@ class TemplateTaxCodeMapping(ModelSQL):
             ('aeat303_field_uniq', Unique(t, t.aeat303_field),
                 'aeat_303.msg_template_tax_code_field_must_be_unique')
             ]
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        migrate_redeme_dua_model_data(cursor, 'aeat.303.template.mapping', [
+                'aeat_303_mapping_code_77',
+                ])
+        super().__register__(module_name)
 
     @staticmethod
     def default_type_():
@@ -448,6 +485,9 @@ class Report(Workflow, ModelSQL, ModelView):
     company_name = fields.Char('Company Name')
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
+    company_deferred_dua_tax = fields.Function(
+        fields.Boolean('Deferred DUA Tax'),
+        'on_change_with_company_deferred_dua_tax')
 
     # Page01
     type = fields.Selection([
@@ -1141,6 +1181,13 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
+        if 'readonly' in cls.aduana_tax_pending.states:
+            cls.aduana_tax_pending.states['readonly'] |= ~Eval(
+                'company_deferred_dua_tax', False)
+        else:
+            cls.aduana_tax_pending.states['readonly'] = ~Eval(
+                'company_deferred_dua_tax', False)
+        cls.aduana_tax_pending.depends.add('company_deferred_dua_tax')
         cls._order = [
             ('year', 'DESC'),
             ('period', 'DESC'),
@@ -1464,6 +1511,10 @@ class Report(Workflow, ModelSQL, ModelView):
             if tax_identifier and tax_identifier.code.startswith('ES'):
                 return tax_identifier.code[2:]
 
+    @fields.depends('company')
+    def on_change_with_company_deferred_dua_tax(self, name=None):
+        return bool(self.company and self.company.deferred_dua_tax)
+
     @fields.depends('exonerated_mod390', 'period')
     def on_change_with_exonerated_mod390(self, name=None):
         if self.period in ('4T', '12') and self.exonerated_mod390 == '0':
@@ -1758,6 +1809,7 @@ class Report(Workflow, ModelSQL, ModelView):
     @Workflow.transition('calculated')
     def calculate(cls, reports):
         pool = Pool()
+        InvoiceTax = pool.get('account.invoice.tax')
         Mapping = pool.get('aeat.303.mapping')
         Period = pool.get('account.period')
         TaxCode = pool.get('account.tax.code')
@@ -1800,6 +1852,14 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('aeat303_field.name', 'not in', excluded_fields),
                     ]):
                 fixed[mapp.aeat303_field.name] = mapp.number
+
+            if report.company.deferred_dua_tax:
+                if not any('aduana_tax_pending' in fields
+                        for fields in mapping.values()):
+                    for code_id in get_aduana_tax_pending_code_ids(
+                            report.company):
+                        mapping.setdefault(code_id, []).append(
+                            'aduana_tax_pending')
 
             if len(fixed) == 0:
                 raise UserError(gettext('aeat_303.msg_no_config'))
@@ -1868,6 +1928,25 @@ class Report(Workflow, ModelSQL, ModelView):
                                         prorrata_difference/100)))
             if prorrata_regularization:
                 setattr(report, prorrata_reg_field, prorrata_regularization)
+
+            if not report.company.deferred_dua_tax:
+                report.aduana_tax_pending = _Z
+            else:
+                code_ids = get_aduana_tax_pending_code_ids(report.company)
+                if code_ids:
+                    excluded_amount = _Z
+                    for invoice_tax in InvoiceTax.search([
+                                ('invoice.company', '=', report.company.id),
+                                ('invoice.type', '=', 'in'),
+                                ('invoice.state', 'in', ['posted', 'paid']),
+                                ('invoice.move.period', 'in', report.get_periods()),
+                                ('deferred_dua_tax', '=', False),
+                                ('tax', '!=', None),
+                                ]):
+                        if is_aduana_tax_pending_tax(invoice_tax, code_ids):
+                            excluded_amount += invoice_tax.amount
+                    report.aduana_tax_pending = (
+                        report.aduana_tax_pending or _Z) - excluded_amount
             report.save()
 
         cls.write(reports, {
@@ -2124,7 +2203,10 @@ class Report(Workflow, ModelSQL, ModelView):
         self.save()
 
     def get_move_counterpart_amount(self):
-        return self.liquidation_result
+        amount = self.liquidation_result
+        if self.company and self.company.deferred_dua_tax:
+            amount -= self.aduana_tax_pending or _Z
+        return amount
 
     def get_periods(self):
         pool = Pool()

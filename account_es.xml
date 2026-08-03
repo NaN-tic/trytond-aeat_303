@@ -464,6 +464,36 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_44" />
             <field name="code" ref="account_es.base_extra_44" />
         </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes corrientes 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_27_4" />
+        </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes corrientes 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_27_10" />
+        </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes corrientes 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_27_21" />
+        </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes inversión 4% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_29_4" />
+        </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes inversión 10% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_29_10" />
+        </record>
+        <!-- [77] - Cuotas devengadas importaciones bienes inversión 21% -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_77_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_77" />
+            <field name="code" ref="account_es.iva_ded_29_21" />
+        </record>
 
         <!-- [80] Last period, exonerated 390 - Opeartions in General Regime -->
         <!-- [81] Last period, exonerated 390 - Special Cash Criteria -->
