@@ -42,6 +42,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_prorrata_account_required">
             <field name="text">Please assign a prorrata account before calculating general prorrata</field>
         </record>
+        <record model="ir.message" id="msg_deferred_dua_account_change">
+            <field name="text">The account of invoice "%(invoice)s" will be changed to "%(account)s" because the invoice is subject to deferred DUA tax.</field>
+        </record>
         <record model="ir.message" id="msg_template_tax_code_field_must_be_unique">
             <field name="text">AEAT 303 Template Tax Code Mapping: Field must be unique.</field>
         </record>

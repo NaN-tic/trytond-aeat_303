@@ -289,6 +289,12 @@ contains the full copyright notices and license terms. -->
             <field name="aeat303_field"
                 search="[('name', '=','deductible_investment_import_operations_tax'), ('module', '=', 'aeat_303')]"/>
         </record>
+        <!-- [77] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_77">
+            <field name="type_">code</field>
+            <field name="aeat303_field"
+                search="[('name', '=','aduana_tax_pending'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [36] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_30">
             <field name="type_">code</field>

@@ -6,6 +6,10 @@ msgctxt "field:account.configuration,aeat303_move_account:"
 msgid "Account for Move"
 msgstr "Cuenta para el asiento"
 
+msgctxt "field:account.configuration,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "Cuenta DUA diferido"
+
 msgctxt "field:account.configuration,aeat303_move_journal:"
 msgid "Journal for Move"
 msgstr "Diario para el asiento"
@@ -29,6 +33,10 @@ msgstr "Porcentaje prorrata"
 msgctxt "field:account.configuration.aeat303,aeat303_move_account:"
 msgid "Account for Move"
 msgstr "Cuenta para el asiento"
+
+msgctxt "field:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "Cuenta DUA diferido"
 
 msgctxt "field:account.configuration.aeat303,aeat303_move_journal:"
 msgid "Journal for Move"
@@ -54,9 +62,33 @@ msgctxt "field:account.configuration.aeat303,company:"
 msgid "Company"
 msgstr "Compañía"
 
+msgctxt "field:account.invoice.tax,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "DUA diferido"
+
+msgctxt "field:aeat.303.report,company_deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "DUA diferido"
+
+msgctxt "field:company.company,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "DUA diferido"
+
 msgctxt "field:aeat.303.mapping,aeat303_field:"
 msgid "Field"
 msgstr "Campo"
+
+msgctxt "help:account.configuration,aeat303_deferred_dua_account:"
+msgid "Account used as invoice counterpart for supplier invoices with deferred DUA taxes mapped to box 77."
+msgstr "Cuenta utilizada como contrapartida de la factura en facturas de proveedor con impuestos de DUA diferido mapeados a la casilla 77."
+
+msgctxt "help:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid "Account used as invoice counterpart for supplier invoices with deferred DUA taxes mapped to box 77."
+msgstr "Cuenta utilizada como contrapartida de la factura en facturas de proveedor con impuestos de DUA diferido mapeados a la casilla 77."
+
+msgctxt "model:ir.message,text:msg_deferred_dua_account_change"
+msgid "The account of invoice \"%(invoice)s\" will be changed to \"%(account)s\" because the invoice is subject to deferred DUA tax."
+msgstr "La cuenta de la factura \"%(invoice)s\" se cambiará a \"%(account)s\" porque la factura está sujeta a DUA diferido."
 
 msgctxt "field:aeat.303.mapping,code:"
 msgid "Tax Code"

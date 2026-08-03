@@ -12,6 +12,15 @@ from math import ceil
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
+    aeat303_deferred_dua_account = fields.MultiValue(fields.Many2One(
+            'account.account', 'Deferred DUA Account',
+            domain=[
+                ('closed', '=', False),
+                ('company', '=', Eval('context', {}).get('company', -1)),
+                ('type.payable', '=', True),
+                ],
+            help='Account used as invoice counterpart for supplier invoices '
+            'with deferred DUA taxes mapped to box 77.'))
     aeat303_move_account = fields.MultiValue(fields.Many2One(
             'account.account', "Account for Move",
             domain=[
@@ -59,7 +68,8 @@ class Configuration(metaclass=PoolMeta):
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
-        if field in {'aeat303_move_account', 'aeat303_move_journal',
+        if field in {'aeat303_deferred_dua_account', 'aeat303_move_account',
+                'aeat303_move_journal',
                 'aeat303_post_and_close','aeat303_prorrata_account',
                 'aeat303_prorrata_percent', 'aeat303_prorrata_fiscalyear'}:
             return pool.get('account.configuration.aeat303')
@@ -123,6 +133,15 @@ class Configuration(metaclass=PoolMeta):
 class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     "AEAT 303 Account Configuration"
     __name__ = 'account.configuration.aeat303'
+    aeat303_deferred_dua_account = fields.Many2One(
+        'account.account', 'Deferred DUA Account',
+        domain=[
+            ('closed', '=', False),
+            ('company', '=', Eval('company', -1)),
+            ('type.payable', '=', True),
+            ],
+        help='Account used as invoice counterpart for supplier invoices with '
+        'deferred DUA taxes mapped to box 77.')
     aeat303_move_account = fields.Many2One(
         'account.account', "Account for Move",
         domain=[
@@ -161,7 +180,21 @@ class ConfigurationAEAT303(ModelSQL, CompanyValueMixin):
     aeat303_prorrata_fiscalyear = fields.Many2One(
         'account.fiscalyear', "Prorrata Fiscal Year")
 
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
+
+        old_column = table.column_exist('aeat_redeme_account')
+        new_column = table.column_exist('aeat303_deferred_dua_account')
+        super().__register__(module_name)
+
+        if old_column and not new_column:
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.aeat303_deferred_dua_account],
+                    values=[sql_table.aeat_redeme_account]))
+
     @staticmethod
     def default_aeat303_post_and_close():
         return False
-
