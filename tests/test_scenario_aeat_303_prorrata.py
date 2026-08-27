@@ -1,8 +1,10 @@
 import datetime
 import unittest
 from decimal import Decimal
+from unittest.mock import patch
 from dateutil.relativedelta import relativedelta
 
+from stdnum import get_cc_module
 from proteus import Model, Wizard
 from trytond.modules.account.tests.tools import create_fiscalyear
 from trytond.modules.account_invoice.tests.tools import (
@@ -16,10 +18,19 @@ from trytond.tests.tools import activate_modules
 class Test(unittest.TestCase):
 
     def setUp(self):
+        self.vies_patcher = patch.object(
+            get_cc_module('eu', 'vat'), 'check_vies',
+            return_value={
+                'valid': True,
+                'name': 'Test Party',
+                'address': 'Test Address',
+                })
+        self.vies_patcher.start()
         drop_db()
         super().setUp()
 
     def tearDown(self):
+        self.vies_patcher.stop()
         drop_db()
         super().tearDown()
 
@@ -89,7 +100,7 @@ class Test(unittest.TestCase):
         party = Party(name='Party')
         identifier = party.identifiers.new()
         identifier.type = 'eu_vat'
-        identifier.code = 'ESB65247983'
+        identifier.code = 'ES00000000T'
         party.save()
 
         # Create account category
