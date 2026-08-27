@@ -83,6 +83,8 @@ class Configuration(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     def calculate_prorrata(cls, records):
+        if not records:
+            return
         config = records[0]
         fiscalyear = config.aeat303_prorrata_fiscalyear
         prorrata = config._calculate_prorrata(fiscalyear=fiscalyear)

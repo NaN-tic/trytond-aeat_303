@@ -89,7 +89,7 @@ class Test(unittest.TestCase):
         party = Party(name='Party')
         identifier = party.identifiers.new()
         identifier.type = 'eu_vat'
-        identifier.code = 'ES00000000T'
+        identifier.code = 'ESB65247983'
         party.save()
 
         # Create account category
