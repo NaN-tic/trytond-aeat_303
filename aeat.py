@@ -284,7 +284,7 @@ class UpdateChart(metaclass=PoolMeta):
                 continue
             vals = mapping.template._get_mapping_value(mapping=mapping)
             if vals:
-                Mapping.write([mapping], vals)
+                MappingProrrata.write([mapping], vals)
             ids.append(mapping.template.id)
 
         # Create new one's
