@@ -14,7 +14,7 @@ from trytond.pyson import Eval, Bool
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 from trytond.model.exceptions import ValidationError
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 from sql import Literal
 from sql.functions import Extract
 
@@ -555,7 +555,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Exonerated Model 390', states={
-                'readonly': ~Eval('period').in_(['12', '4T'])
+                'editable': Eval('period').in_(['12', '4T']),
             }, help="Exclusively to fill in the last period exonerated from "
             "the Annual Declaration-VAT summary. (Exempt from presenting the "
             "model 390 and with volume of operations zero).")
@@ -564,7 +564,7 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Exist operations annual volume (art. 121 LIVA)', states={
-            'readonly': Eval('exonerated_mod390') != '1',
+            'editable': Eval('exonerated_mod390') == '1',
             'required': Eval('exonerated_mod390') == '1',
             }, help="Exclusively to fill in the last period exonerated from "
         "the Annual Declaration-VAT summary. (Exempt from presenting the "
@@ -574,13 +574,15 @@ class Report(Workflow, ModelSQL, ModelView):
             ('1', 'Yes'),
             ('2', 'No'),
             ], 'Deduct Advance payments (petrol, diesel, biofuel)', states={
-            'readonly': Eval('period').in_(['1T', '2T', '3T', '4T', '01']),
+            'editable': ~Eval('period').in_(
+                ['1T', '2T', '3T', '4T', '01']),
             }, help="Taxable person entitled to deduct advance payments for "
         "deliveries of petrol, diesel and biofuels after the completion of "
         "the non-customs warehousing regime")
     deduct_advance_payments_amount = fields.Numeric(
         'Deduct Advance payments Amount (petrol, diesel, biofuel)', states={
-            'readonly': Eval('period').in_(['1T', '2T', '3T', '4T', '01']),
+            'editable': ~Eval('period').in_(
+                ['1T', '2T', '3T', '4T', '01']),
         }, digits=(15, 2), help="Payment on account of deliveries of gasoline,"
         " diesel and biofuels after the completion of the non-customs deposit "
         "regime attributable to the State Administration (Sum of box 36 of "
@@ -754,7 +756,7 @@ class Report(Workflow, ModelSQL, ModelView):
     previous_period_pending_amount_to_compensate = fields.Numeric(
         'Previous Period Pending Amount To Compensate', digits=(15, 2),
         states={
-            'readonly': Bool(Eval('previous_report')),
+            'editable': ~Bool(Eval('previous_report')),
             })
     previous_period_amount_to_compensate = fields.Numeric(
         'Previous Period Amount To Compensate', digits=(15, 2))
@@ -1181,12 +1183,8 @@ class Report(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Report, cls).__setup__()
-        if 'readonly' in cls.aduana_tax_pending.states:
-            cls.aduana_tax_pending.states['readonly'] |= ~Eval(
-                'company_deferred_dua_tax', False)
-        else:
-            cls.aduana_tax_pending.states['readonly'] = ~Eval(
-                'company_deferred_dua_tax', False)
+        cls.aduana_tax_pending.states['editable'] = Eval(
+            'company_deferred_dua_tax', False)
         cls.aduana_tax_pending.depends.add('company_deferred_dua_tax')
         cls._order = [
             ('year', 'DESC'),
@@ -2065,7 +2063,8 @@ class Report(Workflow, ModelSQL, ModelView):
         if isinstance(data, str):
             data = data.encode('iso-8859-1', errors='ignore')
         self.file_ = self.__class__.file_.cast(data)
-        self.save()
+        with without_check_access():
+            self.save()
 
     def create_move(self):
         pool = Pool()
@@ -2200,7 +2199,8 @@ class Report(Workflow, ModelSQL, ModelView):
 
         MoveLine.save(lines_to_save)
         self.move = move
-        self.save()
+        with without_check_access():
+            self.save()
 
     def get_move_counterpart_amount(self):
         amount = self.liquidation_result
