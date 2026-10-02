@@ -31,7 +31,7 @@ def register():
     Pool.register(
         statement.Origin,
         module='aeat_303', type_='model',
-        depends=['account_statement_enable_banking'])
+        depends=['account_statement_common'])
     Pool.register(
         aeat.CreateChart,
         aeat.UpdateChart,
