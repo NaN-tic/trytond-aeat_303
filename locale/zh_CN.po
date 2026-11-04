@@ -1,0 +1,1873 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.configuration,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "凭证科目"
+
+msgctxt "field:account.configuration,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "递延 DUA 科目"
+
+msgctxt "field:account.configuration,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "凭证日记账"
+
+msgctxt "field:account.configuration,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "过账并关闭"
+
+msgctxt "field:account.configuration,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "比例抵扣科目"
+
+msgctxt "field:account.configuration,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "比例抵扣会计年度"
+
+msgctxt "field:account.configuration,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "比例抵扣百分比"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "凭证科目"
+
+msgctxt "field:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "递延 DUA 科目"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "凭证日记账"
+
+msgctxt "field:account.configuration.aeat303,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "过账并关闭"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "比例抵扣科目"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "比例抵扣会计年度"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "比例抵扣百分比"
+
+msgctxt "field:account.configuration.aeat303,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:account.invoice.tax,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "递延 DUA 税项"
+
+msgctxt "field:aeat.303.report,company_deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "递延 DUA 税项"
+
+msgctxt "field:company.company,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "递延 DUA 税项"
+
+msgctxt "field:aeat.303.mapping,aeat303_field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "help:account.configuration,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr "供应商发票包含映射到第 77 栏的递延 DUA 税项时，用作发票对方科目的科目。"
+
+msgctxt "help:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr "供应商发票包含映射到第 77 栏的递延 DUA 税项时，用作发票对方科目的科目。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_deferred_dua_account_change"
+msgid ""
+"The account of invoice \"%(invoice)s\" will be changed to \"%(account)s\" "
+"because the invoice is subject to deferred DUA tax."
+msgstr "发票“%(invoice)s”适用递延 DUA 税项，因此其科目将更改为“%(account)s”。"
+
+msgctxt "field:aeat.303.mapping,code:"
+msgid "Tax Code"
+msgstr "税码"
+
+msgctxt "field:aeat.303.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "按公司划分的代码"
+
+msgctxt "field:aeat.303.mapping,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.303.mapping,number:"
+msgid "Number"
+msgstr "编号"
+
+msgctxt "field:aeat.303.mapping,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:aeat.303.mapping,type_:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "税码"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "映射"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "税码模板"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "映射"
+
+msgctxt "field:aeat.303.prorrata.mapping,code:"
+msgid "Tax Code"
+msgstr "税码"
+
+msgctxt "field:aeat.303.prorrata.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "按公司划分的代码"
+
+msgctxt "field:aeat.303.prorrata.mapping,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.303.prorrata.mapping,prorrata_field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "field:aeat.303.prorrata.mapping,template:"
+msgid "Template"
+msgstr "模板"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "税码"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "映射"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "税码模板"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "映射"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,code:"
+msgid "Tax Code Template"
+msgstr "税码模板"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,prorrata_field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "field:aeat.303.report,accrued_re_base_1:"
+msgid "Accrued Re Base 1"
+msgstr "应计等额附加税计税基础 1"
+
+msgctxt "field:aeat.303.report,accrued_re_base_2:"
+msgid "Accrued Re Base 2"
+msgstr "应计等额附加税计税基础 2"
+
+msgctxt "field:aeat.303.report,accrued_re_base_3:"
+msgid "Accrued Re Base 3"
+msgstr "应计等额附加税计税基础 3"
+
+msgctxt "field:aeat.303.report,accrued_re_base_4:"
+msgid "Accrued Re Base 4"
+msgstr "应计等额附加税计税基础 4"
+
+msgctxt "field:aeat.303.report,accrued_re_base_5:"
+msgid "Accrued Re Base 5"
+msgstr "应计等额附加税计税基础 5"
+
+msgctxt "field:aeat.303.report,accrued_re_base_modification:"
+msgid "Accrued Re Base Modification"
+msgstr "应计等额附加税计税基础调整"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_1:"
+msgid "Accrued Re Percent 1"
+msgstr "应计等额附加税税率 1"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_2:"
+msgid "Accrued Re Percent 2"
+msgstr "应计等额附加税税率 2"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_3:"
+msgid "Accrued Re Percent 3"
+msgstr "应计等额附加税税率 3"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_4:"
+msgid "Accrued Re Percent 4"
+msgstr "应计等额附加税税率 4"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_5:"
+msgid "Accrued Re Percent 5"
+msgstr "应计等额附加税税率 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_1:"
+msgid "Accrued Re Tax 1"
+msgstr "应计等额附加税税额 1"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_2:"
+msgid "Accrued Re Tax 2"
+msgstr "应计等额附加税税额 2"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_3:"
+msgid "Accrued Re Tax 3"
+msgstr "应计等额附加税税额 3"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_4:"
+msgid "Accrued Re Tax 4"
+msgstr "应计等额附加税税额 4"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_5:"
+msgid "Accrued Re Tax 5"
+msgstr "应计等额附加税税额 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
+msgid "Accrued Re Tax Modification"
+msgstr "应计等额附加税税额调整"
+
+msgctxt "field:aeat.303.report,accrued_total_tax:"
+msgid "Accrued Total Tax"
+msgstr "应计税额合计"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_0:"
+msgid "Accrued Vat Base 0"
+msgstr "应计增值税计税基础 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_1:"
+msgid "Accrued Vat Base 1"
+msgstr "应计增值税计税基础 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_2:"
+msgid "Accrued Vat Base 2"
+msgstr "应计增值税计税基础 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_3:"
+msgid "Accrued Vat Base 3"
+msgstr "应计增值税计税基础 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_4:"
+msgid "Accrued Vat Base 4"
+msgstr "应计增值税计税基础 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_5:"
+msgid "Accrued Vat Base 5"
+msgstr "应计增值税计税基础 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
+msgid "Accrued Vat Base Modification"
+msgstr "应计增值税计税基础调整"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_0:"
+msgid "Accrued Vat Percent 0"
+msgstr "应计增值税税率 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
+msgid "Accrued Vat Percent 1"
+msgstr "应计增值税税率 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
+msgid "Accrued Vat Percent 2"
+msgstr "应计增值税税率 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
+msgid "Accrued Vat Percent 3"
+msgstr "应计增值税税率 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_4:"
+msgid "Accrued Vat Percent 4"
+msgstr "应计增值税税率 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_5:"
+msgid "Accrued Vat Percent 5"
+msgstr "应计增值税税率 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_0:"
+msgid "Accrued Vat Tax 0"
+msgstr "应计增值税税额 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
+msgid "Accrued Vat Tax 1"
+msgstr "应计增值税税额 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
+msgid "Accrued Vat Tax 2"
+msgstr "应计增值税税额 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
+msgid "Accrued Vat Tax 3"
+msgstr "应计增值税税额 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_4:"
+msgid "Accrued Vat Tax 4"
+msgstr "应计增值税税额 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_5:"
+msgid "Accrued Vat Tax 5"
+msgstr "应计增值税税额 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
+msgid "Accrued Vat Tax Modification"
+msgstr "应计增值税税额调整"
+
+msgctxt "field:aeat.303.report,additional_page_indicator:"
+msgid "Complementari Page Indicator"
+msgstr "补充页标识"
+
+msgctxt "field:aeat.303.report,aduana_tax_pending:"
+msgid "Aduana Tax Pending"
+msgstr "待缴关税"
+
+msgctxt "field:aeat.303.report,annual_intragroup_transaction:"
+msgid "Intragroup Transactions"
+msgstr "集团内部交易"
+
+msgctxt "field:aeat.303.report,annual_operation_volume:"
+msgid "Exist operations annual volume (art. 121 LIVA)"
+msgstr "存在年度营业额交易（LIVA 第 121 条）"
+
+msgctxt "field:aeat.303.report,annual_oss_not_subject_operations:"
+msgid "Not Subjected Operations Special Regime Unic Window"
+msgstr "一站式申报特殊制度下的不征税交易"
+
+msgctxt "field:aeat.303.report,annual_oss_subject_operations:"
+msgid "Subjected Operations Special Regime Unic Window"
+msgstr "一站式申报特殊制度下的应税交易"
+
+msgctxt "field:aeat.303.report,annual_subject_operations_w_reverse_charge:"
+msgid "Subjected Operations With Reverse Charge"
+msgstr "适用反向征税的应税交易"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
+msgid "Auto Bankruptcy Date"
+msgstr "破产裁定日期"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Auto Bankruptcy Declaration"
+msgstr "破产裁定申报"
+
+msgctxt "field:aeat.303.report,bank_account:"
+msgid "Bank Account"
+msgstr "银行账户"
+
+msgctxt "field:aeat.303.report,before_result:"
+msgid "Before Result"
+msgstr "先前结果"
+
+msgctxt "field:aeat.303.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "计算日期"
+
+msgctxt "field:aeat.303.report,cnae1:"
+msgid "CNAE 1"
+msgstr "CNAE 1"
+
+msgctxt "field:aeat.303.report,cnae2:"
+msgid "CNAE 2"
+msgstr "CNAE 2"
+
+msgctxt "field:aeat.303.report,cnae3:"
+msgid "CNAE 3"
+msgstr "CNAE 3"
+
+msgctxt "field:aeat.303.report,cnae4:"
+msgid "CNAE 4"
+msgstr "CNAE 4"
+
+msgctxt "field:aeat.303.report,cnae5:"
+msgid "CNAE 5"
+msgstr "CNAE 5"
+
+msgctxt "field:aeat.303.report,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:aeat.303.report,company_name:"
+msgid "Company Name"
+msgstr "公司名称"
+
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "公司参与者"
+
+msgctxt "field:aeat.303.report,company_vat:"
+msgid "VAT"
+msgstr "增值税"
+
+msgctxt "field:aeat.303.report,complementary_declaration:"
+msgid "Complementary Declaration"
+msgstr "补充申报"
+
+msgctxt ""
+"field:aeat.303.report,complementary_declaration_administrative_discrepancy:"
+msgid "Complementary Declaration Administrative Discrepancy"
+msgstr "补充申报：行政认定差异"
+
+msgctxt "field:aeat.303.report,complementary_declaration_amount:"
+msgid "Complementary Declaration Amount"
+msgstr "补充申报金额"
+
+msgctxt "field:aeat.303.report,complementary_declaration_modify_direct_debit:"
+msgid "Complementary Declaration Modify Direct Debit"
+msgstr "补充申报：修改直接扣款"
+
+msgctxt "field:aeat.303.report,complementary_declaration_other_adjustements:"
+msgid "Complementary Declaration Other Adjustements"
+msgstr "补充申报：其他调整"
+
+msgctxt "field:aeat.303.report,complementary_declaration_rectification:"
+msgid "Complementary Declaration Rectification"
+msgstr "补充申报：更正"
+
+msgctxt "field:aeat.303.report,currency:"
+msgid "Currency"
+msgstr "货币"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments:"
+msgid "Deduct Advance payments (petrol, diesel, biofuel)"
+msgstr "抵扣预付款（汽油、柴油、生物燃料）"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments_amount:"
+msgid "Deduct Advance payments Amount (petrol, diesel, biofuel)"
+msgstr "可抵扣预付款金额（汽油、柴油、生物燃料）"
+
+msgctxt "field:aeat.303.report,deductible_compensations:"
+msgid "Deductible Compensations"
+msgstr "可抵扣补偿额"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base1:"
+msgid "Deductible Compensations Base 1"
+msgstr "可抵扣补偿计税基础 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base2:"
+msgid "Deductible Compensations Base 2"
+msgstr "可抵扣补偿计税基础 2"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax1:"
+msgid "Deductible Compensations Tax 1"
+msgstr "可抵扣补偿税额 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax2:"
+msgid "Deductible Compensations Tax 2"
+msgstr "可抵扣补偿税额 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base1:"
+msgid "Deductible Current Domestic Operations Base 1"
+msgstr "可抵扣国内日常交易计税基础 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base2:"
+msgid "Deductible Current Domestic Operations Base 2"
+msgstr "可抵扣国内日常交易计税基础 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base:"
+msgid "Deductible Current Domestic Operations Base"
+msgstr "可抵扣国内日常交易计税基础"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax1:"
+msgid "Deductible Current Domestic Operations Tax 1"
+msgstr "可抵扣国内日常交易税额 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax2:"
+msgid "Deductible Current Domestic Operations Tax 2"
+msgstr "可抵扣国内日常交易税额 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax:"
+msgid "Deductible Current Domestic Operations Tax"
+msgstr "可抵扣国内日常交易税额"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base1:"
+msgid "Deductible Current Import Operations Base 1"
+msgstr "可抵扣日常进口交易计税基础 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base2:"
+msgid "Deductible Current Import Operations Base 2"
+msgstr "可抵扣日常进口交易计税基础 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base:"
+msgid "Deductible Current Import Operations Base"
+msgstr "可抵扣日常进口交易计税基础"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax1:"
+msgid "Deductible Current Import Operations Tax 1"
+msgstr "可抵扣日常进口交易税额 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax2:"
+msgid "Deductible Current Import Operations Tax 2"
+msgstr "可抵扣日常进口交易税额 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax:"
+msgid "Deductible Current Import Operations Tax"
+msgstr "可抵扣日常进口交易税额"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base1:"
+msgid "Deductible Current Intracommunity Operations Base 1"
+msgstr "可抵扣欧盟内部日常交易计税基础 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base2:"
+msgid "Deductible Current Intracommunity Operations Base 2"
+msgstr "可抵扣欧盟内部日常交易计税基础 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base:"
+msgid "Deductible Current Intracommunity Operations Base"
+msgstr "可抵扣欧盟内部日常交易计税基础"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax1:"
+msgid "Deductible Current Intracommunity Operations Tax 1"
+msgstr "可抵扣欧盟内部日常交易税额 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax2:"
+msgid "Deductible Current Intracommunity Operations Tax 2"
+msgstr "可抵扣欧盟内部日常交易税额 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax:"
+msgid "Deductible Current Intracommunity Operations Tax"
+msgstr "可抵扣欧盟内部日常交易税额"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base1:"
+msgid "Deductible Investment Domestic Operations Base 1"
+msgstr "可抵扣国内投资交易计税基础 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base2:"
+msgid "Deductible Investment Domestic Operations Base 2"
+msgstr "可抵扣国内投资交易计税基础 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base:"
+msgid "Deductible Investment Domestic Operations Base"
+msgstr "可抵扣国内投资交易计税基础"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_tax1:"
+msgid "Deductible Investment Domestic Operations Tax 1"
+msgstr "可抵扣国内投资交易税额 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_tax2:"
+msgid "Deductible Investment Domestic Operations Tax 2"
+msgstr "可抵扣国内投资交易税额 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax:"
+msgid "Deductible Investment Domestic Operations Tax"
+msgstr "可抵扣国内投资交易税额"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base1:"
+msgid "Deductible Investment Import Operations Base 1"
+msgstr "可抵扣投资进口交易计税基础 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base2:"
+msgid "Deductible Investment Import Operations Base 2"
+msgstr "可抵扣投资进口交易计税基础 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base:"
+msgid "Deductible Investment Import Operations Base"
+msgstr "可抵扣投资进口交易计税基础"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax1:"
+msgid "Deductible Investment Import Operations Tax 1"
+msgstr "可抵扣投资进口交易税额 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax2:"
+msgid "Deductible Investment Import Operations Tax 2"
+msgstr "可抵扣投资进口交易税额 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax:"
+msgid "Deductible Investment Import Operations Tax"
+msgstr "可抵扣投资进口交易税额"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base1:"
+msgid "Deductible Investment Intracommunity Operations Base 1"
+msgstr "可抵扣欧盟内部投资交易计税基础 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base2:"
+msgid "Deductible Investment Intracommunity Operations Base 2"
+msgstr "可抵扣欧盟内部投资交易计税基础 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base:"
+msgid "Deductible Investment Intracommunity Operations Base"
+msgstr "可抵扣欧盟内部投资交易计税基础"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax1:"
+msgid "Deductible Investment Intracommunity Operations Tax 1"
+msgstr "可抵扣欧盟内部投资交易税额 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax2:"
+msgid "Deductible Investment Intracommunity Operations Tax 2"
+msgstr "可抵扣欧盟内部投资交易税额 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax:"
+msgid "Deductible Investment Intracommunity Operations Tax"
+msgstr "可抵扣欧盟内部投资交易税额"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization1:"
+msgid "Deductible Investment Regularization 1"
+msgstr "可抵扣投资调整 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization2:"
+msgid "Deductible Investment Regularization 2"
+msgstr "可抵扣投资调整 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization:"
+msgid "Deductible Investment Regularization"
+msgstr "可抵扣投资调整"
+
+msgctxt "field:aeat.303.report,deductible_pro_rata_regularization:"
+msgid "Deductible Pro Rata Regularization"
+msgstr "可抵扣比例调整"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base1:"
+msgid "Deductible Regularization Base 1"
+msgstr "可抵扣调整计税基础 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base2:"
+msgid "Deductible Regularization Base 2"
+msgstr "可抵扣调整计税基础 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base:"
+msgid "Deductible Regularization Base"
+msgstr "可抵扣调整计税基础"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax1:"
+msgid "Deductible Regularization Tax 1"
+msgstr "可抵扣调整税额 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax2:"
+msgid "Deductible Regularization Tax 2"
+msgstr "可抵扣调整税额 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax:"
+msgid "Deductible Regularization Tax"
+msgstr "可抵扣调整税额"
+
+msgctxt "field:aeat.303.report,deductible_total1:"
+msgid "Total Deductible 1"
+msgstr "可抵扣总额 1"
+
+msgctxt "field:aeat.303.report,deductible_total2:"
+msgid "Total Deductible 2"
+msgstr "可抵扣总额 2"
+
+msgctxt "field:aeat.303.report,deductible_total:"
+msgid "Deductible Total"
+msgstr "可抵扣总额"
+
+msgctxt "field:aeat.303.report,exonerated_mod390:"
+msgid "Exonerated Model 390"
+msgstr "免报 390 表"
+
+msgctxt "field:aeat.303.report,exports:"
+msgid "Exports"
+msgstr "导出"
+
+msgctxt "field:aeat.303.report,file_:"
+msgid "File"
+msgstr "文件"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "文件名"
+
+msgctxt "field:aeat.303.report,general_regime_result:"
+msgid "General Regime Result"
+msgstr "一般制度计算结果"
+
+msgctxt "field:aeat.303.report,info_territory_alava:"
+msgid "Taxation Information by Territory: Alava"
+msgstr "按地区划分的纳税信息：阿拉瓦"
+
+msgctxt "field:aeat.303.report,info_territory_guipuzcoa:"
+msgid "Taxation Information by Territory: Guipuzcoa"
+msgstr "按地区划分的纳税信息：吉普斯夸"
+
+msgctxt "field:aeat.303.report,info_territory_navarra:"
+msgid "Taxation Information by Territory: Navarra"
+msgstr "按地区划分的纳税信息：纳瓦拉"
+
+msgctxt "field:aeat.303.report,info_territory_vizcaya:"
+msgid "Taxation Information by Territory: Vizcaya"
+msgstr "按地区划分的纳税信息：比斯开"
+
+msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
+msgid "Information on taxation by reason of territorya: Commo territory"
+msgstr "按地区划分的纳税信息：普通税区"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
+msgid "Intracommunity Adquisitions Base"
+msgstr "欧盟内部购入计税基础"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_tax:"
+msgid "Intracommunity Adquisitions Tax"
+msgstr "欧盟内部购入税额"
+
+msgctxt "field:aeat.303.report,intracommunity_deliveries:"
+msgid "Intracommunity Deliveries"
+msgstr "欧盟内部交付"
+
+msgctxt "field:aeat.303.report,joint_liquidation:"
+msgid "Is joint liquidation"
+msgstr "是否合并清算"
+
+msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
+msgid "Joint Taxation State Provincial Councils"
+msgstr "国家与省级议会联合征税"
+
+msgctxt "field:aeat.303.report,liquidation_result:"
+msgid "Liquidation Result"
+msgstr "清算结果"
+
+msgctxt "field:aeat.303.report,monthly_return_subscription:"
+msgid "Montly Return Subscription"
+msgstr "登记月度退税"
+
+msgctxt "field:aeat.303.report,move:"
+msgid "Move"
+msgstr "记账凭证"
+
+msgctxt "field:aeat.303.report,move_account:"
+msgid "Account for Move"
+msgstr "凭证科目"
+
+msgctxt "field:aeat.303.report,move_description:"
+msgid "Description for Move"
+msgstr "凭证描述"
+
+msgctxt "field:aeat.303.report,move_journal:"
+msgid "Journal for Move"
+msgstr "凭证日记账"
+
+msgctxt "field:aeat.303.report,not_subject_localitzation_rules:"
+msgid ""
+"Not Subject To Localitzation Rules (Except For Those Included in Box 123)"
+msgstr "依交易地点规则不征税（不含第 123 栏所列交易）"
+
+msgctxt "field:aeat.303.report,operations_amount1:"
+msgid "Operations Amount 1"
+msgstr "交易金额 1"
+
+msgctxt "field:aeat.303.report,operations_amount2:"
+msgid "Operations Amount 2"
+msgstr "交易金额 2"
+
+msgctxt "field:aeat.303.report,operations_amount3:"
+msgid "Operations Amount 3"
+msgstr "交易金额 3"
+
+msgctxt "field:aeat.303.report,operations_amount4:"
+msgid "Operations Amount 4"
+msgstr "交易金额 4"
+
+msgctxt "field:aeat.303.report,operations_amount5:"
+msgid "Operations Amount 5"
+msgstr "交易金额 5"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "可抵扣交易金额 1"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "可抵扣交易金额 2"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "可抵扣交易金额 3"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "可抵扣交易金额 4"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "可抵扣交易金额 5"
+
+msgctxt "field:aeat.303.report,oss_not_subject_operations:"
+msgid "OSS, Not Subject Operations"
+msgstr "OSS 不征税交易"
+
+msgctxt "field:aeat.303.report,oss_subject_operations:"
+msgid "OSS, Subject Operations"
+msgstr "OSS 应税交易"
+
+msgctxt "field:aeat.303.report,other_passive_subject_base:"
+msgid "Other Passive Subject Adquisitions Base"
+msgstr "其他反向征税购入计税基础"
+
+msgctxt "field:aeat.303.report,other_passive_subject_tax:"
+msgid "Other Passive Subject Adquisitions Tax"
+msgstr "其他反向征税购入税额"
+
+msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
+msgid "Passive Subject on a Foral Administration"
+msgstr "地方特许税区纳税人"
+
+msgctxt "field:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Passive Subject voluntarily opted for the SII"
+msgstr "自愿选择 SII 的纳税人"
+
+msgctxt "field:aeat.303.report,period:"
+msgid "Period"
+msgstr "分期"
+
+msgctxt "field:aeat.303.report,post_and_close:"
+msgid "Post and Close"
+msgstr "过账并关闭"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_current_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "比例分摊前可抵扣的国内日常交易税额"
+
+msgctxt "field:aeat.303.report,preprorrata_deductible_regularization_tax:"
+msgid "Pre-Prorrata Deductible Regularization Tax"
+msgstr "比例分摊前可抵扣的调整税额"
+
+msgctxt "field:aeat.303.report,previous_declaration_receipt:"
+msgid "Previous Declaration Receipt"
+msgstr "上次申报回执"
+
+msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
+msgid "Previous Period Amount To Compensate"
+msgstr "前期可抵补金额"
+
+msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
+msgid "Previous Period Pending Amount To Compensate"
+msgstr "前期待抵补金额"
+
+msgctxt "field:aeat.303.report,previous_report:"
+msgid "Previous Report"
+msgstr "上次申报表"
+
+msgctxt "field:aeat.303.report,prorrata_deductible_amount:"
+msgid "Prorrata Deductible Amount"
+msgstr "按比例可抵扣金额"
+
+msgctxt "field:aeat.303.report,prorrata_percent1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "可抵扣交易金额 1"
+
+msgctxt "field:aeat.303.report,prorrata_percent2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "可抵扣交易金额 2"
+
+msgctxt "field:aeat.303.report,prorrata_percent3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "可抵扣交易金额 3"
+
+msgctxt "field:aeat.303.report,prorrata_percent4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "可抵扣交易金额 4"
+
+msgctxt "field:aeat.303.report,prorrata_percent5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "可抵扣交易金额 5"
+
+msgctxt "field:aeat.303.report,prorrata_percent_applied:"
+msgid "Prorrata Percent Applied"
+msgstr "已应用的抵扣比例"
+
+msgctxt "field:aeat.303.report,prorrata_real_percent:"
+msgid "Prorrata Real Percent"
+msgstr "实际抵扣比例"
+
+msgctxt "field:aeat.303.report,prorrata_total_amount:"
+msgid "Prorrata Total Amount"
+msgstr "比例抵扣计算总额"
+
+msgctxt "field:aeat.303.report,prorrata_type1:"
+msgid "Prorrata Type 1"
+msgstr "比例抵扣类型 1"
+
+msgctxt "field:aeat.303.report,prorrata_type2:"
+msgid "Prorrata Type 2"
+msgstr "比例抵扣类型 2"
+
+msgctxt "field:aeat.303.report,prorrata_type3:"
+msgid "Prorrata Type 3"
+msgstr "比例抵扣类型 3"
+
+msgctxt "field:aeat.303.report,prorrata_type4:"
+msgid "Prorrata Type 4"
+msgstr "比例抵扣类型 4"
+
+msgctxt "field:aeat.303.report,prorrata_type5:"
+msgid "Prorrata Type 5"
+msgstr "比例抵扣类型 5"
+
+msgctxt "field:aeat.303.report,recc:"
+msgid "Special Cash Criteria"
+msgstr "特殊现金收付制"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_base:"
+msgid "Special Cash Criteria Asquistions Base"
+msgstr "特殊现金收付制购入计税基础"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_tax:"
+msgid "Special Cash Criteria Adquistions Tax"
+msgstr "特殊现金收付制购入税额"
+
+msgctxt "field:aeat.303.report,recc_deliveries_base:"
+msgid "Special Cash Criteria Deliveries Base"
+msgstr "特殊现金收付制交付计税基础"
+
+msgctxt "field:aeat.303.report,recc_deliveries_tax:"
+msgid "Special Cash Criteria Deliveries Tax"
+msgstr "特殊现金收付制交付税额"
+
+msgctxt "field:aeat.303.report,recc_receiver:"
+msgid "Special Cash Criteria Receiver"
+msgstr "特殊现金收付制收款方"
+
+msgctxt "field:aeat.303.report,regime_type:"
+msgid "Tribute type"
+msgstr "税种"
+
+msgctxt "field:aeat.303.report,result:"
+msgid "Result"
+msgstr "结果"
+
+msgctxt "field:aeat.303.report,result_previous_period_amount_to_compensate:"
+msgid "Result Previous Period Amount To Compensate"
+msgstr "抵补前期金额后的结果"
+
+msgctxt "field:aeat.303.report,result_tax_regularitzation:"
+msgid "Tax Regularization art. 80.cinco.50a LIVA"
+msgstr "LIVA 第 80.cinco.50a 条税额调整"
+
+msgctxt "field:aeat.303.report,return_bank_address:"
+msgid "Bank Address"
+msgstr "银行地址"
+
+msgctxt "field:aeat.303.report,return_bank_city:"
+msgid "Bank City"
+msgstr "银行所在城市"
+
+msgctxt "field:aeat.303.report,return_bank_country_code:"
+msgid "Bank Country Code"
+msgstr "银行国家代码"
+
+msgctxt "field:aeat.303.report,return_bank_name:"
+msgid "Bank Name"
+msgstr "银行名称"
+
+msgctxt "field:aeat.303.report,return_sepa_check:"
+msgid "Sepa Check On Return"
+msgstr "退税时验证 SEPA"
+
+msgctxt "field:aeat.303.report,special_info_art_antiques_collectibles:"
+msgid "Special Regime Operations on Art, Antiques and Collectibles"
+msgstr "艺术品、古董和收藏品特殊制度交易"
+
+msgctxt ""
+"field:aeat.303.report,special_info_delivery_investment_domestic_operations:"
+msgid "Delivery of Investment Domestic Operations"
+msgstr "国内投资货物交付"
+
+msgctxt "field:aeat.303.report,special_info_exempt_op_2bdeduced:"
+msgid "Exports and Other Exempt Oprations to be Deduce"
+msgstr "出口及其他可抵扣的免税交易"
+
+msgctxt ""
+"field:aeat.303.report,special_info_exempt_op_wo_permission_2bdeduced:"
+msgid "Exempt Oprations without deduction right"
+msgstr "无抵扣权的免税交易"
+
+msgctxt "field:aeat.303.report,special_info_farming_cattleraising_fishing:"
+msgid "Especial Regime of Farming, Cattle rasing and Fishing"
+msgstr "农业、畜牧业和渔业特殊制度"
+
+msgctxt "field:aeat.303.report,special_info_financial_op_not_usual:"
+msgid "Operations Not Usual"
+msgstr "非经常性交易"
+
+msgctxt ""
+"field:aeat.303.report,special_info_intracommunity_deliveries_2bdeduced:"
+msgid "Intracommunity Delivery of Goods and Services"
+msgstr "欧盟内部货物和服务交付"
+
+msgctxt "field:aeat.303.report,special_info_key_main:"
+msgid "Main Activity Code"
+msgstr "主要经营活动代码"
+
+msgctxt "field:aeat.303.report,special_info_key_others_1:"
+msgid "Activity Code (Other 1)"
+msgstr "经营活动代码（其他 1）"
+
+msgctxt "field:aeat.303.report,special_info_key_others_2:"
+msgid "Activity Code (Other 2)"
+msgstr "经营活动代码（其他 2）"
+
+msgctxt "field:aeat.303.report,special_info_key_others_3:"
+msgid "Activity Code (Other 3)"
+msgstr "经营活动代码（其他 3）"
+
+msgctxt "field:aeat.303.report,special_info_key_others_4:"
+msgid "Activity Code (Other 4)"
+msgstr "经营活动代码（其他 4）"
+
+msgctxt "field:aeat.303.report,special_info_key_others_5:"
+msgid "Activity Code (Other 5)"
+msgstr "经营活动代码（其他 5）"
+
+msgctxt "field:aeat.303.report,special_info_operations_rs:"
+msgid "Simplified Regime Operations"
+msgstr "简化制度交易"
+
+msgctxt "field:aeat.303.report,special_info_passive_subject_re:"
+msgid "Passive Subject on Equivalence Regime"
+msgstr "等额附加税制度纳税人"
+
+msgctxt "field:aeat.303.report,special_info_recc:"
+msgid "Operations Especial Regime Cash Criteria"
+msgstr "特殊现金收付制交易"
+
+msgctxt ""
+"field:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Required declare Third Party Operations"
+msgstr "须申报第三方交易"
+
+msgctxt "field:aeat.303.report,special_info_rg_operations:"
+msgid "Operations in General Regime"
+msgstr "一般制度交易"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_main:"
+msgid "Main IAE Code"
+msgstr "主要 IAE 代码"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_1:"
+msgid "IAE Code (Other 1)"
+msgstr "IAE 代码（其他 1）"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_2:"
+msgid "IAE Code (Other 2)"
+msgstr "IAE 代码（其他 2）"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_3:"
+msgid "IAE Code (Other 3)"
+msgstr "IAE 代码（其他 3）"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_4:"
+msgid "IAE Code (Other 4)"
+msgstr "IAE 代码（其他 4）"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_5:"
+msgid "IAE Code (Other 5)"
+msgstr "IAE 代码（其他 5）"
+
+msgctxt "field:aeat.303.report,special_info_total:"
+msgid "Total Operations Volume"
+msgstr "交易总额"
+
+msgctxt "field:aeat.303.report,special_info_travel_agency:"
+msgid "Special Regime Operations on Travel Agency"
+msgstr "旅行社特殊制度交易"
+
+msgctxt "field:aeat.303.report,special_info_w_passive_subject:"
+msgid "Not Subjected Operations"
+msgstr "不征税交易"
+
+msgctxt "field:aeat.303.report,special_prorate:"
+msgid "Special prorate"
+msgstr "特殊比例抵扣"
+
+msgctxt "field:aeat.303.report,special_prorate_revocation:"
+msgid "Special prorate revocation"
+msgstr "撤销特殊比例抵扣"
+
+msgctxt "field:aeat.303.report,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:aeat.303.report,state_administration_amount:"
+msgid "State Administration Amount"
+msgstr "国家税务机关税额"
+
+msgctxt "field:aeat.303.report,state_administration_percent:"
+msgid "State Administration Percent"
+msgstr "国家税务机关比例"
+
+msgctxt "field:aeat.303.report,subject_operations_w_reverse_charge:"
+msgid "Subject Operations With Reverse Charge"
+msgstr "适用反向征税的应税交易"
+
+msgctxt "field:aeat.303.report,sum_results:"
+msgid "Sum of Results"
+msgstr "结果合计"
+
+msgctxt "field:aeat.303.report,swift_bank:"
+msgid "Swift"
+msgstr "SWIFT"
+
+msgctxt "field:aeat.303.report,to_deduce:"
+msgid "To Deduce"
+msgstr "待抵扣"
+
+msgctxt "field:aeat.303.report,type:"
+msgid "Declaration Type"
+msgstr "申报类型"
+
+msgctxt "field:aeat.303.report,without_activity:"
+msgid "Without Activity"
+msgstr "无经营活动"
+
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "年"
+
+msgctxt "field:aeat.303.template.mapping,aeat303_field:"
+msgid "Field"
+msgstr "字段"
+
+msgctxt "field:aeat.303.template.mapping,code:"
+msgid "Tax Code Template"
+msgstr "税码模板"
+
+msgctxt "field:aeat.303.template.mapping,number:"
+msgid "Number"
+msgstr "编号"
+
+msgctxt "field:aeat.303.template.mapping,type_:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "help:account.configuration,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的对方科目。"
+
+msgctxt "help:account.configuration,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的日记账。"
+
+msgctxt "help:account.configuration,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr "勾选后，会计凭证将过账，相应期间将关闭。"
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的对方科目。"
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的日记账。"
+
+msgctxt "help:account.configuration.aeat303,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr "勾选后，会计凭证将过账，相应期间将关闭。"
+
+msgctxt "help:aeat.303.report,aduana_tax_pending:"
+msgid "Import VAT paid by Aduana pending entry"
+msgstr "海关已核定但尚待缴纳的进口增值税"
+
+msgctxt "help:aeat.303.report,annual_operation_volume:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr "仅在免交年度增值税汇总申报表的最后一个期间填写。（免交 390 表且交易总额为零。）"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments:"
+msgid ""
+"Taxable person entitled to deduct advance payments for deliveries of petrol,"
+" diesel and biofuels after the completion of the non-customs warehousing "
+"regime"
+msgstr "非海关仓储制度结束后，有权抵扣汽油、柴油和生物燃料交付预付款的纳税人"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments_amount:"
+msgid ""
+"Payment on account of deliveries of gasoline, diesel and biofuels after the "
+"completion of the non-customs deposit regime attributable to the State "
+"Administration (Sum of box 36 of all models 319 corresponding to deliveries "
+"included in this self-assessment)"
+msgstr "非海关仓储制度结束后，归属国家税务机关的汽油、柴油和生物燃料交付预缴款（本次自行申报所含交付对应的所有 319 表第 36 栏之和）"
+
+msgctxt "help:aeat.303.report,exonerated_mod390:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr "仅在免交年度增值税汇总申报表的最后一个期间填写。（免交 390 表且交易总额为零。）"
+
+msgctxt "help:aeat.303.report,move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的对方科目。"
+
+msgctxt "help:aeat.303.report,move_description:"
+msgid ""
+"Optionaly you can add information to the account move if it is created "
+"automatically."
+msgstr "若自动创建会计凭证，可选择添加凭证信息。"
+
+msgctxt "help:aeat.303.report,move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "生成 303 申报表时创建会计凭证所使用的日记账。"
+
+msgctxt "help:aeat.303.report,passive_subject_foral_administration:"
+msgid ""
+"Passive Subject that tribute exclusively on a Foral Administration with an "
+"import TAX paid by Aduana pending entry."
+msgstr "仅向地方特许税务机关纳税，并存在海关已核定但尚待缴纳进口税的纳税人。"
+
+msgctxt "help:aeat.303.report,post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr "勾选后，会计凭证将过账，相应期间将关闭。"
+
+msgctxt "help:aeat.303.report,result_tax_regularitzation:"
+msgid ""
+"Only fill if you have done the 952 model. To Fill with the tax to recover."
+msgstr "仅在已提交 952 表时填写。填写待退税额。"
+
+msgctxt ""
+"help:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid ""
+"Check if you have carried out transactions for which you are required to "
+"submit the annual declaration of transactions with third parties."
+msgstr "如果发生了必须提交第三方交易年度申报表的交易，请勾选。"
+
+msgctxt "model:account.configuration.aeat303,name:"
+msgid "AEAT 303 Account Configuration"
+msgstr "AEAT 303 会计配置"
+
+msgctxt "model:aeat.303.mapping,name:"
+msgid "AEAT 303 TaxCode Mapping"
+msgstr "AEAT 303 税码映射"
+
+msgctxt "model:aeat.303.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "AEAT 303 税码映射代码关系"
+
+msgctxt "model:aeat.303.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "AEAT 303 税码映射代码关系"
+
+msgctxt "model:aeat.303.prorrata.mapping,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping"
+msgstr "AEAT 303 税码比例抵扣映射"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping Relation"
+msgstr "AEAT 303 税码比例抵扣映射关系"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping Relation"
+msgstr "AEAT 303 税码比例抵扣模板映射关系"
+
+msgctxt "model:aeat.303.prorrata.mapping.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping"
+msgstr "AEAT 303 税码比例抵扣模板映射"
+
+msgctxt "model:aeat.303.report,name:"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 申报表"
+
+msgctxt "model:aeat.303.template.mapping,name:"
+msgid "AEAT 303 TemplateTaxCode Mapping"
+msgstr "AEAT 303 税码模板映射"
+
+msgctxt "model:ir.action,name:act_aeat303_report_moves_form"
+msgid "Moves"
+msgstr "记账凭证"
+
+msgctxt "model:ir.action,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "AEAT 303 映射"
+
+msgctxt "model:ir.action,name:act_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata mapping"
+msgstr "AEAT 303 比例抵扣映射"
+
+msgctxt "model:ir.action,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 申报表"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "AEAT 303 映射"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 申报表"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_annual_operation_volume"
+msgid ""
+"The Annual Operation Volume field could be 'YES' or 'NO' only for periods "
+"'12' or '4T', check report with ID: %(report)s"
+msgstr "仅期间“12”或“4T”的年度营业额字段可为“是”或“否”，请检查 ID 为 %(report)s 的申报表。"
+
+msgctxt "model:ir.message,text:msg_invalid_compensate"
+msgid ""
+"To compensate periods before need to have the actual period result postive "
+"([66] + [77] - [78]) and you can't compensate more than this result."
+msgstr "抵补前期金额要求本期结果为正数（[66] + [77] - [78]），且抵补金额不能超过该结果。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 303 report \"%(name)s\" must be Euro."
+msgstr "AEAT 303 申报表“%(name)s”的货币必须为欧元。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_exonerated_mod390"
+msgid ""
+"The Exonerated Model 390 field could be 'YES' or 'NO' only for periods '12' "
+"or '4T', check report with ID: %(report)s"
+msgstr "仅期间“12”或“4T”的免报 390 表字段可为“是”或“否”，请检查 ID 为 %(report)s 的申报表。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_prorrata_percent"
+msgid ""
+"One of the Prorrata percent added in then 5th page is greater than 100, and "
+"thats not correct. (Report ID: %(report)s)"
+msgstr "第 5 页中有一个抵扣比例大于 100，这是无效的。（申报表 ID：%(report)s）"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check"
+msgid ""
+"The Sepa Check field is not correct for the type selected. Check report with"
+" ID: %(report)s"
+msgstr "SEPA 验证字段与所选类型不符。请检查 ID 为 %(report)s 的申报表。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check_period"
+msgid ""
+"The Sepa Check field is not correct for the period of the report. Check "
+"report with ID: %(report)s"
+msgstr "SEPA 验证字段与申报期间不符。请检查 ID 为 %(report)s 的申报表。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_sepa_check"
+msgid ""
+"The type of 'Sepa Check On Return' could not be empty for the 'Type' "
+"selected (check report with ID: %(report)s)."
+msgstr "对于所选“类型”，“退税时验证 SEPA”的类型不能为空（请检查 ID 为 %(report)s 的申报表）。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_type_period"
+msgid ""
+"The type of 'Return by trasnfer to foreign account' it's only for periods "
+"'3T', '4T' and from '07' to '12', check report with ID: %(report)s"
+msgstr "“转账至境外账户退税”类型仅适用于期间“3T”、“4T”及“07”至“12”，请检查 ID 为 %(report)s 的申报表。"
+
+msgctxt "model:ir.message,text:msg_no_config"
+msgid ""
+"No configuration found for AEAT303. Please, update your chart of accounts."
+msgstr "未找到 AEAT303 配置。请更新科目表。"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_not_possible_cancel"
+msgid ""
+"The AEAT 303 report (ID: %(report)s) cannot be possible cancelled because "
+"its account move is reconciled."
+msgstr "AEAT 303 申报表（ID：%(report)s）的会计凭证已核销，无法取消。"
+
+msgctxt "model:ir.message,text:msg_prorrata_account_required"
+msgid "Please assign a prorrata account before calculating general prorrata"
+msgstr "计算一般抵扣比例前，请先指定比例抵扣科目。"
+
+msgctxt "model:ir.message,text:msg_prorrata_regularization"
+msgid "Prorrata Regularization"
+msgstr "比例抵扣调整"
+
+msgctxt "model:ir.message,text:msg_tax_code_field_must_be_unique"
+msgid "AEAT 303 Tax Code Mapping: Field must be unique."
+msgstr "AEAT 303 税码映射：字段必须唯一。"
+
+msgctxt "model:ir.message,text:msg_template_tax_code_field_must_be_unique"
+msgid "AEAT 303 Template Tax Code Mapping: Field must be unique."
+msgstr "AEAT 303 税码模板映射：字段必须唯一。"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_calculate_button"
+msgid "Calculate"
+msgstr "计算"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_cancel_button"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_draft_button"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_process_button"
+msgid "Process"
+msgstr "处理"
+
+msgctxt "model:ir.model.button,string:configuration_calculate_prorrata"
+msgid "Calculate General Prorrata"
+msgstr "计算一般抵扣比例"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_mapping"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_prorrata_mapping"
+msgid "User in company"
+msgstr "公司内用户"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_mapping"
+msgid "AEAT 303 Mapping"
+msgstr "AEAT 303 映射"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata Mapping"
+msgstr "AEAT 303 比例抵扣映射"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 申报表"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "免报 390 表"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Numeric"
+msgstr "数字"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "After Bankruptcy Proceeding"
+msgstr "破产程序之后"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Before Bankruptcy Proceeding"
+msgstr "破产程序之前"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "No"
+msgstr "否"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "April"
+msgstr "四月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "August"
+msgstr "八月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "December"
+msgstr "十二月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "February"
+msgstr "二月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "First quarter"
+msgstr "第一季度"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Fourth quarter"
+msgstr "第四季度"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "January"
+msgstr "一月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "July"
+msgstr "七月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "June"
+msgstr "六月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "March"
+msgstr "三月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "May"
+msgstr "五月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "November"
+msgstr "十一月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "October"
+msgstr "十月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Second quarter"
+msgstr "第二季度"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "September"
+msgstr "九月"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Third quarter"
+msgstr "第三季度"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "None"
+msgstr "无"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on general regime"
+msgstr "仅按一般制度纳税"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Empty"
+msgstr "空"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Other countries"
+msgstr "其他国家"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "SEPA European Union"
+msgstr "SEPA 欧盟"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Spain account"
+msgstr "西班牙账户"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "No"
+msgstr "否"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Yes"
+msgstr "是"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Calculated"
+msgstr "已计算"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Cancelled"
+msgstr "已取消"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Done"
+msgstr "完成"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Draft"
+msgstr "草案"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Application for compensation"
+msgstr "申请抵补"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Returns"
+msgstr "税务往来账户 - 退税"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Revenue"
+msgstr "税务往来账户 - 缴税"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Direct incomes in account"
+msgstr "直接缴入账户"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Income"
+msgstr "收入"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "No activity / Zero result"
+msgstr "无经营活动 / 结果为零"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return"
+msgstr "返回"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return by trasnfer to foreign account"
+msgstr "转账至境外账户退税"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "免报 390 表"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Numeric"
+msgstr "数字"
+
+msgctxt "view:account.configuration:"
+msgid "AEAT 303"
+msgstr "AEAT 303"
+
+msgctxt "view:aeat.303.mapping:"
+msgid "AEAT 303 Mapping"
+msgstr "AEAT 303 映射"
+
+msgctxt "view:aeat.303.report:"
+msgid "Accrued VAT"
+msgstr "应计增值税"
+
+msgctxt "view:aeat.303.report:"
+msgid "Additional information"
+msgstr "附加信息"
+
+msgctxt "view:aeat.303.report:"
+msgid "Base:"
+msgstr "计税基础："
+
+msgctxt "view:aeat.303.report:"
+msgid "Complementary Declaration"
+msgstr "补充申报"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Domestic Operations"
+msgstr "国内日常交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Import Operations"
+msgstr "日常进口交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Intracommunity Operations"
+msgstr "欧盟内部日常交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible VAT"
+msgstr "可抵扣增值税"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible regularization"
+msgstr "可抵扣税额调整"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Domestic Operations"
+msgstr "国内投资交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Import Operations"
+msgstr "投资进口交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Intracommunity Operations"
+msgstr "欧盟内部投资交易"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 01"
+msgstr "第 01 页"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 03"
+msgstr "第 03 页"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 04"
+msgstr "第 04 页"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 05"
+msgstr "第 05 页"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page DID"
+msgstr "DID 页"
+
+msgctxt "view:aeat.303.report:"
+msgid "Result"
+msgstr "结果"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Adquisitions"
+msgstr "特殊现金收付制购入"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Deliveries"
+msgstr "特殊现金收付制交付"
+
+msgctxt "view:aeat.303.report:"
+msgid "Supported Tax:"
+msgstr "进项税额："
+
+msgctxt "view:aeat.303.report:"
+msgid "Tax:"
+msgstr "税额："
+
+msgctxt "field:aeat.303.report,amount_to_compensate:"
+msgid "Amount To Compensate"
+msgstr "待抵补金额"
+
+msgctxt "field:aeat.303.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "会计年度"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_investment_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "比例分摊前可抵扣的国内日常交易税额"
