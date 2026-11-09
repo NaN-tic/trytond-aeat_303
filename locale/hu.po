@@ -1,0 +1,1938 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:account.configuration,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "Könyvelési bizonylat főkönyvi számlája"
+
+msgctxt "field:account.configuration,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "Halasztott DUA főkönyvi számlája"
+
+msgctxt "field:account.configuration,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "Könyvelési bizonylat naplója"
+
+msgctxt "field:account.configuration,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "Könyvelés és lezárás"
+
+msgctxt "field:account.configuration,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "Arányosítás főkönyvi számlája"
+
+msgctxt "field:account.configuration,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "Arányosítás üzleti éve"
+
+msgctxt "field:account.configuration,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "Arányosítás százaléka"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "Könyvelési bizonylat főkönyvi számlája"
+
+msgctxt "field:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "Halasztott DUA főkönyvi számlája"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "Könyvelési bizonylat naplója"
+
+msgctxt "field:account.configuration.aeat303,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "Könyvelés és lezárás"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "Arányosítás főkönyvi számlája"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "Arányosítás üzleti éve"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "Arányosítás százaléka"
+
+msgctxt "field:account.configuration.aeat303,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:account.invoice.tax,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "Halasztott DUA-adó"
+
+msgctxt "field:aeat.303.report,company_deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "Halasztott DUA-adó"
+
+msgctxt "field:company.company,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "Halasztott DUA-adó"
+
+msgctxt "field:aeat.303.mapping,aeat303_field:"
+msgid "Field"
+msgstr "Mező"
+
+msgctxt "help:account.configuration,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr ""
+"A 77. mezőhöz rendelt halasztott DUA-adót tartalmazó szállítói számlák "
+"ellenszámlájaként használt főkönyvi számla."
+
+msgctxt "help:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr ""
+"A 77. mezőhöz rendelt halasztott DUA-adót tartalmazó szállítói számlák "
+"ellenszámlájaként használt főkönyvi számla."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_deferred_dua_account_change"
+msgid ""
+"The account of invoice \"%(invoice)s\" will be changed to \"%(account)s\" "
+"because the invoice is subject to deferred DUA tax."
+msgstr ""
+"A(z) „%(invoice)s” számla főkönyvi számlája „%(account)s” lesz, mert a "
+"számla halasztott DUA-adó alá esik."
+
+msgctxt "field:aeat.303.mapping,code:"
+msgid "Tax Code"
+msgstr "Adókód"
+
+msgctxt "field:aeat.303.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "Vállalatonkénti kód"
+
+msgctxt "field:aeat.303.mapping,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.303.mapping,number:"
+msgid "Number"
+msgstr "Szám"
+
+msgctxt "field:aeat.303.mapping,template:"
+msgid "Template"
+msgstr "Sablon"
+
+msgctxt "field:aeat.303.mapping,type_:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "Adókód"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "Megfeleltetés"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "Adókódsablon"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "Megfeleltetés"
+
+msgctxt "field:aeat.303.prorrata.mapping,code:"
+msgid "Tax Code"
+msgstr "Adókód"
+
+msgctxt "field:aeat.303.prorrata.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "Vállalatonkénti kód"
+
+msgctxt "field:aeat.303.prorrata.mapping,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.303.prorrata.mapping,prorrata_field:"
+msgid "Field"
+msgstr "Mező"
+
+msgctxt "field:aeat.303.prorrata.mapping,template:"
+msgid "Template"
+msgstr "Sablon"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "Adókód"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "Megfeleltetés"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "Adókódsablon"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "Megfeleltetés"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,code:"
+msgid "Tax Code Template"
+msgstr "Adókódsablon"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,prorrata_field:"
+msgid "Field"
+msgstr "Mező"
+
+msgctxt "field:aeat.303.report,accrued_re_base_1:"
+msgid "Accrued Re Base 1"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapja 1"
+
+msgctxt "field:aeat.303.report,accrued_re_base_2:"
+msgid "Accrued Re Base 2"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapja 2"
+
+msgctxt "field:aeat.303.report,accrued_re_base_3:"
+msgid "Accrued Re Base 3"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapja 3"
+
+msgctxt "field:aeat.303.report,accrued_re_base_4:"
+msgid "Accrued Re Base 4"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapja 4"
+
+msgctxt "field:aeat.303.report,accrued_re_base_5:"
+msgid "Accrued Re Base 5"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapja 5"
+
+msgctxt "field:aeat.303.report,accrued_re_base_modification:"
+msgid "Accrued Re Base Modification"
+msgstr "Fizetendő kiegyenlítő pótlék adóalapjának módosítása"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_1:"
+msgid "Accrued Re Percent 1"
+msgstr "Fizetendő kiegyenlítő pótlék kulcsa 1"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_2:"
+msgid "Accrued Re Percent 2"
+msgstr "Fizetendő kiegyenlítő pótlék kulcsa 2"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_3:"
+msgid "Accrued Re Percent 3"
+msgstr "Fizetendő kiegyenlítő pótlék kulcsa 3"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_4:"
+msgid "Accrued Re Percent 4"
+msgstr "Fizetendő kiegyenlítő pótlék kulcsa 4"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_5:"
+msgid "Accrued Re Percent 5"
+msgstr "Fizetendő kiegyenlítő pótlék kulcsa 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_1:"
+msgid "Accrued Re Tax 1"
+msgstr "Fizetendő kiegyenlítő pótlék összege 1"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_2:"
+msgid "Accrued Re Tax 2"
+msgstr "Fizetendő kiegyenlítő pótlék összege 2"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_3:"
+msgid "Accrued Re Tax 3"
+msgstr "Fizetendő kiegyenlítő pótlék összege 3"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_4:"
+msgid "Accrued Re Tax 4"
+msgstr "Fizetendő kiegyenlítő pótlék összege 4"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_5:"
+msgid "Accrued Re Tax 5"
+msgstr "Fizetendő kiegyenlítő pótlék összege 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
+msgid "Accrued Re Tax Modification"
+msgstr "Fizetendő kiegyenlítő pótlék összegének módosítása"
+
+msgctxt "field:aeat.303.report,accrued_total_tax:"
+msgid "Accrued Total Tax"
+msgstr "Fizetendő adó összesen"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_0:"
+msgid "Accrued Vat Base 0"
+msgstr "Fizetendő áfa alapja 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_1:"
+msgid "Accrued Vat Base 1"
+msgstr "Fizetendő áfa alapja 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_2:"
+msgid "Accrued Vat Base 2"
+msgstr "Fizetendő áfa alapja 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_3:"
+msgid "Accrued Vat Base 3"
+msgstr "Fizetendő áfa alapja 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_4:"
+msgid "Accrued Vat Base 4"
+msgstr "Fizetendő áfa alapja 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_5:"
+msgid "Accrued Vat Base 5"
+msgstr "Fizetendő áfa alapja 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
+msgid "Accrued Vat Base Modification"
+msgstr "Fizetendő áfa alapjának módosítása"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_0:"
+msgid "Accrued Vat Percent 0"
+msgstr "Fizetendő áfa kulcsa 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
+msgid "Accrued Vat Percent 1"
+msgstr "Fizetendő áfa kulcsa 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
+msgid "Accrued Vat Percent 2"
+msgstr "Fizetendő áfa kulcsa 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
+msgid "Accrued Vat Percent 3"
+msgstr "Fizetendő áfa kulcsa 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_4:"
+msgid "Accrued Vat Percent 4"
+msgstr "Fizetendő áfa kulcsa 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_5:"
+msgid "Accrued Vat Percent 5"
+msgstr "Fizetendő áfa kulcsa 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_0:"
+msgid "Accrued Vat Tax 0"
+msgstr "Fizetendő áfa összege 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
+msgid "Accrued Vat Tax 1"
+msgstr "Fizetendő áfa összege 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
+msgid "Accrued Vat Tax 2"
+msgstr "Fizetendő áfa összege 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
+msgid "Accrued Vat Tax 3"
+msgstr "Fizetendő áfa összege 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_4:"
+msgid "Accrued Vat Tax 4"
+msgstr "Fizetendő áfa összege 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_5:"
+msgid "Accrued Vat Tax 5"
+msgstr "Fizetendő áfa összege 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
+msgid "Accrued Vat Tax Modification"
+msgstr "Fizetendő áfa összegének módosítása"
+
+msgctxt "field:aeat.303.report,additional_page_indicator:"
+msgid "Complementari Page Indicator"
+msgstr "Kiegészítő lap jelzője"
+
+msgctxt "field:aeat.303.report,aduana_tax_pending:"
+msgid "Aduana Tax Pending"
+msgstr "Függő vámhatósági adó"
+
+msgctxt "field:aeat.303.report,annual_intragroup_transaction:"
+msgid "Intragroup Transactions"
+msgstr "Csoporton belüli ügyletek"
+
+msgctxt "field:aeat.303.report,annual_operation_volume:"
+msgid "Exist operations annual volume (art. 121 LIVA)"
+msgstr "Van éves ügyleti forgalom (LIVA 121. cikk)"
+
+msgctxt "field:aeat.303.report,annual_oss_not_subject_operations:"
+msgid "Not Subjected Operations Special Regime Unic Window"
+msgstr "Egyablakos különös rendszer hatálya alatti nem adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,annual_oss_subject_operations:"
+msgid "Subjected Operations Special Regime Unic Window"
+msgstr "Egyablakos különös rendszer hatálya alatti adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,annual_subject_operations_w_reverse_charge:"
+msgid "Subjected Operations With Reverse Charge"
+msgstr "Fordított adózású adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
+msgid "Auto Bankruptcy Date"
+msgstr "Fizetésképtelenséget megállapító végzés dátuma"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Auto Bankruptcy Declaration"
+msgstr "Fizetésképtelenséget megállapító végzés bevallása"
+
+msgctxt "field:aeat.303.report,bank_account:"
+msgid "Bank Account"
+msgstr "Bankszámlaszám"
+
+msgctxt "field:aeat.303.report,before_result:"
+msgid "Before Result"
+msgstr "Korábbi eredmény"
+
+msgctxt "field:aeat.303.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "Számítás dátuma"
+
+msgctxt "field:aeat.303.report,cnae1:"
+msgid "CNAE 1"
+msgstr "CNAE 1"
+
+msgctxt "field:aeat.303.report,cnae2:"
+msgid "CNAE 2"
+msgstr "CNAE 2"
+
+msgctxt "field:aeat.303.report,cnae3:"
+msgid "CNAE 3"
+msgstr "CNAE 3"
+
+msgctxt "field:aeat.303.report,cnae4:"
+msgid "CNAE 4"
+msgstr "CNAE 4"
+
+msgctxt "field:aeat.303.report,cnae5:"
+msgid "CNAE 5"
+msgstr "CNAE 5"
+
+msgctxt "field:aeat.303.report,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:aeat.303.report,company_name:"
+msgid "Company Name"
+msgstr "Vállalat neve"
+
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "Vállalat partnere"
+
+msgctxt "field:aeat.303.report,company_vat:"
+msgid "VAT"
+msgstr "Áfa"
+
+msgctxt "field:aeat.303.report,complementary_declaration:"
+msgid "Complementary Declaration"
+msgstr "Kiegészítő bevallás"
+
+msgctxt ""
+"field:aeat.303.report,complementary_declaration_administrative_discrepancy:"
+msgid "Complementary Declaration Administrative Discrepancy"
+msgstr "Kiegészítő bevallás – hatósági állásponttól való eltérés"
+
+msgctxt "field:aeat.303.report,complementary_declaration_amount:"
+msgid "Complementary Declaration Amount"
+msgstr "Kiegészítő bevallás összege"
+
+msgctxt "field:aeat.303.report,complementary_declaration_modify_direct_debit:"
+msgid "Complementary Declaration Modify Direct Debit"
+msgstr "Kiegészítő bevallás – beszedési megbízás módosítása"
+
+msgctxt "field:aeat.303.report,complementary_declaration_other_adjustements:"
+msgid "Complementary Declaration Other Adjustements"
+msgstr "Kiegészítő bevallás – egyéb kiigazítások"
+
+msgctxt "field:aeat.303.report,complementary_declaration_rectification:"
+msgid "Complementary Declaration Rectification"
+msgstr "Kiegészítő bevallás – helyesbítés"
+
+msgctxt "field:aeat.303.report,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments:"
+msgid "Deduct Advance payments (petrol, diesel, biofuel)"
+msgstr "Előlegek levonása (benzin, dízel, bioüzemanyag)"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments_amount:"
+msgid "Deduct Advance payments Amount (petrol, diesel, biofuel)"
+msgstr "Levonható előlegek összege (benzin, dízel, bioüzemanyag)"
+
+msgctxt "field:aeat.303.report,deductible_compensations:"
+msgid "Deductible Compensations"
+msgstr "Levonható kompenzációk"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base1:"
+msgid "Deductible Compensations Base 1"
+msgstr "Levonható kompenzációk adóalapja 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base2:"
+msgid "Deductible Compensations Base 2"
+msgstr "Levonható kompenzációk adóalapja 2"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax1:"
+msgid "Deductible Compensations Tax 1"
+msgstr "Levonható kompenzációk adója 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax2:"
+msgid "Deductible Compensations Tax 2"
+msgstr "Levonható kompenzációk adója 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base1:"
+msgid "Deductible Current Domestic Operations Base 1"
+msgstr "Levonható belföldi folyó ügyletek adóalapja 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base2:"
+msgid "Deductible Current Domestic Operations Base 2"
+msgstr "Levonható belföldi folyó ügyletek adóalapja 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base:"
+msgid "Deductible Current Domestic Operations Base"
+msgstr "Levonható belföldi folyó ügyletek adóalapja"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax1:"
+msgid "Deductible Current Domestic Operations Tax 1"
+msgstr "Levonható belföldi folyó ügyletek adója 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax2:"
+msgid "Deductible Current Domestic Operations Tax 2"
+msgstr "Levonható belföldi folyó ügyletek adója 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax:"
+msgid "Deductible Current Domestic Operations Tax"
+msgstr "Levonható belföldi folyó ügyletek adója"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base1:"
+msgid "Deductible Current Import Operations Base 1"
+msgstr "Levonható folyó importügyletek adóalapja 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base2:"
+msgid "Deductible Current Import Operations Base 2"
+msgstr "Levonható folyó importügyletek adóalapja 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base:"
+msgid "Deductible Current Import Operations Base"
+msgstr "Levonható folyó importügyletek adóalapja"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax1:"
+msgid "Deductible Current Import Operations Tax 1"
+msgstr "Levonható folyó importügyletek adója 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax2:"
+msgid "Deductible Current Import Operations Tax 2"
+msgstr "Levonható folyó importügyletek adója 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax:"
+msgid "Deductible Current Import Operations Tax"
+msgstr "Levonható folyó importügyletek adója"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base1:"
+msgid "Deductible Current Intracommunity Operations Base 1"
+msgstr "Levonható közösségen belüli folyó ügyletek adóalapja 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base2:"
+msgid "Deductible Current Intracommunity Operations Base 2"
+msgstr "Levonható közösségen belüli folyó ügyletek adóalapja 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base:"
+msgid "Deductible Current Intracommunity Operations Base"
+msgstr "Levonható közösségen belüli folyó ügyletek adóalapja"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax1:"
+msgid "Deductible Current Intracommunity Operations Tax 1"
+msgstr "Levonható közösségen belüli folyó ügyletek adója 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax2:"
+msgid "Deductible Current Intracommunity Operations Tax 2"
+msgstr "Levonható közösségen belüli folyó ügyletek adója 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax:"
+msgid "Deductible Current Intracommunity Operations Tax"
+msgstr "Levonható közösségen belüli folyó ügyletek adója"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base1:"
+msgid "Deductible Investment Domestic Operations Base 1"
+msgstr "Levonható belföldi beruházási ügyletek adóalapja 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base2:"
+msgid "Deductible Investment Domestic Operations Base 2"
+msgstr "Levonható belföldi beruházási ügyletek adóalapja 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base:"
+msgid "Deductible Investment Domestic Operations Base"
+msgstr "Levonható belföldi beruházási ügyletek adóalapja"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_tax1:"
+msgid "Deductible Investment Domestic Operations Tax 1"
+msgstr "Levonható belföldi beruházási ügyletek adója 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_tax2:"
+msgid "Deductible Investment Domestic Operations Tax 2"
+msgstr "Levonható belföldi beruházási ügyletek adója 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax:"
+msgid "Deductible Investment Domestic Operations Tax"
+msgstr "Levonható belföldi beruházási ügyletek adója"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base1:"
+msgid "Deductible Investment Import Operations Base 1"
+msgstr "Levonható beruházási importügyletek adóalapja 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base2:"
+msgid "Deductible Investment Import Operations Base 2"
+msgstr "Levonható beruházási importügyletek adóalapja 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base:"
+msgid "Deductible Investment Import Operations Base"
+msgstr "Levonható beruházási importügyletek adóalapja"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax1:"
+msgid "Deductible Investment Import Operations Tax 1"
+msgstr "Levonható beruházási importügyletek adója 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax2:"
+msgid "Deductible Investment Import Operations Tax 2"
+msgstr "Levonható beruházási importügyletek adója 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax:"
+msgid "Deductible Investment Import Operations Tax"
+msgstr "Levonható beruházási importügyletek adója"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base1:"
+msgid "Deductible Investment Intracommunity Operations Base 1"
+msgstr "Levonható közösségen belüli beruházási ügyletek adóalapja 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base2:"
+msgid "Deductible Investment Intracommunity Operations Base 2"
+msgstr "Levonható közösségen belüli beruházási ügyletek adóalapja 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base:"
+msgid "Deductible Investment Intracommunity Operations Base"
+msgstr "Levonható közösségen belüli beruházási ügyletek adóalapja"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax1:"
+msgid "Deductible Investment Intracommunity Operations Tax 1"
+msgstr "Levonható közösségen belüli beruházási ügyletek adója 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax2:"
+msgid "Deductible Investment Intracommunity Operations Tax 2"
+msgstr "Levonható közösségen belüli beruházási ügyletek adója 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax:"
+msgid "Deductible Investment Intracommunity Operations Tax"
+msgstr "Levonható közösségen belüli beruházási ügyletek adója"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization1:"
+msgid "Deductible Investment Regularization 1"
+msgstr "Beruházási adólevonás kiigazítása 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization2:"
+msgid "Deductible Investment Regularization 2"
+msgstr "Beruházási adólevonás kiigazítása 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization:"
+msgid "Deductible Investment Regularization"
+msgstr "Beruházási adólevonás kiigazítása"
+
+msgctxt "field:aeat.303.report,deductible_pro_rata_regularization:"
+msgid "Deductible Pro Rata Regularization"
+msgstr "Arányos adólevonás kiigazítása"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base1:"
+msgid "Deductible Regularization Base 1"
+msgstr "Adólevonás kiigazításának alapja 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base2:"
+msgid "Deductible Regularization Base 2"
+msgstr "Adólevonás kiigazításának alapja 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base:"
+msgid "Deductible Regularization Base"
+msgstr "Adólevonás kiigazításának alapja"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax1:"
+msgid "Deductible Regularization Tax 1"
+msgstr "Adólevonás kiigazításának adója 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax2:"
+msgid "Deductible Regularization Tax 2"
+msgstr "Adólevonás kiigazításának adója 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax:"
+msgid "Deductible Regularization Tax"
+msgstr "Adólevonás kiigazításának adója"
+
+msgctxt "field:aeat.303.report,deductible_total1:"
+msgid "Total Deductible 1"
+msgstr "Levonható összesen 1"
+
+msgctxt "field:aeat.303.report,deductible_total2:"
+msgid "Total Deductible 2"
+msgstr "Levonható összesen 2"
+
+msgctxt "field:aeat.303.report,deductible_total:"
+msgid "Deductible Total"
+msgstr "Levonható összesen"
+
+msgctxt "field:aeat.303.report,exonerated_mod390:"
+msgid "Exonerated Model 390"
+msgstr "Mentesülés a 390-es bevallás alól"
+
+msgctxt "field:aeat.303.report,exports:"
+msgid "Exports"
+msgstr "Export"
+
+msgctxt "field:aeat.303.report,file_:"
+msgid "File"
+msgstr "Fájl"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "Fájlnév"
+
+msgctxt "field:aeat.303.report,general_regime_result:"
+msgid "General Regime Result"
+msgstr "Általános rendszer eredménye"
+
+msgctxt "field:aeat.303.report,info_territory_alava:"
+msgid "Taxation Information by Territory: Alava"
+msgstr "Területi adózási adatok: Álava"
+
+msgctxt "field:aeat.303.report,info_territory_guipuzcoa:"
+msgid "Taxation Information by Territory: Guipuzcoa"
+msgstr "Területi adózási adatok: Guipúzcoa"
+
+msgctxt "field:aeat.303.report,info_territory_navarra:"
+msgid "Taxation Information by Territory: Navarra"
+msgstr "Területi adózási adatok: Navarra"
+
+msgctxt "field:aeat.303.report,info_territory_vizcaya:"
+msgid "Taxation Information by Territory: Vizcaya"
+msgstr "Területi adózási adatok: Vizcaya"
+
+msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
+msgid "Information on taxation by reason of territorya: Commo territory"
+msgstr "Területi adózási adatok: általános adóterület"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
+msgid "Intracommunity Adquisitions Base"
+msgstr "Közösségen belüli beszerzések adóalapja"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_tax:"
+msgid "Intracommunity Adquisitions Tax"
+msgstr "Közösségen belüli beszerzések adója"
+
+msgctxt "field:aeat.303.report,intracommunity_deliveries:"
+msgid "Intracommunity Deliveries"
+msgstr "Közösségen belüli értékesítések"
+
+msgctxt "field:aeat.303.report,joint_liquidation:"
+msgid "Is joint liquidation"
+msgstr "Közös adóelszámolás"
+
+msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
+msgid "Joint Taxation State Provincial Councils"
+msgstr "Állami és tartományi közös adózás"
+
+msgctxt "field:aeat.303.report,liquidation_result:"
+msgid "Liquidation Result"
+msgstr "Adóelszámolás eredménye"
+
+msgctxt "field:aeat.303.report,monthly_return_subscription:"
+msgid "Montly Return Subscription"
+msgstr "Havi visszaigénylési nyilvántartásba vétel"
+
+msgctxt "field:aeat.303.report,move:"
+msgid "Move"
+msgstr "Bizonylat"
+
+msgctxt "field:aeat.303.report,move_account:"
+msgid "Account for Move"
+msgstr "Könyvelési bizonylat főkönyvi számlája"
+
+msgctxt "field:aeat.303.report,move_description:"
+msgid "Description for Move"
+msgstr "Könyvelési bizonylat leírása"
+
+msgctxt "field:aeat.303.report,move_journal:"
+msgid "Journal for Move"
+msgstr "Könyvelési bizonylat naplója"
+
+msgctxt "field:aeat.303.report,not_subject_localitzation_rules:"
+msgid ""
+"Not Subject To Localitzation Rules (Except For Those Included in Box 123)"
+msgstr ""
+"A teljesítési hely szabályai alapján nem adóköteles (a 123. mezőben "
+"szereplők kivételével)"
+
+msgctxt "field:aeat.303.report,operations_amount1:"
+msgid "Operations Amount 1"
+msgstr "Ügyletek összege 1"
+
+msgctxt "field:aeat.303.report,operations_amount2:"
+msgid "Operations Amount 2"
+msgstr "Ügyletek összege 2"
+
+msgctxt "field:aeat.303.report,operations_amount3:"
+msgid "Operations Amount 3"
+msgstr "Ügyletek összege 3"
+
+msgctxt "field:aeat.303.report,operations_amount4:"
+msgid "Operations Amount 4"
+msgstr "Ügyletek összege 4"
+
+msgctxt "field:aeat.303.report,operations_amount5:"
+msgid "Operations Amount 5"
+msgstr "Ügyletek összege 5"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "Levonási joggal járó ügyletek összege 1"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "Levonási joggal járó ügyletek összege 2"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "Levonási joggal járó ügyletek összege 3"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "Levonási joggal járó ügyletek összege 4"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "Levonási joggal járó ügyletek összege 5"
+
+msgctxt "field:aeat.303.report,oss_not_subject_operations:"
+msgid "OSS, Not Subject Operations"
+msgstr "OSS, nem adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,oss_subject_operations:"
+msgid "OSS, Subject Operations"
+msgstr "OSS, adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,other_passive_subject_base:"
+msgid "Other Passive Subject Adquisitions Base"
+msgstr "Egyéb fordított adózású beszerzések adóalapja"
+
+msgctxt "field:aeat.303.report,other_passive_subject_tax:"
+msgid "Other Passive Subject Adquisitions Tax"
+msgstr "Egyéb fordított adózású beszerzések adója"
+
+msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
+msgid "Passive Subject on a Foral Administration"
+msgstr "Forális adóhatóság alá tartozó adóalany"
+
+msgctxt "field:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Passive Subject voluntarily opted for the SII"
+msgstr "SII-t önként választó adóalany"
+
+msgctxt "field:aeat.303.report,period:"
+msgid "Period"
+msgstr "Periódus"
+
+msgctxt "field:aeat.303.report,post_and_close:"
+msgid "Post and Close"
+msgstr "Könyvelés és lezárás"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_current_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "Arányosítás előtti levonható belföldi folyó ügyleti adó"
+
+msgctxt "field:aeat.303.report,preprorrata_deductible_regularization_tax:"
+msgid "Pre-Prorrata Deductible Regularization Tax"
+msgstr "Arányosítás előtti levonható kiigazítási adó"
+
+msgctxt "field:aeat.303.report,previous_declaration_receipt:"
+msgid "Previous Declaration Receipt"
+msgstr "Előző bevallás bizonylatszáma"
+
+msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
+msgid "Previous Period Amount To Compensate"
+msgstr "Előző időszakról beszámítható összeg"
+
+msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
+msgid "Previous Period Pending Amount To Compensate"
+msgstr "Előző időszakról fennmaradó beszámítható összeg"
+
+msgctxt "field:aeat.303.report,previous_report:"
+msgid "Previous Report"
+msgstr "Előző bevallás"
+
+msgctxt "field:aeat.303.report,prorrata_deductible_amount:"
+msgid "Prorrata Deductible Amount"
+msgstr "Arányosan levonható összeg"
+
+msgctxt "field:aeat.303.report,prorrata_percent1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "Levonási joggal járó ügyletek összege 1"
+
+msgctxt "field:aeat.303.report,prorrata_percent2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "Levonási joggal járó ügyletek összege 2"
+
+msgctxt "field:aeat.303.report,prorrata_percent3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "Levonási joggal járó ügyletek összege 3"
+
+msgctxt "field:aeat.303.report,prorrata_percent4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "Levonási joggal járó ügyletek összege 4"
+
+msgctxt "field:aeat.303.report,prorrata_percent5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "Levonási joggal járó ügyletek összege 5"
+
+msgctxt "field:aeat.303.report,prorrata_percent_applied:"
+msgid "Prorrata Percent Applied"
+msgstr "Alkalmazott levonási hányad"
+
+msgctxt "field:aeat.303.report,prorrata_real_percent:"
+msgid "Prorrata Real Percent"
+msgstr "Tényleges levonási hányad"
+
+msgctxt "field:aeat.303.report,prorrata_total_amount:"
+msgid "Prorrata Total Amount"
+msgstr "Arányosítás teljes összege"
+
+msgctxt "field:aeat.303.report,prorrata_type1:"
+msgid "Prorrata Type 1"
+msgstr "Arányosítás típusa 1"
+
+msgctxt "field:aeat.303.report,prorrata_type2:"
+msgid "Prorrata Type 2"
+msgstr "Arányosítás típusa 2"
+
+msgctxt "field:aeat.303.report,prorrata_type3:"
+msgid "Prorrata Type 3"
+msgstr "Arányosítás típusa 3"
+
+msgctxt "field:aeat.303.report,prorrata_type4:"
+msgid "Prorrata Type 4"
+msgstr "Arányosítás típusa 4"
+
+msgctxt "field:aeat.303.report,prorrata_type5:"
+msgid "Prorrata Type 5"
+msgstr "Arányosítás típusa 5"
+
+msgctxt "field:aeat.303.report,recc:"
+msgid "Special Cash Criteria"
+msgstr "Különös pénzforgalmi elszámolás"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_base:"
+msgid "Special Cash Criteria Asquistions Base"
+msgstr "Különös pénzforgalmi elszámolású beszerzések adóalapja"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_tax:"
+msgid "Special Cash Criteria Adquistions Tax"
+msgstr "Különös pénzforgalmi elszámolású beszerzések adója"
+
+msgctxt "field:aeat.303.report,recc_deliveries_base:"
+msgid "Special Cash Criteria Deliveries Base"
+msgstr "Különös pénzforgalmi elszámolású értékesítések adóalapja"
+
+msgctxt "field:aeat.303.report,recc_deliveries_tax:"
+msgid "Special Cash Criteria Deliveries Tax"
+msgstr "Különös pénzforgalmi elszámolású értékesítések adója"
+
+msgctxt "field:aeat.303.report,recc_receiver:"
+msgid "Special Cash Criteria Receiver"
+msgstr "Különös pénzforgalmi elszámolású ügylet vevője"
+
+msgctxt "field:aeat.303.report,regime_type:"
+msgid "Tribute type"
+msgstr "Adózás típusa"
+
+msgctxt "field:aeat.303.report,result:"
+msgid "Result"
+msgstr "Eredmény"
+
+msgctxt "field:aeat.303.report,result_previous_period_amount_to_compensate:"
+msgid "Result Previous Period Amount To Compensate"
+msgstr "Előző időszaki összeg beszámítása utáni eredmény"
+
+msgctxt "field:aeat.303.report,result_tax_regularitzation:"
+msgid "Tax Regularization art. 80.cinco.50a LIVA"
+msgstr "Adókiigazítás a LIVA 80.cinco.50a cikke szerint"
+
+msgctxt "field:aeat.303.report,return_bank_address:"
+msgid "Bank Address"
+msgstr "Bank címe"
+
+msgctxt "field:aeat.303.report,return_bank_city:"
+msgid "Bank City"
+msgstr "Bank városa"
+
+msgctxt "field:aeat.303.report,return_bank_country_code:"
+msgid "Bank Country Code"
+msgstr "Bank országkódja"
+
+msgctxt "field:aeat.303.report,return_bank_name:"
+msgid "Bank Name"
+msgstr "Bank neve"
+
+msgctxt "field:aeat.303.report,return_sepa_check:"
+msgid "Sepa Check On Return"
+msgstr "SEPA-ellenőrzés visszatérítéskor"
+
+msgctxt "field:aeat.303.report,special_info_art_antiques_collectibles:"
+msgid "Special Regime Operations on Art, Antiques and Collectibles"
+msgstr ""
+"Műalkotásokra, régiségekre és gyűjteménydarabokra vonatkozó különös rendszer"
+" ügyletei"
+
+msgctxt ""
+"field:aeat.303.report,special_info_delivery_investment_domestic_operations:"
+msgid "Delivery of Investment Domestic Operations"
+msgstr "Beruházási javak belföldi értékesítése"
+
+msgctxt "field:aeat.303.report,special_info_exempt_op_2bdeduced:"
+msgid "Exports and Other Exempt Oprations to be Deduce"
+msgstr "Export és egyéb levonási joggal járó adómentes ügyletek"
+
+msgctxt ""
+"field:aeat.303.report,special_info_exempt_op_wo_permission_2bdeduced:"
+msgid "Exempt Oprations without deduction right"
+msgstr "Levonási jog nélküli adómentes ügyletek"
+
+msgctxt "field:aeat.303.report,special_info_farming_cattleraising_fishing:"
+msgid "Especial Regime of Farming, Cattle rasing and Fishing"
+msgstr "Mezőgazdasági, állattenyésztési és halászati különös rendszer"
+
+msgctxt "field:aeat.303.report,special_info_financial_op_not_usual:"
+msgid "Operations Not Usual"
+msgstr "Nem szokásos ügyletek"
+
+msgctxt ""
+"field:aeat.303.report,special_info_intracommunity_deliveries_2bdeduced:"
+msgid "Intracommunity Delivery of Goods and Services"
+msgstr "Termékek és szolgáltatások közösségen belüli értékesítése"
+
+msgctxt "field:aeat.303.report,special_info_key_main:"
+msgid "Main Activity Code"
+msgstr "Főtevékenység kódja"
+
+msgctxt "field:aeat.303.report,special_info_key_others_1:"
+msgid "Activity Code (Other 1)"
+msgstr "Tevékenység kódja (egyéb 1)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_2:"
+msgid "Activity Code (Other 2)"
+msgstr "Tevékenység kódja (egyéb 2)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_3:"
+msgid "Activity Code (Other 3)"
+msgstr "Tevékenység kódja (egyéb 3)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_4:"
+msgid "Activity Code (Other 4)"
+msgstr "Tevékenység kódja (egyéb 4)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_5:"
+msgid "Activity Code (Other 5)"
+msgstr "Tevékenység kódja (egyéb 5)"
+
+msgctxt "field:aeat.303.report,special_info_operations_rs:"
+msgid "Simplified Regime Operations"
+msgstr "Egyszerűsített rendszer ügyletei"
+
+msgctxt "field:aeat.303.report,special_info_passive_subject_re:"
+msgid "Passive Subject on Equivalence Regime"
+msgstr "Kiegyenlítő pótlék rendszerébe tartozó adóalany"
+
+msgctxt "field:aeat.303.report,special_info_recc:"
+msgid "Operations Especial Regime Cash Criteria"
+msgstr "Különös pénzforgalmi elszámolású ügyletek"
+
+msgctxt ""
+"field:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Required declare Third Party Operations"
+msgstr "Harmadik felekkel folytatott ügyletek bevallása kötelező"
+
+msgctxt "field:aeat.303.report,special_info_rg_operations:"
+msgid "Operations in General Regime"
+msgstr "Általános rendszer ügyletei"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_main:"
+msgid "Main IAE Code"
+msgstr "Fő IAE-kód"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_1:"
+msgid "IAE Code (Other 1)"
+msgstr "IAE-kód (egyéb 1)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_2:"
+msgid "IAE Code (Other 2)"
+msgstr "IAE-kód (egyéb 2)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_3:"
+msgid "IAE Code (Other 3)"
+msgstr "IAE-kód (egyéb 3)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_4:"
+msgid "IAE Code (Other 4)"
+msgstr "IAE-kód (egyéb 4)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_5:"
+msgid "IAE Code (Other 5)"
+msgstr "IAE-kód (egyéb 5)"
+
+msgctxt "field:aeat.303.report,special_info_total:"
+msgid "Total Operations Volume"
+msgstr "Teljes ügyleti forgalom"
+
+msgctxt "field:aeat.303.report,special_info_travel_agency:"
+msgid "Special Regime Operations on Travel Agency"
+msgstr "Utazási irodák különös rendszerének ügyletei"
+
+msgctxt "field:aeat.303.report,special_info_w_passive_subject:"
+msgid "Not Subjected Operations"
+msgstr "Nem adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,special_prorate:"
+msgid "Special prorate"
+msgstr "Különös arányosítás"
+
+msgctxt "field:aeat.303.report,special_prorate_revocation:"
+msgid "Special prorate revocation"
+msgstr "Különös arányosítás visszavonása"
+
+msgctxt "field:aeat.303.report,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:aeat.303.report,state_administration_amount:"
+msgid "State Administration Amount"
+msgstr "Állami adóhatósághoz tartozó összeg"
+
+msgctxt "field:aeat.303.report,state_administration_percent:"
+msgid "State Administration Percent"
+msgstr "Állami adóhatósághoz tartozó hányad"
+
+msgctxt "field:aeat.303.report,subject_operations_w_reverse_charge:"
+msgid "Subject Operations With Reverse Charge"
+msgstr "Fordított adózású adóköteles ügyletek"
+
+msgctxt "field:aeat.303.report,sum_results:"
+msgid "Sum of Results"
+msgstr "Eredmények összege"
+
+msgctxt "field:aeat.303.report,swift_bank:"
+msgid "Swift"
+msgstr "SWIFT"
+
+msgctxt "field:aeat.303.report,to_deduce:"
+msgid "To Deduce"
+msgstr "Levonandó"
+
+msgctxt "field:aeat.303.report,type:"
+msgid "Declaration Type"
+msgstr "Bevallás típusa"
+
+msgctxt "field:aeat.303.report,without_activity:"
+msgid "Without Activity"
+msgstr "Nincs tevékenység"
+
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "Év"
+
+msgctxt "field:aeat.303.template.mapping,aeat303_field:"
+msgid "Field"
+msgstr "Mező"
+
+msgctxt "field:aeat.303.template.mapping,code:"
+msgid "Tax Code Template"
+msgstr "Adókódsablon"
+
+msgctxt "field:aeat.303.template.mapping,number:"
+msgid "Number"
+msgstr "Szám"
+
+msgctxt "field:aeat.303.template.mapping,type_:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "help:account.configuration,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat "
+"ellenszámlája."
+
+msgctxt "help:account.configuration,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat naplója."
+
+msgctxt "help:account.configuration,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"Ha be van jelölve, a könyvelési bizonylat könyvelésre kerül, és a hozzá "
+"tartozó időszakok lezárulnak."
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat "
+"ellenszámlája."
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat naplója."
+
+msgctxt "help:account.configuration.aeat303,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"Ha be van jelölve, a könyvelési bizonylat könyvelésre kerül, és a hozzá "
+"tartozó időszakok lezárulnak."
+
+msgctxt "help:aeat.303.report,aduana_tax_pending:"
+msgid "Import VAT paid by Aduana pending entry"
+msgstr "Vámhatóság által megállapított, befizetésre váró importáfa"
+
+msgctxt "help:aeat.303.report,annual_operation_volume:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr ""
+"Kizárólag az éves áfa-összesítő bevallás alól mentesített utolsó időszakban "
+"töltendő ki. (Mentesülés a 390-es bevallás alól, nulla ügyleti forgalommal.)"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments:"
+msgid ""
+"Taxable person entitled to deduct advance payments for deliveries of petrol,"
+" diesel and biofuels after the completion of the non-customs warehousing "
+"regime"
+msgstr ""
+"A nem vámraktározási eljárás lezárása után benzin-, dízel- és bioüzemanyag-"
+"értékesítések előlegeinek levonására jogosult adóalany"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments_amount:"
+msgid ""
+"Payment on account of deliveries of gasoline, diesel and biofuels after the "
+"completion of the non-customs deposit regime attributable to the State "
+"Administration (Sum of box 36 of all models 319 corresponding to deliveries "
+"included in this self-assessment)"
+msgstr ""
+"A nem vámraktározási eljárás lezárását követő benzin-, dízel- és "
+"bioüzemanyag-értékesítések állami adóhatósághoz tartozó adóelőlege (az ezen "
+"önadózásban szereplő értékesítésekhez tartozó összes 319-es bevallás 36. "
+"mezőjének összege)"
+
+msgctxt "help:aeat.303.report,exonerated_mod390:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr ""
+"Kizárólag az éves áfa-összesítő bevallás alól mentesített utolsó időszakban "
+"töltendő ki. (Mentesülés a 390-es bevallás alól, nulla ügyleti forgalommal.)"
+
+msgctxt "help:aeat.303.report,move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat "
+"ellenszámlája."
+
+msgctxt "help:aeat.303.report,move_description:"
+msgid ""
+"Optionaly you can add information to the account move if it is created "
+"automatically."
+msgstr ""
+"Automatikusan létrehozott könyvelési bizonylathoz opcionálisan kiegészítő "
+"információ adható."
+
+msgctxt "help:aeat.303.report,move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"A 303-as bevallás elkészítésekor létrehozott könyvelési bizonylat naplója."
+
+msgctxt "help:aeat.303.report,passive_subject_foral_administration:"
+msgid ""
+"Passive Subject that tribute exclusively on a Foral Administration with an "
+"import TAX paid by Aduana pending entry."
+msgstr ""
+"Kizárólag forális adóhatóságnál adózó adóalany, akinek vámhatóság által "
+"megállapított, befizetésre váró importadója van."
+
+msgctxt "help:aeat.303.report,post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"Ha be van jelölve, a könyvelési bizonylat könyvelésre kerül, és a hozzá "
+"tartozó időszakok lezárulnak."
+
+msgctxt "help:aeat.303.report,result_tax_regularitzation:"
+msgid ""
+"Only fill if you have done the 952 model. To Fill with the tax to recover."
+msgstr ""
+"Csak akkor töltse ki, ha benyújtotta a 952-es bevallást. A visszaigénylendő "
+"adó összegét adja meg."
+
+msgctxt ""
+"help:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid ""
+"Check if you have carried out transactions for which you are required to "
+"submit the annual declaration of transactions with third parties."
+msgstr ""
+"Jelölje be, ha olyan ügyleteket végzett, amelyek miatt harmadik felekkel "
+"folytatott ügyletekről éves bevallást kell benyújtania."
+
+msgctxt "model:account.configuration.aeat303,name:"
+msgid "AEAT 303 Account Configuration"
+msgstr "AEAT 303 könyvelési beállításai"
+
+msgctxt "model:aeat.303.mapping,name:"
+msgid "AEAT 303 TaxCode Mapping"
+msgstr "AEAT 303 adókód-megfeleltetés"
+
+msgctxt "model:aeat.303.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "AEAT 303 adókód-megfeleltetés kódkapcsolata"
+
+msgctxt "model:aeat.303.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "AEAT 303 adókód-megfeleltetés kódkapcsolata"
+
+msgctxt "model:aeat.303.prorrata.mapping,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping"
+msgstr "AEAT 303 arányosítási adókód-megfeleltetés"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping Relation"
+msgstr "AEAT 303 arányosítási adókód-megfeleltetés kapcsolata"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping Relation"
+msgstr "AEAT 303 arányosítási adókódsablon-megfeleltetés kapcsolata"
+
+msgctxt "model:aeat.303.prorrata.mapping.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping"
+msgstr "AEAT 303 arányosítási adókódsablon-megfeleltetés"
+
+msgctxt "model:aeat.303.report,name:"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 bevallás"
+
+msgctxt "model:aeat.303.template.mapping,name:"
+msgid "AEAT 303 TemplateTaxCode Mapping"
+msgstr "AEAT 303 adókódsablon-megfeleltetés"
+
+msgctxt "model:ir.action,name:act_aeat303_report_moves_form"
+msgid "Moves"
+msgstr "Mozgások"
+
+msgctxt "model:ir.action,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "AEAT 303 megfeleltetés"
+
+msgctxt "model:ir.action,name:act_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata mapping"
+msgstr "AEAT 303 arányosítási megfeleltetés"
+
+msgctxt "model:ir.action,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 bevallás"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "AEAT 303 megfeleltetés"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 bevallás"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_annual_operation_volume"
+msgid ""
+"The Annual Operation Volume field could be 'YES' or 'NO' only for periods "
+"'12' or '4T', check report with ID: %(report)s"
+msgstr ""
+"Az Éves ügyleti forgalom mező csak a „12” vagy „4T” időszakban lehet „IGEN” "
+"vagy „NEM”. Ellenőrizze a(z) %(report)s azonosítójú bevallást."
+
+msgctxt "model:ir.message,text:msg_invalid_compensate"
+msgid ""
+"To compensate periods before need to have the actual period result postive "
+"([66] + [77] - [78]) and you can't compensate more than this result."
+msgstr ""
+"A korábbi időszakok összegének beszámításához a tárgyidőszak eredményének "
+"pozitívnak kell lennie ([66] + [77] - [78]), és a beszámítás nem haladhatja "
+"meg ezt az összeget."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 303 report \"%(name)s\" must be Euro."
+msgstr "A(z) „%(name)s” AEAT 303 bevallás pénznemének eurónak kell lennie."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_exonerated_mod390"
+msgid ""
+"The Exonerated Model 390 field could be 'YES' or 'NO' only for periods '12' "
+"or '4T', check report with ID: %(report)s"
+msgstr ""
+"A Mentesülés a 390-es bevallás alól mező csak a „12” vagy „4T” időszakban "
+"lehet „IGEN” vagy „NEM”. Ellenőrizze a(z) %(report)s azonosítójú bevallást."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_prorrata_percent"
+msgid ""
+"One of the Prorrata percent added in then 5th page is greater than 100, and "
+"thats not correct. (Report ID: %(report)s)"
+msgstr ""
+"Az 5. oldalon megadott egyik arányosítási százalék nagyobb 100-nál, ami "
+"érvénytelen. (Bevallás azonosítója: %(report)s)"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check"
+msgid ""
+"The Sepa Check field is not correct for the type selected. Check report with"
+" ID: %(report)s"
+msgstr ""
+"A SEPA-ellenőrzés mező nem megfelelő a kiválasztott típushoz. Ellenőrizze "
+"a(z) %(report)s azonosítójú bevallást."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check_period"
+msgid ""
+"The Sepa Check field is not correct for the period of the report. Check "
+"report with ID: %(report)s"
+msgstr ""
+"A SEPA-ellenőrzés mező nem megfelelő a bevallás időszakához. Ellenőrizze "
+"a(z) %(report)s azonosítójú bevallást."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_sepa_check"
+msgid ""
+"The type of 'Sepa Check On Return' could not be empty for the 'Type' "
+"selected (check report with ID: %(report)s)."
+msgstr ""
+"A „SEPA-ellenőrzés visszatérítéskor” típusa nem lehet üres a kiválasztott "
+"„Típus” esetén (ellenőrizze a(z) %(report)s azonosítójú bevallást)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_type_period"
+msgid ""
+"The type of 'Return by trasnfer to foreign account' it's only for periods "
+"'3T', '4T' and from '07' to '12', check report with ID: %(report)s"
+msgstr ""
+"A „Visszatérítés külföldi számlára utalással” típus csak a „3T”, „4T” és "
+"„07”–„12” időszakokban használható. Ellenőrizze a(z) %(report)s azonosítójú "
+"bevallást."
+
+msgctxt "model:ir.message,text:msg_no_config"
+msgid ""
+"No configuration found for AEAT303. Please, update your chart of accounts."
+msgstr "Nem találhatók AEAT303-beállítások. Frissítse a számlatükröt."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_not_possible_cancel"
+msgid ""
+"The AEAT 303 report (ID: %(report)s) cannot be possible cancelled because "
+"its account move is reconciled."
+msgstr ""
+"Az AEAT 303 bevallás (azonosító: %(report)s) nem vonható vissza, mert a "
+"könyvelési bizonylata egyeztetett."
+
+msgctxt "model:ir.message,text:msg_prorrata_account_required"
+msgid "Please assign a prorrata account before calculating general prorrata"
+msgstr ""
+"Az általános arányosítás számítása előtt adjon meg arányosítási főkönyvi "
+"számlát"
+
+msgctxt "model:ir.message,text:msg_prorrata_regularization"
+msgid "Prorrata Regularization"
+msgstr "Arányosítás kiigazítása"
+
+msgctxt "model:ir.message,text:msg_tax_code_field_must_be_unique"
+msgid "AEAT 303 Tax Code Mapping: Field must be unique."
+msgstr "AEAT 303 adókód-megfeleltetés: a mezőnek egyedinek kell lennie."
+
+msgctxt "model:ir.message,text:msg_template_tax_code_field_must_be_unique"
+msgid "AEAT 303 Template Tax Code Mapping: Field must be unique."
+msgstr "AEAT 303 adókódsablon-megfeleltetés: a mezőnek egyedinek kell lennie."
+
+msgctxt "model:ir.model.button,string:aeat_303_report_calculate_button"
+msgid "Calculate"
+msgstr "Számítás"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_cancel_button"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_draft_button"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_process_button"
+msgid "Process"
+msgstr "Feldolgozás"
+
+msgctxt "model:ir.model.button,string:configuration_calculate_prorrata"
+msgid "Calculate General Prorrata"
+msgstr "Általános arányosítás kiszámítása"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_mapping"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_prorrata_mapping"
+msgid "User in company"
+msgstr "Felhasználó a vállalatban"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_mapping"
+msgid "AEAT 303 Mapping"
+msgstr "AEAT 303 megfeleltetés"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata Mapping"
+msgstr "AEAT 303 arányosítási megfeleltetés"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "AEAT 303 bevallás"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "Mentesülés a 390-es bevallás alól"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Numeric"
+msgstr "szám"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "After Bankruptcy Proceeding"
+msgstr "Fizetésképtelenségi eljárás után"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Before Bankruptcy Proceeding"
+msgstr "Fizetésképtelenségi eljárás előtt"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "April"
+msgstr "április"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "August"
+msgstr "augusztus"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "December"
+msgstr "december"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "February"
+msgstr "február"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "First quarter"
+msgstr "Első negyedév"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Fourth quarter"
+msgstr "Negyedik negyedév"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "January"
+msgstr "január"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "July"
+msgstr "július"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "June"
+msgstr "június"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "March"
+msgstr "március"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "May"
+msgstr "máj"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "November"
+msgstr "november"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "October"
+msgstr "október"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Second quarter"
+msgstr "Második negyedév"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "September"
+msgstr "szeptember"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Third quarter"
+msgstr "Harmadik negyedév"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "None"
+msgstr "nincs"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on general regime"
+msgstr "Kizárólag az általános rendszer szerinti adózás"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Empty"
+msgstr "Nullázza le"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Other countries"
+msgstr "Egyéb országok"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "SEPA European Union"
+msgstr "SEPA Európai Unió"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Spain account"
+msgstr "Spanyolországi számla"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "No"
+msgstr "Nem"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Yes"
+msgstr "Igen"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Calculated"
+msgstr "Kiszámítva"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Cancelled"
+msgstr "érvénytelen"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Done"
+msgstr "Kész"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Draft"
+msgstr "vázlat"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Application for compensation"
+msgstr "Beszámítási kérelem"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Returns"
+msgstr "Adófolyószámla – visszatérítések"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Revenue"
+msgstr "Adófolyószámla – befizetések"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Direct incomes in account"
+msgstr "Közvetlen számlabefizetések"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Income"
+msgstr "eredménykimutatás"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "No activity / Zero result"
+msgstr "Nincs tevékenység / nulla eredmény"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return"
+msgstr "Visszaküldés"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return by trasnfer to foreign account"
+msgstr "Visszatérítés külföldi számlára utalással"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "Mentesülés a 390-es bevallás alól"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Numeric"
+msgstr "szám"
+
+msgctxt "view:account.configuration:"
+msgid "AEAT 303"
+msgstr "AEAT 303"
+
+msgctxt "view:aeat.303.mapping:"
+msgid "AEAT 303 Mapping"
+msgstr "AEAT 303 megfeleltetés"
+
+msgctxt "view:aeat.303.report:"
+msgid "Accrued VAT"
+msgstr "Fizetendő áfa"
+
+msgctxt "view:aeat.303.report:"
+msgid "Additional information"
+msgstr "További információk"
+
+msgctxt "view:aeat.303.report:"
+msgid "Base:"
+msgstr "Adóalap:"
+
+msgctxt "view:aeat.303.report:"
+msgid "Complementary Declaration"
+msgstr "Kiegészítő bevallás"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Domestic Operations"
+msgstr "Belföldi folyó ügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Import Operations"
+msgstr "Folyó importügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Intracommunity Operations"
+msgstr "Közösségen belüli folyó ügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible VAT"
+msgstr "Levonható áfa"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible regularization"
+msgstr "Adólevonás kiigazítása"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Domestic Operations"
+msgstr "Belföldi beruházási ügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Import Operations"
+msgstr "Beruházási importügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Intracommunity Operations"
+msgstr "Közösségen belüli beruházási ügyletek"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 01"
+msgstr "01. oldal"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 03"
+msgstr "03. oldal"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 04"
+msgstr "04. oldal"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 05"
+msgstr "05. oldal"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page DID"
+msgstr "DID oldal"
+
+msgctxt "view:aeat.303.report:"
+msgid "Result"
+msgstr "Eredmény"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Adquisitions"
+msgstr "Különös pénzforgalmi elszámolású beszerzések"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Deliveries"
+msgstr "Különös pénzforgalmi elszámolású értékesítések"
+
+msgctxt "view:aeat.303.report:"
+msgid "Supported Tax:"
+msgstr "Előzetesen felszámított adó:"
+
+msgctxt "view:aeat.303.report:"
+msgid "Tax:"
+msgstr "Adó:"
+
+msgctxt "field:aeat.303.report,amount_to_compensate:"
+msgid "Amount To Compensate"
+msgstr "Beszámítandó összeg"
+
+msgctxt "field:aeat.303.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Üzleti év"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_investment_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "Arányosítás előtti levonható belföldi folyó ügyleti adó"
