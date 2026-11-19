@@ -1911,13 +1911,14 @@ class Report(Workflow, ModelSQL, ModelView):
                         ('company', '=', report.company),
                         ])]
                 with Transaction().set_context(periods=periods):
-                    for tax in TaxCode.browse(
-                            mapping_exonerated390.keys()):
-                        value = getattr(
-                            report, mapping_exonerated390[tax.id])
-                        amount = (value or 0) + tax.amount
-                        setattr(report, mapping_exonerated390[tax.id],
-                            amount)
+                    if report.exonerated_mod390 == '1':
+                        for tax in TaxCode.browse(
+                                mapping_exonerated390.keys()):
+                            value = getattr(
+                                report, mapping_exonerated390[tax.id])
+                            amount = (value or 0) + tax.amount
+                            setattr(report, mapping_exonerated390[tax.id],
+                                amount)
                     if prorrata_difference:
                         for tax in TaxCode.browse([key for key, val in
                                     mapping.items()

@@ -378,7 +378,16 @@ contains the full copyright notices and license terms. -->
         <!-- [97] -->
         <!-- [98] -->
         <!-- [79] -->
+    </data>
+    <data depends="account_es" grouped="1">
         <!-- [99] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_99">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_delivery_investment_domestic_operations'), ('module', '=', 'aeat_303')]"/>
+        </record>
+    </data>
+    <data grouped="1">
 
         <!-- [500] -->
         <!-- [501] -->
