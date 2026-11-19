@@ -2004,14 +2004,35 @@ class Report(Workflow, ModelSQL, ModelView):
     def draft(cls, reports):
         pass
 
+    def _get_annual_resume_record(self):
+        if self.period not in ('12', '4T') or self.exonerated_mod390 != '1':
+            return None
+
+        # Page 4 allocates three characters at position 48, one in retrofix 0.34.3.
+        structure = [
+            (position, 3 if name == 'special_info_key_others_5' else size,
+                name, field_type)
+            for position, size, name, field_type in aeat303.ANNUAL_RESUME_RECORD]
+        record = Record(structure)
+        field_names = self._fields.keys() & record._fields.keys()
+        field_names.discard('additional_page_indicator')  # Always blank on page 4.
+        for name in field_names:
+            value = getattr(self, name)
+            if name == 'special_info_required_declare_third_party_operation':
+                value = value == 'X'
+            if value:
+                setattr(record, name, value)
+
+        # The file layout omits page 4 when it has no content.
+        if record != Record(structure):
+            return record
+        return None
+
     def create_file(self):
         header = Record(aeat303.HEADER_RECORD)
         footer = Record(aeat303.FOOTER_RECORD)
         record = Record(aeat303.RECORD)
         general_record = Record(aeat303.GENERAL_RECORD)
-        # annual_resume_record = Record(aeat303.ANNUAL_RESUME_RECORD)
-        # annual_additional_record = Record(
-        #    aeat303.ANNUAL_RESUME_ADDITIONAL_RECORD)
         bank_data_record = Record(aeat303.BANK_DATA_RECORD)
 
         # Set fix values for Version and Company VAT
@@ -2036,13 +2057,6 @@ class Report(Workflow, ModelSQL, ModelView):
                 setattr(record, column, value)
             if column in general_record._fields:
                 setattr(general_record, column, value)
-            # If period is diffenret of 12/4T the 4 and 5 page will be without
-            #   content.
-            ## if self.period in ('12', '4T'):
-            ##     if column in annual_resume_record._fields:
-            ##         setattr(annual_resume_record, column, value)
-            ##     if column in annual_additional_record._fields:
-            ##         setattr(annual_additional_record, column, value)
             if column in bank_data_record._fields:
                 setattr(bank_data_record, column, value)
             if column in footer._fields:
@@ -2051,13 +2065,11 @@ class Report(Workflow, ModelSQL, ModelView):
         bank_data_record.bank_account = next((n.number_compact
                 for n in self.bank_account.numbers
                 if n.type == 'iban'), '') if self.bank_account else ''
-        ## if self.period in ('12', '4T'):
-        ##     records = [header, record, general_record, annual_resume_record,
-        ##         annual_additional_record, bank_data_record]
-        ## else:
-        ##     records = [header, record, general_record, bank_data_record]
-        records = [header, record, general_record, bank_data_record]
-        records.append(footer)
+        records = [header, record, general_record]
+        annual_record = self._get_annual_resume_record()
+        if annual_record is not None:
+            records.append(annual_record)
+        records.extend([bank_data_record, footer])
         try:
             data = retrofix_write(records, separator='')
         except AssertionError as e:
