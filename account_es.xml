@@ -512,5 +512,9 @@ contains the full copyright notices and license terms. -->
         <!-- [98] Last period, exonerated 390 - Special Regime Operations on Travel Agency -->
         <!-- [79] Last period, exonerated 390 - Operations Not Usual -->
         <!-- [99] Last period, exonerated 390 - Delivery of Investment Domestic Operations -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_99_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_99" />
+            <field name="code" ref="account_es.base_entregas_bienes_inversion_99" />
+        </record>
     </data>
 </tryton>
