@@ -220,11 +220,6 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_22" />
             <field name="code" ref="account_es.bases_ispc" />
         </record>
-        <!-- [28] - Inversión del sujeto pasivo compras bienes inversión. Base Deducible -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_22" />
-            <field name="code" ref="account_es.bases_ispc_bi" />
-        </record>
         <!-- [29] - Cuotas soportadas operaciones interiores corrientes -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val1">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
@@ -234,11 +229,6 @@ contains the full copyright notices and license terms. -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val2">
             <field name="mapping" ref="aeat_303_mapping_code_23" />
             <field name="code" ref="account_es.cuotas_ispc" />
-        </record>
-        <!-- [29] - Inversión del sujeto pasivo compras bienes inversión. Cuota Deducible -->
-        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val3">
-            <field name="mapping" ref="aeat_303_mapping_code_23" />
-            <field name="code" ref="account_es.cuotas_ispc_bi" />
         </record>
         <!-- [30] - Base operaciones interiores bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_24_val1">
@@ -255,6 +245,11 @@ contains the full copyright notices and license terms. -->
             <field name="mapping" ref="aeat_303_mapping_code_24" />
             <field name="code" ref="account_es.iva_ded_24_21" />
         </record>
+        <!-- [30] - Inversión del sujeto pasivo compras bienes inversión. Base Deducible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_22_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_24" />
+            <field name="code" ref="account_es.bases_ispc_bi" />
+        </record>
         <!-- [31] - Cuotas soportadas operaciones interiores bienes inversión 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val1">
             <field name="mapping" ref="aeat_303_mapping_code_25" />
@@ -269,6 +264,11 @@ contains the full copyright notices and license terms. -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_25_val3">
             <field name="mapping" ref="aeat_303_mapping_code_25" />
             <field name="code" ref="account_es.iva_ded_25_21" />
+        </record>
+        <!-- [31] - Inversión del sujeto pasivo compras bienes inversión. Cuota Deducible -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_23_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_25" />
+            <field name="code" ref="account_es.cuotas_ispc_bi" />
         </record>
         <!-- [32] - Base importaciones bienes corrientes 4% -->
         <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_26_val2">
