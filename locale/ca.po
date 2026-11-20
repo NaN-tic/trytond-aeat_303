@@ -856,6 +856,26 @@ msgstr ""
 "Impost sobre operacions domèstiques actuals deduïbles prèviament a la "
 "prorrata"
 
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_current_import_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Import Operations Tax"
+msgstr "Quota d’importacions de béns corrents abans de la prorrata"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_investment_import_operations_tax:"
+msgid "Pre-Prorrata Deductible Investment Import Operations Tax"
+msgstr "Quota d’importacions de béns d’inversió abans de la prorrata"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_current_intracommunity_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Intracommunity Operations Tax"
+msgstr "Quota d’adquisicions intracomunitàries corrents abans de la prorrata"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_investment_intracommunity_operations_tax:"
+msgid "Pre-Prorrata Deductible Investment Intracommunity Operations Tax"
+msgstr "Quota d’adquisicions intracomunitàries de béns d’inversió abans de la prorrata"
+
 msgctxt "field:aeat.303.report,preprorrata_deductible_regularization_tax:"
 msgid "Pre-Prorrata Deductible Regularization Tax"
 msgstr "Impost de regularització deduïble prèvia a la prorrata"
