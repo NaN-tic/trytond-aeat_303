@@ -254,11 +254,14 @@ class UpdateChart(metaclass=PoolMeta):
 
         # Update current values
         ids = []
+        manual_fields = []
         company = self.start.account.company.id
         for mapping in Mapping.search([
                     ('company', 'in', [company, None]),
                     ]):
             if not mapping.template:
+                if mapping.company:
+                    manual_fields.append(mapping.aeat303_field.id)
                 continue
             vals = mapping.template._get_mapping_value(mapping=mapping)
             if vals:
@@ -267,7 +270,10 @@ class UpdateChart(metaclass=PoolMeta):
 
         # Create new one's
         to_create = []
-        for template in MappingTemplate.search([('id', 'not in', ids)]):
+        for template in MappingTemplate.search([
+                    ('id', 'not in', ids),
+                    ('aeat303_field', 'not in', manual_fields),
+                    ]):
             vals = template._get_mapping_value()
             if vals:
                 vals['company'] = company
@@ -1845,7 +1851,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     ('company', '=', report.company),
                     ]):
                 for code in mapp.code_by_companies:
-                    mapping_exonerated390[code.id] = mapp.aeat303_field.name
+                    mapping_exonerated390.setdefault(code.id, set()).add(
+                        mapp.aeat303_field.name)
             for mapp in Mapping.search([
                     ('type_', '=', 'numeric'),
                     ('company', '=', report.company),
@@ -1882,8 +1889,9 @@ class Report(Workflow, ModelSQL, ModelView):
             for mapped_fields in mapping.values():
                 for field in mapped_fields:
                     setattr(report, field, Decimal(0))
-            for field in mapping_exonerated390.values():
-                setattr(report, field, Decimal(0))
+            for mapped_fields in mapping_exonerated390.values():
+                for field in mapped_fields:
+                    setattr(report, field, Decimal(0))
             for field in deductible_fields:
                 setattr(report, 'preprorrata_' + field, Decimal(0))
 
@@ -1914,11 +1922,9 @@ class Report(Workflow, ModelSQL, ModelView):
                     if report.exonerated_mod390 == '1':
                         for tax in TaxCode.browse(
                                 mapping_exonerated390.keys()):
-                            value = getattr(
-                                report, mapping_exonerated390[tax.id])
-                            amount = (value or 0) + tax.amount
-                            setattr(report, mapping_exonerated390[tax.id],
-                                amount)
+                            for field in mapping_exonerated390[tax.id]:
+                                value = getattr(report, field) or _Z
+                                setattr(report, field, value + tax.amount)
                     if prorrata_difference:
                         for tax in TaxCode.browse([key for key, val in
                                     mapping.items()

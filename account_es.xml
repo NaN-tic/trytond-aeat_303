@@ -495,13 +495,105 @@ contains the full copyright notices and license terms. -->
             <field name="code" ref="account_es.iva_ded_29_21" />
         </record>
 
-        <!-- [80] Last period, exonerated 390 - Opeartions in General Regime -->
+        <!-- [80] Last period, exonerated 390 - Operations in General Regime -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_2_base" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_2_base_modification" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_01" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val4">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_01_modification" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val5">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_05_base" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val6">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_05_base_modification" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val7">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_75_base" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val8">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_75_base_modification" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val9">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_04_10" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val10">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_04_10_modification" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val11">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_07_21" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_80_val12">
+            <field name="mapping" ref="aeat_303_mapping_code_80" />
+            <field name="code" ref="account_es.iva_dev_07_21_modification" />
+        </record>
         <!-- [81] Last period, exonerated 390 - Special Cash Criteria -->
         <!-- [93] Last period, exonerated 390 - Intracommunity deliveries of goods and services -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_93_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_93" />
+            <field name="code" ref="account_es.base_intra_42" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_93_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_93" />
+            <field name="code" ref="account_es.base_intra_serv_42" />
+        </record>
         <!-- [94] Last period, exonerated 390 - Exports and other exempt transactions with right to deduction -->
-        <!-- [83] Last period, exonerated 390 - Exempt Oprations without deduction right -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_94_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_94" />
+            <field name="code" ref="account_es.base_extra_43" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_94_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_94" />
+            <field name="code" ref="account_es.iva_dev_00_base" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_94_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_94" />
+            <field name="code" ref="account_es.iva_dev_00_base_modification" />
+        </record>
+        <!-- [83] Last period, exonerated 390 - Exempt Operations without deduction right -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_83_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_83" />
+            <field name="code" ref="account_es.base_rep_ex_sin_derecho" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_83_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_83" />
+            <field name="code" ref="account_es.base_rep_alq_ex" />
+        </record>
         <!-- [84] Last period, exonerated 390 - Not Subjected Operations -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_84_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_84" />
+            <field name="code" ref="account_es.base_extra_45" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_84_val2">
+            <field name="mapping" ref="aeat_303_mapping_code_84" />
+            <field name="code" ref="account_es.base_no_sujeto_localizacion_bienes" />
+        </record>
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_84_val3">
+            <field name="mapping" ref="aeat_303_mapping_code_84" />
+            <field name="code" ref="account_es.base_no_sujeto_localizacion_servicios" />
+        </record>
         <!-- [125] Last period, exonerated 390 - Subjected Operations With Reverse Charge -->
+        <record model="aeat.303.mapping-account.tax.code.template" id="aeat_303_mapping_code_125_val1">
+            <field name="mapping" ref="aeat_303_mapping_code_125" />
+            <field name="code" ref="account_es.base_extra_44" />
+        </record>
         <!-- [126] Last period, exonerated 390 - Not Subjected Operations Special Regime Unic Window -->
         <!-- [127] Last period, exonerated 390 - Subjected Operations Special Regime Unic Window -->
         <!-- [128] Last period, exonerated 390 - Intragroup Transactions -->

@@ -362,13 +362,45 @@ contains the full copyright notices and license terms. -->
             <field name="aeat303_field"
                 search="[('name', '=','subject_operations_w_reverse_charge'), ('module', '=', 'aeat_303')]"/>
         </record>
+    </data>
+    <data depends="account_es" grouped="1">
         <!-- [80] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_80">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_rg_operations'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [81] -->
         <!-- [93] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_93">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_intracommunity_deliveries_2bdeduced'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [94] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_94">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_exempt_op_2bdeduced'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [83] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_83">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_exempt_op_wo_permission_2bdeduced'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [84] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_84">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'special_info_w_passive_subject'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [125] -->
+        <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_125">
+            <field name="type_">exonerated390</field>
+            <field name="aeat303_field"
+                search="[('name', '=', 'annual_subject_operations_w_reverse_charge'), ('module', '=', 'aeat_303')]"/>
+        </record>
         <!-- [126] -->
         <!-- [127] -->
         <!-- [128] -->
@@ -378,8 +410,6 @@ contains the full copyright notices and license terms. -->
         <!-- [97] -->
         <!-- [98] -->
         <!-- [79] -->
-    </data>
-    <data depends="account_es" grouped="1">
         <!-- [99] -->
         <record model="aeat.303.template.mapping" id="aeat_303_mapping_code_99">
             <field name="type_">exonerated390</field>
