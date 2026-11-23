@@ -89,6 +89,13 @@ class Configuration(metaclass=PoolMeta):
         config.aeat303_prorrata_percent = prorrata
         config.save()
 
+    def get_prorrata_percent(self):
+        percent = self.aeat303_prorrata_percent
+        # A zero rate without a prorrata account leaves the calculation disabled.
+        if percent == 0 and not self.aeat303_prorrata_account:
+            return None
+        return percent
+
     def _calculate_prorrata(self, fiscalyear=None):
         pool = Pool()
         Mapping = pool.get('aeat.303.prorrata.mapping')
