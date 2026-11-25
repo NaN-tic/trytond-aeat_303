@@ -1,0 +1,1927 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:account.configuration,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "គណនីសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:account.configuration,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "គណនីពន្ធ DUA ដែលបានពន្យារ"
+
+msgctxt "field:account.configuration,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "ទិនានុប្បវត្តិសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:account.configuration,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "កត់ត្រាក្នុងបញ្ជី និងបិទ"
+
+msgctxt "field:account.configuration,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "គណនីសម្រាប់សមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "ឆ្នាំសារពើពន្ធសម្រាប់សមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "ភាគរយសមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_account:"
+msgid "Account for Move"
+msgstr "គណនីសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid "Deferred DUA Account"
+msgstr "គណនីពន្ធ DUA ដែលបានពន្យារ"
+
+msgctxt "field:account.configuration.aeat303,aeat303_move_journal:"
+msgid "Journal for Move"
+msgstr "ទិនានុប្បវត្តិសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:account.configuration.aeat303,aeat303_post_and_close:"
+msgid "Post and Close"
+msgstr "កត់ត្រាក្នុងបញ្ជី និងបិទ"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_account:"
+msgid "Prorrata Account"
+msgstr "គណនីសម្រាប់សមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_fiscalyear:"
+msgid "Prorrata Fiscal Year"
+msgstr "ឆ្នាំសារពើពន្ធសម្រាប់សមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration.aeat303,aeat303_prorrata_percent:"
+msgid "Prorrata Percent"
+msgstr "ភាគរយសមាមាត្រកាត់កង"
+
+msgctxt "field:account.configuration.aeat303,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:account.invoice.tax,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "ពន្ធ DUA ដែលបានពន្យារ"
+
+msgctxt "field:aeat.303.report,company_deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "ពន្ធ DUA ដែលបានពន្យារ"
+
+msgctxt "field:company.company,deferred_dua_tax:"
+msgid "Deferred DUA Tax"
+msgstr "ពន្ធ DUA ដែលបានពន្យារ"
+
+msgctxt "field:aeat.303.mapping,aeat303_field:"
+msgid "Field"
+msgstr "វាល"
+
+msgctxt "help:account.configuration,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr ""
+"គណនីដែលប្រើជាគូសម្រាប់វិក្កយបត្រអ្នកផ្គត់ផ្គង់ដែលមានពន្ធ DUA បានពន្យារ "
+"និងបានផ្គូផ្គងទៅប្រអប់ 77។"
+
+msgctxt "help:account.configuration.aeat303,aeat303_deferred_dua_account:"
+msgid ""
+"Account used as invoice counterpart for supplier invoices with deferred DUA "
+"taxes mapped to box 77."
+msgstr ""
+"គណនីដែលប្រើជាគូសម្រាប់វិក្កយបត្រអ្នកផ្គត់ផ្គង់ដែលមានពន្ធ DUA បានពន្យារ "
+"និងបានផ្គូផ្គងទៅប្រអប់ 77។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_deferred_dua_account_change"
+msgid ""
+"The account of invoice \"%(invoice)s\" will be changed to \"%(account)s\" "
+"because the invoice is subject to deferred DUA tax."
+msgstr ""
+"គណនីរបស់វិក្កយបត្រ «%(invoice)s» នឹងត្រូវប្ដូរទៅ «%(account)s» "
+"ព្រោះវិក្កយបត្រជាប់ពន្ធ DUA ដែលបានពន្យារ។"
+
+msgctxt "field:aeat.303.mapping,code:"
+msgid "Tax Code"
+msgstr "កូដពន្ធ"
+
+msgctxt "field:aeat.303.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "កូដតាមក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.mapping,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.mapping,number:"
+msgid "Number"
+msgstr "លេខ"
+
+msgctxt "field:aeat.303.mapping,template:"
+msgid "Template"
+msgstr "គំរូ"
+
+msgctxt "field:aeat.303.mapping,type_:"
+msgid "Type"
+msgstr "ប្រភេទ"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "កូដពន្ធ"
+
+msgctxt "field:aeat.303.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "ការផ្គូផ្គង"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "គំរូកូដពន្ធ"
+
+msgctxt "field:aeat.303.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "ការផ្គូផ្គង"
+
+msgctxt "field:aeat.303.prorrata.mapping,code:"
+msgid "Tax Code"
+msgstr "កូដពន្ធ"
+
+msgctxt "field:aeat.303.prorrata.mapping,code_by_companies:"
+msgid "Code by Companies"
+msgstr "កូដតាមក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.prorrata.mapping,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.prorrata.mapping,prorrata_field:"
+msgid "Field"
+msgstr "វាល"
+
+msgctxt "field:aeat.303.prorrata.mapping,template:"
+msgid "Template"
+msgstr "គំរូ"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,code:"
+msgid "Tax Code"
+msgstr "កូដពន្ធ"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code,mapping:"
+msgid "Mapping"
+msgstr "ការផ្គូផ្គង"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,code:"
+msgid "Tax Code Template"
+msgstr "គំរូកូដពន្ធ"
+
+msgctxt "field:aeat.303.prorrata.mapping-account.tax.code.template,mapping:"
+msgid "Mapping"
+msgstr "ការផ្គូផ្គង"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,code:"
+msgid "Tax Code Template"
+msgstr "គំរូកូដពន្ធ"
+
+msgctxt "field:aeat.303.prorrata.mapping.template,prorrata_field:"
+msgid "Field"
+msgstr "វាល"
+
+msgctxt "field:aeat.303.report,accrued_re_base_1:"
+msgid "Accrued Re Base 1"
+msgstr "មូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_re_base_2:"
+msgid "Accrued Re Base 2"
+msgstr "មូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_re_base_3:"
+msgid "Accrued Re Base 3"
+msgstr "មូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_re_base_4:"
+msgid "Accrued Re Base 4"
+msgstr "មូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_re_base_5:"
+msgid "Accrued Re Base 5"
+msgstr "មូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_re_base_modification:"
+msgid "Accrued Re Base Modification"
+msgstr "ការកែតម្រូវមូលដ្ឋានអាករបន្ថែមសមមូលបង្គរ"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_1:"
+msgid "Accrued Re Percent 1"
+msgstr "ភាគរយអាករបន្ថែមសមមូលបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_2:"
+msgid "Accrued Re Percent 2"
+msgstr "ភាគរយអាករបន្ថែមសមមូលបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_3:"
+msgid "Accrued Re Percent 3"
+msgstr "ភាគរយអាករបន្ថែមសមមូលបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_4:"
+msgid "Accrued Re Percent 4"
+msgstr "ភាគរយអាករបន្ថែមសមមូលបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_re_percent_5:"
+msgid "Accrued Re Percent 5"
+msgstr "ភាគរយអាករបន្ថែមសមមូលបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_1:"
+msgid "Accrued Re Tax 1"
+msgstr "អាករបន្ថែមសមមូលបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_2:"
+msgid "Accrued Re Tax 2"
+msgstr "អាករបន្ថែមសមមូលបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_3:"
+msgid "Accrued Re Tax 3"
+msgstr "អាករបន្ថែមសមមូលបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_4:"
+msgid "Accrued Re Tax 4"
+msgstr "អាករបន្ថែមសមមូលបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_5:"
+msgid "Accrued Re Tax 5"
+msgstr "អាករបន្ថែមសមមូលបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_re_tax_modification:"
+msgid "Accrued Re Tax Modification"
+msgstr "ការកែតម្រូវអាករបន្ថែមសមមូលបង្គរ"
+
+msgctxt "field:aeat.303.report,accrued_total_tax:"
+msgid "Accrued Total Tax"
+msgstr "ពន្ធបង្គរសរុប"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_0:"
+msgid "Accrued Vat Base 0"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_1:"
+msgid "Accrued Vat Base 1"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_2:"
+msgid "Accrued Vat Base 2"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_3:"
+msgid "Accrued Vat Base 3"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_4:"
+msgid "Accrued Vat Base 4"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_5:"
+msgid "Accrued Vat Base 5"
+msgstr "មូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_base_modification:"
+msgid "Accrued Vat Base Modification"
+msgstr "ការកែតម្រូវមូលដ្ឋានអាករលើតម្លៃបន្ថែមបង្គរ"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_0:"
+msgid "Accrued Vat Percent 0"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_1:"
+msgid "Accrued Vat Percent 1"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_2:"
+msgid "Accrued Vat Percent 2"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_3:"
+msgid "Accrued Vat Percent 3"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_4:"
+msgid "Accrued Vat Percent 4"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_percent_5:"
+msgid "Accrued Vat Percent 5"
+msgstr "ភាគរយអាករលើតម្លៃបន្ថែមបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_0:"
+msgid "Accrued Vat Tax 0"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 0"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_1:"
+msgid "Accrued Vat Tax 1"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 1"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_2:"
+msgid "Accrued Vat Tax 2"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 2"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_3:"
+msgid "Accrued Vat Tax 3"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 3"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_4:"
+msgid "Accrued Vat Tax 4"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 4"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_5:"
+msgid "Accrued Vat Tax 5"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ 5"
+
+msgctxt "field:aeat.303.report,accrued_vat_tax_modification:"
+msgid "Accrued Vat Tax Modification"
+msgstr "ការកែតម្រូវអាករលើតម្លៃបន្ថែមបង្គរ"
+
+msgctxt "field:aeat.303.report,additional_page_indicator:"
+msgid "Complementari Page Indicator"
+msgstr "សូចនាករទំព័របន្ថែម"
+
+msgctxt "field:aeat.303.report,aduana_tax_pending:"
+msgid "Aduana Tax Pending"
+msgstr "ពន្ធគយកំពុងរង់ចាំ"
+
+msgctxt "field:aeat.303.report,annual_intragroup_transaction:"
+msgid "Intragroup Transactions"
+msgstr "ប្រតិបត្តិការក្នុងក្រុមហ៊ុនជាក្រុម"
+
+msgctxt "field:aeat.303.report,annual_operation_volume:"
+msgid "Exist operations annual volume (art. 121 LIVA)"
+msgstr "មានទំហំប្រតិបត្តិការប្រចាំឆ្នាំ (មាត្រា 121 LIVA)"
+
+msgctxt "field:aeat.303.report,annual_oss_not_subject_operations:"
+msgid "Not Subjected Operations Special Regime Unic Window"
+msgstr "ប្រតិបត្តិការមិនជាប់ពន្ធក្រោមរបបច្រកចេញចូលតែមួយ"
+
+msgctxt "field:aeat.303.report,annual_oss_subject_operations:"
+msgid "Subjected Operations Special Regime Unic Window"
+msgstr "ប្រតិបត្តិការជាប់ពន្ធក្រោមរបបច្រកចេញចូលតែមួយ"
+
+msgctxt "field:aeat.303.report,annual_subject_operations_w_reverse_charge:"
+msgid "Subjected Operations With Reverse Charge"
+msgstr "ប្រតិបត្តិការជាប់ពន្ធតាមយន្តការបង់ពន្ធបញ្ច្រាស"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_date:"
+msgid "Auto Bankruptcy Date"
+msgstr "កាលបរិច្ឆេទសេចក្តីសម្រេចក្ស័យធន"
+
+msgctxt "field:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Auto Bankruptcy Declaration"
+msgstr "សេចក្តីសម្រេចប្រកាសក្ស័យធន"
+
+msgctxt "field:aeat.303.report,bank_account:"
+msgid "Bank Account"
+msgstr "គណនីធនាគារ"
+
+msgctxt "field:aeat.303.report,before_result:"
+msgid "Before Result"
+msgstr "លទ្ធផលមុន"
+
+msgctxt "field:aeat.303.report,calculation_date:"
+msgid "Calculation Date"
+msgstr "កាលបរិច្ឆេទគណនា"
+
+msgctxt "field:aeat.303.report,cnae1:"
+msgid "CNAE 1"
+msgstr "CNAE 1"
+
+msgctxt "field:aeat.303.report,cnae2:"
+msgid "CNAE 2"
+msgstr "CNAE 2"
+
+msgctxt "field:aeat.303.report,cnae3:"
+msgid "CNAE 3"
+msgstr "CNAE 3"
+
+msgctxt "field:aeat.303.report,cnae4:"
+msgid "CNAE 4"
+msgstr "CNAE 4"
+
+msgctxt "field:aeat.303.report,cnae5:"
+msgid "CNAE 5"
+msgstr "CNAE 5"
+
+msgctxt "field:aeat.303.report,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.report,company_name:"
+msgid "Company Name"
+msgstr "ឈ្មោះក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.report,company_party:"
+msgid "Company Party"
+msgstr "ភាគីក្រុមហ៊ុន"
+
+msgctxt "field:aeat.303.report,company_vat:"
+msgid "VAT"
+msgstr "អាករលើតម្លៃបន្ថែម (VAT)"
+
+msgctxt "field:aeat.303.report,complementary_declaration:"
+msgid "Complementary Declaration"
+msgstr "សេចក្តីប្រកាសបន្ថែម"
+
+msgctxt ""
+"field:aeat.303.report,complementary_declaration_administrative_discrepancy:"
+msgid "Complementary Declaration Administrative Discrepancy"
+msgstr "ភាពមិនត្រូវគ្នាផ្នែករដ្ឋបាលក្នុងសេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "field:aeat.303.report,complementary_declaration_amount:"
+msgid "Complementary Declaration Amount"
+msgstr "ចំនួនទឹកប្រាក់ក្នុងសេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "field:aeat.303.report,complementary_declaration_modify_direct_debit:"
+msgid "Complementary Declaration Modify Direct Debit"
+msgstr "ការកែការដកប្រាក់ដោយផ្ទាល់ក្នុងសេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "field:aeat.303.report,complementary_declaration_other_adjustements:"
+msgid "Complementary Declaration Other Adjustements"
+msgstr "និយ័តកម្មផ្សេងទៀតក្នុងសេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "field:aeat.303.report,complementary_declaration_rectification:"
+msgid "Complementary Declaration Rectification"
+msgstr "ការកែតម្រូវសេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "field:aeat.303.report,currency:"
+msgid "Currency"
+msgstr "រូបិយប័ណ្ណ"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments:"
+msgid "Deduct Advance payments (petrol, diesel, biofuel)"
+msgstr "កាត់កងប្រាក់បង់មុន (សាំង ម៉ាស៊ូត ជីវឥន្ធនៈ)"
+
+msgctxt "field:aeat.303.report,deduct_advance_payments_amount:"
+msgid "Deduct Advance payments Amount (petrol, diesel, biofuel)"
+msgstr "ចំនួនប្រាក់បង់មុនដែលអាចកាត់កង (សាំង ម៉ាស៊ូត ជីវឥន្ធនៈ)"
+
+msgctxt "field:aeat.303.report,deductible_compensations:"
+msgid "Deductible Compensations"
+msgstr "សំណងដែលអាចកាត់កង"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base1:"
+msgid "Deductible Compensations Base 1"
+msgstr "មូលដ្ឋានសំណងអាចកាត់កង 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_base2:"
+msgid "Deductible Compensations Base 2"
+msgstr "មូលដ្ឋានសំណងអាចកាត់កង 2"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax1:"
+msgid "Deductible Compensations Tax 1"
+msgstr "ពន្ធលើសំណងអាចកាត់កង 1"
+
+msgctxt "field:aeat.303.report,deductible_compensations_tax2:"
+msgid "Deductible Compensations Tax 2"
+msgstr "ពន្ធលើសំណងអាចកាត់កង 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base1:"
+msgid "Deductible Current Domestic Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base2:"
+msgid "Deductible Current Domestic Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_base:"
+msgid "Deductible Current Domestic Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax1:"
+msgid "Deductible Current Domestic Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ 1"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax2:"
+msgid "Deductible Current Domestic Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ 2"
+
+msgctxt "field:aeat.303.report,deductible_current_domestic_operations_tax:"
+msgid "Deductible Current Domestic Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងស្រុកប្រចាំ"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base1:"
+msgid "Deductible Current Import Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base2:"
+msgid "Deductible Current Import Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_base:"
+msgid "Deductible Current Import Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax1:"
+msgid "Deductible Current Import Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ 1"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax2:"
+msgid "Deductible Current Import Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ 2"
+
+msgctxt "field:aeat.303.report,deductible_current_import_operations_tax:"
+msgid "Deductible Current Import Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការនាំចូលប្រចាំ"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base1:"
+msgid "Deductible Current Intracommunity Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base2:"
+msgid "Deductible Current Intracommunity Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_base:"
+msgid "Deductible Current Intracommunity Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax1:"
+msgid "Deductible Current Intracommunity Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax2:"
+msgid "Deductible Current Intracommunity Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_current_intracommunity_operations_tax:"
+msgid "Deductible Current Intracommunity Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base1:"
+msgid "Deductible Investment Domestic Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_domestic_operations_base2:"
+msgid "Deductible Investment Domestic Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_base:"
+msgid "Deductible Investment Domestic Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax1:"
+msgid "Deductible Investment Domestic Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax2:"
+msgid "Deductible Investment Domestic Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_domestic_operations_tax:"
+msgid "Deductible Investment Domestic Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងស្រុក"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base1:"
+msgid "Deductible Investment Import Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base2:"
+msgid "Deductible Investment Import Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_base:"
+msgid "Deductible Investment Import Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax1:"
+msgid "Deductible Investment Import Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax2:"
+msgid "Deductible Investment Import Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_import_operations_tax:"
+msgid "Deductible Investment Import Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគនាំចូល"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base1:"
+msgid "Deductible Investment Intracommunity Operations Base 1"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base2:"
+msgid "Deductible Investment Intracommunity Operations Base 2"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_base:"
+msgid "Deductible Investment Intracommunity Operations Base"
+msgstr "មូលដ្ឋានពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax1:"
+msgid "Deductible Investment Intracommunity Operations Tax 1"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប 1"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax2:"
+msgid "Deductible Investment Intracommunity Operations Tax 2"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប 2"
+
+msgctxt ""
+"field:aeat.303.report,deductible_investment_intracommunity_operations_tax:"
+msgid "Deductible Investment Intracommunity Operations Tax"
+msgstr "ពន្ធអាចកាត់កងសម្រាប់ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization1:"
+msgid "Deductible Investment Regularization 1"
+msgstr "និយ័តកម្មពន្ធអាចកាត់កងលើការវិនិយោគ 1"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization2:"
+msgid "Deductible Investment Regularization 2"
+msgstr "និយ័តកម្មពន្ធអាចកាត់កងលើការវិនិយោគ 2"
+
+msgctxt "field:aeat.303.report,deductible_investment_regularization:"
+msgid "Deductible Investment Regularization"
+msgstr "និយ័តកម្មពន្ធអាចកាត់កងលើការវិនិយោគ"
+
+msgctxt "field:aeat.303.report,deductible_pro_rata_regularization:"
+msgid "Deductible Pro Rata Regularization"
+msgstr "និយ័តកម្មសមាមាត្រពន្ធអាចកាត់កង"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base1:"
+msgid "Deductible Regularization Base 1"
+msgstr "មូលដ្ឋាននិយ័តកម្មពន្ធអាចកាត់កង 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base2:"
+msgid "Deductible Regularization Base 2"
+msgstr "មូលដ្ឋាននិយ័តកម្មពន្ធអាចកាត់កង 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_base:"
+msgid "Deductible Regularization Base"
+msgstr "មូលដ្ឋាននិយ័តកម្មពន្ធអាចកាត់កង"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax1:"
+msgid "Deductible Regularization Tax 1"
+msgstr "ពន្ធលើនិយ័តកម្មដែលអាចកាត់កង 1"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax2:"
+msgid "Deductible Regularization Tax 2"
+msgstr "ពន្ធលើនិយ័តកម្មដែលអាចកាត់កង 2"
+
+msgctxt "field:aeat.303.report,deductible_regularization_tax:"
+msgid "Deductible Regularization Tax"
+msgstr "ពន្ធលើនិយ័តកម្មដែលអាចកាត់កង"
+
+msgctxt "field:aeat.303.report,deductible_total1:"
+msgid "Total Deductible 1"
+msgstr "ពន្ធអាចកាត់កងសរុប 1"
+
+msgctxt "field:aeat.303.report,deductible_total2:"
+msgid "Total Deductible 2"
+msgstr "ពន្ធអាចកាត់កងសរុប 2"
+
+msgctxt "field:aeat.303.report,deductible_total:"
+msgid "Deductible Total"
+msgstr "ពន្ធអាចកាត់កងសរុប"
+
+msgctxt "field:aeat.303.report,exonerated_mod390:"
+msgid "Exonerated Model 390"
+msgstr "បានលើកលែងពីទម្រង់ 390"
+
+msgctxt "field:aeat.303.report,exports:"
+msgid "Exports"
+msgstr "ការនាំចេញ"
+
+msgctxt "field:aeat.303.report,file_:"
+msgid "File"
+msgstr "ឯកសារ"
+
+msgctxt "field:aeat.303.report,filename:"
+msgid "File Name"
+msgstr "ឈ្មោះឯកសារ"
+
+msgctxt "field:aeat.303.report,general_regime_result:"
+msgid "General Regime Result"
+msgstr "លទ្ធផលតាមរបបទូទៅ"
+
+msgctxt "field:aeat.303.report,info_territory_alava:"
+msgid "Taxation Information by Territory: Alava"
+msgstr "ព័ត៌មានពន្ធតាមដែនដី៖ អាឡាវ៉ា"
+
+msgctxt "field:aeat.303.report,info_territory_guipuzcoa:"
+msgid "Taxation Information by Territory: Guipuzcoa"
+msgstr "ព័ត៌មានពន្ធតាមដែនដី៖ ហ្គីពូស្កូអា"
+
+msgctxt "field:aeat.303.report,info_territory_navarra:"
+msgid "Taxation Information by Territory: Navarra"
+msgstr "ព័ត៌មានពន្ធតាមដែនដី៖ ណាវ៉ារ៉ា"
+
+msgctxt "field:aeat.303.report,info_territory_vizcaya:"
+msgid "Taxation Information by Territory: Vizcaya"
+msgstr "ព័ត៌មានពន្ធតាមដែនដី៖ ប៊ីស្កាយ៉ា"
+
+msgctxt "field:aeat.303.report,information_taxation_reason_territory:"
+msgid "Information on taxation by reason of territorya: Commo territory"
+msgstr "ព័ត៌មានពន្ធតាមដែនដី៖ ដែនដីទូទៅ"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_base:"
+msgid "Intracommunity Adquisitions Base"
+msgstr "មូលដ្ឋានពន្ធនៃការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "field:aeat.303.report,intracommunity_adquisitions_tax:"
+msgid "Intracommunity Adquisitions Tax"
+msgstr "ពន្ធលើការទិញក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "field:aeat.303.report,intracommunity_deliveries:"
+msgid "Intracommunity Deliveries"
+msgstr "ការប្រគល់ក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "field:aeat.303.report,joint_liquidation:"
+msgid "Is joint liquidation"
+msgstr "ជាការទូទាត់ពន្ធរួម"
+
+msgctxt "field:aeat.303.report,joint_taxation_state_provincial_councils:"
+msgid "Joint Taxation State Provincial Councils"
+msgstr "ការយកពន្ធរួមដោយរដ្ឋ និងក្រុមប្រឹក្សាខេត្ត"
+
+msgctxt "field:aeat.303.report,liquidation_result:"
+msgid "Liquidation Result"
+msgstr "លទ្ធផលនៃការទូទាត់ពន្ធ"
+
+msgctxt "field:aeat.303.report,monthly_return_subscription:"
+msgid "Montly Return Subscription"
+msgstr "ការចុះឈ្មោះស្នើប្រាក់សងវិញប្រចាំខែ"
+
+msgctxt "field:aeat.303.report,move:"
+msgid "Move"
+msgstr "កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:aeat.303.report,move_account:"
+msgid "Account for Move"
+msgstr "គណនីសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:aeat.303.report,move_description:"
+msgid "Description for Move"
+msgstr "សេចក្តីពិពណ៌នាកំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:aeat.303.report,move_journal:"
+msgid "Journal for Move"
+msgstr "ទិនានុប្បវត្តិសម្រាប់កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "field:aeat.303.report,not_subject_localitzation_rules:"
+msgid ""
+"Not Subject To Localitzation Rules (Except For Those Included in Box 123)"
+msgstr "មិនស្ថិតក្រោមវិធានកំណត់ទីកន្លែងជាប់ពន្ធ (លើកលែងធាតុក្នុងប្រអប់ 123)"
+
+msgctxt "field:aeat.303.report,operations_amount1:"
+msgid "Operations Amount 1"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ 1"
+
+msgctxt "field:aeat.303.report,operations_amount2:"
+msgid "Operations Amount 2"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ 2"
+
+msgctxt "field:aeat.303.report,operations_amount3:"
+msgid "Operations Amount 3"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ 3"
+
+msgctxt "field:aeat.303.report,operations_amount4:"
+msgid "Operations Amount 4"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ 4"
+
+msgctxt "field:aeat.303.report,operations_amount5:"
+msgid "Operations Amount 5"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការ 5"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 1"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 2"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 3"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 4"
+
+msgctxt "field:aeat.303.report,operations_amount_w_deduction5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 5"
+
+msgctxt "field:aeat.303.report,oss_not_subject_operations:"
+msgid "OSS, Not Subject Operations"
+msgstr "OSS៖ ប្រតិបត្តិការមិនជាប់ពន្ធ"
+
+msgctxt "field:aeat.303.report,oss_subject_operations:"
+msgid "OSS, Subject Operations"
+msgstr "OSS៖ ប្រតិបត្តិការជាប់ពន្ធ"
+
+msgctxt "field:aeat.303.report,other_passive_subject_base:"
+msgid "Other Passive Subject Adquisitions Base"
+msgstr "មូលដ្ឋានពន្ធនៃការទិញផ្សេងទៀតតាមយន្តការបង់ពន្ធបញ្ច្រាស"
+
+msgctxt "field:aeat.303.report,other_passive_subject_tax:"
+msgid "Other Passive Subject Adquisitions Tax"
+msgstr "ពន្ធលើការទិញផ្សេងទៀតតាមយន្តការបង់ពន្ធបញ្ច្រាស"
+
+msgctxt "field:aeat.303.report,passive_subject_foral_administration:"
+msgid "Passive Subject on a Foral Administration"
+msgstr "អ្នកជាប់ពន្ធក្រោមរដ្ឋបាលពន្ធ Foral"
+
+msgctxt "field:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Passive Subject voluntarily opted for the SII"
+msgstr "អ្នកជាប់ពន្ធដែលបានជ្រើសរើសប្រើ SII ដោយស្ម័គ្រចិត្ត"
+
+msgctxt "field:aeat.303.report,period:"
+msgid "Period"
+msgstr "គ្រា"
+
+msgctxt "field:aeat.303.report,post_and_close:"
+msgid "Post and Close"
+msgstr "កត់ត្រាក្នុងបញ្ជី និងបិទ"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_current_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "ពន្ធអាចកាត់កងលើប្រតិបត្តិការក្នុងស្រុកប្រចាំ មុនអនុវត្តសមាមាត្រកាត់កង"
+
+msgctxt "field:aeat.303.report,preprorrata_deductible_regularization_tax:"
+msgid "Pre-Prorrata Deductible Regularization Tax"
+msgstr "ពន្ធលើនិយ័តកម្មដែលអាចកាត់កង មុនអនុវត្តសមាមាត្រកាត់កង"
+
+msgctxt "field:aeat.303.report,previous_declaration_receipt:"
+msgid "Previous Declaration Receipt"
+msgstr "បង្កាន់ដៃសេចក្តីប្រកាសមុន"
+
+msgctxt "field:aeat.303.report,previous_period_amount_to_compensate:"
+msgid "Previous Period Amount To Compensate"
+msgstr "ចំនួនទឹកប្រាក់ពីគ្រាមុនដែលត្រូវកាត់កង"
+
+msgctxt "field:aeat.303.report,previous_period_pending_amount_to_compensate:"
+msgid "Previous Period Pending Amount To Compensate"
+msgstr "ចំនួនទឹកប្រាក់ពុំទាន់កាត់កងពីគ្រាមុន"
+
+msgctxt "field:aeat.303.report,previous_report:"
+msgid "Previous Report"
+msgstr "របាយការណ៍មុន"
+
+msgctxt "field:aeat.303.report,prorrata_deductible_amount:"
+msgid "Prorrata Deductible Amount"
+msgstr "ចំនួនទឹកប្រាក់អាចកាត់កងតាមសមាមាត្រ"
+
+msgctxt "field:aeat.303.report,prorrata_percent1:"
+msgid "Operations Amount With Deduction 1"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 1"
+
+msgctxt "field:aeat.303.report,prorrata_percent2:"
+msgid "Operations Amount With Deduction 2"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 2"
+
+msgctxt "field:aeat.303.report,prorrata_percent3:"
+msgid "Operations Amount With Deduction 3"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 3"
+
+msgctxt "field:aeat.303.report,prorrata_percent4:"
+msgid "Operations Amount With Deduction 4"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 4"
+
+msgctxt "field:aeat.303.report,prorrata_percent5:"
+msgid "Operations Amount With Deduction 5"
+msgstr "ចំនួនទឹកប្រាក់ប្រតិបត្តិការមានការកាត់កង 5"
+
+msgctxt "field:aeat.303.report,prorrata_percent_applied:"
+msgid "Prorrata Percent Applied"
+msgstr "ភាគរយសមាមាត្រកាត់កងដែលបានអនុវត្ត"
+
+msgctxt "field:aeat.303.report,prorrata_real_percent:"
+msgid "Prorrata Real Percent"
+msgstr "ភាគរយសមាមាត្រកាត់កងជាក់ស្ដែង"
+
+msgctxt "field:aeat.303.report,prorrata_total_amount:"
+msgid "Prorrata Total Amount"
+msgstr "ចំនួនទឹកប្រាក់សរុបតាមសមាមាត្រកាត់កង"
+
+msgctxt "field:aeat.303.report,prorrata_type1:"
+msgid "Prorrata Type 1"
+msgstr "ប្រភេទសមាមាត្រកាត់កង 1"
+
+msgctxt "field:aeat.303.report,prorrata_type2:"
+msgid "Prorrata Type 2"
+msgstr "ប្រភេទសមាមាត្រកាត់កង 2"
+
+msgctxt "field:aeat.303.report,prorrata_type3:"
+msgid "Prorrata Type 3"
+msgstr "ប្រភេទសមាមាត្រកាត់កង 3"
+
+msgctxt "field:aeat.303.report,prorrata_type4:"
+msgid "Prorrata Type 4"
+msgstr "ប្រភេទសមាមាត្រកាត់កង 4"
+
+msgctxt "field:aeat.303.report,prorrata_type5:"
+msgid "Prorrata Type 5"
+msgstr "ប្រភេទសមាមាត្រកាត់កង 5"
+
+msgctxt "field:aeat.303.report,recc:"
+msgid "Special Cash Criteria"
+msgstr "របបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_base:"
+msgid "Special Cash Criteria Asquistions Base"
+msgstr "មូលដ្ឋានពន្ធនៃការទិញក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,recc_adquisitions_tax:"
+msgid "Special Cash Criteria Adquistions Tax"
+msgstr "ពន្ធលើការទិញក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,recc_deliveries_base:"
+msgid "Special Cash Criteria Deliveries Base"
+msgstr "មូលដ្ឋានពន្ធនៃការប្រគល់ក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,recc_deliveries_tax:"
+msgid "Special Cash Criteria Deliveries Tax"
+msgstr "ពន្ធលើការប្រគល់ក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,recc_receiver:"
+msgid "Special Cash Criteria Receiver"
+msgstr "អ្នកទទួលក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "field:aeat.303.report,regime_type:"
+msgid "Tribute type"
+msgstr "ប្រភេទរបបពន្ធ"
+
+msgctxt "field:aeat.303.report,result:"
+msgid "Result"
+msgstr "លទ្ធផល"
+
+msgctxt "field:aeat.303.report,result_previous_period_amount_to_compensate:"
+msgid "Result Previous Period Amount To Compensate"
+msgstr "លទ្ធផលនៃចំនួនទឹកប្រាក់ពីគ្រាមុនដែលត្រូវកាត់កង"
+
+msgctxt "field:aeat.303.report,result_tax_regularitzation:"
+msgid "Tax Regularization art. 80.cinco.50a LIVA"
+msgstr "និយ័តកម្មពន្ធតាមមាត្រា 80.cinco.50a LIVA"
+
+msgctxt "field:aeat.303.report,return_bank_address:"
+msgid "Bank Address"
+msgstr "អាសយដ្ឋានធនាគារ"
+
+msgctxt "field:aeat.303.report,return_bank_city:"
+msgid "Bank City"
+msgstr "ទីក្រុងរបស់ធនាគារ"
+
+msgctxt "field:aeat.303.report,return_bank_country_code:"
+msgid "Bank Country Code"
+msgstr "កូដប្រទេសរបស់ធនាគារ"
+
+msgctxt "field:aeat.303.report,return_bank_name:"
+msgid "Bank Name"
+msgstr "ឈ្មោះធនាគារ"
+
+msgctxt "field:aeat.303.report,return_sepa_check:"
+msgid "Sepa Check On Return"
+msgstr "ការពិនិត្យ SEPA ពេលសងប្រាក់វិញ"
+
+msgctxt "field:aeat.303.report,special_info_art_antiques_collectibles:"
+msgid "Special Regime Operations on Art, Antiques and Collectibles"
+msgstr ""
+"ប្រតិបត្តិការក្រោមរបបពិសេសសម្រាប់ស្នាដៃសិល្បៈ វត្ថុបុរាណ "
+"និងវត្ថុសម្រាប់ប្រមូល"
+
+msgctxt ""
+"field:aeat.303.report,special_info_delivery_investment_domestic_operations:"
+msgid "Delivery of Investment Domestic Operations"
+msgstr "ការប្រគល់ទំនិញវិនិយោគសម្រាប់ប្រតិបត្តិការក្នុងស្រុក"
+
+msgctxt "field:aeat.303.report,special_info_exempt_op_2bdeduced:"
+msgid "Exports and Other Exempt Oprations to be Deduce"
+msgstr "ការនាំចេញ និងប្រតិបត្តិការលើកលែងផ្សេងទៀតដែលមានសិទ្ធិកាត់កង"
+
+msgctxt "field:aeat.303.report,special_info_exempt_op_wo_permission_2bdeduced:"
+msgid "Exempt Oprations without deduction right"
+msgstr "ប្រតិបត្តិការលើកលែងដែលគ្មានសិទ្ធិកាត់កង"
+
+msgctxt "field:aeat.303.report,special_info_farming_cattleraising_fishing:"
+msgid "Especial Regime of Farming, Cattle rasing and Fishing"
+msgstr "របបពិសេសសម្រាប់កសិកម្ម ការចិញ្ចឹមគោ និងនេសាទ"
+
+msgctxt "field:aeat.303.report,special_info_financial_op_not_usual:"
+msgid "Operations Not Usual"
+msgstr "ប្រតិបត្តិការមិនប្រចាំ"
+
+msgctxt ""
+"field:aeat.303.report,special_info_intracommunity_deliveries_2bdeduced:"
+msgid "Intracommunity Delivery of Goods and Services"
+msgstr "ការប្រគល់ទំនិញ និងផ្ដល់សេវាក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "field:aeat.303.report,special_info_key_main:"
+msgid "Main Activity Code"
+msgstr "កូដសកម្មភាពចម្បង"
+
+msgctxt "field:aeat.303.report,special_info_key_others_1:"
+msgid "Activity Code (Other 1)"
+msgstr "កូដសកម្មភាព (ផ្សេងទៀត 1)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_2:"
+msgid "Activity Code (Other 2)"
+msgstr "កូដសកម្មភាព (ផ្សេងទៀត 2)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_3:"
+msgid "Activity Code (Other 3)"
+msgstr "កូដសកម្មភាព (ផ្សេងទៀត 3)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_4:"
+msgid "Activity Code (Other 4)"
+msgstr "កូដសកម្មភាព (ផ្សេងទៀត 4)"
+
+msgctxt "field:aeat.303.report,special_info_key_others_5:"
+msgid "Activity Code (Other 5)"
+msgstr "កូដសកម្មភាព (ផ្សេងទៀត 5)"
+
+msgctxt "field:aeat.303.report,special_info_operations_rs:"
+msgid "Simplified Regime Operations"
+msgstr "ប្រតិបត្តិការក្រោមរបបសាមញ្ញ"
+
+msgctxt "field:aeat.303.report,special_info_passive_subject_re:"
+msgid "Passive Subject on Equivalence Regime"
+msgstr "អ្នកជាប់ពន្ធក្រោមរបបអាករបន្ថែមសមមូល"
+
+msgctxt "field:aeat.303.report,special_info_recc:"
+msgid "Operations Especial Regime Cash Criteria"
+msgstr "ប្រតិបត្តិការក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt ""
+"field:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Required declare Third Party Operations"
+msgstr "តម្រូវឱ្យប្រកាសប្រតិបត្តិការជាមួយតតិយជន"
+
+msgctxt "field:aeat.303.report,special_info_rg_operations:"
+msgid "Operations in General Regime"
+msgstr "ប្រតិបត្តិការក្រោមរបបទូទៅ"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_main:"
+msgid "Main IAE Code"
+msgstr "កូដ IAE ចម្បង"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_1:"
+msgid "IAE Code (Other 1)"
+msgstr "កូដ IAE (ផ្សេងទៀត 1)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_2:"
+msgid "IAE Code (Other 2)"
+msgstr "កូដ IAE (ផ្សេងទៀត 2)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_3:"
+msgid "IAE Code (Other 3)"
+msgstr "កូដ IAE (ផ្សេងទៀត 3)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_4:"
+msgid "IAE Code (Other 4)"
+msgstr "កូដ IAE (ផ្សេងទៀត 4)"
+
+msgctxt "field:aeat.303.report,special_info_section_iae_others_5:"
+msgid "IAE Code (Other 5)"
+msgstr "កូដ IAE (ផ្សេងទៀត 5)"
+
+msgctxt "field:aeat.303.report,special_info_total:"
+msgid "Total Operations Volume"
+msgstr "ទំហំប្រតិបត្តិការសរុប"
+
+msgctxt "field:aeat.303.report,special_info_travel_agency:"
+msgid "Special Regime Operations on Travel Agency"
+msgstr "ប្រតិបត្តិការក្រោមរបបពិសេសសម្រាប់ភ្នាក់ងារទេសចរណ៍"
+
+msgctxt "field:aeat.303.report,special_info_w_passive_subject:"
+msgid "Not Subjected Operations"
+msgstr "ប្រតិបត្តិការមិនជាប់ពន្ធ"
+
+msgctxt "field:aeat.303.report,special_prorate:"
+msgid "Special prorate"
+msgstr "សមាមាត្រកាត់កងពិសេស"
+
+msgctxt "field:aeat.303.report,special_prorate_revocation:"
+msgid "Special prorate revocation"
+msgstr "ការដកហូតសមាមាត្រកាត់កងពិសេស"
+
+msgctxt "field:aeat.303.report,state:"
+msgid "State"
+msgstr "ស្ថានភាព"
+
+msgctxt "field:aeat.303.report,state_administration_amount:"
+msgid "State Administration Amount"
+msgstr "ចំនួនទឹកប្រាក់សម្រាប់រដ្ឋបាលរដ្ឋ"
+
+msgctxt "field:aeat.303.report,state_administration_percent:"
+msgid "State Administration Percent"
+msgstr "ភាគរយសម្រាប់រដ្ឋបាលរដ្ឋ"
+
+msgctxt "field:aeat.303.report,subject_operations_w_reverse_charge:"
+msgid "Subject Operations With Reverse Charge"
+msgstr "ប្រតិបត្តិការជាប់ពន្ធតាមយន្តការបង់ពន្ធបញ្ច្រាស"
+
+msgctxt "field:aeat.303.report,sum_results:"
+msgid "Sum of Results"
+msgstr "ផលបូកលទ្ធផល"
+
+msgctxt "field:aeat.303.report,swift_bank:"
+msgid "Swift"
+msgstr "លេខកូដ SWIFT"
+
+msgctxt "field:aeat.303.report,to_deduce:"
+msgid "To Deduce"
+msgstr "ត្រូវកាត់កង"
+
+msgctxt "field:aeat.303.report,type:"
+msgid "Declaration Type"
+msgstr "ប្រភេទសេចក្តីប្រកាស"
+
+msgctxt "field:aeat.303.report,without_activity:"
+msgid "Without Activity"
+msgstr "គ្មានសកម្មភាព"
+
+msgctxt "field:aeat.303.report,year:"
+msgid "Year"
+msgstr "ឆ្នាំ"
+
+msgctxt "field:aeat.303.template.mapping,aeat303_field:"
+msgid "Field"
+msgstr "វាល"
+
+msgctxt "field:aeat.303.template.mapping,code:"
+msgid "Tax Code Template"
+msgstr "គំរូកូដពន្ធ"
+
+msgctxt "field:aeat.303.template.mapping,number:"
+msgid "Number"
+msgstr "លេខ"
+
+msgctxt "field:aeat.303.template.mapping,type_:"
+msgid "Type"
+msgstr "ប្រភេទ"
+
+msgctxt "help:account.configuration,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "គណនីដែលប្រើជាគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់ 303។"
+
+msgctxt "help:account.configuration,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"ទិនានុប្បវត្តិដែលប្រើសម្រាប់ធាតុគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់"
+" 303។"
+
+msgctxt "help:account.configuration,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"បើធីក កំណត់ត្រាគណនេយ្យនឹងត្រូវបានកត់ក្នុងបញ្ជី "
+"ហើយគ្រាដែលត្រូវគ្នានឹងត្រូវបានបិទ។"
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "គណនីដែលប្រើជាគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់ 303។"
+
+msgctxt "help:account.configuration.aeat303,aeat303_move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"ទិនានុប្បវត្តិដែលប្រើសម្រាប់ធាតុគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់"
+" 303។"
+
+msgctxt "help:account.configuration.aeat303,aeat303_post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"បើធីក កំណត់ត្រាគណនេយ្យនឹងត្រូវបានកត់ក្នុងបញ្ជី "
+"ហើយគ្រាដែលត្រូវគ្នានឹងត្រូវបានបិទ។"
+
+msgctxt "help:aeat.303.report,aduana_tax_pending:"
+msgid "Import VAT paid by Aduana pending entry"
+msgstr "អាករលើតម្លៃបន្ថែមនាំចូលដែលបង់ដោយគយ ហើយកំពុងរង់ចាំការកត់ត្រា"
+
+msgctxt "help:aeat.303.report,annual_operation_volume:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr ""
+"បំពេញតែក្នុងគ្រាចុងក្រោយ "
+"ប្រសិនបើត្រូវបានលើកលែងពីសេចក្តីប្រកាសសង្ខេបអាករលើតម្លៃបន្ថែមប្រចាំឆ្នាំ។ "
+"(លើកលែងពីការដាក់ទម្រង់ 390 ហើយទំហំប្រតិបត្តិការស្មើសូន្យ)។"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments:"
+msgid ""
+"Taxable person entitled to deduct advance payments for deliveries of petrol, "
+"diesel and biofuels after the completion of the non-customs warehousing "
+"regime"
+msgstr ""
+"អ្នកជាប់ពន្ធដែលមានសិទ្ធិកាត់កងប្រាក់បង់មុនសម្រាប់ការប្រគល់សាំង ម៉ាស៊ូត "
+"និងជីវឥន្ធនៈ ក្រោយបញ្ចប់របបឃ្លាំងមិនមែនគយ"
+
+msgctxt "help:aeat.303.report,deduct_advance_payments_amount:"
+msgid ""
+"Payment on account of deliveries of gasoline, diesel and biofuels after the "
+"completion of the non-customs deposit regime attributable to the State "
+"Administration (Sum of box 36 of all models 319 corresponding to deliveries "
+"included in this self-assessment)"
+msgstr ""
+"ប្រាក់បង់ជាមុនសម្រាប់ការប្រគល់សាំង ម៉ាស៊ូត និងជីវឥន្ធនៈ "
+"ក្រោយបញ្ចប់របបឃ្លាំងមិនមែនគយ ដែលត្រូវបង់ជូនរដ្ឋបាលរដ្ឋ (ផលបូកប្រអប់ 36 "
+"នៃទម្រង់ 319 "
+"ទាំងអស់សម្រាប់ការប្រគល់ដែលបានបញ្ចូលក្នុងការគណនាពន្ធដោយខ្លួនឯងនេះ)"
+
+msgctxt "help:aeat.303.report,exonerated_mod390:"
+msgid ""
+"Exclusively to fill in the last period exonerated from the Annual "
+"Declaration-VAT summary. (Exempt from presenting the model 390 and with "
+"volume of operations zero)."
+msgstr ""
+"បំពេញតែក្នុងគ្រាចុងក្រោយ "
+"ប្រសិនបើត្រូវបានលើកលែងពីសេចក្តីប្រកាសសង្ខេបអាករលើតម្លៃបន្ថែមប្រចាំឆ្នាំ។ "
+"(លើកលែងពីការដាក់ទម្រង់ 390 ហើយទំហំប្រតិបត្តិការស្មើសូន្យ)។"
+
+msgctxt "help:aeat.303.report,move_account:"
+msgid ""
+"Account used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr "គណនីដែលប្រើជាគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់ 303។"
+
+msgctxt "help:aeat.303.report,move_description:"
+msgid ""
+"Optionaly you can add information to the account move if it is created "
+"automatically."
+msgstr ""
+"អ្នកអាចបន្ថែមព័ត៌មានទៅក្នុងកំណត់ត្រាគណនេយ្យ "
+"ប្រសិនបើវាត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិ។"
+
+msgctxt "help:aeat.303.report,move_journal:"
+msgid ""
+"Journal used for the counterpart in the creation of the account move when "
+"generate the 303 model."
+msgstr ""
+"ទិនានុប្បវត្តិដែលប្រើសម្រាប់ធាតុគូក្នុងការបង្កើតកំណត់ត្រាគណនេយ្យនៅពេលបង្កើតទម្រង់"
+" 303។"
+
+msgctxt "help:aeat.303.report,passive_subject_foral_administration:"
+msgid ""
+"Passive Subject that tribute exclusively on a Foral Administration with an "
+"import TAX paid by Aduana pending entry."
+msgstr ""
+"អ្នកជាប់ពន្ធដែលបង់ពន្ធតែទៅរដ្ឋបាលពន្ធ Foral ហើយមានពន្ធនាំចូលដែលបង់ដោយគយ "
+"កំពុងរង់ចាំការកត់ត្រា។"
+
+msgctxt "help:aeat.303.report,post_and_close:"
+msgid ""
+"If checked the account move will be posted and the corresponding period or "
+"periods will be closed."
+msgstr ""
+"បើធីក កំណត់ត្រាគណនេយ្យនឹងត្រូវបានកត់ក្នុងបញ្ជី "
+"ហើយគ្រាដែលត្រូវគ្នានឹងត្រូវបានបិទ។"
+
+msgctxt "help:aeat.303.report,result_tax_regularitzation:"
+msgid ""
+"Only fill if you have done the 952 model. To Fill with the tax to recover."
+msgstr ""
+"បំពេញតែក្នុងករណីដែលអ្នកបានដាក់ទម្រង់ 952។ បញ្ចូលចំនួនពន្ធដែលត្រូវទទួលវិញ។"
+
+msgctxt ""
+"help:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid ""
+"Check if you have carried out transactions for which you are required to "
+"submit the annual declaration of transactions with third parties."
+msgstr ""
+"ធីក "
+"បើអ្នកបានធ្វើប្រតិបត្តិការដែលតម្រូវឱ្យដាក់ប្រកាសប្រចាំឆ្នាំអំពីប្រតិបត្តិការជាមួយតតិយជន។"
+
+msgctxt "model:account.configuration.aeat303,name:"
+msgid "AEAT 303 Account Configuration"
+msgstr "ការកំណត់គណនេយ្យ AEAT 303"
+
+msgctxt "model:aeat.303.mapping,name:"
+msgid "AEAT 303 TaxCode Mapping"
+msgstr "ការផ្គូផ្គងកូដពន្ធ AEAT 303"
+
+msgctxt "model:aeat.303.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "ទំនាក់ទំនងកូដនៃការផ្គូផ្គងកូដពន្ធ AEAT 303"
+
+msgctxt "model:aeat.303.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 TaxCode Mapping Codes Relation"
+msgstr "ទំនាក់ទំនងកូដនៃការផ្គូផ្គងកូដពន្ធ AEAT 303"
+
+msgctxt "model:aeat.303.prorrata.mapping,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping"
+msgstr "ការផ្គូផ្គងកូដពន្ធតាមសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code,name:"
+msgid "AEAT 303 TaxCode Prorrata Mapping Relation"
+msgstr "ទំនាក់ទំនងការផ្គូផ្គងកូដពន្ធតាមសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:aeat.303.prorrata.mapping-account.tax.code.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping Relation"
+msgstr "ទំនាក់ទំនងការផ្គូផ្គងគំរូកូដពន្ធតាមសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:aeat.303.prorrata.mapping.template,name:"
+msgid "AEAT 303 Template TaxCode Prorrata Mapping"
+msgstr "ការផ្គូផ្គងគំរូកូដពន្ធតាមសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:aeat.303.report,name:"
+msgid "AEAT 303 Report"
+msgstr "របាយការណ៍ AEAT 303"
+
+msgctxt "model:aeat.303.template.mapping,name:"
+msgid "AEAT 303 TemplateTaxCode Mapping"
+msgstr "ការផ្គូផ្គងគំរូកូដពន្ធ AEAT 303"
+
+msgctxt "model:ir.action,name:act_aeat303_report_moves_form"
+msgid "Moves"
+msgstr "កំណត់ត្រាគណនេយ្យ"
+
+msgctxt "model:ir.action,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "ការផ្គូផ្គង AEAT 303"
+
+msgctxt "model:ir.action,name:act_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata mapping"
+msgstr "ការផ្គូផ្គងសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:ir.action,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "របាយការណ៍ AEAT 303"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_mapping"
+msgid "AEAT 303 mapping"
+msgstr "ការផ្គូផ្គង AEAT 303"
+
+msgctxt "model:ir.action.act_window,name:act_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "របាយការណ៍ AEAT 303"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_annual_operation_volume"
+msgid ""
+"The Annual Operation Volume field could be 'YES' or 'NO' only for periods "
+"'12' or '4T', check report with ID: %(report)s"
+msgstr ""
+"វាលទំហំប្រតិបត្តិការប្រចាំឆ្នាំអាចកំណត់ជា «បាទ/ចាស» (YES) ឬ «ទេ» (NO) "
+"សម្រាប់តែគ្រា «12» ឬ «4T»។ សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s។"
+
+msgctxt "model:ir.message,text:msg_invalid_compensate"
+msgid ""
+"To compensate periods before need to have the actual period result postive "
+"([66] + [77] - [78]) and you can't compensate more than this result."
+msgstr ""
+"ដើម្បីកាត់កងគ្រាមុន លទ្ធផលនៃគ្រាបច្ចុប្បន្នត្រូវតែវិជ្ជមាន ([66] + [77] - "
+"[78]) ហើយចំនួនកាត់កងមិនអាចលើសលទ្ធផលនេះទេ។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_currency"
+msgid "Currency in AEAT 303 report \"%(name)s\" must be Euro."
+msgstr "រូបិយប័ណ្ណនៃរបាយការណ៍ AEAT 303 «%(name)s» ត្រូវតែជាអឺរ៉ូ។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_exonerated_mod390"
+msgid ""
+"The Exonerated Model 390 field could be 'YES' or 'NO' only for periods '12' "
+"or '4T', check report with ID: %(report)s"
+msgstr ""
+"វាលលើកលែងពីទម្រង់ 390 អាចកំណត់ជា «បាទ/ចាស» (YES) ឬ «ទេ» (NO) សម្រាប់តែគ្រា "
+"«12» ឬ «4T»។ សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_prorrata_percent"
+msgid ""
+"One of the Prorrata percent added in then 5th page is greater than 100, and "
+"thats not correct. (Report ID: %(report)s)"
+msgstr ""
+"ភាគរយសមាមាត្រកាត់កងមួយនៅទំព័រទី 5 ធំជាង 100 ដែលមិនត្រឹមត្រូវ។ "
+"(លេខសម្គាល់របាយការណ៍៖ %(report)s)"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check"
+msgid ""
+"The Sepa Check field is not correct for the type selected. Check report with "
+"ID: %(report)s"
+msgstr ""
+"វាលពិនិត្យ SEPA មិនត្រឹមត្រូវសម្រាប់ប្រភេទដែលបានជ្រើសរើស។ "
+"សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_return_sepa_check_period"
+msgid ""
+"The Sepa Check field is not correct for the period of the report. Check "
+"report with ID: %(report)s"
+msgstr ""
+"វាលពិនិត្យ SEPA មិនត្រឹមត្រូវសម្រាប់គ្រានៃរបាយការណ៍។ "
+"សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_sepa_check"
+msgid ""
+"The type of 'Sepa Check On Return' could not be empty for the 'Type' selected"
+" (check report with ID: %(report)s)."
+msgstr ""
+"វាល «ការពិនិត្យ SEPA ពេលសងប្រាក់វិញ» មិនអាចទទេសម្រាប់ប្រភេទដែលបានជ្រើសរើសទេ "
+"(សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s)។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_type_period"
+msgid ""
+"The type of 'Return by trasnfer to foreign account' it's only for periods "
+"'3T', '4T' and from '07' to '12', check report with ID: %(report)s"
+msgstr ""
+"ប្រភេទ «សងប្រាក់វិញដោយផ្ទេរទៅគណនីបរទេស» អាចប្រើសម្រាប់តែគ្រា «3T», «4T» និងពី"
+" «07» ដល់ «12»។ សូមពិនិត្យរបាយការណ៍ដែលមានលេខសម្គាល់ %(report)s។"
+
+msgctxt "model:ir.message,text:msg_no_config"
+msgid ""
+"No configuration found for AEAT303. Please, update your chart of accounts."
+msgstr ""
+"រកមិនឃើញការកំណត់សម្រាប់ AEAT303។ សូមធ្វើបច្ចុប្បន្នភាពប្លង់គណនីរបស់អ្នក។"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_not_possible_cancel"
+msgid ""
+"The AEAT 303 report (ID: %(report)s) cannot be possible cancelled because its"
+" account move is reconciled."
+msgstr ""
+"មិនអាចបោះបង់របាយការណ៍ AEAT 303 (លេខសម្គាល់៖ %(report)s) បានទេ "
+"ព្រោះកំណត់ត្រាគណនេយ្យរបស់វាត្រូវបានផ្ទៀងផ្ទាត់សមតុល្យ។"
+
+msgctxt "model:ir.message,text:msg_prorrata_account_required"
+msgid "Please assign a prorrata account before calculating general prorrata"
+msgstr "សូមកំណត់គណនីសម្រាប់សមាមាត្រកាត់កង មុនគណនាសមាមាត្រកាត់កងទូទៅ"
+
+msgctxt "model:ir.message,text:msg_prorrata_regularization"
+msgid "Prorrata Regularization"
+msgstr "និយ័តកម្មសមាមាត្រកាត់កង"
+
+msgctxt "model:ir.message,text:msg_tax_code_field_must_be_unique"
+msgid "AEAT 303 Tax Code Mapping: Field must be unique."
+msgstr "ការផ្គូផ្គងកូដពន្ធ AEAT 303៖ វាលត្រូវមានតែមួយគត់។"
+
+msgctxt "model:ir.message,text:msg_template_tax_code_field_must_be_unique"
+msgid "AEAT 303 Template Tax Code Mapping: Field must be unique."
+msgstr "ការផ្គូផ្គងគំរូកូដពន្ធ AEAT 303៖ វាលត្រូវមានតែមួយគត់។"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_calculate_button"
+msgid "Calculate"
+msgstr "គណនា"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_cancel_button"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_draft_button"
+msgid "Draft"
+msgstr "សេចក្តីព្រាង"
+
+msgctxt "model:ir.model.button,string:aeat_303_report_process_button"
+msgid "Process"
+msgstr "ដំណើរការ"
+
+msgctxt "model:ir.model.button,string:configuration_calculate_prorrata"
+msgid "Calculate General Prorrata"
+msgstr "គណនាសមាមាត្រកាត់កងទូទៅ"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_mapping"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.rule.group,name:rule_group_aeat303_prorrata_mapping"
+msgid "User in company"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_mapping"
+msgid "AEAT 303 Mapping"
+msgstr "ការផ្គូផ្គង AEAT 303"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_prorrata_mapping"
+msgid "AEAT 303 Prorrata Mapping"
+msgstr "ការផ្គូផ្គងសមាមាត្រកាត់កង AEAT 303"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_303_report"
+msgid "AEAT 303 Report"
+msgstr "របាយការណ៍ AEAT 303"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Code"
+msgstr "កូដ"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "លើកលែងពីទម្រង់ 390"
+
+msgctxt "selection:aeat.303.mapping,type_:"
+msgid "Numeric"
+msgstr "ជាលេខ"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,additional_page_indicator:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,annual_operation_volume:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "After Bankruptcy Proceeding"
+msgstr "ក្រោយនីតិវិធីក្ស័យធន"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "Before Bankruptcy Proceeding"
+msgstr "មុននីតិវិធីក្ស័យធន"
+
+msgctxt "selection:aeat.303.report,auto_bankruptcy_declaration:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,deduct_advance_payments:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,exonerated_mod390:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,passive_subject_foral_administration:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt "selection:aeat.303.report,passive_subject_voluntarily_sii:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "April"
+msgstr "មេសា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "August"
+msgstr "សីហា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "December"
+msgstr "ធ្នូ"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "February"
+msgstr "កុម្ភៈ"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "First quarter"
+msgstr "ត្រីមាសទី ១"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Fourth quarter"
+msgstr "ត្រីមាសទី ៤"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "January"
+msgstr "មករា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "July"
+msgstr "កក្កដា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "June"
+msgstr "មិថុនា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "March"
+msgstr "មីនា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "May"
+msgstr "ឧសភា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "November"
+msgstr "វិច្ឆិកា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "October"
+msgstr "តុលា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Second quarter"
+msgstr "ត្រីមាសទី ២"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "September"
+msgstr "កញ្ញា"
+
+msgctxt "selection:aeat.303.report,period:"
+msgid "Third quarter"
+msgstr "ត្រីមាសទី ៣"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type1:"
+msgid "None"
+msgstr "គ្មាន"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type2:"
+msgid "None"
+msgstr "គ្មាន"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type3:"
+msgid "None"
+msgstr "គ្មាន"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type4:"
+msgid "None"
+msgstr "គ្មាន"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "E"
+msgstr "E"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "G"
+msgstr "G"
+
+msgctxt "selection:aeat.303.report,prorrata_type5:"
+msgid "None"
+msgstr "គ្មាន"
+
+msgctxt "selection:aeat.303.report,regime_type:"
+msgid "Tribute exclusively on general regime"
+msgstr "បង់ពន្ធតាមរបបទូទៅតែប៉ុណ្ណោះ"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Empty"
+msgstr "ទទេ"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Other countries"
+msgstr "ប្រទេសផ្សេងទៀត"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "SEPA European Union"
+msgstr "SEPA សហភាពអឺរ៉ុប"
+
+msgctxt "selection:aeat.303.report,return_sepa_check:"
+msgid "Spain account"
+msgstr "គណនីនៅអេស្ប៉ាញ"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "No"
+msgstr "ទេ"
+
+msgctxt ""
+"selection:aeat.303.report,special_info_required_declare_third_party_operation:"
+msgid "Yes"
+msgstr "បាទ/ចាស"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Calculated"
+msgstr "បានគណនា"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Cancelled"
+msgstr "បានបោះបង់"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Done"
+msgstr "បានបញ្ចប់"
+
+msgctxt "selection:aeat.303.report,state:"
+msgid "Draft"
+msgstr "សេចក្តីព្រាង"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Application for compensation"
+msgstr "ពាក្យស្នើសុំកាត់កង"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Returns"
+msgstr "គណនីពន្ធចរន្ត - ប្រាក់សងវិញ"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Current account tax - Revenue"
+msgstr "គណនីពន្ធចរន្ត - ចំណូល"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Direct incomes in account"
+msgstr "ប្រាក់ចូលដោយផ្ទាល់ទៅគណនី"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Income"
+msgstr "ប្រាក់ចំណូល"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "No activity / Zero result"
+msgstr "គ្មានសកម្មភាព / លទ្ធផលសូន្យ"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return"
+msgstr "ប្រគល់ត្រឡប់"
+
+msgctxt "selection:aeat.303.report,type:"
+msgid "Return by trasnfer to foreign account"
+msgstr "សងប្រាក់វិញដោយផ្ទេរទៅគណនីបរទេស"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Code"
+msgstr "កូដ"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Exonerate 390"
+msgstr "លើកលែងពីទម្រង់ 390"
+
+msgctxt "selection:aeat.303.template.mapping,type_:"
+msgid "Numeric"
+msgstr "ជាលេខ"
+
+msgctxt "view:account.configuration:"
+msgid "AEAT 303"
+msgstr "AEAT 303"
+
+msgctxt "view:aeat.303.mapping:"
+msgid "AEAT 303 Mapping"
+msgstr "ការផ្គូផ្គង AEAT 303"
+
+msgctxt "view:aeat.303.report:"
+msgid "Accrued VAT"
+msgstr "អាករលើតម្លៃបន្ថែមបង្គរ"
+
+msgctxt "view:aeat.303.report:"
+msgid "Additional information"
+msgstr "ព័ត៌មានបន្ថែម"
+
+msgctxt "view:aeat.303.report:"
+msgid "Base:"
+msgstr "មូលដ្ឋាន៖"
+
+msgctxt "view:aeat.303.report:"
+msgid "Complementary Declaration"
+msgstr "សេចក្តីប្រកាសបន្ថែម"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Domestic Operations"
+msgstr "ប្រតិបត្តិការក្នុងស្រុកប្រចាំ"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Import Operations"
+msgstr "ប្រតិបត្តិការនាំចូលប្រចាំ"
+
+msgctxt "view:aeat.303.report:"
+msgid "Current Intracommunity Operations"
+msgstr "ប្រតិបត្តិការក្នុងសហភាពអឺរ៉ុបប្រចាំ"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible VAT"
+msgstr "អាករលើតម្លៃបន្ថែមអាចកាត់កង"
+
+msgctxt "view:aeat.303.report:"
+msgid "Deductible regularization"
+msgstr "និយ័តកម្មពន្ធអាចកាត់កង"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Domestic Operations"
+msgstr "ប្រតិបត្តិការវិនិយោគក្នុងស្រុក"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Import Operations"
+msgstr "ប្រតិបត្តិការវិនិយោគនាំចូល"
+
+msgctxt "view:aeat.303.report:"
+msgid "Investment Intracommunity Operations"
+msgstr "ប្រតិបត្តិការវិនិយោគក្នុងសហភាពអឺរ៉ុប"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 01"
+msgstr "ទំព័រ 01"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 03"
+msgstr "ទំព័រ 03"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 04"
+msgstr "ទំព័រ 04"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page 05"
+msgstr "ទំព័រ 05"
+
+msgctxt "view:aeat.303.report:"
+msgid "Page DID"
+msgstr "ទំព័រ DID"
+
+msgctxt "view:aeat.303.report:"
+msgid "Result"
+msgstr "លទ្ធផល"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Adquisitions"
+msgstr "ការទិញក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "view:aeat.303.report:"
+msgid "Special Cash Criteria Deliveries"
+msgstr "ការប្រគល់ក្រោមរបបពិសេសតាមមូលដ្ឋានសាច់ប្រាក់"
+
+msgctxt "view:aeat.303.report:"
+msgid "Supported Tax:"
+msgstr "ពន្ធលើការទិញ៖"
+
+msgctxt "view:aeat.303.report:"
+msgid "Tax:"
+msgstr "ពន្ធ៖"
+
+msgctxt "field:aeat.303.report,amount_to_compensate:"
+msgid "Amount To Compensate"
+msgstr "ចំនួនទឹកប្រាក់ត្រូវកាត់កង"
+
+msgctxt "field:aeat.303.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "ឆ្នាំសារពើពន្ធ"
+
+msgctxt ""
+"field:aeat.303.report,preprorrata_deductible_investment_domestic_operations_tax:"
+msgid "Pre-Prorrata Deductible Current Domestic Operations Tax"
+msgstr "ពន្ធអាចកាត់កងលើប្រតិបត្តិការក្នុងស្រុកប្រចាំ មុនអនុវត្តសមាមាត្រកាត់កង"
